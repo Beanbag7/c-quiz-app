@@ -5,6 +5,8 @@ import ProgressBar from './components/ProgressBar';
 import Statistics from './components/Statistics';
 import FillBlankQuestion from './components/FillBlankQuestion';
 import EssayQuestion from './components/EssayQuestion';
+import OnlineCount from './components/OnlineCount';
+import AdminVisitorLog from './components/AdminVisitorLog';
 import './App.css';
 
 function App() {
@@ -35,6 +37,16 @@ function App() {
   const [multiSelectedAnswers, setMultiSelectedAnswers] = useState(new Set());
   const [multiSubmitted, setMultiSubmitted] = useState(false);
   const [multiCorrect, setMultiCorrect] = useState(null);
+  const [currentView, setCurrentView] = useState(() => window.location.hash === '#admin' ? 'admin' : 'quiz');
+
+  useEffect(() => {
+    const handleHashChange = () => {
+      setCurrentView(window.location.hash === '#admin' ? 'admin' : 'quiz');
+    };
+
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
 
   // Fisher-Yates 洗牌算法
   const shuffleArray = (array) => {
@@ -230,6 +242,10 @@ function App() {
     }
   }, [selectedSubject]);
 
+  if (currentView === 'admin') {
+    return <AdminVisitorLog />;
+  }
+
   const currentQuestion = questions[currentIndex];
 
   // Handle option click - 允许答错后重新选择
@@ -387,6 +403,10 @@ function App() {
     return (
       <div className="App">
         <div className="subject-selection">
+          <div className="selection-topbar">
+            <OnlineCount scope="home" />
+            <a className="admin-entry" href="#admin">管理员日志</a>
+          </div>
           <h1 className="selection-title">选择题库</h1>
           <p className="selection-subtitle">请选择你要练习的科目</p>
           <div className="subject-cards">
@@ -605,6 +625,7 @@ function App() {
             }}>
               ← 退出练习
             </button>
+            <OnlineCount scope="quiz" />
           </div>
 
           {/* Progress Bar */}
