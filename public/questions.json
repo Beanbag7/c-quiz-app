@@ -1,0 +1,2451 @@
+{
+  "questions": [
+    {
+      "序号": 1,
+      "题目ID": 96708,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">下列叙述中正确的是（）。</p>\n",
+      "选项": {
+        "A": "do-while语句构成的循环不能用其他语句构成的循环来代替",
+        "B": "do-while语句构成的循环只能用break语句退出",
+        "C": "用do-while语句构成的循环，在while后的表达式为非零时结束循环",
+        "D": "用do-while语句构成的循环，在while后的表达式为零时结束循环"
+      },
+      "分值": 1,
+      "正确答案": "D",
+      "答案文本": "用do-while语句构成的循环，在while后的表达式为零时结束循环",
+      "是否正确": false
+    },
+    {
+      "序号": 2,
+      "题目ID": 96709,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">执行以下循环语句时，下列说法正确的是（）。</p>\n<div data-v-md-line=\"2\"><pre><code>x = -1; \ndo { \n      x = x * x; \n} while (x == 0);\n</code></pre>\n</div>",
+      "选项": {
+        "A": "循环体将执行一次",
+        "B": "循环体将执行两次",
+        "C": "循环体将执行无限次",
+        "D": "系统将提示有语法错误"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "循环体将执行一次",
+      "是否正确": false
+    },
+    {
+      "序号": 3,
+      "题目ID": 96710,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">假设变量s、a、b、c均已定义为整型变量，且a、c均已赋值（c大于0），则与以下程序段功能等价的赋值语句是（）。</p>\n<div data-v-md-line=\"2\"><pre><code> s = a;  \nfor(b = 1; b &lt;= c; b++) \n      s = s + 1;\n</code></pre>\n</div>",
+      "选项": {
+        "A": "s = a + b;",
+        "B": "s = a + c;",
+        "C": "s = s + c;",
+        "D": "s = b + c;"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "s = a + c;",
+      "是否正确": false
+    },
+    {
+      "序号": 4,
+      "题目ID": 96711,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">运行以下程序后，如果从键盘上输入65  14&lt;回车&gt;，则输出结果为（）。</p>\n<div data-v-md-line=\"2\"><pre><code> int main(void)\n{  \n      int  m, n;\n\n      printf(&quot;Enter m,n;&quot;);   \n      scanf(&quot;%d%d&quot;, &amp;m,&amp;n);\n      while (m != n)\n      {   while (m &gt; n)       m = m - n;\n          while (n &gt; m)       n = n - m;    \n      }\n      printf(&quot;m=%d\\n&quot;,m);    \n\n      return 0;\n}\n</code></pre>\n</div>",
+      "选项": {
+        "A": "m=3",
+        "B": "m=2",
+        "C": "m=1",
+        "D": "m=0"
+      },
+      "分值": 1,
+      "正确答案": "C",
+      "答案文本": "m=1",
+      "是否正确": false
+    },
+    {
+      "序号": 5,
+      "题目ID": 96712,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">假定int类型变量占用两个字节，其有定义：int  x[10]={0, 2, 4}; 则数组x在内存中所占字节数是（）。<br>\n</code></pre></p>\n",
+      "选项": {
+        "A": "3",
+        "B": "6",
+        "C": "10",
+        "D": "20"
+      },
+      "分值": 1,
+      "正确答案": "D",
+      "答案文本": "20",
+      "是否正确": false
+    },
+    {
+      "序号": 6,
+      "题目ID": 96713,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">以下能正确定义数组并正确赋初值的语句是（）。<br>\n</code></pre></p>\n",
+      "选项": {
+        "A": "int N=5, b[N][N];",
+        "B": "int a[1][2]={{1}, {3}};",
+        "C": "int c[2][ ]={{1, 2}, {3, 4}};",
+        "D": "int d[3][2]={{1, 2}, {34}};"
+      },
+      "分值": 1,
+      "正确答案": "D",
+      "答案文本": "int d[3][2]={{1, 2}, {34}};",
+      "是否正确": false
+    },
+    {
+      "序号": 7,
+      "题目ID": 96714,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">设有数组定义：char array [ ]=&quot;China&quot;; 则数组 array所占的空间为（）。<br>\n</code></pre></p>\n",
+      "选项": {
+        "A": "4个字节",
+        "B": "5个字节",
+        "C": "6个字节",
+        "D": "7个字节"
+      },
+      "分值": 1,
+      "正确答案": "C",
+      "答案文本": "6个字节",
+      "是否正确": false
+    },
+    {
+      "序号": 8,
+      "题目ID": 96715,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">下述对C语言字符数组的描述中错误的是（）。<br>\n</code></pre></p>\n",
+      "选项": {
+        "A": "字符数组可以存放字符串",
+        "B": "字符数组中的字符串可以整体输入、输出",
+        "C": "可以在赋值语句中通过赋值运算符\"=\"对字符数组整体赋值",
+        "D": "不可以用关系运算符对字符数组中的字符串进行比较"
+      },
+      "分值": 1,
+      "正确答案": "C",
+      "答案文本": "可以在赋值语句中通过赋值运算符\"=\"对字符数组整体赋值",
+      "是否正确": false
+    },
+    {
+      "序号": 9,
+      "题目ID": 96716,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">有以下定义：char x[ ]=“abcdefg”; char y[ ]={‘a’, ‘b’, ‘c’, ‘d’, ‘e’, ‘f’, ‘g’}; 则正确的叙述为（）。</p>\n",
+      "选项": {
+        "A": "数组x和数组y等价",
+        "B": "数组x和数组y的长度相同",
+        "C": "数组x的长度大于数组y的长度",
+        "D": "数组x的长度小于数组y的长度"
+      },
+      "分值": 1,
+      "正确答案": "C",
+      "答案文本": "数组x的长度大于数组y的长度",
+      "是否正确": false
+    },
+    {
+      "序号": 10,
+      "题目ID": 96717,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">以下程序的输出结果是（）。</p>\n<div data-v-md-line=\"2\"><pre><code>int main(void)\n{\n      int  m[ ][3] = { 1, 4, 7, 2, 5, 8, 3, 6, 9 };\n      int  i, j, k=2;\n\n      for (i=0; i&lt;3; i++)\n            printf (&quot;%d &quot;, m[k][i]);\n\n      return 0;\n}\n</code></pre>\n</div>",
+      "选项": {
+        "A": "4 5 6",
+        "B": "2 5 8",
+        "C": "3 6 9",
+        "D": "7 8 9"
+      },
+      "分值": 1,
+      "正确答案": "C",
+      "答案文本": "3 6 9",
+      "是否正确": false
+    },
+    {
+      "序号": 11,
+      "题目ID": 96718,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">以下程序的输出结果是（）。</p>\n<div data-v-md-line=\"2\"><pre><code> int main(void)\n{\n      int aa[4][4]={ {1, 2, 3, 4}, {5, 6, 7, 8}, {3, 9, 10, 2}, {4, 2, 9, 6} };\n      int i, s=0;\n\n      for(i=0; i&lt;4; i++)\n            s += aa[i][1];\n      printf(&quot;%d\\n&quot;, s);\n\n     return 0;\n}\n</code></pre>\n</div>",
+      "选项": {
+        "A": "11",
+        "B": "19",
+        "C": "13",
+        "D": "20"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "19",
+      "是否正确": false
+    },
+    {
+      "序号": 12,
+      "题目ID": 96719,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">设变量已正确定义，为了检查以下else-if语句的分支是否正确，至少需要设计（ ）组测试用例。</p>\n<div data-v-md-line=\"2\"><pre><code>if(op == '+'){\n    printf(&quot;=%.2f\\n&quot;, value1 + value2);\n}else if(op == '-'){\n    printf(&quot;=%.2f\\n&quot;, value1 - value2);\n}else if(op == '*'){\n    printf(&quot;=%.2f\\n&quot;, value1 * value2);\n}else if(op == '/'){\n    if(value2 != 0){\n        printf(&quot;=%.2f\\n&quot;, value1 / value2);\n    }else{\n     printf(&quot;Divisor can not be 0!\\n&quot;);\n    }\n}else{\n   printf(&quot;Unknown operator!\\n&quot;);\n}\n</code></pre>\n</div>",
+      "选项": {
+        "A": "7",
+        "B": "6",
+        "C": "5",
+        "D": "4"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "6",
+      "是否正确": false
+    },
+    {
+      "序号": 13,
+      "题目ID": 96720,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">以下程序段（ ）的功能是计算序列 1 + 1/2 + 1/3 + … 的前N项之和。</p>\n",
+      "选项": {
+        "A": "int i, n, sum;\nscanf(\"%d\", &n);\nsum = 0;\nfor (i = 1; i <= n; i++){\n    sum = sum + 1.0/i;\n}",
+        "B": "int i, n;\ndouble sum;\nscanf(\"%d\", &n);\nfor (i = 1; i <= n; i++){\n    sum = sum + 1.0/i;\n}",
+        "C": "int i, n;\ndouble sum;\nscanf(\"%d\", &n);\nsum = 0;\nfor (i = 1; i <= n; i++){\n    sum = sum + 1.0/i;\n}",
+        "D": "int i, n;\ndouble sum;\nscanf(\"%d\", &n);\nsum = 0;\nfor (i = 1; i <= n; i++){\n    sum = sum + 1/i;\n}"
+      },
+      "分值": 1,
+      "正确答案": "C",
+      "答案文本": "int i, n;\ndouble sum;\nscanf(\"%d\", &n);\nsum = 0;\nfor (i = 1; i <= n; i++){\n    sum = sum + 1.0/i;\n}",
+      "是否正确": false
+    },
+    {
+      "序号": 14,
+      "题目ID": 96721,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">以下程序段（ ）的功能是计算n的阶乘，假设计算结果不超过双精度范围。</p>\n",
+      "选项": {
+        "A": "int i, n;\ndouble product;\nscanf(\"%d\", &n);\nproduct = 0;\nfor (i = 1; i <= n; i++){\n     product = product * i;\n}",
+        "B": "int i, n, product;\nscanf(\"%d\", &n);\nproduct = 1;\nfor (i = 1; i <= n; i++){\n     product = product * i;\n}",
+        "C": "int i, n;\ndouble product;\nscanf(\"%d\", &n);\nfor (i = 1; i <= n; i++){\n     product = product * i;\n}",
+        "D": "int i, n;\ndouble product;\nscanf(\"%d\", &n);\nproduct = 1;\nfor (i = 1; i <= n; i++){\n     product = product * i;\n}"
+      },
+      "分值": 1,
+      "正确答案": "D",
+      "答案文本": "int i, n;\ndouble product;\nscanf(\"%d\", &n);\nproduct = 1;\nfor (i = 1; i <= n; i++){\n     product = product * i;\n}",
+      "是否正确": false
+    },
+    {
+      "序号": 15,
+      "题目ID": 96722,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">设变量已正确定义，以下（ ）与其它switch语句不等价。</p>\n",
+      "选项": {
+        "A": "switch(op){\n     case '+': printf(\"%d\\n\", value1 + value2); break;\n     case '-': printf(\"%d\\n\", value1 - value2); break;\n     case '*': printf(\"%d\\n\", value1 * value2); break;\n     default: printf(\"Error\\n\"); break;\n}",
+        "B": "switch(op){\n     default: printf(\"Error\\n\"); break;\n     case '*': printf(\"%d\\n\", value1 * value2); break;\n     case '-': printf(\"%d\\n\", value1 - value2); break;\n     case '+': printf(\"%d\\n\", value1 + value2); break;\n}",
+        "C": "if(op != '+' && op != '-' && op != '*'){\n     printf(\"Error\\n\");\n}else{\n     switch(op){\n         case '+': printf(\"%d\\n\", value1 + value2); break;\n         case '-': printf(\"%d\\n\", value1 - value2); break;\n         case '*': printf(\"%d\\n\", value1 * value2); break;\n     }\n}",
+        "D": "switch(op){\n     case '+': printf(\"%d\\n\", value1 + value2); break;\n     case '-': printf(\"%d\\n\", value1 - value2); break;\n     case '*': printf(\"%d\\n\", value1 * value2); break;\n}"
+      },
+      "分值": 1,
+      "正确答案": "D",
+      "答案文本": "switch(op){\n     case '+': printf(\"%d\\n\", value1 + value2); break;\n     case '-': printf(\"%d\\n\", value1 - value2); break;\n     case '*': printf(\"%d\\n\", value1 * value2); break;\n}",
+      "是否正确": false
+    },
+    {
+      "序号": 16,
+      "题目ID": 96723,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">对于变量定义： int a, b = 0; 下列叙述中正确的是( )  。</p>\n",
+      "选项": {
+        "A": "a 的初始值是 0 ， b 的初始值不确定。",
+        "B": "a 的初始值不确定， b 的初始值是 0 。",
+        "C": "a 和 b 的初始值都是 0 。",
+        "D": "a 和 b 的初始值都不确定。"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "a 的初始值不确定， b 的初始值是 0 。",
+      "是否正确": false
+    },
+    {
+      "序号": 17,
+      "题目ID": 96724,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">表达式x&amp;&amp;1用在if的条件中时，和(    )是等价的？</p>\n",
+      "选项": {
+        "A": "x !=0",
+        "B": "x == 1",
+        "C": "x != 1",
+        "D": "x == 0"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "x !=0",
+      "是否正确": false
+    },
+    {
+      "序号": 18,
+      "题目ID": 96725,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">假设字符变量ch中存放有小写英文字母，将其转换为相应的大写英文字母的表达式是 (    ) 。</p>\n",
+      "选项": {
+        "A": "ch = ch-'a'+'A'",
+        "B": "ch = ch+32",
+        "C": "tolower(ch)",
+        "D": "ch -= 'a'+'A'"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "ch = ch-'a'+'A'",
+      "是否正确": false
+    },
+    {
+      "序号": 19,
+      "题目ID": 96726,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">分析以下代码的运行结果： <pre><code>int i = 6;<br>\nif ( i &lt;= 6 ) printf(&quot;hello\\n&quot;);;<br>\nelse printf(&quot;bye-bye\\n&quot;);;<br>\n</code></pre></p>\n",
+      "选项": {
+        "A": "打印出\"hello\"",
+        "B": "打印出\"hello bye-bye\"",
+        "C": "不能通过编译",
+        "D": "打印出\"bye-bye\""
+      },
+      "分值": 1,
+      "正确答案": "C",
+      "答案文本": "不能通过编译",
+      "是否正确": false
+    },
+    {
+      "序号": 20,
+      "题目ID": 96727,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">以下（ ）循环并非重复5次？</p>\n",
+      "选项": {
+        "A": "int i;\nfor (i=1; i<6; i++) {}",
+        "B": "int i;\nfor (i=0; i<5; i++) {}",
+        "C": "int i;\nfor (i=0; i<=5; i++) {}",
+        "D": "int i;\nfor (i=1; i<=5; i++) {}"
+      },
+      "分值": 1,
+      "正确答案": "C",
+      "答案文本": "int i;\nfor (i=0; i<=5; i++) {}",
+      "是否正确": false
+    },
+    {
+      "序号": 21,
+      "题目ID": 96728,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">以下（ ）不是正确的函数原型？</p>\n",
+      "选项": {
+        "A": "int f();",
+        "B": "int f(int i);",
+        "C": "int f(int);",
+        "D": "int f() {}"
+      },
+      "分值": 1,
+      "正确答案": "D",
+      "答案文本": "int f() {}",
+      "是否正确": false
+    },
+    {
+      "序号": 22,
+      "题目ID": 96729,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">若变量已正确定义，对以下while循环结束条件的准确描述是（）。 <pre><code>flag = 1;<br>\ndenominator = 1;<br>\nitem = 1.0;<br>\npi = 0;<br>\nwhile(fabs(item) &gt;= 0.0001){<br>\nitem = flag * 1.0 / denominator;<br>\npi = pi + item;<br>\nflag = -flag;<br>\ndenominator = denominator + 2;<br>\n}</code></pre></p>\n",
+      "选项": {
+        "A": "item的绝对值小于0.0001",
+        "B": "item的绝对值大于0.0001",
+        "C": "item的绝对值等于0.0001",
+        "D": "item的绝对值不等于0.0001"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "item的绝对值小于0.0001",
+      "是否正确": false
+    },
+    {
+      "序号": 23,
+      "题目ID": 96730,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">若变量已正确定义，对以下while循环结束条件的准确描述是（ ）。 <pre><code>flag = 1;<br>\ndenominator = 1;<br>\nitem = 1.0;<br>\npi = 0;<br>\nwhile(fabs(item) &gt; 0.0001){<br>\nitem = flag * 1.0 / denominator;<br>\npi = pi + item;<br>\nflag = -flag;<br>\ndenominator = denominator + 2;<br>\n}</code></pre></p>\n",
+      "选项": {
+        "A": "item的绝对值不大于0.0001",
+        "B": "item的绝对值不小于0.0001",
+        "C": "item的绝对值等于0.0001",
+        "D": "item的绝对值不等于0.0001"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "item的绝对值不大于0.0001",
+      "是否正确": false
+    },
+    {
+      "序号": 24,
+      "题目ID": 96731,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">若变量已正确定义，以下while循环正常结束时，累加到pi的最后一项item的值满足（ ）。 <pre><code>flag = 1;<br>\ndenominator = 1;<br>\nitem = 1.0;<br>\npi = 0;<br>\nwhile(fabs(item) &gt;= 0.0001){<br>\npi = pi + item;<br>\nflag = -flag;<br>\ndenominator = denominator + 2;<br>\nitem = flag * 1.0 / denominator;<br>\n}</code></pre></p>\n",
+      "选项": {
+        "A": "item的绝对值小于0.0001",
+        "B": "item的绝对值大于0.0001",
+        "C": "item的绝对值大于等于0.0001",
+        "D": "item的绝对值小于等于0.0001"
+      },
+      "分值": 1,
+      "正确答案": "C",
+      "答案文本": "item的绝对值大于等于0.0001",
+      "是否正确": false
+    },
+    {
+      "序号": 25,
+      "题目ID": 96732,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">执行以下程序段后，变量 i 的值是（ ）。 <pre><code>int i = 10;<br>\nwhile ( i &gt; 3 ) {<br>\ni /=2;<br>\n}</code></pre></p>\n",
+      "选项": {
+        "A": "1",
+        "B": "2",
+        "C": "3",
+        "D": "5"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "2",
+      "是否正确": false
+    },
+    {
+      "序号": 26,
+      "题目ID": 96733,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">执行以下程序段后，变量 i 的值是（  ） <pre><code>int i = 2;<br>\ndo {<br>\ni = i + 5;<br>\n} while (i &lt; 15);</code></pre></p>\n",
+      "选项": {
+        "A": "16",
+        "B": "17",
+        "C": "20",
+        "D": "21"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "17",
+      "是否正确": false
+    },
+    {
+      "序号": 27,
+      "题目ID": 96734,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">假定 char 类型变量占用1个字节，且数组定义如下，则数组 str 在内存中所占字节数是（ ）。 char  str[81];</p>\n",
+      "选项": {
+        "A": "0",
+        "B": "10",
+        "C": "80",
+        "D": "81"
+      },
+      "分值": 1,
+      "正确答案": "D",
+      "答案文本": "81",
+      "是否正确": false
+    },
+    {
+      "序号": 28,
+      "题目ID": 96735,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">假定 double 类型变量占用8个字节，且数组定义如下，则数组 length 在内存中所占字节数是（ ）。 double  length [10];</p>\n",
+      "选项": {
+        "A": "0",
+        "B": "10",
+        "C": "80",
+        "D": "160"
+      },
+      "分值": 1,
+      "正确答案": "C",
+      "答案文本": "80",
+      "是否正确": false
+    },
+    {
+      "序号": 29,
+      "题目ID": 96736,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">如果变量定义如下，则正确的语句是（ ）。 int i, j, tab[3][4];</p>\n",
+      "选项": {
+        "A": "tab[0][ ] = 0;",
+        "B": "tab[ ][3] = 3;",
+        "C": "tab = 100;",
+        "D": "<p data-v-md-line=\"1\">for(i = 0; i &lt; 3; i++){ for(j = 0; j &lt; 4; j++){ scanf(“%d”, &amp;tab[i][j]); } }</p>\n"
+      },
+      "分值": 1,
+      "正确答案": "D",
+      "答案文本": "<p data-v-md-line=\"1\">for(i = 0; i &lt; 3; i++){ for(j = 0; j &lt; 4; j++){ scanf(“%d”, &amp;tab[i][j]); } }</p>\n",
+      "是否正确": false
+    },
+    {
+      "序号": 30,
+      "题目ID": 96737,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">假定 char 类型变量占用1个字节，且数组定义如下，则数组 tab_str 在内存中所占字节数是（ ）。 char  tab_str [10][81];</p>\n",
+      "选项": {
+        "A": "810",
+        "B": "10",
+        "C": "81",
+        "D": "0"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "810",
+      "是否正确": false
+    },
+    {
+      "序号": 31,
+      "题目ID": 96738,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">假定 double 类型变量占用8个字节，且数组定义如下，则数组 point 在内存中所占字节数是（ ）。 double  point [10][10];</p>\n",
+      "选项": {
+        "A": "0",
+        "B": "800",
+        "C": "10",
+        "D": "20"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "800",
+      "是否正确": false
+    },
+    {
+      "序号": 32,
+      "题目ID": 96739,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">下列程序段的功能是：计算数组 x 中相邻两个元素的和，依次存放到 a 数组中，然后输出 a 数组。程序段中待填空的（1）和（2）的正确选项是（ ）。<pre><code> int i;<br>\nint a[9], x[10];</p>\n<p data-v-md-line=\"4\">for(i = 0; i &lt; 10; i++){<br>\nscanf(&quot;%d&quot;, &amp;x[i]);<br>\n}<br>\nfor(    (1)    ; i &lt; 10; i++ ) { /* 此处待填空（1） <em>/<br>\na[i-1] = x[i] +    (2)    ;  /</em> 此处待填空（2） */<br>\n}<br>\nfor(i = 0; i &lt; 9; i++){<br>\nprintf(&quot;%d &quot;,a[i]);<br>\n}<br>\nprintf(&quot;\\n&quot;);<br>\n</code></pre></p>\n",
+      "选项": {
+        "A": "(1) i = 1 (2) x[i+1]",
+        "B": "(1) i = 0 (2) x[i-1]",
+        "C": "(1) i = 1 (2) x[i-1]",
+        "D": "(1) i = 0 (2) x[i+1]"
+      },
+      "分值": 1,
+      "正确答案": "C",
+      "答案文本": "(1) i = 1 (2) x[i-1]",
+      "是否正确": false
+    },
+    {
+      "序号": 33,
+      "题目ID": 96740,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">若fahr为整型变量，则能正确表示以下数学式的C语言表达式是（   ） 。<br>\n<img src=\"https://file.keepctf.cn/20251209/1765244334095.png\" alt=\"Description\"></p>\n",
+      "选项": {
+        "A": "5*(fahr-32)/9",
+        "B": "5/9*(fahr-32)",
+        "C": "5(fahr-32)/9",
+        "D": "(fahr-32)/9*5"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "5*(fahr-32)/9",
+      "是否正确": false
+    },
+    {
+      "序号": 34,
+      "题目ID": 96741,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">将以下if-else语句补充完整，正确的选项是（     ）。 <pre><code>if(x &gt;= y){<br>\nprintf(&quot;max = %d\\n&quot;, x);</p>\n<hr data-v-md-line=\"3\">\n<p data-v-md-line=\"4\">printf(&quot;max = %d\\n&quot;, y);<br>\n}</code></pre></p>\n",
+      "选项": {
+        "A": "else",
+        "B": "else{",
+        "C": "}else{",
+        "D": "}else"
+      },
+      "分值": 1,
+      "正确答案": "C",
+      "答案文本": "}else{",
+      "是否正确": false
+    },
+    {
+      "序号": 35,
+      "题目ID": 96742,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">为了检查以下if-else语句的两个分支是否正确，至少需要设计3组测试用例，其相应的输入数据和预期输出结果是(    ) 。<pre><code> int x, y;<br>\nscanf(&quot;%d%d&quot;, &amp;x, &amp;y);<br>\nif(x &gt;= y){<br>\nprintf(&quot;max = %d\\n&quot;, x);<br>\n}else{<br>\nprintf(&quot;max = %d\\n&quot;, y);<br>\n}</code></pre></p>\n",
+      "选项": {
+        "A": "输入3和4，输出4；输入5和100，输出100；输入4和3，输出4。",
+        "B": "输入3和4，输出4；输入100和5，输出100；输入4和3，输出4。",
+        "C": "输入3和4，输出4；输入5和5，输出5；输入-2和-1，输出-1。",
+        "D": "输入3和4，输出4；输入5和5，输出5；输入4和3，输出4。"
+      },
+      "分值": 1,
+      "正确答案": "D",
+      "答案文本": "输入3和4，输出4；输入5和5，输出5；输入4和3，输出4。",
+      "是否正确": false
+    },
+    {
+      "序号": 36,
+      "题目ID": 96743,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">以下求 n! 的函数可以正确计算21！，正确的选项是（    ）。<pre><code> _______ fact(int n)<br>\n{   int i;<br>\n_______ product;<br>\nproduct = 1;<br>\nfor (i = 1; i &lt;= n; i++){<br>\nproduct = product * i;<br>\n}<br>\nreturn  product;<br>\n}</code></pre></p>\n",
+      "选项": {
+        "A": "double",
+        "B": "int",
+        "C": "float",
+        "D": "void"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "double",
+      "是否正确": false
+    },
+    {
+      "序号": 37,
+      "题目ID": 96744,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">对C语言程序，以下说法正确的是（    ）。</p>\n",
+      "选项": {
+        "A": "main 函数是主函数，一定要写在最前面。",
+        "B": "所有的自定义函数，都必须先声明。",
+        "C": "程序总是从 main 函数开始执行的。",
+        "D": "程序中只能调用库函数，不能自己定义函数。"
+      },
+      "分值": 1,
+      "正确答案": "C",
+      "答案文本": "程序总是从 main 函数开始执行的。",
+      "是否正确": false
+    },
+    {
+      "序号": 38,
+      "题目ID": 96745,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">以下程序段（   ）不能实现求 s = 1+2+…+n-1。</p>\n",
+      "选项": {
+        "A": "int i, n, s = 0;\nscanf (\"%d\", &n);\nfor (i = 1; i < n; i++) {\n    s = s + i;\n}",
+        "B": "int i, n, s = 0;\nscanf (\"%d\", &n);\nfor (i = n-1; i > 0; ++i) {\n    s = s + i;\n}",
+        "C": "int i, n, s = 0;\nscanf (\"%d\", &n);\nfor (i = n-1; i > 0; i--) {\n    s = s + i;\n}",
+        "D": "int i, n, s = 0;\nscanf (\"%d\", &n);\nfor (i = 1; i <= n-1; ++i) {\n    s = s + i;\n}"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "int i, n, s = 0;\nscanf (\"%d\", &n);\nfor (i = n-1; i > 0; ++i) {\n    s = s + i;\n}",
+      "是否正确": false
+    },
+    {
+      "序号": 39,
+      "题目ID": 96746,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">在函数调用 Func(exp1 , exp2+exp3 , exp4*exp5) 中，实参的数量是 （）。</p>\n",
+      "选项": {
+        "A": "3",
+        "B": "4",
+        "C": "5",
+        "D": "语法错误"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "3",
+      "是否正确": false
+    },
+    {
+      "序号": 40,
+      "题目ID": 96747,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">以下程序的运行结果是（ ）。 <pre><code>int x = 5, y = 6;<br>\nvoid incxy( )<br>\n{<br>\nx++;<br>\ny++;<br>\n}<br>\nint main(void )<br>\n{<br>\nint x = 3;</p>\n<div data-v-md-line=\"11\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper- extra-class\"><pre><code>incxy( );\nprintf(&quot;%d, %d\\n&quot;;, x, y);       \n\nreturn 0;\n</code></pre>\n</div></div><p data-v-md-line=\"15\">}</code></pre></p>\n",
+      "选项": {
+        "A": "3, 6",
+        "B": "4, 7",
+        "C": "3, 7",
+        "D": "6, 7"
+      },
+      "分值": 1,
+      "正确答案": "C",
+      "答案文本": "3, 7",
+      "是否正确": false
+    },
+    {
+      "序号": 41,
+      "题目ID": 96748,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">执行以下程序段后，变量 c 的值是（） <pre><code>int a = 10, b = 20, c;</p>\n<p data-v-md-line=\"3\">c = (a % 2 == 0) ? a : b</code></pre></p>\n",
+      "选项": {
+        "A": "0",
+        "B": "5",
+        "C": "10",
+        "D": "20"
+      },
+      "分值": 1,
+      "正确答案": "C",
+      "答案文本": "10",
+      "是否正确": false
+    },
+    {
+      "序号": 42,
+      "题目ID": 96749,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">若a是整型变量，表达式 ~(a ^ ~a ) 等价于（）。</p>\n",
+      "选项": {
+        "A": "~a",
+        "B": "1",
+        "C": "0",
+        "D": "2"
+      },
+      "分值": 1,
+      "正确答案": "C",
+      "答案文本": "0",
+      "是否正确": false
+    },
+    {
+      "序号": 43,
+      "题目ID": 96750,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">若表达式 sizeof(int) 的值为2，则 int 类型数据可以表示的最大整数为（）。</p>\n",
+      "选项": {
+        "A": "<p data-v-md-line=\"1\">-2^{16} ~ 2^16 -1</p>\n",
+        "B": "<p data-v-md-line=\"1\">-2^{15} ~ 2^15 -1</p>\n",
+        "C": "<p data-v-md-line=\"1\">-2^{32} ~ 2^32 -1</p>\n",
+        "D": "<p data-v-md-line=\"1\">-2^{31} ~ 2^31 -1</p>\n"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "<p data-v-md-line=\"1\">-2^{15} ~ 2^15 -1</p>\n",
+      "是否正确": false
+    },
+    {
+      "序号": 44,
+      "题目ID": 96751,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">以下 main() 函数中所有可用的变量为（）。 <pre><code>void fun(int x)<br>\n{<br>\nstatic int y;<br>\n……<br>\n}</p>\n<p data-v-md-line=\"7\">int z;</p>\n<p data-v-md-line=\"9\">int main( )<br>\n{<br>\nint a, b;<br>\nfun(a);<br>\n……<br>\nreturn 0;<br>\n}</code></pre></p>\n",
+      "选项": {
+        "A": "x, y",
+        "B": "x, y, z",
+        "C": "a, b, x, y, z",
+        "D": "a, b, z"
+      },
+      "分值": 1,
+      "正确答案": "D",
+      "答案文本": "a, b, z",
+      "是否正确": false
+    },
+    {
+      "序号": 45,
+      "题目ID": 96752,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">如果一个变量在整个程序运行期间都存在，但是仅在说明它的函数内是可见的，这个变量的存储类型应该被说明为（）。</p>\n",
+      "选项": {
+        "A": "自动变量",
+        "B": "静态变量",
+        "C": "外部变量",
+        "D": "以上都可以"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "静态变量",
+      "是否正确": false
+    },
+    {
+      "序号": 46,
+      "题目ID": 96753,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">下列程序段的输出结果是（）。 <pre><code>int a = 3, b = 5;<br>\nif ( a = b ){<br>\nprintf(&quot;%d = %d&quot;, a, b);<br>\n}else{<br>\nprintf(&quot;%d != %d&quot;, a, b);<br>\n}</code></pre></p>\n",
+      "选项": {
+        "A": "5 = 5",
+        "B": "3 = 3",
+        "C": "3 != 5",
+        "D": "5 != 3"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "5 = 5",
+      "是否正确": false
+    },
+    {
+      "序号": 47,
+      "题目ID": 96754,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">下列程序段的输出结果是（）。<pre><code> int i;<br>\nfor (i = 1; i &lt; 6; i++) {<br>\nif (i % 2 != 0) {<br>\nprintf(&quot;#&quot;);<br>\ncontinue;<br>\n}<br>\nprintf (&quot;*&quot;);<br>\n}</code></pre></p>\n",
+      "选项": {
+        "A": "#*#*#",
+        "B": "#####",
+        "C": "*****",
+        "D": "*#*#*"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "#*#*#",
+      "是否正确": false
+    },
+    {
+      "序号": 48,
+      "题目ID": 96755,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">以下程序段的输出结果是（）。 <pre><code>int num = 0, s = 0;<br>\nwhile (num &lt;= 2)｛<br>\n     num ++;<br>\n     s = s + num; <br>\n}<br>\nprintf (&quot;%d\\n&quot;, s);</code></pre></p>\n",
+      "选项": {
+        "A": "10",
+        "B": "6",
+        "C": "3",
+        "D": "1"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "6",
+      "是否正确": false
+    },
+    {
+      "序号": 49,
+      "题目ID": 96756,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">C语言表达式（    ）的值不等于1。</p>\n",
+      "选项": {
+        "A": "123/100",
+        "B": "901%10",
+        "C": "76%3",
+        "D": "625%5"
+      },
+      "分值": 1,
+      "正确答案": "D",
+      "答案文本": "625%5",
+      "是否正确": false
+    },
+    {
+      "序号": 50,
+      "题目ID": 96757,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">改正下列程序中的（ ）处错误后，程序的运行结果是在屏幕上显示短句“Welcome to You!”。 <pre><code># include &lt;stdio.h&gt;<br>\nint mian(void)<br>\n{<br>\nprintf(Welcome to You!\\n&quot;)<br>\nreturn 0;<br>\n}</code></pre></p>\n",
+      "选项": {
+        "A": "1",
+        "B": "2",
+        "C": "3",
+        "D": "4"
+      },
+      "分值": 1,
+      "正确答案": "C",
+      "答案文本": "3",
+      "是否正确": false
+    },
+    {
+      "序号": 51,
+      "题目ID": 96758,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">假设 i 和 j 是整型变量，以下语句(    ) 的功能是在屏幕上显示形如 i * j = i*j 的一句乘法口诀。例如，当i=2，j=3时，显示2 * 3 = 6。</p>\n",
+      "选项": {
+        "A": "printf(\"d * %d = %d\\n\", i, j, i*j);",
+        "B": "printf(\"%d * %d = %d\\n\", i, j, i*j);",
+        "C": "printf(\"%d * %d = %d\\n\", i, j);",
+        "D": "printf(\"%d = %d * %d\\n\", i, j, i*j);"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "printf(\"%d * %d = %d\\n\", i, j, i*j);",
+      "是否正确": false
+    },
+    {
+      "序号": 52,
+      "题目ID": 96759,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">下列运算符中，优先级最低的是（     ）。</p>\n",
+      "选项": {
+        "A": "*",
+        "B": "=",
+        "C": "%"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "=",
+      "是否正确": false
+    },
+    {
+      "序号": 53,
+      "题目ID": 96760,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">若 x 是 double 型变量， n 是 int 型变量，执行以下语句（  ），并输入 3  1.25 后， x 的值是 1.25 ， n 的值是 3 。</p>\n",
+      "选项": {
+        "A": "scanf(\"%d%lf\", &n, &x);",
+        "B": "scanf(\"%lf%d\", &x, &n);",
+        "C": "scanf(\"%lf%d\", &n, &x);",
+        "D": "scanf(\"%d, %lf\", &n, &x);"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "scanf(\"%d%lf\", &n, &x);",
+      "是否正确": false
+    },
+    {
+      "序号": 54,
+      "题目ID": 96761,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">能正确表示逻辑关系&quot; a ≥ 10  或 a ≤ 0  &quot;的C语言表达式是（）。</p>\n",
+      "选项": {
+        "A": "a>=10 or a<=0",
+        "B": "a>=0 | a<=10",
+        "C": "a>=10 && a<=0",
+        "D": "a>=10 || a<=0"
+      },
+      "分值": 1,
+      "正确答案": "D",
+      "答案文本": "a>=10 || a<=0",
+      "是否正确": false
+    },
+    {
+      "序号": 55,
+      "题目ID": 96762,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">在嵌套使用if语句时，C语言规定else总是（）。</p>\n",
+      "选项": {
+        "A": "和之前与其具有相同缩进位置的if配对",
+        "B": "和之前与其最近的if配对",
+        "C": "和之前与其最近的且不带else的if配对",
+        "D": "和之前的第一个if配对"
+      },
+      "分值": 1,
+      "正确答案": "C",
+      "答案文本": "和之前与其最近的且不带else的if配对",
+      "是否正确": false
+    },
+    {
+      "序号": 56,
+      "题目ID": 96763,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">下列叙述中正确的是（）。</p>\n",
+      "选项": {
+        "A": "break语句只能用于switch语句",
+        "B": "在switch语句中必须使用default",
+        "C": "break语句必须与switch语句中的case配对使用",
+        "D": "在switch语句中，不一定使用break语句"
+      },
+      "分值": 1,
+      "正确答案": "D",
+      "答案文本": "在switch语句中，不一定使用break语句",
+      "是否正确": false
+    },
+    {
+      "序号": 57,
+      "题目ID": 96764,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">下列程序段的输出结果是（）。 <pre><code>int main(void)<br>\n{<br>\nint  a = 2, b = -1, c = 2;<br>\nif(a &lt; b)<br>\nif(b &lt; 0)<br>\nc = 0;<br>\nelse  c++;<br>\nprintf(&quot;%d\\n&quot;,c);<br>\nreturn 0;<br>\n}</code></pre></p>\n",
+      "选项": {
+        "A": "0",
+        "B": "1",
+        "C": "2",
+        "D": "3"
+      },
+      "分值": 1,
+      "正确答案": "C",
+      "答案文本": "2",
+      "是否正确": false
+    },
+    {
+      "序号": 58,
+      "题目ID": 96765,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">下列程序段的输出结果是 （）。 <pre><code>int main(void)<br>\n{<br>\nint x = 1, a = 0, b = 0;<br>\nswitch(x)<br>\n{<br>\ncase 0:   b++;<br>\ncase 1:   a++;<br>\ncase 2:   a++; b++;<br>\n}<br>\nprintf(&quot;a=%d,b=%d\\n&quot;,a,b);<br>\nreturn 0;<br>\n}</code></pre></p>\n",
+      "选项": {
+        "A": "a=2,b=1",
+        "B": "a=1,b=1",
+        "C": "a=1,b=0",
+        "D": "a=2,b=2"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "a=2,b=1",
+      "是否正确": false
+    },
+    {
+      "序号": 59,
+      "题目ID": 96766,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">在执行以下程序时，为使输出结果为：t=4，则给a和b输入的值应满足的条件是（）。 <pre><code>int main(void)<br>\n{<br>\nint  a,b,s,t;<br>\nscanf(&quot;%d,%d&quot;,&amp;a,&amp;b);<br>\ns = 1; t = 1;<br>\nif(a &gt; 0) s = s + 1;<br>\nif(a &gt; b) t = s + t;<br>\nelse if(a == b) t = 5;<br>\nelse t = 2 * s;<br>\nprintf(&quot;t=%d\\n&quot;,t);<br>\nreturn 0;<br>\n}</code></pre></p>\n",
+      "选项": {
+        "A": "a>b",
+        "B": "a<b<0",
+        "C": "<p data-v-md-line=\"1\">0&lt;a&lt;b</p>\n",
+        "D": "0>a>b"
+      },
+      "分值": 1,
+      "正确答案": "D",
+      "答案文本": "0>a>b",
+      "是否正确": false
+    },
+    {
+      "序号": 60,
+      "题目ID": 96767,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">有一函数 ，以下程序段中错误的是（）。</p>\n",
+      "选项": {
+        "A": "if(x > 0) y = 1; else if(x == 0) y = 0； else y = -1;",
+        "B": "y = 0; if(x > 0) y = 1; else if(x < 0) y = -1;",
+        "C": "y = 0; if(x >= 0); if(x > 0) y = 1; else y = -1;",
+        "D": "if(x >= 0) if(x > 0) y = 1; else y = 0; else y = -1;"
+      },
+      "分值": 1,
+      "正确答案": "C",
+      "答案文本": "y = 0; if(x >= 0); if(x > 0) y = 1; else y = -1;",
+      "是否正确": false
+    },
+    {
+      "序号": 61,
+      "题目ID": 96768,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">C语言中while和do-while循环的主要区别是（）。</p>\n",
+      "选项": {
+        "A": "do-while的循环体至少无条件执行一次",
+        "B": "while的循环控制条件比do-while的循环控制条件严格",
+        "C": "do-while允许从外部转到循环体内",
+        "D": "do-while的循环体不能是复合语句"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "do-while的循环体至少无条件执行一次",
+      "是否正确": false
+    },
+    {
+      "序号": 62,
+      "题目ID": 96769,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">下列叙述中正确的是（）。</p>\n",
+      "选项": {
+        "A": "break 语句只能用于 switch 语句体中",
+        "B": "continue语句的作用是使程序的执行流程跳出包含它的所有循环",
+        "C": "break 语句只能用在循环体内和 switch 语句体内",
+        "D": "在循环体内使用 break语句和 continue 语句的作用相同"
+      },
+      "分值": 1,
+      "正确答案": "C",
+      "答案文本": "break 语句只能用在循环体内和 switch 语句体内",
+      "是否正确": false
+    },
+    {
+      "序号": 63,
+      "题目ID": 96866,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">以下程序的输出结果是、</p>\n<div data-v-md-line=\"2\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-c extra-class\"><pre class=\"v-md-prism-c\"><code>void sub(int x, int y, int *z){\n    *z = y-x;\n}\nint main(){\n    int a, b, c;\n    sub(10, 5, &amp;a);\n    sub(7, a, &amp;b);\n    sub(a, b, &amp;c);\n    printf(&quot;%d, %d, %d\\n&quot;, a, b, c);\n    return 0;\n}\n</code></pre>\n</div></div>",
+      "选项": {
+        "A": "<p data-v-md-line=\"1\">5, 2, 3</p>\n",
+        "B": "<p data-v-md-line=\"1\">5, -2, -7</p>\n",
+        "C": "<p data-v-md-line=\"1\">-5, -12, -17</p>\n",
+        "D": "<p data-v-md-line=\"1\">-5, -12, -7</p>\n"
+      },
+      "分值": 1,
+      "正确答案": "D",
+      "答案文本": "<p data-v-md-line=\"1\">-5, -12, -7</p>\n",
+      "是否正确": false
+    },
+    {
+      "序号": 64,
+      "题目ID": 96867,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">以下程序的输出结果是</p>\n<div data-v-md-line=\"2\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-c extra-class\"><pre class=\"v-md-prism-c\"><code>void f(int *p){\n    *p = 5;\n}\nint main(){\n    int x = 10,*px = &amp;x;\n    f(px);\n    printf(&quot;%d#&quot;, (*px)++);\n    printf(&quot;%d\\n&quot;, x);\n    return 0;\n}\n</code></pre>\n</div></div>",
+      "选项": {
+        "A": "<p data-v-md-line=\"1\">5#6</p>\n",
+        "B": "<p data-v-md-line=\"1\">6#6</p>\n",
+        "C": "<p data-v-md-line=\"1\">10#11</p>\n",
+        "D": "<p data-v-md-line=\"1\">11#11</p>\n"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "<p data-v-md-line=\"1\">5#6</p>\n",
+      "是否正确": false
+    },
+    {
+      "序号": 65,
+      "题目ID": 96868,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">以下选项中，对基本类型相同的指针变量不能进行运算的运算符是</p>\n",
+      "选项": {
+        "A": "<h2 data-v-md-heading=\"\" data-v-md-line=\"1\">=</h2>\n",
+        "B": "<h2 data-v-md-heading=\"\" data-v-md-line=\"1\">==</h2>\n",
+        "C": "<h2 data-v-md-heading=\"\" data-v-md-line=\"1\">+</h2>\n",
+        "D": "<h2 data-v-md-heading=\"\" data-v-md-line=\"1\">-</h2>\n"
+      },
+      "分值": 1,
+      "正确答案": "C",
+      "答案文本": "<h2 data-v-md-heading=\"\" data-v-md-line=\"1\">+</h2>\n",
+      "是否正确": false
+    },
+    {
+      "序号": 66,
+      "题目ID": 96869,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">下列语句定义px为指向int类型变量X的指针，正确的是</p>\n",
+      "选项": {
+        "A": "<p data-v-md-line=\"1\">int x, *px = x;</p>\n",
+        "B": "<p data-v-md-line=\"1\">int x, *px = &amp;x;</p>\n",
+        "C": "<p data-v-md-line=\"1\">int *px = &amp;x, x;</p>\n",
+        "D": "<p data-v-md-line=\"1\">int x,px = x;</p>\n"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "<p data-v-md-line=\"1\">int x, *px = &amp;x;</p>\n",
+      "是否正确": false
+    },
+    {
+      "序号": 67,
+      "题目ID": 96870,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">以下程序段的输出结果为</p>\n<div data-v-md-line=\"2\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-c extra-class\"><pre class=\"v-md-prism-c\"><code>struct{\n    intx, y;\n}s[2] = {[1,3],[2,7]};\nprintf(&quot;%d\\n&quot;,s[0].y/s[1].x);\n</code></pre>\n</div></div>",
+      "选项": {
+        "A": "<p data-v-md-line=\"1\">0</p>\n",
+        "B": "<p data-v-md-line=\"1\">1</p>\n",
+        "C": "<p data-v-md-line=\"1\">2</p>\n",
+        "D": "<p data-v-md-line=\"1\">3</p>\n"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "<p data-v-md-line=\"1\">1</p>\n",
+      "是否正确": false
+    },
+    {
+      "序号": 68,
+      "题目ID": 96871,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">如果结构体变量s中的生日是“1994年11月11日”，下列对其生日的正确赋值是</p>\n<div data-v-md-line=\"2\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-c extra-class\"><pre class=\"v-md-prism-c\"><code>struct student{\n    int no;\n    char name[20];\n    char sex;\n    struct{\n        int year;\n        int month;\n        int day;\n    }birth;\n}s;\n</code></pre>\n</div></div>",
+      "选项": {
+        "A": "<p data-v-md-line=\"1\">year=1984; month=11; day=11;</p>\n",
+        "B": "<p data-v-md-line=\"1\">birth.year=1984; birth.month=11; birth.day=11;</p>\n",
+        "C": "<p data-v-md-line=\"1\">s.year=1984; s.month=11; s.day=11;</p>\n",
+        "D": "<p data-v-md-line=\"1\">s.birth.year=1984; s.birth.month=11; s.birth.day=11;</p>\n"
+      },
+      "分值": 1,
+      "正确答案": "D",
+      "答案文本": "<p data-v-md-line=\"1\">s.birth.year=1984; s.birth.month=11; s.birth.day=11;</p>\n",
+      "是否正确": false
+    },
+    {
+      "序号": 69,
+      "题目ID": 96872,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">以下定义结构变量的语句中，错误的是</p>\n",
+      "选项": {
+        "A": "<div data-v-md-line=\"1\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-c extra-class\"><pre class=\"v-md-prism-c\"><code>struct student{\n    int num; \n    char name[20];\n}s;\n</code></pre>\n</div></div>",
+        "B": "<div data-v-md-line=\"1\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-c extra-class\"><pre class=\"v-md-prism-c\"><code>struct{\n    int num; \n    char name[20];\n}s;\n</code></pre>\n</div></div>",
+        "C": "<div data-v-md-line=\"1\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-c extra-class\"><pre class=\"v-md-prism-c\"><code>struct student{\n    int num; \n    char name[20];\n}student s;\n</code></pre>\n</div></div>",
+        "D": "<div data-v-md-line=\"1\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-c extra-class\"><pre class=\"v-md-prism-c\"><code>struct student{\n    int num; \n    char name[20];\n}struct student s;\n</code></pre>\n</div></div>"
+      },
+      "分值": 1,
+      "正确答案": "C",
+      "答案文本": "<div data-v-md-line=\"1\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-c extra-class\"><pre class=\"v-md-prism-c\"><code>struct student{\n    int num; \n    char name[20];\n}student s;\n</code></pre>\n</div></div>",
+      "是否正确": false
+    },
+    {
+      "序号": 70,
+      "题目ID": 96770,
+      "题目类型": "判断题",
+      "题目内容": "\"a\" 和 'a' 是等价的。",
+      "选项": {
+        "A": "T",
+        "B": "F"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "错误",
+      "是否正确": false
+    },
+    {
+      "序号": 71,
+      "题目ID": 96771,
+      "题目类型": "判断题",
+      "题目内容": "C程序是从 main 函数开始执行的。",
+      "选项": {
+        "A": "T",
+        "B": "F"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "正确",
+      "是否正确": false
+    },
+    {
+      "序号": 72,
+      "题目ID": 96772,
+      "题目类型": "判断题",
+      "题目内容": "C程序由函数所组成。",
+      "选项": {
+        "A": "T",
+        "B": "F"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "正确",
+      "是否正确": false
+    },
+    {
+      "序号": 73,
+      "题目ID": 96773,
+      "题目类型": "判断题",
+      "题目内容": "C程序中，用一对大括号{}括起来的多条语句称为复合语句，复合语句在语法上被认为是一条语句。",
+      "选项": {
+        "A": "T",
+        "B": "F"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "正确",
+      "是否正确": false
+    },
+    {
+      "序号": 74,
+      "题目ID": 96774,
+      "题目类型": "判断题",
+      "题目内容": "C程序中定义的变量，代表内存中的一个存储单元。",
+      "选项": {
+        "A": "T",
+        "B": "F"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "正确",
+      "是否正确": false
+    },
+    {
+      "序号": 75,
+      "题目ID": 96775,
+      "题目类型": "判断题",
+      "题目内容": "C语言的标识符由字母、数字和下划线组成，其中第一个字符必须是字母或下划线。",
+      "选项": {
+        "A": "T",
+        "B": "F"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "正确",
+      "是否正确": false
+    },
+    {
+      "序号": 76,
+      "题目ID": 96776,
+      "题目类型": "判断题",
+      "题目内容": "C语言的源程序是可以直接运行的。",
+      "选项": {
+        "A": "T",
+        "B": "F"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "错误",
+      "是否正确": false
+    },
+    {
+      "序号": 77,
+      "题目ID": 96777,
+      "题目类型": "判断题",
+      "题目内容": "C语言中，大写字母 'M' 的ASCII码值比小写字母 'm' 的ASCII码值大。",
+      "选项": {
+        "A": "T",
+        "B": "F"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "错误",
+      "是否正确": false
+    },
+    {
+      "序号": 78,
+      "题目ID": 96778,
+      "题目类型": "判断题",
+      "题目内容": "C语言中，每个字符型数据在ASCII字符集中都有一个惟一的次序值，即ASCII码。",
+      "选项": {
+        "A": "T",
+        "B": "F"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "正确",
+      "是否正确": false
+    },
+    {
+      "序号": 79,
+      "题目ID": 96779,
+      "题目类型": "判断题",
+      "题目内容": "C语言中，数字字符 '0' ， '1' ， '2' ，…， '9' 的ASCII码按降序连续排列。",
+      "选项": {
+        "A": "T",
+        "B": "F"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "错误",
+      "是否正确": false
+    },
+    {
+      "序号": 80,
+      "题目ID": 96780,
+      "题目类型": "判断题",
+      "题目内容": "C语言中，数字字符 '1' 的值（ASCII码）就是数字 1 。",
+      "选项": {
+        "A": "T",
+        "B": "F"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "错误",
+      "是否正确": false
+    },
+    {
+      "序号": 81,
+      "题目ID": 96781,
+      "题目类型": "判断题",
+      "题目内容": "C语言中，小写字母 'a' 的ASCII码值是大写字母 'Z' 的ASCII码值加1。",
+      "选项": {
+        "A": "T",
+        "B": "F"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "错误",
+      "是否正确": false
+    },
+    {
+      "序号": 82,
+      "题目ID": 96782,
+      "题目类型": "判断题",
+      "题目内容": "for语句的一般形式如下，若表达式2的值为“真”，则先执行循环体语句，再计算表达式3，然后继续循环。 for (表达式1; 表达式2; 表达式3) \n   循环体语句",
+      "选项": {
+        "A": "T",
+        "B": "F"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "正确",
+      "是否正确": false
+    },
+    {
+      "序号": 83,
+      "题目ID": 96783,
+      "题目类型": "判断题",
+      "题目内容": "if-else语句的一般形式如下，其中的语句1、语句2只能是一条语句。 if (表达式) \n    语句1\nelse \n    语句2",
+      "选项": {
+        "A": "T",
+        "B": "F"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "正确",
+      "是否正确": false
+    },
+    {
+      "序号": 84,
+      "题目ID": 96784,
+      "题目类型": "判断题",
+      "题目内容": "while语句的一般形式如下，当表达式的值为“真”时，循环执行，直到表达式的值为“假”，循环中止并继续执行while的下一条语句。 while (表达式)\n    循环体语句",
+      "选项": {
+        "A": "T",
+        "B": "F"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "正确",
+      "是否正确": false
+    },
+    {
+      "序号": 85,
+      "题目ID": 96785,
+      "题目类型": "判断题",
+      "题目内容": "while语句的一般形式如下，其中的循环体语句只能是一条语句。 while (表达式)\n    循环体语句",
+      "选项": {
+        "A": "T",
+        "B": "F"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "正确",
+      "是否正确": false
+    },
+    {
+      "序号": 86,
+      "题目ID": 96786,
+      "题目类型": "判断题",
+      "题目内容": "<p>while语句和do - while语句的一般形式分别如下，其主要区别是：while 语句先判断循环条件，只有条件满足才进入循环，如果一开始条件就不满足，则循环一次都不执行。而do - while语句先执行循环体，后判断循环条件，所以无论循环条件的值如何，至少会执行一次循环体。 while (表达式)<br />\n循环体语句 do{<br />\n循环体语句<br />\n}while(表达式);</p>\n",
+      "选项": {
+        "A": "T",
+        "B": "F"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "正确",
+      "是否正确": false
+    },
+    {
+      "序号": 87,
+      "题目ID": 96787,
+      "题目类型": "判断题",
+      "题目内容": "变量初始化的含义，就是在定义变量时对变量赋值。",
+      "选项": {
+        "A": "T",
+        "B": "F"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "正确",
+      "是否正确": false
+    },
+    {
+      "序号": 88,
+      "题目ID": 96788,
+      "题目类型": "判断题",
+      "题目内容": "表达式 (3==x==3) 的值恒为0。",
+      "选项": {
+        "A": "T",
+        "B": "F"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "正确",
+      "是否正确": false
+    },
+    {
+      "序号": 89,
+      "题目ID": 96789,
+      "题目类型": "判断题",
+      "题目内容": "表达式 (ch = getchar() != '\\n') 是关系表达式。",
+      "选项": {
+        "A": "T",
+        "B": "F"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "错误",
+      "是否正确": false
+    },
+    {
+      "序号": 90,
+      "题目ID": 96790,
+      "题目类型": "判断题",
+      "题目内容": "表达式 (x == 0) 与表达式 (!x) 等价。",
+      "选项": {
+        "A": "T",
+        "B": "F"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "正确",
+      "是否正确": false
+    },
+    {
+      "序号": 91,
+      "题目ID": 96791,
+      "题目类型": "判断题",
+      "题目内容": "除了复合语句，C语言中的所有语句都必须以分号结束。",
+      "选项": {
+        "A": "T",
+        "B": "F"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "正确",
+      "是否正确": false
+    },
+    {
+      "序号": 92,
+      "题目ID": 96792,
+      "题目类型": "判断题",
+      "题目内容": "单步跟踪（Trace Step by Step）是常用的程序调试方法，即一步一步跟踪程序的执行过程，同时观察变量的变化情况。",
+      "选项": {
+        "A": "T",
+        "B": "F"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "正确",
+      "是否正确": false
+    },
+    {
+      "序号": 93,
+      "题目ID": 96793,
+      "题目类型": "判断题",
+      "题目内容": "调试就是在程序中查找错误并修改错误的过程。",
+      "选项": {
+        "A": "T",
+        "B": "F"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "正确",
+      "是否正确": false
+    },
+    {
+      "序号": 94,
+      "题目ID": 96794,
+      "题目类型": "判断题",
+      "题目内容": "<p>调用输入输出库函数时，编译预处理命令为 #include &lt;stdio.h&gt; 。</p>\n",
+      "选项": {
+        "A": "T",
+        "B": "F"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "正确",
+      "是否正确": false
+    },
+    {
+      "序号": 95,
+      "题目ID": 96795,
+      "题目类型": "判断题",
+      "题目内容": "调用数学库函数时，编译预处理命令为 include math.h 。",
+      "选项": {
+        "A": "T",
+        "B": "F"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "错误",
+      "是否正确": false
+    },
+    {
+      "序号": 96,
+      "题目ID": 96796,
+      "题目类型": "判断题",
+      "题目内容": "<p>对二维数组初始化时，也可以采用如下顺序赋初值的方式，即在定义数组时，根据数组元素在内存中的存放顺序，把初值表中的数据依次赋给元素。 类型名 数组名[行长度][列长度] = {初值表};</p>\n",
+      "选项": {
+        "A": "T",
+        "B": "F"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "正确",
+      "是否正确": false
+    },
+    {
+      "序号": 97,
+      "题目ID": 96797,
+      "题目类型": "判断题",
+      "题目内容": "<p>对以下定义的二维数组 table ，其行下标的取值范围是 [0，2] ，列下标的取值范围是 [0，1] ，数组元素分别是： table[0][0] 、 table [0][1] 、 table [1][0] 、 table [1][1] 、 table [2][0] 和 table [2][1] ，可以表示一个3行2列的矩阵。 int table[3][2];</p>\n",
+      "选项": {
+        "A": "T",
+        "B": "F"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "正确",
+      "是否正确": false
+    },
+    {
+      "序号": 98,
+      "题目ID": 96798,
+      "题目类型": "判断题",
+      "题目内容": "对于如下switch语句（不使用break）的一般形式，其执行流程是：首先求解表达式，如果表达式的值与某个常量表达式的值相等，则执行该常量表达式后的所有语句段，如果表达式的值与任何一个常量表达式的值都不相等，则执行 default 后的所有语句段。 switch (表达式) {\n    case 常量表达式1: 语句段1; \n    case 常量表达式2: 语句段2; \n      …\n    case 常量表达式n: 语句段n; \n    default:语句段n+1; \n}",
+      "选项": {
+        "A": "T",
+        "B": "F"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "正确",
+      "是否正确": false
+    },
+    {
+      "序号": 99,
+      "题目ID": 96799,
+      "题目类型": "判断题",
+      "题目内容": "<p>二维数组定义的一般形式如下： 类型名 数组名[行长度][列长度]； 二维数组元素引用的一般形式如下， 数组名[行下标][列下标] 在引用数组元素时，行下标的合理取值范围是[0，行长度-1]，列下标的合理取值范围是[0，列长度-1]。行下标和列下标都不能越界。</p>\n",
+      "选项": {
+        "A": "T",
+        "B": "F"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "正确",
+      "是否正确": false
+    },
+    {
+      "序号": 100,
+      "题目ID": 96800,
+      "题目类型": "判断题",
+      "题目内容": "假设 k 是整型变量，计算表达式 1.0/k 后结果的数据类型是浮点型。",
+      "选项": {
+        "A": "T",
+        "B": "F"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "正确",
+      "是否正确": false
+    },
+    {
+      "序号": 101,
+      "题目ID": 96801,
+      "题目类型": "判断题",
+      "题目内容": "<p>假设赋值运算符的优先级比算术运算符高，执行以下程序段后，n的值为10。 int n;<br />\nn = 10 + 2;</p>\n",
+      "选项": {
+        "A": "T",
+        "B": "F"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "正确",
+      "是否正确": false
+    },
+    {
+      "序号": 102,
+      "题目ID": 96802,
+      "题目类型": "判断题",
+      "题目内容": "<p>假设运算符' * '和' % '都是右结合的，则表达式 (3*5%3) 的值为6。</p>\n",
+      "选项": {
+        "A": "T",
+        "B": "F"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "正确",
+      "是否正确": false
+    },
+    {
+      "序号": 103,
+      "题目ID": 96803,
+      "题目类型": "判断题",
+      "题目内容": "将二维数组的行下标和列下标分别作为循环变量，通过二重循环，就可以遍历二维数组，即访问二维数组的所有元素。由于二维数组的元素在内存中按行优先方式存放，将行下标作为外循环的循环变量，列下标作为内循环的循环变量，可以提高程序的执行效率。",
+      "选项": {
+        "A": "T",
+        "B": "F"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "正确",
+      "是否正确": false
+    },
+    {
+      "序号": 104,
+      "题目ID": 96804,
+      "题目类型": "判断题",
+      "题目内容": "任何一个程序都必须有而且只能有一个 main 函数。",
+      "选项": {
+        "A": "T",
+        "B": "F"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "正确",
+      "是否正确": false
+    },
+    {
+      "序号": 105,
+      "题目ID": 96805,
+      "题目类型": "判断题",
+      "题目内容": "如果for的循环体语句中没有使用continue语句，则以下for语句和while语句等价。 for (表达式1; 表达式2; 表达式3) \n    for的循环体语句 表达式1；\nwhile (表达式2) {\n    for的循环体语句；\n    表达式3；\n}",
+      "选项": {
+        "A": "T",
+        "B": "F"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "正确",
+      "是否正确": false
+    },
+    {
+      "序号": 106,
+      "题目ID": 96806,
+      "题目类型": "判断题",
+      "题目内容": "<p>如果变量已经正确定义，则表达式 fahr ++ 与 fahr + 1 等价。</p>\n",
+      "选项": {
+        "A": "T",
+        "B": "F"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "错误",
+      "是否正确": false
+    },
+    {
+      "序号": 107,
+      "题目ID": 96807,
+      "题目类型": "判断题",
+      "题目内容": "如果变量已经正确定义，则执行以下程序段后， x 的值不变。 x = 4; \nif (x < 0){ \n    y = -1;\n}else if (x = 0){\n    y = 0;\n}else{ \n    y = 1;\n}",
+      "选项": {
+        "A": "T",
+        "B": "F"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "错误",
+      "是否正确": false
+    },
+    {
+      "序号": 108,
+      "题目ID": 96808,
+      "题目类型": "判断题",
+      "题目内容": "若变量定义为 double x; ，则 x % 2 是符合C语言语法的表达式。",
+      "选项": {
+        "A": "T",
+        "B": "F"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "错误",
+      "是否正确": false
+    },
+    {
+      "序号": 109,
+      "题目ID": 96809,
+      "题目类型": "判断题",
+      "题目内容": "<p>若变量定义为 int fahr; ，则表达式 5 * (fahr - 32) / 9 和表达式 5 / 9 * (fahr - 32) 是等价的。</p>\n",
+      "选项": {
+        "A": "T",
+        "B": "F"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "错误",
+      "是否正确": false
+    },
+    {
+      "序号": 110,
+      "题目ID": 96810,
+      "题目类型": "判断题",
+      "题目内容": "若变量定义为 int n; ，当 n 的绝对值大于1时，则表达式 1/n 的值恒为 0。",
+      "选项": {
+        "A": "T",
+        "B": "F"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "正确",
+      "是否正确": false
+    },
+    {
+      "序号": 111,
+      "题目ID": 96811,
+      "题目类型": "判断题",
+      "题目内容": "<p>若变量定义为 int x, y; ，则 x + y = 22 是符合C语言语法的表达式。</p>\n",
+      "选项": {
+        "A": "T",
+        "B": "F"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "错误",
+      "是否正确": false
+    },
+    {
+      "序号": 112,
+      "题目ID": 96812,
+      "题目类型": "判断题",
+      "题目内容": "<p data-v-md-line=\"1\">若变量已正确定义，以下while循环结束时， i 的值为11。<br /> i = 1;<br>\nwhile (i &lt;= 10){<br>\nprintf(“%d\\n”, i);<br>\n}</p>\n",
+      "选项": {
+        "A": "T",
+        "B": "F"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "错误",
+      "是否正确": false
+    },
+    {
+      "序号": 113,
+      "题目ID": 96813,
+      "题目类型": "判断题",
+      "题目内容": "<p data-v-md-line=\"1\">若变量已正确定义，执行以下while语句将陷入死循环。 <br />i = 1;<br>\nwhile (i &lt;= 10) ;<br>\ni++;</p>\n",
+      "选项": {
+        "A": "T",
+        "B": "F"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "正确",
+      "是否正确": false
+    },
+    {
+      "序号": 114,
+      "题目ID": 96814,
+      "题目类型": "判断题",
+      "题目内容": "<div data-v-md-line=\"1\"><p>若变量已正确定义，执行以下程序段，输入负数时，循环结束。<br /> total = 0;<br />\nscanf (&quot;%d&quot;, &amp;score);<br />\nwhile(score &gt;= 0){<br />\ntotal = total + score;<br />\nscanf (&quot;%d&quot;, &amp;score);<br />\n}</p>\n</div>",
+      "选项": {
+        "A": "T",
+        "B": "F"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "正确",
+      "是否正确": false
+    },
+    {
+      "序号": 115,
+      "题目ID": 96815,
+      "题目类型": "判断题",
+      "题目内容": "<p data-v-md-line=\"1\">设变量已正确定义，以下是合法的switch语句。<br /> switch(choice){<br>\ncase choice == 1: price = 3.0; break;<br>\ncase choice == 2: price = 2.5; break;<br>\ncase choice == 3: price = 4.0; break;<br>\ncase choice == 4: price = 3.5; break;<br>\ndefault: price = 0.0; break;<br>\n}</p>\n",
+      "选项": {
+        "A": "T",
+        "B": "F"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "错误",
+      "是否正确": false
+    },
+    {
+      "序号": 116,
+      "题目ID": 96816,
+      "题目类型": "判断题",
+      "题目内容": "<p data-v-md-line=\"1\">设变量已正确定义，执行以下程序段，顺序输入三个字符 ‘k’ ，则输出 k 。 <br />scanf(“%c%c%c”, &amp;ch1, &amp;ch2, &amp;ch3);<br>\nprintf(“%c”, ch2);</p>\n",
+      "选项": {
+        "A": "T",
+        "B": "F"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "正确",
+      "是否正确": false
+    },
+    {
+      "序号": 117,
+      "题目ID": 96817,
+      "题目类型": "判断题",
+      "题目内容": "设置断点并观察变量，是程序调试的常用方法之一。",
+      "选项": {
+        "A": "T",
+        "B": "F"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "正确",
+      "是否正确": false
+    },
+    {
+      "序号": 118,
+      "题目ID": 96818,
+      "题目类型": "判断题",
+      "题目内容": "省略else的if语句的一般形式如下，若表达式的值为“真”，则执行语句1；否则，就什么也不做。 if (表达式) \n   语句1",
+      "选项": {
+        "A": "T",
+        "B": "F"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "正确",
+      "是否正确": false
+    },
+    {
+      "序号": 119,
+      "题目ID": 96819,
+      "题目类型": "判断题",
+      "题目内容": "所有的C程序都有且只有一个 main 函数。",
+      "选项": {
+        "A": "T",
+        "B": "F"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "正确",
+      "是否正确": false
+    },
+    {
+      "序号": 120,
+      "题目ID": 96820,
+      "题目类型": "判断题",
+      "题目内容": "同一个数组中的每个元素都具有相同的数据类型，有统一的标识符即数组名，用不同的序号即下标来区分数组中的各元素。",
+      "选项": {
+        "A": "T",
+        "B": "F"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "正确",
+      "是否正确": false
+    },
+    {
+      "序号": 121,
+      "题目ID": 96821,
+      "题目类型": "判断题",
+      "题目内容": "<p data-v-md-line=\"1\">为了检查以下省略else的if语句的分支是否正确，至少需要设计3组测试用例，即 grade 的取值至少有三组（小于60、等于60、大于60）。 <br />if(grade &lt; 60){<br>\nprintf(“Fail\\n”);<br>\n}</p>\n",
+      "选项": {
+        "A": "T",
+        "B": "F"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "正确",
+      "是否正确": false
+    },
+    {
+      "序号": 122,
+      "题目ID": 96822,
+      "题目类型": "判断题",
+      "题目内容": "循环体如包括有一个以上的语句，则必须用一对大括号{}括起来，组成复合语句，复合语句在语法上被认为是一条语句。",
+      "选项": {
+        "A": "T",
+        "B": "F"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "正确",
+      "是否正确": false
+    },
+    {
+      "序号": 123,
+      "题目ID": 96823,
+      "题目类型": "判断题",
+      "题目内容": "<p>一维数组定义的一般形式如下，其中的类型名指定数组变量的类型。 类型名 数组名[数组长度]；</p>\n",
+      "选项": {
+        "A": "T",
+        "B": "F"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "错误",
+      "是否正确": false
+    },
+    {
+      "序号": 124,
+      "题目ID": 96824,
+      "题目类型": "判断题",
+      "题目内容": "<p>以下C语言表达式的值为“真”。 'D' - 'A' == 'd' - 'a'</p>\n",
+      "选项": {
+        "A": "T",
+        "B": "F"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "正确",
+      "是否正确": false
+    },
+    {
+      "序号": 125,
+      "题目ID": 96825,
+      "题目类型": "判断题",
+      "题目内容": "<p data-v-md-line=\"1\">以下程序段的功能是：将变量 a 、 b 的最大值赋给 max 。<br /> max = a;<br>\nif ( max &lt; b ){<br>\nmax = b;<br>\n}</p>\n",
+      "选项": {
+        "A": "T",
+        "B": "F"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "正确",
+      "是否正确": false
+    },
+    {
+      "序号": 126,
+      "题目ID": 96826,
+      "题目类型": "判断题",
+      "题目内容": "<div data-v-md-line=\"1\"><p>以下程序段的功能是计算20的阶乘。<br /> int i;<br />\ndouble product;<br />\nproduct = 0;<br />\nfor (i = 1; i &lt;= 20; i++){<br />\nproduct = product * i;<br />\n}</p>\n</div>",
+      "选项": {
+        "A": "T",
+        "B": "F"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "错误",
+      "是否正确": false
+    },
+    {
+      "序号": 127,
+      "题目ID": 96827,
+      "题目类型": "判断题",
+      "题目内容": "<div data-v-md-line=\"1\"><p>以下程序段的功能是输出1～100之间每个整数的各位数字之和。<br /> for(num = 1; num &lt;= 100; num++){<br />\ns = 0;<br />\ndo{<br />\ns = s + num % 10;<br />\nnum = num / 10;<br />\n}while(num != 0);<br />\nprintf(&quot;%d\\n&quot;, s);<br />\n}</p>\n</div>",
+      "选项": {
+        "A": "T",
+        "B": "F"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "错误",
+      "是否正确": false
+    },
+    {
+      "序号": 128,
+      "题目ID": 96828,
+      "题目类型": "判断题",
+      "题目内容": "<p data-v-md-line=\"1\">以下程序段符合C语言语法。 <br />k = 1;<br>\nint k;</p>\n",
+      "选项": {
+        "A": "T",
+        "B": "F"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "错误",
+      "是否正确": false
+    },
+    {
+      "序号": 129,
+      "题目ID": 96829,
+      "题目类型": "判断题",
+      "题目内容": "<div data-v-md-line=\"1\"><p>以下程序段中，break语句只执行一次。 <br />n = 9;<br />\nfor(i = 1; i &lt;= n; i++){<br />\nfor(j = 1; j &lt;= n; j++){<br />\nif(i != 1 &amp;&amp; j &gt; i){<br />\nbreak;<br />\n} <br />\nprintf( &quot;%4d&quot;, i*j );<br />\n}<br />\nprintf(&quot;\\n&quot;);<br />\n}</p>\n</div>",
+      "选项": {
+        "A": "T",
+        "B": "F"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "错误",
+      "是否正确": false
+    },
+    {
+      "序号": 130,
+      "题目ID": 96830,
+      "题目类型": "判断题",
+      "题目内容": "<div data-v-md-line=\"1\"><p>以下程序段中，当 i 大于 10 或者 s 大于 20 时，循环结束。 <br />s = 0;<br />\ni = 1;<br />\nwhile(i &lt;= 10){<br />\ns = s + i;<br />\nif(s &gt; 20){<br />\nbreak;<br />\n}<br />\ni++;<br />\n}</p>\n</div>",
+      "选项": {
+        "A": "T",
+        "B": "F"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "正确",
+      "是否正确": false
+    },
+    {
+      "序号": 131,
+      "题目ID": 96831,
+      "题目类型": "判断题",
+      "题目内容": "<p>以下定义了一个二维数组 tab ，该数组可以存放7个整型数据。 int tab[3][4];</p>\n",
+      "选项": {
+        "A": "T",
+        "B": "F"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "错误",
+      "是否正确": false
+    },
+    {
+      "序号": 132,
+      "题目ID": 96832,
+      "题目类型": "判断题",
+      "题目内容": "<p>以下定义了一个一维数组 str ，该数组可以存放81个字符型数据。 char str[81];</p>\n",
+      "选项": {
+        "A": "T",
+        "B": "F"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "正确",
+      "是否正确": false
+    },
+    {
+      "序号": 133,
+      "题目ID": 96833,
+      "题目类型": "判断题",
+      "题目内容": "<div data-v-md-line=\"1\"><p>以下两个程序段不等价，执行程序段B将陷入死循环。<br /> /* 程序段A*/<br />\ns = 0;<br />\nfor(i = 1; i &lt;= 10; i++) {<br />\nif(i % 2 == 0){<br />\ncontinue;<br />\n}<br />\ns = s + i;<br />\n} <br />/* 程序段B */<br />\ns = 0;<br />\ni = 1;<br />\nwhile(i &lt;= 10){<br />\nif(i % 2 == 0){<br />\ncontinue;<br />\n}<br />\ns = s + i;<br />\ni++;<br />\n}</p>\n</div>",
+      "选项": {
+        "A": "T",
+        "B": "F"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "正确",
+      "是否正确": false
+    },
+    {
+      "序号": 134,
+      "题目ID": 96834,
+      "题目类型": "判断题",
+      "题目内容": "<p>引用二维数组的元素要指定两个下标，即行下标和列下标，一般形式如下。 数组名[列下标][行下标]</p>\n",
+      "选项": {
+        "A": "T",
+        "B": "F"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "错误",
+      "是否正确": false
+    },
+    {
+      "序号": 135,
+      "题目ID": 96835,
+      "题目类型": "判断题",
+      "题目内容": "在 C 程序中， 9ab 是非法的用户标识符。",
+      "选项": {
+        "A": "T",
+        "B": "F"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "正确",
+      "是否正确": false
+    },
+    {
+      "序号": 136,
+      "题目ID": 96836,
+      "题目类型": "判断题",
+      "题目内容": "在 C 程序中， APH 和 aph 代表不同的变量。",
+      "选项": {
+        "A": "T",
+        "B": "F"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "正确",
+      "是否正确": false
+    },
+    {
+      "序号": 137,
+      "题目ID": 96837,
+      "题目类型": "判断题",
+      "题目内容": "在 C 程序中，无论多少大的整数还是实数，都能准确无误的表示。",
+      "选项": {
+        "A": "T",
+        "B": "F"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "错误",
+      "是否正确": false
+    },
+    {
+      "序号": 138,
+      "题目ID": 96838,
+      "题目类型": "判断题",
+      "题目内容": "在C程序运行过程中，其值不能被改变的量称为常量，其值可以改变的量称为变量。",
+      "选项": {
+        "A": "T",
+        "B": "F"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "正确",
+      "是否正确": false
+    },
+    {
+      "序号": 139,
+      "题目ID": 96839,
+      "题目类型": "判断题",
+      "题目内容": "在C程序中，用户自定义标识符的第一个字符可以是数字。",
+      "选项": {
+        "A": "T",
+        "B": "F"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "错误",
+      "是否正确": false
+    },
+    {
+      "序号": 140,
+      "题目ID": 96840,
+      "题目类型": "判断题",
+      "题目内容": "<p data-v-md-line=\"1\">在C语言的嵌套循环结构中，任何一层循环中的break语句都可以结束整个嵌套循环的执行。</p>\n",
+      "选项": {
+        "A": "T",
+        "B": "F"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "错误",
+      "是否正确": false
+    },
+    {
+      "序号": 141,
+      "题目ID": 96841,
+      "题目类型": "判断题",
+      "题目内容": "在C语言的数据类型中， float 的含义是单精度浮点型， double 的含义是双精度浮点型。",
+      "选项": {
+        "A": "T",
+        "B": "F"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "正确",
+      "是否正确": false
+    },
+    {
+      "序号": 142,
+      "题目ID": 96842,
+      "题目类型": "判断题",
+      "题目内容": "在C语言中，标识符中的英文字母是区分大小写的。",
+      "选项": {
+        "A": "T",
+        "B": "F"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "正确",
+      "是否正确": false
+    },
+    {
+      "序号": 143,
+      "题目ID": 96843,
+      "题目类型": "判断题",
+      "题目内容": "在C语言中，单目运算符需要2个操作数。",
+      "选项": {
+        "A": "T",
+        "B": "F"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "错误",
+      "是否正确": false
+    },
+    {
+      "序号": 144,
+      "题目ID": 96844,
+      "题目类型": "判断题",
+      "题目内容": "在C语言中，仅由一个分号（;）构成的语句称为空语句，它什么也不做。",
+      "选项": {
+        "A": "T",
+        "B": "F"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "正确",
+      "是否正确": false
+    },
+    {
+      "序号": 145,
+      "题目ID": 96845,
+      "题目类型": "判断题",
+      "题目内容": "在switch语句中，必须使用default。",
+      "选项": {
+        "A": "T",
+        "B": "F"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "错误",
+      "是否正确": false
+    },
+    {
+      "序号": 146,
+      "题目ID": 96846,
+      "题目类型": "判断题",
+      "题目内容": "在程序中插入适当的注释，用来说明程序的功能，可以使程序容易被人理解。",
+      "选项": {
+        "A": "T",
+        "B": "F"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "正确",
+      "是否正确": false
+    },
+    {
+      "序号": 147,
+      "题目ID": 96847,
+      "题目类型": "判断题",
+      "题目内容": "在嵌套循环（多层循环）中, 每一层循环都应该使用自己的循环变量，以免互相干扰。",
+      "选项": {
+        "A": "T",
+        "B": "F"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "正确",
+      "是否正确": false
+    },
+    {
+      "序号": 148,
+      "题目ID": 96848,
+      "题目类型": "判断题",
+      "题目内容": "在嵌套循环（多层循环）中, 每一层循环中都不应该改变其他层使用的循环变量的值，以免互相干扰。",
+      "选项": {
+        "A": "T",
+        "B": "F"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "正确",
+      "是否正确": false
+    },
+    {
+      "序号": 149,
+      "题目ID": 96849,
+      "题目类型": "判断题",
+      "题目内容": "在循环中使用break语句或者continue语句，其作用是相同的。",
+      "选项": {
+        "A": "T",
+        "B": "F"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "错误",
+      "是否正确": false
+    },
+    {
+      "序号": 150,
+      "题目ID": 96850,
+      "题目类型": "判断题",
+      "题目内容": "<div data-v-md-line=\"1\"><p>在以下程序段中，若变量已正确赋值，当条件 i &lt;= limit 不满足（即 i &gt; limit ）或者条件 m % i == 0 满足时，循环结束。 \nint i, limit, m;<br />\nfor(i = 2; i &lt;= limit; i++){<br />\nif(m % i == 0){<br />\nbreak;<br />\n}<br />\n}</p>\n</div>",
+      "选项": {
+        "A": "T",
+        "B": "F"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "正确",
+      "是否正确": false
+    },
+    {
+      "序号": 151,
+      "题目ID": 96851,
+      "题目类型": "判断题",
+      "题目内容": "<div data-v-md-line=\"1\"><p>执行以下while语句，将出现死循环。 <br />\ns = 0;<br />\ni = 1;<br />\nwhile(1){<br />\nif(i &gt; 10){<br />\ncontinue;<br />\n}<br />\ns = s + i;<br />\ni++;<br />\n}</p>\n</div>",
+      "选项": {
+        "A": "T",
+        "B": "F"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "正确",
+      "是否正确": false
+    },
+    {
+      "序号": 152,
+      "题目ID": 96852,
+      "题目类型": "判断题",
+      "题目内容": "<div data-v-md-line=\"1\"><p>执行以下程序段，sum的值是0.75。 <br />int i;<br />\ndouble sum;<br />\nsum = 0;<br />\nfor (i = 2; i &lt;= 4; i = i + 2){<br />\nsum = sum + 1/i;<br />\n}</p>\n</div>",
+      "选项": {
+        "A": "T",
+        "B": "F"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "错误",
+      "是否正确": false
+    },
+    {
+      "序号": 153,
+      "题目ID": 96853,
+      "题目类型": "判断题",
+      "题目内容": "<div data-v-md-line=\"1\"><p>执行以下程序段，sum的值是1.5。 <br />int i, sum;<br />\nsum = 0;<br />\nfor (i = 1; i &lt;= 2; i++){<br />\nsum = sum + 1.0/i;<br />\n}</p>\n</div>",
+      "选项": {
+        "A": "T",
+        "B": "F"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "错误",
+      "是否正确": false
+    },
+    {
+      "序号": 154,
+      "题目ID": 96854,
+      "题目类型": "判断题",
+      "题目内容": "<div data-v-md-line=\"1\"><p>执行以下程序段，sum的值是55。<br /> int i, sum;<br />\nfor (i = 1; i &lt;= 10; i++){<br />\nsum = sum + i;<br />\n}</p>\n</div>",
+      "选项": {
+        "A": "T",
+        "B": "F"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "错误",
+      "是否正确": false
+    },
+    {
+      "序号": 155,
+      "题目ID": 96855,
+      "题目类型": "判断题",
+      "题目内容": "<p data-v-md-line=\"1\">执行以下程序段，将输出10。 <br />int i = 10;<br>\nwhile (i &lt; 10){<br>\nprintf(“%d\\n”, i);<br>\n}</p>\n",
+      "选项": {
+        "A": "T",
+        "B": "F"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "错误",
+      "是否正确": false
+    },
+    {
+      "序号": 156,
+      "题目ID": 96856,
+      "题目类型": "判断题",
+      "题目内容": "<p data-v-md-line=\"1\">执行以下程序段，输入 1.0  0.01  365 ，输出 1.0#0.010#365 。 <br />int day;<br>\ndouble factor, initial;</p>\n<p data-v-md-line=\"4\">scanf(“%lf %lf %d”, &amp;initial, &amp;factor, &amp;day);<br>\nprintf(“%.1f#%.3f#%d”, initial, factor, day);</p>\n",
+      "选项": {
+        "A": "T",
+        "B": "F"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "正确",
+      "是否正确": false
+    },
+    {
+      "序号": 157,
+      "题目ID": 96857,
+      "题目类型": "判断题",
+      "题目内容": "<p data-v-md-line=\"1\">执行以下程序段，输入 10 ，输出 10.00 。<br>\ndouble x;<br>\nscanf(“%d”, &amp;x);<br>\nprintf(“%.2f”, x);</p>\n",
+      "选项": {
+        "A": "T",
+        "B": "F"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "错误",
+      "是否正确": false
+    },
+    {
+      "序号": 158,
+      "题目ID": 96858,
+      "题目类型": "判断题",
+      "题目内容": "<p data-v-md-line=\"1\">执行以下程序段，输入 1000  3  0.025 ，输出 1000#3#0.025 。<br>\nint money, year;<br>\ndouble rate;<br>\nscanf(“%d %d %lf”, &amp;money, &amp;year, &amp;rate);<br>\nprintf(“%d#%d#%.3f”, money, year, rate);</p>\n",
+      "选项": {
+        "A": "T",
+        "B": "F"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "正确",
+      "是否正确": false
+    },
+    {
+      "序号": 159,
+      "题目ID": 96859,
+      "题目类型": "判断题",
+      "题目内容": "<p data-v-md-line=\"1\">执行以下程序段，输入 20 ，输出 20.00 。<br>\ndouble x;<br>\nscanf(“%f”, &amp;x);<br>\nprintf(“%.2f”, x);</p>\n",
+      "选项": {
+        "A": "T",
+        "B": "F"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "错误",
+      "是否正确": false
+    },
+    {
+      "序号": 160,
+      "题目ID": 96860,
+      "题目类型": "判断题",
+      "题目内容": "<p data-v-md-line=\"1\">执行以下程序段，输入 30 ，输出 30.00 。<br>\ndouble x;<br>\nscanf(“x=%lf”, &amp;x);<br>\nprintf(“%.2f”, x);</p>\n",
+      "选项": {
+        "A": "T",
+        "B": "F"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "错误",
+      "是否正确": false
+    },
+    {
+      "序号": 161,
+      "题目ID": 96861,
+      "题目类型": "判断题",
+      "题目内容": "<p data-v-md-line=\"1\">执行以下程序段后， x 的值为0， y 的值为1。<br>\nint x, y;<br>\nif (x = 0) y = 0;<br>\nelse y = 1;</p>\n",
+      "选项": {
+        "A": "T",
+        "B": "F"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "正确",
+      "是否正确": false
+    },
+    {
+      "序号": 162,
+      "题目ID": 96862,
+      "题目类型": "判断题",
+      "题目内容": "<p data-v-md-line=\"1\">执行以下程序段后， y 的值为-1。</br> x = -1;<br>\nif (x &lt; 0){<br>\ny = -1;<br>\n}<br>\ny = 0;</p>\n",
+      "选项": {
+        "A": "T",
+        "B": "F"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "错误",
+      "是否正确": false
+    },
+    {
+      "序号": 163,
+      "题目ID": 96863,
+      "题目类型": "判断题",
+      "题目内容": "<p data-v-md-line=\"1\">执行以下程序段后，输出 i = 10, j = 20 。 </br>int i, j;<br>\ni = 10;<br>\nj = 20;<br>\nprintf(“i = %d, j = %d”, j, i);</p>\n",
+      "选项": {
+        "A": "T",
+        "B": "F"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "错误",
+      "是否正确": false
+    },
+    {
+      "序号": 164,
+      "题目ID": 96864,
+      "题目类型": "判断题",
+      "题目内容": "<p data-v-md-line=\"1\">执行以下语句后，输出2.00。 </br> printf(“%.2f”, (double)(5/2));</p>\n",
+      "选项": {
+        "A": "T",
+        "B": "F"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "正确",
+      "是否正确": false
+    },
+    {
+      "序号": 165,
+      "题目ID": 96865,
+      "题目类型": "判断题",
+      "题目内容": "<p data-v-md-line=\"1\">字符串常量就是用一对双引号括起来的字符序列，它有一个结束标志 ‘\\0’ 。</p>\n",
+      "选项": {
+        "A": "T",
+        "B": "F"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "正确",
+      "是否正确": false
+    }
+  ]
+}

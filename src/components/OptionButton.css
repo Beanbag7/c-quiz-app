@@ -1,0 +1,145 @@
+.option-button {
+    width: 100%;
+    background: var(--pure-white);
+    border: 2px solid #E5E7EB;
+    border-radius: var(--radius-md);
+    padding: 10px var(--spacing-sm);
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    cursor: pointer;
+    transition: all var(--transition-normal);
+    text-align: left;
+    font-size: 15px;
+    position: relative;
+    overflow: hidden;
+}
+
+.option-button:hover:not(.disabled) {
+    border-color: var(--primary-blue);
+    background: var(--light-gray);
+    transform: translateX(4px);
+    box-shadow: var(--shadow-md);
+}
+
+.option-button.selected {
+    border-color: var(--primary-blue);
+    background: rgba(37, 99, 235, 0.05);
+}
+
+.option-button.correct {
+    border-color: var(--emerald-green);
+    background: var(--emerald-green-light);
+    animation: correctPulse 0.5s ease-out;
+}
+
+.option-button.wrong {
+    border-color: var(--rose-red);
+    background: var(--rose-red-light);
+    animation: wrongShake 0.5s ease-out;
+}
+
+.option-button.disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.option-key {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: var(--primary-blue);
+    color: var(--pure-white);
+    border-radius: 50%;
+    font-weight: 600;
+    flex-shrink: 0;
+    transition: all var(--transition-normal);
+}
+
+.option-button.correct .option-key {
+    background: var(--emerald-green);
+}
+
+.option-button.wrong .option-key {
+    background: var(--rose-red);
+}
+
+.option-text {
+    flex: 1;
+    line-height: 1.6;
+    color: var(--text-primary);
+}
+
+.option-text p {
+    margin: 0;
+}
+
+.option-text code {
+    background: rgba(0, 0, 0, 0.05);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+
+.feedback-icon {
+    font-size: 24px;
+    font-weight: bold;
+    margin-left: auto;
+    flex-shrink: 0;
+}
+
+.option-button.correct .feedback-icon {
+    color: var(--emerald-green);
+}
+
+.option-button.wrong .feedback-icon {
+    color: var(--rose-red);
+}
+
+/* Animations */
+@keyframes correctPulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.02);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes wrongShake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-8px);
+    }
+
+    75% {
+        transform: translateX(8px);
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .option-button {
+        padding: var(--spacing-sm) var(--spacing-md);
+        font-size: 14px;
+    }
+
+    .option-key {
+        width: 28px;
+        height: 28px;
+        font-size: 14px;
+    }
+}

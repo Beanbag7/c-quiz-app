@@ -1,0 +1,126 @@
+.statistics {
+    background: var(--pure-white);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-sm);
+    box-shadow: var(--shadow-md);
+    margin-bottom: var(--spacing-sm);
+}
+
+.statistics-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-md);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 2px solid var(--light-gray);
+}
+
+.statistics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-sm);
+}
+
+.stat-item {
+    text-align: center;
+    padding: var(--spacing-md);
+    background: var(--light-gray);
+    border-radius: var(--radius-md);
+    transition: all var(--transition-normal);
+}
+
+.stat-item:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+}
+
+.stat-value {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-xs);
+    animation: countUp 0.5s ease-out;
+}
+
+.stat-value.stat-primary {
+    color: var(--primary-blue);
+}
+
+.stat-value.stat-success {
+    color: var(--emerald-green);
+}
+
+.stat-value.stat-error {
+    color: var(--rose-red);
+}
+
+.stat-label {
+    font-size: 12px;
+    color: var(--text-secondary);
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+.accuracy-section {
+    background: linear-gradient(135deg, var(--primary-blue), #3B82F6);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-md);
+    color: var(--pure-white);
+}
+
+.accuracy-label {
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: var(--spacing-xs);
+    opacity: 0.9;
+}
+
+.accuracy-value {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: var(--spacing-md);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.accuracy-bar {
+    height: 6px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 100px;
+    overflow: hidden;
+}
+
+.accuracy-fill {
+    height: 100%;
+    background: var(--pure-white);
+    border-radius: 100px;
+    transition: width var(--transition-normal);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+@keyframes countUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .statistics-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .stat-value {
+        font-size: 24px;
+    }
+
+    .accuracy-value {
+        font-size: 28px;
+    }
+}

@@ -1,0 +1,3859 @@
+{
+  "questions": [
+    {
+      "序号": 1,
+      "题目ID": 97060,
+      "题目类型": "单选题",
+      "题目内容": "Java属于以下哪种语言？",
+      "选项": {
+        "A": "机器语言",
+        "B": "汇编语言",
+        "C": "高级语言",
+        "D": "以上都不对"
+      },
+      "分值": 1,
+      "正确答案": "C",
+      "答案文本": "高级语言",
+      "是否正确": false
+    },
+    {
+      "序号": 2,
+      "题目ID": 97061,
+      "题目类型": "单选题",
+      "题目内容": "关于Java语言的描述，叙述错误的是：（      ）。",
+      "选项": {
+        "A": "Java语言具有跨平台性",
+        "B": "Java是一种面向对象的语言",
+        "C": "Java语言中的类可以多继承",
+        "D": "Java的垃圾收集机制，自动回收程序已不再使用的对象"
+      },
+      "分值": 1,
+      "正确答案": "C",
+      "答案文本": "Java语言中的类可以多继承",
+      "是否正确": false
+    },
+    {
+      "序号": 3,
+      "题目ID": 97062,
+      "题目类型": "单选题",
+      "题目内容": "Java 语言的类型是（ ）。",
+      "选项": {
+        "A": "面向对象语言",
+        "B": "面向过程语言",
+        "C": "汇编语言",
+        "D": "形式语言"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "面向对象语言",
+      "是否正确": false
+    },
+    {
+      "序号": 4,
+      "题目ID": 97063,
+      "题目类型": "单选题",
+      "题目内容": "下面不属于Java语言特点的是：(     )。",
+      "选项": {
+        "A": "平台无关",
+        "B": "面向对象",
+        "C": "支持指针类型",
+        "D": "垃圾回收机制"
+      },
+      "分值": 1,
+      "正确答案": "C",
+      "答案文本": "支持指针类型",
+      "是否正确": false
+    },
+    {
+      "序号": 5,
+      "题目ID": 97064,
+      "题目类型": "单选题",
+      "题目内容": "保证Java语言可移植性的特征是（ ）。",
+      "选项": {
+        "A": "面向对象",
+        "B": "安全性",
+        "C": "分布式计算",
+        "D": "可跨平台"
+      },
+      "分值": 1,
+      "正确答案": "D",
+      "答案文本": "可跨平台",
+      "是否正确": false
+    },
+    {
+      "序号": 6,
+      "题目ID": 97065,
+      "题目类型": "单选题",
+      "题目内容": "Java源代码文件的扩展名为（ ）",
+      "选项": {
+        "A": ".txt",
+        "B": ".class",
+        "C": ".java",
+        "D": ".doc"
+      },
+      "分值": 1,
+      "正确答案": "C",
+      "答案文本": ".java",
+      "是否正确": false
+    },
+    {
+      "序号": 7,
+      "题目ID": 97066,
+      "题目类型": "单选题",
+      "题目内容": "一个计算机上安装JDK后，该计算机不包含的是（）。",
+      "选项": {
+        "A": "JRE",
+        "B": "JVM",
+        "C": "Eclipse",
+        "D": "javac.exe"
+      },
+      "分值": 1,
+      "正确答案": "C",
+      "答案文本": "Eclipse",
+      "是否正确": false
+    },
+    {
+      "序号": 8,
+      "题目ID": 97067,
+      "题目类型": "单选题",
+      "题目内容": "下面哪种不是Java语言的注释写法？",
+      "选项": {
+        "A": "// 注释",
+        "B": "-- 注释",
+        "C": "/**注释..*/",
+        "D": "/* 注释..*/"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "-- 注释",
+      "是否正确": false
+    },
+    {
+      "序号": 9,
+      "题目ID": 97068,
+      "题目类型": "单选题",
+      "题目内容": "对JDK描述错误的是（     ）。",
+      "选项": {
+        "A": "运行Java程序只要有JRE环境就可以，不一定需要全部JDK的功能",
+        "B": "JDK中包括JVM、核心类库、Java开发工具（java，javac）等",
+        "C": "JDK本身也是平台无关的，不同的操作系统安装的JDK是一样的",
+        "D": "JDK的全称是 Java Development Kit"
+      },
+      "分值": 1,
+      "正确答案": "C",
+      "答案文本": "JDK本身也是平台无关的，不同的操作系统安装的JDK是一样的",
+      "是否正确": false
+    },
+    {
+      "序号": 10,
+      "题目ID": 97069,
+      "题目类型": "单选题",
+      "题目内容": "编译Java Application源程序文件将产生相应的字节码文件，这些字节码文件的扩展名是（）。",
+      "选项": {
+        "A": ".java",
+        "B": ".class",
+        "C": ".html",
+        "D": ".exe"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": ".class",
+      "是否正确": false
+    },
+    {
+      "序号": 11,
+      "题目ID": 97070,
+      "题目类型": "单选题",
+      "题目内容": "编译Java源文件和解释执行Java字节码文件的指令分别是什么？",
+      "选项": {
+        "A": "javac.exe和javadoc.exe",
+        "B": "java.exe和jdb.exe",
+        "C": "jad.exe和java.exe",
+        "D": "javac.exe和java.exe"
+      },
+      "分值": 1,
+      "正确答案": "D",
+      "答案文本": "javac.exe和java.exe",
+      "是否正确": false
+    },
+    {
+      "序号": 12,
+      "题目ID": 97071,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">某Java源文件代码如下，该源文件经过编译后，如何执行？</p>\n<div data-v-md-line=\"2\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-language extra-class\"><pre class=\"v-md-prism-language\"><code>public class A {\n int a;\n}\nclass B {\n int b;\n}\nclass C {\n public static void main(String[] args) {\n  System.out.print(&quot;HELLO!&quot;);\n }\n}\n</code></pre>\n</div></div>",
+      "选项": {
+        "A": "java A",
+        "B": "java B",
+        "C": "java C",
+        "D": "java A.class"
+      },
+      "分值": 1,
+      "正确答案": "C",
+      "答案文本": "java C",
+      "是否正确": false
+    },
+    {
+      "序号": 13,
+      "题目ID": 97072,
+      "题目类型": "单选题",
+      "题目内容": "下面关于Java语言的说法，描述错误的是（   ）",
+      "选项": {
+        "A": "javac.exe是编译程序",
+        "B": "Java虚拟机加载执行.java文件",
+        "C": "java.exe是解释程序",
+        "D": "java源程序编译后会产生.class文件"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "Java虚拟机加载执行.java文件",
+      "是否正确": false
+    },
+    {
+      "序号": 14,
+      "题目ID": 97073,
+      "题目类型": "单选题",
+      "题目内容": "（       ）方法是Java程序执行的入口，含有该方法的类叫做（      ）。",
+      "选项": {
+        "A": "main  主类",
+        "B": "Main  主类",
+        "C": "main  公共类",
+        "D": "Main  公共类"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "main  主类",
+      "是否正确": false
+    },
+    {
+      "序号": 15,
+      "题目ID": 97074,
+      "题目类型": "单选题",
+      "题目内容": "下面关于main方法声明正确的是（    ）。",
+      "选项": {
+        "A": "public main(String args[ ])",
+        "B": "public static void main(String args[ ])",
+        "C": "private static void main(String args[ ])",
+        "D": "void main()"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "public static void main(String args[ ])",
+      "是否正确": false
+    },
+    {
+      "序号": 16,
+      "题目ID": 97075,
+      "题目类型": "单选题",
+      "题目内容": "下列有关 Java 语言的叙述中，正确的是（ ）。",
+      "选项": {
+        "A": "Java 是不区分大小写的",
+        "B": "源文件名与 public 类型的类名必须相同",
+        "C": "源文件名其扩展名为 .jar",
+        "D": "源文件中 public 类的数目不限"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "源文件名与 public 类型的类名必须相同",
+      "是否正确": false
+    },
+    {
+      "序号": 17,
+      "题目ID": 97076,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">某Java源文件代码如下，该源文件应如何命名？</p>\n<div data-v-md-line=\"2\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-language extra-class\"><pre class=\"v-md-prism-language\"><code>class A {\n  int a;\n}\nclass B {\n  int b;\n}\nclass C {\n   public static void main(String[] args) {\n       System.out.print(&quot;HELLO!&quot;);\n   } \n}\n</code></pre>\n</div></div>",
+      "选项": {
+        "A": "一定是A.java",
+        "B": "一定是B.java",
+        "C": "一定是C.java",
+        "D": "后缀是.java，文件名可以任意取，符合标识符规范即可。"
+      },
+      "分值": 1,
+      "正确答案": "D",
+      "答案文本": "后缀是.java，文件名可以任意取，符合标识符规范即可。",
+      "是否正确": false
+    },
+    {
+      "序号": 18,
+      "题目ID": 97077,
+      "题目类型": "单选题",
+      "题目内容": "属于 main() 方法的返回类型是（）。",
+      "选项": {
+        "A": "public",
+        "B": "static",
+        "C": "void",
+        "D": "main"
+      },
+      "分值": 1,
+      "正确答案": "C",
+      "答案文本": "void",
+      "是否正确": false
+    },
+    {
+      "序号": 19,
+      "题目ID": 97078,
+      "题目类型": "单选题",
+      "题目内容": "请问，为了使一个名为MyClass的public类成功编译，需要满足以下哪些条件？",
+      "选项": {
+        "A": "MyClass必须定义一个正确的main()方法",
+        "B": "MyClass必须定义在MyClass.java源文件中",
+        "C": "MyClass必须定义在MyClass包中",
+        "D": "MyClass类必须被导入"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "MyClass必须定义在MyClass.java源文件中",
+      "是否正确": false
+    },
+    {
+      "序号": 20,
+      "题目ID": 97079,
+      "题目类型": "单选题",
+      "题目内容": "下面（ ）是 main()方法的合法参数。",
+      "选项": {
+        "A": "char args[]",
+        "B": "char args[][]",
+        "C": "String args[]",
+        "D": "String args"
+      },
+      "分值": 1,
+      "正确答案": "C",
+      "答案文本": "String args[]",
+      "是否正确": false
+    },
+    {
+      "序号": 21,
+      "题目ID": 97080,
+      "题目类型": "单选题",
+      "题目内容": "下面哪种类型的文件可以在Java虚拟机中运行？",
+      "选项": {
+        "A": ".java",
+        "B": ".jre",
+        "C": ".exe",
+        "D": ".class"
+      },
+      "分值": 1,
+      "正确答案": "D",
+      "答案文本": ".class",
+      "是否正确": false
+    },
+    {
+      "序号": 22,
+      "题目ID": 97081,
+      "题目类型": "单选题",
+      "题目内容": "数据类型自动转换的顺序（按精度从小到大的顺序排列）是（     ）。",
+      "选项": {
+        "A": "byte-short(char)- int-long-float-double",
+        "B": "byte-short(char)- int-float-long-double",
+        "C": "byte-short- int(char)-long-float-double",
+        "D": "byte(char)-short- int-long-float-double"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "byte-short(char)- int-long-float-double",
+      "是否正确": false
+    },
+    {
+      "序号": 23,
+      "题目ID": 97082,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">下面代码编译运行之后，输出结果将是：（ ）。</p>\n<div data-v-md-line=\"2\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-language extra-class\"><pre class=\"v-md-prism-language\"><code>public class Test{ \n   public static void main(String args[]){ \n      int x=4; \n      System.out.println(&quot;value is &quot;+ ((x&gt;4) ? 99.9 :9)); \n   } \n}\n</code></pre>\n</div></div>",
+      "选项": {
+        "A": "value is 99.99",
+        "B": "value is 9",
+        "C": "value is 9.0",
+        "D": "编译错误"
+      },
+      "分值": 1,
+      "正确答案": "C",
+      "答案文本": "value is 9.0",
+      "是否正确": false
+    },
+    {
+      "序号": 24,
+      "题目ID": 97083,
+      "题目类型": "单选题",
+      "题目内容": "下列（       ）是合法标识符。",
+      "选项": {
+        "A": "rwkj@163",
+        "B": "Java程序设计",
+        "C": "8a",
+        "D": "e-mail"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "Java程序设计",
+      "是否正确": false
+    },
+    {
+      "序号": 25,
+      "题目ID": 97084,
+      "题目类型": "单选题",
+      "题目内容": "下面哪些元素不能作为Java标识符的首字符？（   ）",
+      "选项": {
+        "A": "字母",
+        "B": "数字",
+        "C": "下划线_",
+        "D": "$"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "数字",
+      "是否正确": false
+    },
+    {
+      "序号": 26,
+      "题目ID": 97085,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">Java中，下面哪个赋值表达式正确：（ ）</p>\n",
+      "选项": {
+        "A": "float  f=1.3;",
+        "B": "char  c=\"a\";",
+        "C": "byte  b=257;",
+        "D": "int  i=10;"
+      },
+      "分值": 1,
+      "正确答案": "D",
+      "答案文本": "int  i=10;",
+      "是否正确": false
+    },
+    {
+      "序号": 27,
+      "题目ID": 97086,
+      "题目类型": "单选题",
+      "题目内容": "下列不可作为java语言标识符的是（）。",
+      "选项": {
+        "A": "a2",
+        "B": "$2",
+        "C": "_2",
+        "D": "22"
+      },
+      "分值": 1,
+      "正确答案": "D",
+      "答案文本": "22",
+      "是否正确": false
+    },
+    {
+      "序号": 28,
+      "题目ID": 97087,
+      "题目类型": "单选题",
+      "题目内容": "整型数据类型中，需要内存空间最少的是（ ）.",
+      "选项": {
+        "A": "short",
+        "B": "long",
+        "C": "int",
+        "D": "byte"
+      },
+      "分值": 1,
+      "正确答案": "D",
+      "答案文本": "byte",
+      "是否正确": false
+    },
+    {
+      "序号": 29,
+      "题目ID": 97088,
+      "题目类型": "单选题",
+      "题目内容": "下面哪单词是Java语言的关键字（ ）。",
+      "选项": {
+        "A": "Float",
+        "B": "this",
+        "C": "string",
+        "D": "unsigned"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "this",
+      "是否正确": false
+    },
+    {
+      "序号": 30,
+      "题目ID": 97089,
+      "题目类型": "单选题",
+      "题目内容": "下面（ ）表达式可以得到x和y中的最大值。",
+      "选项": {
+        "A": "<p data-v-md-line=\"1\">x&gt;y?y:x</p>\n",
+        "B": "<p data-v-md-line=\"1\">x&gt;y?x:y</p>\n",
+        "C": "x>y?(x+y):(x-y)",
+        "D": "x==y?y:x"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "<p data-v-md-line=\"1\">x&gt;y?x:y</p>\n",
+      "是否正确": false
+    },
+    {
+      "序号": 31,
+      "题目ID": 97090,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">以下程序段的输出结果是</p>\n<div data-v-md-line=\"2\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-language extra-class\"><pre class=\"v-md-prism-language\"><code>class Test { \n   public static void main(String[] args) {\n      System.out.println(4 + 5 + &quot;&quot; + 3 + 6); \n   } \n}\n</code></pre>\n</div></div>",
+      "选项": {
+        "A": "99",
+        "B": "4536",
+        "C": "936",
+        "D": "459"
+      },
+      "分值": 1,
+      "正确答案": "C",
+      "答案文本": "936",
+      "是否正确": false
+    },
+    {
+      "序号": 32,
+      "题目ID": 97091,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">在Java中，以下程序段的输出结果是。</p>\n<div data-v-md-line=\"2\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-language extra-class\"><pre class=\"v-md-prism-language\"><code>int i=1,j=2,k=3;\nif(i++==1 &amp;&amp; (++j==3 || k++==3))\n   System.out.println(i+&quot;,&quot;+j+&quot;,&quot;+k);\n</code></pre>\n</div></div>",
+      "选项": {
+        "A": "1,2,3",
+        "B": "2,3,4",
+        "C": "2,2,3",
+        "D": "2,3,3"
+      },
+      "分值": 1,
+      "正确答案": "D",
+      "答案文本": "2,3,3",
+      "是否正确": false
+    },
+    {
+      "序号": 33,
+      "题目ID": 97092,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">如果int a=9, b=20; 则</p>\n<div data-v-md-line=\"2\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-language extra-class\"><pre class=\"v-md-prism-language\"><code>System.out.printf(&quot;%d,%d&quot;,a--,--b);\n</code></pre>\n</div></div><p data-v-md-line=\"5\">的输出结果是（ ）。</p>\n",
+      "选项": {
+        "A": "9,19",
+        "B": "10,19",
+        "C": "9,20",
+        "D": "10,20"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "9,19",
+      "是否正确": false
+    },
+    {
+      "序号": 34,
+      "题目ID": 97093,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">若有定义:</p>\n<div data-v-md-line=\"2\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-language extra-class\"><pre class=\"v-md-prism-language\"><code>int x=3,y=2;  \nfloat a=2.5f,b=4.5; \n</code></pre>\n</div></div><p data-v-md-line=\"6\">则下面表达式的值为（）。</p>\n<div data-v-md-line=\"8\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-language extra-class\"><pre class=\"v-md-prism-language\"><code>(x+y)%2+(int)a/(int)b\n</code></pre>\n</div></div>",
+      "选项": {
+        "A": "1.0",
+        "B": "1",
+        "C": "1.5",
+        "D": "2"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "1",
+      "是否正确": false
+    },
+    {
+      "序号": 35,
+      "题目ID": 97094,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">假设有如下程序：</p>\n<div data-v-md-line=\"2\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-language extra-class\"><pre class=\"v-md-prism-language\"><code>public class Demo { \n   public static void main(String args[]) {\n      int num = 50 ; \n      num  *= 2 ; \n      System.out.println(num) ; \n   } \n}\n</code></pre>\n</div></div><p data-v-md-line=\"11\">最终的执行结果是什么？</p>\n",
+      "选项": {
+        "A": "<p data-v-md-line=\"1\">50</p>\n",
+        "B": "<p data-v-md-line=\"1\">102</p>\n",
+        "C": "<p data-v-md-line=\"1\">100</p>\n",
+        "D": "<p data-v-md-line=\"1\">101</p>\n"
+      },
+      "分值": 1,
+      "正确答案": "C",
+      "答案文本": "<p data-v-md-line=\"1\">100</p>\n",
+      "是否正确": false
+    },
+    {
+      "序号": 36,
+      "题目ID": 97095,
+      "题目类型": "单选题",
+      "题目内容": "下面那种类型不属于Java的基本数据类型？",
+      "选项": {
+        "A": "byte",
+        "B": "int",
+        "C": "boolean",
+        "D": "String"
+      },
+      "分值": 1,
+      "正确答案": "D",
+      "答案文本": "String",
+      "是否正确": false
+    },
+    {
+      "序号": 37,
+      "题目ID": 97096,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">假设有如下程序：</p>\n<div data-v-md-line=\"2\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-language extra-class\"><pre class=\"v-md-prism-language\"><code>public class Demo { \n   public static void main(String args[]) { \n      long num = 100 ; \n      int x = num + 2 ; \n      System.out.println(x) ; \n   } \n}\n</code></pre>\n</div></div><p data-v-md-line=\"11\">最终程序的执行结果是什么？</p>\n",
+      "选项": {
+        "A": "<p data-v-md-line=\"1\">102</p>\n",
+        "B": "<p data-v-md-line=\"1\">1002</p>\n",
+        "C": "<p data-v-md-line=\"1\">100</p>\n",
+        "D": "程序错误"
+      },
+      "分值": 1,
+      "正确答案": "D",
+      "答案文本": "程序错误",
+      "是否正确": false
+    },
+    {
+      "序号": 38,
+      "题目ID": 97097,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">以下语句输出的结果是?</p>\n<div data-v-md-line=\"2\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-language extra-class\"><pre class=\"v-md-prism-language\"><code>String str=&quot;123&quot;;  \nint x=4,y=5;  \nstr = str + (x + y);  \nSystem.out.println(str);\n</code></pre>\n</div></div>",
+      "选项": {
+        "A": "1239",
+        "B": "12345",
+        "C": "会产生编译错误",
+        "D": "123+4+5"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "1239",
+      "是否正确": false
+    },
+    {
+      "序号": 39,
+      "题目ID": 97098,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">下列代码的执行结果是（ ）</p>\n<div data-v-md-line=\"2\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-language extra-class\"><pre class=\"v-md-prism-language\"><code>public class Main { \n  public static void main(String[] args) { \n    int a=2,b=8,c=6; String s = &quot;abc&quot;; \n    System.out.println(a+b+s+c); \n    System.out.println(); \n  } \n}\n</code></pre>\n</div></div>",
+      "选项": {
+        "A": "ababcc",
+        "B": "282866",
+        "C": "28abc6",
+        "D": "10abc6"
+      },
+      "分值": 1,
+      "正确答案": "D",
+      "答案文本": "10abc6",
+      "是否正确": false
+    },
+    {
+      "序号": 40,
+      "题目ID": 97099,
+      "题目类型": "单选题",
+      "题目内容": "下面语句在编译时，（   ）不会出现错误。",
+      "选项": {
+        "A": "float f = 1.3;",
+        "B": "char c = \"a\";",
+        "C": "byte b = 257;",
+        "D": "int i = 10;"
+      },
+      "分值": 1,
+      "正确答案": "D",
+      "答案文本": "int i = 10;",
+      "是否正确": false
+    },
+    {
+      "序号": 41,
+      "题目ID": 97100,
+      "题目类型": "单选题",
+      "题目内容": "下列标识符（名字）命名原则中，符合规范的是___。",
+      "选项": {
+        "A": "类名的首字母小写",
+        "B": "变量和方法名的首字母大写",
+        "C": "接口名的首字母小写",
+        "D": "常量完全大写"
+      },
+      "分值": 1,
+      "正确答案": "D",
+      "答案文本": "常量完全大写",
+      "是否正确": false
+    },
+    {
+      "序号": 42,
+      "题目ID": 97101,
+      "题目类型": "单选题",
+      "题目内容": "24 % 5 is（  ）。",
+      "选项": {
+        "A": "2",
+        "B": "1",
+        "C": "0",
+        "D": "4"
+      },
+      "分值": 1,
+      "正确答案": "D",
+      "答案文本": "4",
+      "是否正确": false
+    },
+    {
+      "序号": 43,
+      "题目ID": 97102,
+      "题目类型": "单选题",
+      "题目内容": "一个表达式中有int、byte、long、double型的数据相加，其结果是（  ）类型的值",
+      "选项": {
+        "A": "int",
+        "B": "long",
+        "C": "byte",
+        "D": "double"
+      },
+      "分值": 1,
+      "正确答案": "D",
+      "答案文本": "double",
+      "是否正确": false
+    },
+    {
+      "序号": 44,
+      "题目ID": 97103,
+      "题目类型": "单选题",
+      "题目内容": "45 / 4的结果是（  ）?",
+      "选项": {
+        "A": "11",
+        "B": "12",
+        "C": "10",
+        "D": "11.25"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "11",
+      "是否正确": false
+    },
+    {
+      "序号": 45,
+      "题目ID": 97104,
+      "题目类型": "单选题",
+      "题目内容": "在Java中“小于等于”的比较操作符是（   ） 。",
+      "选项": {
+        "A": "<<",
+        "B": "!=",
+        "C": "<="
+      },
+      "分值": 1,
+      "正确答案": "C",
+      "答案文本": "<=",
+      "是否正确": false
+    },
+    {
+      "序号": 46,
+      "题目ID": 97105,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">下面程序段：</p>\n<div data-v-md-line=\"2\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-language extra-class\"><pre class=\"v-md-prism-language\"><code>boolean a = false; \nboolean b = true; \nboolean c = (a &amp;&amp; b) &amp;&amp; (!b); \nboolean result = (a &amp; b) &amp; (!b);\n</code></pre>\n</div></div><p data-v-md-line=\"8\">执行完后，正确的结果是（）。</p>\n",
+      "选项": {
+        "A": "c=false; result=false;",
+        "B": "c=true; result=true;",
+        "C": "c=true; result=false;",
+        "D": "c=false; result=true;"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "c=false; result=false;",
+      "是否正确": false
+    },
+    {
+      "序号": 47,
+      "题目ID": 97106,
+      "题目类型": "单选题",
+      "题目内容": "在控制台显示消息的语句正确的是（  ）",
+      "选项": {
+        "A": "System.out.println(我是一个Java程序员了！);",
+        "B": "System.Out.println(\"我是一个Java程序员了！\");",
+        "C": "System.out.println(\"我是一个Java程序员了！\");",
+        "D": "System.Out.Println(\"我是一个Java程序员了！\");"
+      },
+      "分值": 1,
+      "正确答案": "C",
+      "答案文本": "System.out.println(\"我是一个Java程序员了！\");",
+      "是否正确": false
+    },
+    {
+      "序号": 48,
+      "题目ID": 97107,
+      "题目类型": "单选题",
+      "题目内容": "下列关于变量作用域的说法中，正确的是（）",
+      "选项": {
+        "A": "在main()方法中任何位置定义的变量，其作用域为整个main()方法。",
+        "B": "代码块中定义的变量，在代码块外也是可以使用的。",
+        "C": "变量的作用域为：从定义处开始，到变量所在代码块结束的位置。",
+        "D": "变量的作用域不受代码块的限制。"
+      },
+      "分值": 1,
+      "正确答案": "C",
+      "答案文本": "变量的作用域为：从定义处开始，到变量所在代码块结束的位置。",
+      "是否正确": false
+    },
+    {
+      "序号": 49,
+      "题目ID": 97108,
+      "题目类型": "单选题",
+      "题目内容": "以下标识符中，不合法的是（ ）",
+      "选项": {
+        "A": "user",
+        "B": "$inner",
+        "C": "class",
+        "D": "login_1"
+      },
+      "分值": 1,
+      "正确答案": "C",
+      "答案文本": "class",
+      "是否正确": false
+    },
+    {
+      "序号": 50,
+      "题目ID": 97109,
+      "题目类型": "单选题",
+      "题目内容": "下列选项中，不属于Java中关键字的是（）",
+      "选项": {
+        "A": "if",
+        "B": "float",
+        "C": "Final",
+        "D": "try"
+      },
+      "分值": 1,
+      "正确答案": "C",
+      "答案文本": "Final",
+      "是否正确": false
+    },
+    {
+      "序号": 51,
+      "题目ID": 97110,
+      "题目类型": "单选题",
+      "题目内容": "下列选项中，属于布尔常量的是（）",
+      "选项": {
+        "A": "198",
+        "B": "2e3f",
+        "C": "true",
+        "D": "null"
+      },
+      "分值": 1,
+      "正确答案": "C",
+      "答案文本": "true",
+      "是否正确": false
+    },
+    {
+      "序号": 52,
+      "题目ID": 97111,
+      "题目类型": "单选题",
+      "题目内容": "下列浮点数的定义中，正确的是（ ）",
+      "选项": {
+        "A": "float f = 1F;",
+        "B": "float f = 1.0;",
+        "C": "float f = '1';",
+        "D": "float f = \"1\";"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "float f = 1F;",
+      "是否正确": false
+    },
+    {
+      "序号": 53,
+      "题目ID": 97112,
+      "题目类型": "单选题",
+      "题目内容": "关于变量类型转换的描述中，正确的是（）",
+      "选项": {
+        "A": "只有数据类型相同的数据才能进行运算。",
+        "B": "byte类型和short类型的数据是不能一起运算的。",
+        "C": "两个byte类型数据一起运算时会把先自动提升到int类型再运算。",
+        "D": "两个整型在一起运算时，结果一定是int。"
+      },
+      "分值": 1,
+      "正确答案": "C",
+      "答案文本": "两个byte类型数据一起运算时会把先自动提升到int类型再运算。",
+      "是否正确": false
+    },
+    {
+      "序号": 54,
+      "题目ID": 97113,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">若</p>\n<div data-v-md-line=\"2\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-language extra-class\"><pre class=\"v-md-prism-language\"><code>int a = 7;\na %= 2;\n</code></pre>\n</div></div><p data-v-md-line=\"6\">则执行后，变量a的值是（）</p>\n",
+      "选项": {
+        "A": "7",
+        "B": "1",
+        "C": "2",
+        "D": "3"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "1",
+      "是否正确": false
+    },
+    {
+      "序号": 55,
+      "题目ID": 97114,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">假设有以下整型变量赋初值语句：</p>\n<div data-v-md-line=\"2\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-language extra-class\"><pre class=\"v-md-prism-language\"><code>int i=1+1/2+1/4；\n</code></pre>\n</div></div><p data-v-md-line=\"5\">请问该语句执行后变量i的值为：</p>\n",
+      "选项": {
+        "A": "1",
+        "B": "1.75",
+        "C": "2.5",
+        "D": "3"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "1",
+      "是否正确": false
+    },
+    {
+      "序号": 56,
+      "题目ID": 97115,
+      "题目类型": "单选题",
+      "题目内容": "以下关于变量的定义，正确的是 （ ）",
+      "选项": {
+        "A": "int a=10;",
+        "B": "b=2；",
+        "C": "int =20；",
+        "D": "int a；b=a+10；"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "int a=10;",
+      "是否正确": false
+    },
+    {
+      "序号": 57,
+      "题目ID": 97116,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">在Java中，下列程序的运行结果是（ ）。</p>\n<div data-v-md-line=\"3\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-language extra-class\"><pre class=\"v-md-prism-language\"><code>public static void main(String[] args){\n   int a,b,c;\n   a=20; b=30; c=10;\n   if(a&lt;b) a=b;\n   if(a&gt;=b) b=c; c=a;\n   System.out.println(&quot;a=%d,b=%d,c=%d&quot;,a,b,c);\n}\n</code></pre>\n</div></div>",
+      "选项": {
+        "A": "a=20, b=10, c=20",
+        "B": "a=30, b=10, c=20",
+        "C": "a=30, b=10, c=30",
+        "D": "a=20, b=10, c=30"
+      },
+      "分值": 1,
+      "正确答案": "C",
+      "答案文本": "a=30, b=10, c=30",
+      "是否正确": false
+    },
+    {
+      "序号": 58,
+      "题目ID": 97117,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">假设有如下程序：</p>\n<div data-v-md-line=\"2\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-language extra-class\"><pre class=\"v-md-prism-language\"><code>public class Demo { \n   public static void main(String args[]) { \n      boolean flag = 10%2 == 1 &amp;&amp; 10 / 3 == 0 &amp;&amp; 1 / 0 == 0 ; \n      System.out.println(flag ? &quot;mldn&quot; : &quot;yootk&quot;) ; \n   } \n}\n</code></pre>\n</div></div><p data-v-md-line=\"10\">最终执行结果是什么？</p>\n",
+      "选项": {
+        "A": "mldn",
+        "B": "yootk",
+        "C": "true",
+        "D": "程序出错"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "yootk",
+      "是否正确": false
+    },
+    {
+      "序号": 59,
+      "题目ID": 97118,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">下面代码运行结果显示（ ）。</p>\n<div data-v-md-line=\"2\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-language extra-class\"><pre class=\"v-md-prism-language\"><code>double temperature = 50; \nif (temperature &gt;= 100) \n   System.out.println(&quot;too hot&quot;); \nelse if (temperature &lt;= 40) \n   System.out.println(&quot;too cold&quot;); \nelse \n   System.out.println(&quot;just right&quot;);\n</code></pre>\n</div></div>",
+      "选项": {
+        "A": "too hot",
+        "B": "too cold",
+        "C": "just right",
+        "D": "too hot too cold just right"
+      },
+      "分值": 1,
+      "正确答案": "C",
+      "答案文本": "just right",
+      "是否正确": false
+    },
+    {
+      "序号": 60,
+      "题目ID": 97119,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">分析以下代码段，给布尔变量even赋值，下面选项正确的是（ ）。<br>\n代码段1:</p>\n<div data-v-md-line=\"3\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-language extra-class\"><pre class=\"v-md-prism-language\"><code>if (number % 2 == 0) \n   even = true; \nelse \n   even = false;\n</code></pre>\n</div></div><p data-v-md-line=\"9\">代码段 2:</p>\n<div data-v-md-line=\"10\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-language extra-class\"><pre class=\"v-md-prism-language\"><code>even = (number % 2 == 0) ? true: false;\n</code></pre>\n</div></div><p data-v-md-line=\"13\">代码段 3:</p>\n<div data-v-md-line=\"14\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-language extra-class\"><pre class=\"v-md-prism-language\"><code>even = number % 2 == 0;\n</code></pre>\n</div></div>",
+      "选项": {
+        "A": "代码段1有语法错误",
+        "B": "代码段2有语法错误",
+        "C": "代码段3有语法错误",
+        "D": "所有代码段都正确"
+      },
+      "分值": 1,
+      "正确答案": "D",
+      "答案文本": "所有代码段都正确",
+      "是否正确": false
+    },
+    {
+      "序号": 61,
+      "题目ID": 97120,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">有如下程序代码，执行的结果是：</p>\n<div data-v-md-line=\"2\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-language extra-class\"><pre class=\"v-md-prism-language\"><code>public class Main {\n    public static void main(String[] args) {\n        int x=10,y=20,z=30;\n        if(x&lt;y)\n            z=x;\n        else\n            x=y;\n        y=z;\n        System.out.println(&quot;x=&quot;+x+&quot;,y=&quot;+y+&quot;,z=&quot;+z);\n    }\n}\n</code></pre>\n</div></div>",
+      "选项": {
+        "A": "x=10,y=10,z=10",
+        "B": "x=20,y=30,z=10",
+        "C": "x=20,y=20,z=20",
+        "D": "x=20,y=30,z=20"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "x=10,y=10,z=10",
+      "是否正确": false
+    },
+    {
+      "序号": 62,
+      "题目ID": 97121,
+      "题目类型": "单选题",
+      "题目内容": "下列变量定义中，符合Java命名规范的是（）",
+      "选项": {
+        "A": "3a",
+        "B": "int-name",
+        "C": "$number",
+        "D": "field name"
+      },
+      "分值": 1,
+      "正确答案": "C",
+      "答案文本": "$number",
+      "是否正确": false
+    },
+    {
+      "序号": 63,
+      "题目ID": 97122,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">请阅读下面的程序片段</p>\n<div data-v-md-line=\"2\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-language extra-class\"><pre class=\"v-md-prism-language\"><code>int x = 1, y = 1; \nif (x++ == 2 &amp;&amp; ++y == 2) { \n   x = 7; \n} \nSystem.out.println(&quot;x=&quot; + x + &quot; , y=&quot; + y);\n</code></pre>\n</div></div><p data-v-md-line=\"9\">程序的运行结果是（ ）。</p>\n",
+      "选项": {
+        "A": "x=1,y=1",
+        "B": "x=2,y=1",
+        "C": "x=7,y=2",
+        "D": "x=7,y=2"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "x=2,y=1",
+      "是否正确": false
+    },
+    {
+      "序号": 64,
+      "题目ID": 97123,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">请阅读下面的程序</p>\n<div data-v-md-line=\"2\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-language extra-class\"><pre class=\"v-md-prism-language\"><code>public class Example03 { \n  public static void main(String[] args) { \n    int x = 8; \n    if (x &gt; 5) { \n      System.out.println(&quot;a&quot;);   \n    } \n    else { \n      System.out.println(&quot;b&quot;); \n    } \n  } \n}\n</code></pre>\n</div></div><p data-v-md-line=\"15\">程序的运行结果是（ ）。</p>\n",
+      "选项": {
+        "A": "true",
+        "B": "false",
+        "C": "a",
+        "D": "b"
+      },
+      "分值": 1,
+      "正确答案": "C",
+      "答案文本": "a",
+      "是否正确": false
+    },
+    {
+      "序号": 65,
+      "题目ID": 97124,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">下面程序段的输出结果是（）。</p>\n<div data-v-md-line=\"3\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper- extra-class\"><pre><code>public static void main(String[] args) { \n  int x=1,a=0,b=0; \n  switch(x) { \n    case 0:b++; \n    case 1:a++; \n    case 2:a++; b++; \n  } \n  System.out.println(&quot;a=&quot;+a+&quot;,b=&quot;+b); \n}\n</code></pre>\n</div></div>",
+      "选项": {
+        "A": "a=2,b=1",
+        "B": "a=1,b=1",
+        "C": "a=1,b=0",
+        "D": "a=2,b=2"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "a=2,b=1",
+      "是否正确": false
+    },
+    {
+      "序号": 66,
+      "题目ID": 97125,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">假设有如下程序：</p>\n<div data-v-md-line=\"2\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-language extra-class\"><pre class=\"v-md-prism-language\"><code>public class Demo {\n     public static void main(String args[]) {\n           char c = 'A' ;\n           int num = 10 ;\n           switch(c) {\n                 case 'B' : num ++ ;\n                 case 'A' : num ++ ;\n                 case 'Y' : num ++ ; break ;\n                 default : num -- ;\n          }\n         System.out.println(num) ;\n}\n</code></pre>\n</div></div><p data-v-md-line=\"16\">最终执行结果是什么？</p>\n",
+      "选项": {
+        "A": "<p data-v-md-line=\"1\">11</p>\n",
+        "B": "<p data-v-md-line=\"1\">13</p>\n",
+        "C": "<p data-v-md-line=\"1\">12</p>\n",
+        "D": "<p data-v-md-line=\"1\">10</p>\n"
+      },
+      "分值": 1,
+      "正确答案": "C",
+      "答案文本": "<p data-v-md-line=\"1\">12</p>\n",
+      "是否正确": false
+    },
+    {
+      "序号": 67,
+      "题目ID": 97126,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">在下面的代码段中，下列m的（ ）值将引起“default”的输出。</p>\n<div data-v-md-line=\"2\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-language extra-class\"><pre class=\"v-md-prism-language\"><code>import java.util.Scanner;\npublic class Main {\n    public static void main(String[] args) {\n        Scanner input = new Scanner(System.in);\n        int m = input.nextInt();\n        switch(m) {\n            case 0: System.out.println(&quot;case 0&quot;);\n            case 1: System.out.println(&quot;case 1&quot;);break;\n            case 2:\n            default:System.out.println(&quot;default&quot;);\n        }\n    }\n}\n</code></pre>\n</div></div>",
+      "选项": {
+        "A": "0",
+        "B": "1",
+        "C": "2",
+        "D": "以上答案都不正确"
+      },
+      "分值": 1,
+      "正确答案": "C",
+      "答案文本": "2",
+      "是否正确": false
+    },
+    {
+      "序号": 68,
+      "题目ID": 97127,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">下列语句序列执行后，k 的值是( )</p>\n<div data-v-md-line=\"3\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper- extra-class\"><pre><code>int x=6, y=10, k=5;  \nswitch( x%y ){  \n   case 0: k=x*y;  \n   case 6: k=x/y;  \n   case 12: k=x-y;  \n   default: k=x*y-x;  \n}\n</code></pre>\n</div></div>",
+      "选项": {
+        "A": "60",
+        "B": "5",
+        "C": "0",
+        "D": "54"
+      },
+      "分值": 1,
+      "正确答案": "D",
+      "答案文本": "54",
+      "是否正确": false
+    },
+    {
+      "序号": 69,
+      "题目ID": 97128,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">有如下程序代码，执行结果是：（ ）。</p>\n<div data-v-md-line=\"3\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper- extra-class\"><pre><code>int score=100;\nint grade=score/10;\nswitch(grade)\n{\n    case 10:\n    case 9:\n       System.out.print(&quot;优秀&quot;);\n    case 8:\n       System.out.print(&quot;良好&quot;);\n    case 7:\n       System.out.print(&quot;中等&quot;);\n    case 6:\n       System.out.print(&quot;及格&quot;);\n    case 4:\n    case 3:\n    case 2:\n    case 1:\n    case 0:\n        System.out.print(&quot;不及格&quot;);\n    default:\n        System.out.print(&quot;error!&quot;);\n}\n</code></pre>\n</div></div>",
+      "选项": {
+        "A": "优秀",
+        "B": "优秀\n良好\n中等\n及格\n不及格\nerror!",
+        "C": "error!",
+        "D": "编译错误"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "优秀\n良好\n中等\n及格\n不及格\nerror!",
+      "是否正确": false
+    },
+    {
+      "序号": 70,
+      "题目ID": 97129,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">给定以下程序段，如下：</p>\n<div data-v-md-line=\"2\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-language extra-class\"><pre class=\"v-md-prism-language\"><code>int i=0, j=-1;\nswitch(i)  {  \n    case 0:  j=1;  \n    case 2:  j=2;\n    default: j=5;  \n}  \nSystem.out.print(&quot;j=&quot;+j); \n</code></pre>\n</div></div><p data-v-md-line=\"13\">编译运行，结果是（ ）。</p>\n",
+      "选项": {
+        "A": "j=-1",
+        "B": "j=1",
+        "C": "j=2",
+        "D": "j=5"
+      },
+      "分值": 1,
+      "正确答案": "D",
+      "答案文本": "j=5",
+      "是否正确": false
+    },
+    {
+      "序号": 71,
+      "题目ID": 97130,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">下列代码段执行后，k的值是（ ）。</p>\n<div data-v-md-line=\"2\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-language extra-class\"><pre class=\"v-md-prism-language\"><code>int i = 10, j = 18, k = 30;\nswitch(j- i) {\n    case 8 : k++;\n    case 9 : k += 2;\n    case 10: k += 3;\n    default: k /= j;\n}\n</code></pre>\n</div></div>",
+      "选项": {
+        "A": "31",
+        "B": "32",
+        "C": "33",
+        "D": "2"
+      },
+      "分值": 1,
+      "正确答案": "D",
+      "答案文本": "2",
+      "是否正确": false
+    },
+    {
+      "序号": 72,
+      "题目ID": 97131,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">以下程序的输出结果是（）。</p>\n<div data-v-md-line=\"2\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-language extra-class\"><pre class=\"v-md-prism-language\"><code>public class Test {\n    public static void main(String[] args) {\n        int c = 0, k;\n        for(k=1; k&lt;3; k++)\n            switch( k ){\n                default: c += k;\n                case 2: c++; break;\n                case 4: c += 2; break;\n            }\n        System.out.println(c);\n    }\n}\n</code></pre>\n</div></div>",
+      "选项": {
+        "A": "2",
+        "B": "3",
+        "C": "4",
+        "D": "5"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "3",
+      "是否正确": false
+    },
+    {
+      "序号": 73,
+      "题目ID": 97132,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">下面的方法，当输入为2的时候返回值是多少?（     ）</p>\n<div data-v-md-line=\"2\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-language extra-class\"><pre class=\"v-md-prism-language\"><code>public int getValue(int i) {\n         int result = 0;\n         switch (i) {\n            case 1:\n                result = result + i;\n            case 2:\n                result = result + i * 2;\n            case 3:\n                result = result + i * 3;\n        }\n        return result;\n }\n</code></pre>\n</div></div>",
+      "选项": {
+        "A": "0",
+        "B": "2",
+        "C": "4",
+        "D": "10"
+      },
+      "分值": 1,
+      "正确答案": "D",
+      "答案文本": "10",
+      "是否正确": false
+    },
+    {
+      "序号": 74,
+      "题目ID": 97133,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">假设有如下程序：</p>\n<div data-v-md-line=\"2\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-language extra-class\"><pre class=\"v-md-prism-language\"><code>public class Demo {\n      public static void main(String args[]) {\n            String str = &quot;&quot; ;\n            for (int x = 0 ; x &lt; 5 ; x ++) {\n                   str += x ;\n            }\n          System.out.println(str) ;\n      }\n}\n</code></pre>\n</div></div><p data-v-md-line=\"14\">最终的执行结果是什么？</p>\n",
+      "选项": {
+        "A": "01234",
+        "B": "10.0",
+        "C": "14.0",
+        "D": "25.0"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "01234",
+      "是否正确": false
+    },
+    {
+      "序号": 75,
+      "题目ID": 97134,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">y输出是（ ）。</p>\n<div data-v-md-line=\"2\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-language extra-class\"><pre class=\"v-md-prism-language\"><code>int y = 0; \nfor (int i = 0; i&lt;10; ++i) {\n    y += i; \n} \nSystem.out.println(y);\n</code></pre>\n</div></div>",
+      "选项": {
+        "A": "45",
+        "B": "12",
+        "C": "11",
+        "D": "10"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "45",
+      "是否正确": false
+    },
+    {
+      "序号": 76,
+      "题目ID": 97135,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">如下循环结束后i的值是（ ）</p>\n<div data-v-md-line=\"2\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-language extra-class\"><pre class=\"v-md-prism-language\"><code>int y = 0; \nfor (int i = 0; i&lt;10; ++i) {\n   y += i; \n}\n</code></pre>\n</div></div>",
+      "选项": {
+        "A": "9",
+        "B": "10",
+        "C": "不确定",
+        "D": "11"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "10",
+      "是否正确": false
+    },
+    {
+      "序号": 77,
+      "题目ID": 97136,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">以下选项中没有语法错误的是（       ） 。<br>\n程序段1：</p>\n<div data-v-md-line=\"3\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-language extra-class\"><pre class=\"v-md-prism-language\"><code>while (int  i&lt;7) {\n       i++;\n       System.out.println(&quot;i is &quot;+i);\n}\n</code></pre>\n</div></div><p data-v-md-line=\"9\">程序段2：</p>\n<div data-v-md-line=\"10\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-language extra-class\"><pre class=\"v-md-prism-language\"><code>int  j=3; \nwhile(j) {\n       System.out.println(&quot; j  is &quot;+j);\n}\n</code></pre>\n</div></div><p data-v-md-line=\"16\">程序段3：</p>\n<div data-v-md-line=\"17\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-language extra-class\"><pre class=\"v-md-prism-language\"><code>int  j=0;\nfor(int  k=0; j + k !=10; j++,k++) {\n        System.out.println(&quot; j  is &quot;+ j + &quot;k  is&quot;+ k);\n}\n</code></pre>\n</div></div><p data-v-md-line=\"23\">程序段4：</p>\n<div data-v-md-line=\"24\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-language extra-class\"><pre class=\"v-md-prism-language\"><code>int  j=0;\ndo{\n     System.out.println( &quot;j  is &quot;+j++);\n     if (j == 3) {\n        continue  loop;\n     }\n}while  (j&lt;10);\n</code></pre>\n</div></div>",
+      "选项": {
+        "A": "程序段1",
+        "B": "程序段2",
+        "C": "程序段3",
+        "D": "程序段4"
+      },
+      "分值": 1,
+      "正确答案": "C",
+      "答案文本": "程序段3",
+      "是否正确": false
+    },
+    {
+      "序号": 78,
+      "题目ID": 97137,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">在Java中，以下程序段的输出结果是（ ）。</p>\n<div data-v-md-line=\"2\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-language extra-class\"><pre class=\"v-md-prism-language\"><code>int n=9; \nwhile(n&gt;6){\n   n--; \n   System.out.print(n); \n}\n</code></pre>\n</div></div>",
+      "选项": {
+        "A": "987",
+        "B": "876",
+        "C": "8765",
+        "D": "9876"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "876",
+      "是否正确": false
+    },
+    {
+      "序号": 79,
+      "题目ID": 97138,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">假设有如下程序：</p>\n<div data-v-md-line=\"2\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-language extra-class\"><pre class=\"v-md-prism-language\"><code>public class Demo {\n      public static void main(String args[]) {\n            int sum = 0 ;\n            int x = 10 ;\n            while (x &gt; 0) {\n                sum += x ;\n            }\n            System.out.println(sum) ;\n       }\n}\n</code></pre>\n</div></div><p data-v-md-line=\"15\">最终执行结果是什么？</p>\n",
+      "选项": {
+        "A": "55.0",
+        "B": "10.0",
+        "C": "程序错误，死循环",
+        "D": "15.0"
+      },
+      "分值": 1,
+      "正确答案": "C",
+      "答案文本": "程序错误，死循环",
+      "是否正确": false
+    },
+    {
+      "序号": 80,
+      "题目ID": 97139,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">下面代码将输出（ ）行 “Welcome to Java”?。</p>\n<div data-v-md-line=\"2\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-language extra-class\"><pre class=\"v-md-prism-language\"><code>int count = 0; \ndo { \n   System.out.println(&quot;Welcome to Java&quot;); \n} while (count++ &lt; 10);\n</code></pre>\n</div></div>",
+      "选项": {
+        "A": "10",
+        "B": "11",
+        "C": "9",
+        "D": "1"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "11",
+      "是否正确": false
+    },
+    {
+      "序号": 81,
+      "题目ID": 97140,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">循环执行后，count的值是（ ）</p>\n<div data-v-md-line=\"3\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-language extra-class\"><pre class=\"v-md-prism-language\"><code>int count = 0;\ndo {\n     System.out.println(&quot;Welcome to Java&quot;);\n} while (count++ &lt; 9);\nSystem.out.println(count);\n</code></pre>\n</div></div>",
+      "选项": {
+        "A": "11",
+        "B": "10",
+        "C": "9",
+        "D": "8"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "10",
+      "是否正确": false
+    },
+    {
+      "序号": 82,
+      "题目ID": 97141,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">当编译并运行下列程序段时，运行结果是什么？</p>\n<div data-v-md-line=\"2\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-language extra-class\"><pre class=\"v-md-prism-language\"><code>public class Test {\n    public static void main(String[ ] args) {\n        int i=0;\n        while (i--&lt;0){\n             System.out.println(&quot;The value of i is &quot;+i);\n         }\n         System.out.println(&quot;The end&quot;);\n     }\n}\n</code></pre>\n</div></div>",
+      "选项": {
+        "A": "编译时错误",
+        "B": "运行时错误",
+        "C": "The end",
+        "D": "The value of i is 0"
+      },
+      "分值": 1,
+      "正确答案": "C",
+      "答案文本": "The end",
+      "是否正确": false
+    },
+    {
+      "序号": 83,
+      "题目ID": 97142,
+      "题目类型": "单选题",
+      "题目内容": "while语句的循环体中不能包含的语句是（ ）",
+      "选项": {
+        "A": "while语句",
+        "B": "方法定义语句",
+        "C": "if语句",
+        "D": "switch语句"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "方法定义语句",
+      "是否正确": false
+    },
+    {
+      "序号": 84,
+      "题目ID": 97143,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">假设 int x=4，y=100，下列Java语句的循环体共执行了多少次?</p>\n<div data-v-md-line=\"2\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-language extra-class\"><pre class=\"v-md-prism-language\"><code>while( y/x&gt;3 ) {\n  if( y%x&gt;3 )\n    x = x + 1; \n  else\n    y = y / x; \n}\n</code></pre>\n</div></div>",
+      "选项": {
+        "A": "1次",
+        "B": "2次",
+        "C": "3次",
+        "D": "4次"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "2次",
+      "是否正确": false
+    },
+    {
+      "序号": 85,
+      "题目ID": 97144,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">Java中，以下Java程序运行输出的结果是</p>\n<div data-v-md-line=\"2\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-language extra-class\"><pre class=\"v-md-prism-language\"><code>public class Main { \n  public static void main(String[] args) {\n    int x = 1, y = 9;\n    if(x &gt; y) \n      x = y;\n      y =x;\n    else \n      x++;\n      y++;\n     System.out.println(x + &quot;, &quot; + y);\n } \n}\n</code></pre>\n</div></div>",
+      "选项": {
+        "A": "2,10",
+        "B": "1,1",
+        "C": "2,2",
+        "D": "程序语法错误"
+      },
+      "分值": 1,
+      "正确答案": "D",
+      "答案文本": "程序语法错误",
+      "是否正确": false
+    },
+    {
+      "序号": 86,
+      "题目ID": 97145,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">Java中，以下程序运行输出的结果是</p>\n<div data-v-md-line=\"2\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-language extra-class\"><pre class=\"v-md-prism-language\"><code>public class Main {\n    public static void main(String[] args) {\n        int age = 18;\n        if (age &lt; 18);{\n            System.out.println(&quot;未成年人&quot;);\n        }\n        if (age &gt; 18){\n            System.out.println(&quot;成年人&quot;);\n        }\n        if (age &gt;=60){\n            System.out.println(&quot;老年人&quot;);\n        }\n    }\n}\n</code></pre>\n</div></div>",
+      "选项": {
+        "A": "未成年人",
+        "B": "成年人",
+        "C": "老年人",
+        "D": "没有输出"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "未成年人",
+      "是否正确": false
+    },
+    {
+      "序号": 87,
+      "题目ID": 97146,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">给出如下代码段：</p>\n<div data-v-md-line=\"2\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-language extra-class\"><pre class=\"v-md-prism-language\"><code>if (x &gt; 0) {\n    System.out.println(&quot;Hello.&quot;);\n} else if (x &gt; -3) {\n    System.out.println(&quot;Nice to meet you!&quot;);\n} else {\n    System.out.println(&quot;How are you?&quot;);\n}\n</code></pre>\n</div></div><p data-v-md-line=\"11\">若打印字符串&quot;How are you?&quot;，则 x 的取值范围是（）。</p>\n",
+      "选项": {
+        "A": "x>0",
+        "B": "x>-3",
+        "C": "x<=-3",
+        "D": "x<0 & x>-3"
+      },
+      "分值": 1,
+      "正确答案": "C",
+      "答案文本": "x<=-3",
+      "是否正确": false
+    },
+    {
+      "序号": 88,
+      "题目ID": 97147,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">在Java中，以下程序段的输出结果是 （）。</p>\n<div data-v-md-line=\"3\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-language extra-class\"><pre class=\"v-md-prism-language\"><code>int x,i;\nfor(i=1;i&lt;=50;i++){\n   x=i;\n   if(x%2==0)\n   if(x%3==0)\n   if(x%7==0)\n      System.out.println(i);\n}\n</code></pre>\n</div></div>",
+      "选项": {
+        "A": "28",
+        "B": "27",
+        "C": "42",
+        "D": "41"
+      },
+      "分值": 1,
+      "正确答案": "C",
+      "答案文本": "42",
+      "是否正确": false
+    },
+    {
+      "序号": 89,
+      "题目ID": 97148,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">以下Java程序段的输出结果是（）。</p>\n<div data-v-md-line=\"2\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-language extra-class\"><pre class=\"v-md-prism-language\"><code>int i = 0;\nfor(i=4; i&gt;0; i--) {\n     if(i==2)  \n       break;\n     System.out.print(i);\n}\nSystem.out.print(i);\n</code></pre>\n</div></div>",
+      "选项": {
+        "A": "4321",
+        "B": "4322",
+        "C": "432",
+        "D": "321"
+      },
+      "分值": 1,
+      "正确答案": "C",
+      "答案文本": "432",
+      "是否正确": false
+    },
+    {
+      "序号": 90,
+      "题目ID": 97149,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">以下Java程序段的输出结果是（）。</p>\n<div data-v-md-line=\"2\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-language extra-class\"><pre class=\"v-md-prism-language\"><code>int i, j, m=55; \nfor(i=1; i&lt;=3; i++) \n   for(j=3; j&lt;=i; j++) \n      m = m%j; \nSystem.out.printf(&quot;%d\\n&quot;, m);\n</code></pre>\n</div></div>",
+      "选项": {
+        "A": "0",
+        "B": "1",
+        "C": "2",
+        "D": "3"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "1",
+      "是否正确": false
+    },
+    {
+      "序号": 91,
+      "题目ID": 97150,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">在Java中，给定代码片段如下所示，则编译运行后，输出结果是（）。</p>\n<div data-v-md-line=\"2\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-language extra-class\"><pre class=\"v-md-prism-language\"><code>for (int i = 0; i &lt; 10; i++) {\n   if (i == 10 - i) {\n      break; \n   } \n   if (i % 3 != 0) {\n      continue; \n   } \n   System.out.print(i + &quot; &quot;); \n}\n</code></pre>\n</div></div>",
+      "选项": {
+        "A": "0",
+        "B": "0 3",
+        "C": "0 3 6",
+        "D": "0 3 6 9"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "0 3",
+      "是否正确": false
+    },
+    {
+      "序号": 92,
+      "题目ID": 97151,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">下列选项中不属于本段代码输出结果的是（ ）</p>\n<div data-v-md-line=\"2\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-language extra-class\"><pre class=\"v-md-prism-language\"><code>public class Main{\n    public static void main(String args[]) {\n      one:\n      two:\n      for(int i=0; i&lt;3; i++) {\n          three:\n          for(int j=10; j&lt;30; j+=10) {\n             System.out.println(i+j);\n             if(i&gt;0)\n                break one;\n          }\n      }\n    }\n}\n</code></pre>\n</div></div>",
+      "选项": {
+        "A": "10",
+        "B": "20",
+        "C": "11",
+        "D": "21"
+      },
+      "分值": 1,
+      "正确答案": "D",
+      "答案文本": "21",
+      "是否正确": false
+    },
+    {
+      "序号": 93,
+      "题目ID": 97152,
+      "题目类型": "单选题",
+      "题目内容": "对于break语句和continue语句，说法正确的是（    ）。",
+      "选项": {
+        "A": "break语句只应用于循环体中",
+        "B": "continue语句只应用于循环体中",
+        "C": "break是无条件跳转语句，continue不是",
+        "D": "break和continue的跳转范围不够明确，容易产生问题"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "continue语句只应用于循环体中",
+      "是否正确": false
+    },
+    {
+      "序号": 94,
+      "题目ID": 97153,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">假设有如下程序：</p>\n<div data-v-md-line=\"2\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-language extra-class\"><pre class=\"v-md-prism-language\"><code>public class Demo { \n   public static void main(String args[]) { \n      System.out.println(inc(10) + inc(8) + inc(-10)) ; \n   } \n   public static int inc(int temp) {\n      if (temp &gt; 0) {\n          return temp * 2 ; \n      } \n      return -1 ; \n   } \n}\n</code></pre>\n</div></div><p data-v-md-line=\"15\">最终执行结果是什么？</p>\n",
+      "选项": {
+        "A": "35.0",
+        "B": "8.0",
+        "C": "28.0",
+        "D": "12.0"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "35.0",
+      "是否正确": false
+    },
+    {
+      "序号": 95,
+      "题目ID": 97154,
+      "题目类型": "单选题",
+      "题目内容": "下列方法定义中，不正确的是(   )。",
+      "选项": {
+        "A": "public int x( ){ ... }",
+        "B": "public static int x( double y ){ ... }",
+        "C": "void x( double d ) { ... }",
+        "D": "public static x( double a ){ ... }"
+      },
+      "分值": 1,
+      "正确答案": "D",
+      "答案文本": "public static x( double a ){ ... }",
+      "是否正确": false
+    },
+    {
+      "序号": 96,
+      "题目ID": 97155,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">（关于引用参数传递）已知代码如下：</p>\n<div data-v-md-line=\"3\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-language extra-class\"><pre class=\"v-md-prism-language\"><code>public class DemoTest{\n   public static void main(String args[]){\n      String str1=&quot;Hello&quot;;\n      System.out.print(str1+&quot; &quot;);\n      fun(str1);\n      System.out.println(str1);\n   }\n   public static void fun(String str2){\n      str2=&quot;World&quot;;\n   }\n}\n</code></pre>\n</div></div><p data-v-md-line=\"16\">上述代码结果是( )。</p>\n",
+      "选项": {
+        "A": "Hello World",
+        "B": "Hello Hello",
+        "C": "World World",
+        "D": "World Hello"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "Hello Hello",
+      "是否正确": false
+    },
+    {
+      "序号": 97,
+      "题目ID": 97156,
+      "题目类型": "单选题",
+      "题目内容": "关于return语句，下列正确的说法是（）。",
+      "选项": {
+        "A": "不能在主函数中出现且在其他函数中均可出现",
+        "B": "必须在每个函数中出现",
+        "C": "可以在同一个函数中出现多次",
+        "D": "只能在除主函数之外的函数中出现一次"
+      },
+      "分值": 1,
+      "正确答案": "C",
+      "答案文本": "可以在同一个函数中出现多次",
+      "是否正确": false
+    },
+    {
+      "序号": 98,
+      "题目ID": 97157,
+      "题目类型": "单选题",
+      "题目内容": "在Java，以下关于函数调用值传递说法正确的是（）。",
+      "选项": {
+        "A": "实参和与其对应的形参各占用独立的存储单元",
+        "B": "实参和与其对应的形参共占用一个存储单元",
+        "C": "只有当实参和与其对应的形参同名时才共占用存储单元",
+        "D": "形参是虚拟的,不占用存储单元"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "实参和与其对应的形参各占用独立的存储单元",
+      "是否正确": false
+    },
+    {
+      "序号": 99,
+      "题目ID": 97158,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">请选择下面程序的输出结果。</p>\n<div data-v-md-line=\"2\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-language extra-class\"><pre class=\"v-md-prism-language\"><code>public class J_String{ \n   public static void main(String args[ ]) { \n      String s[] = {&quot;1&quot;, &quot;2&quot;}; \n      mb_swap(s); \n      System.out.println(s[0]+s[1]); \n   } \n   static void mb_swap(String s[]) {\n      if(s.length&lt;2) \n         return; \n      String t=s[0]; \n      s[0]=s[1]; \n      s[1]=t; \n   } \n}\n</code></pre>\n</div></div>",
+      "选项": {
+        "A": "12",
+        "B": "21",
+        "C": "\"1\"\"2\"",
+        "D": "\"2\"\"1\""
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "21",
+      "是否正确": false
+    },
+    {
+      "序号": 100,
+      "题目ID": 97159,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">Java中，void 的含义：（ ）。</p>\n",
+      "选项": {
+        "A": "方法体为空",
+        "B": "定义的方法没有形参",
+        "C": "定义的方法没有返回值",
+        "D": "方法的返回值不能参加算术运算"
+      },
+      "分值": 1,
+      "正确答案": "C",
+      "答案文本": "定义的方法没有返回值",
+      "是否正确": false
+    },
+    {
+      "序号": 101,
+      "题目ID": 97160,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">现在有一个方法：</p>\n<div data-v-md-line=\"2\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-language extra-class\"><pre class=\"v-md-prism-language\"><code>public static int info(int x,double y)\n</code></pre>\n</div></div><p data-v-md-line=\"5\">下面那个方法是对本方法的正确重载？</p>\n",
+      "选项": {
+        "A": "public static int infos(int x,int y)；",
+        "B": "public static void info(int x,double y)；",
+        "C": "public static int info(int x,int y)；",
+        "D": "public static void infos(int x,int y)；"
+      },
+      "分值": 1,
+      "正确答案": "C",
+      "答案文本": "public static int info(int x,int y)；",
+      "是否正确": false
+    },
+    {
+      "序号": 102,
+      "题目ID": 97161,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">分析如下代码：</p>\n<div data-v-md-line=\"2\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-language extra-class\"><pre class=\"v-md-prism-language\"><code>public class Test { \n   public static void main(String[] args) { \n      System.out.println(max(1, 2)); \n   } \n   public static double max(int num1, double num2) { \n      System.out.println(&quot;max(int, double) is invoked&quot;); \n      if (num1 &gt; num2) \n         return num1; \n      else \n         return num2; \n   } \n   public static double max(double num1, int num2) { \n      System.out.println(&quot;max(double, int) is invoked&quot;); \n      if (num1 &gt; num2) \n         return num1; \n      else \n         return num2; \n   } \n}\n</code></pre>\n</div></div>",
+      "选项": {
+        "A": "程序运行并输出max(int, double) is invoked\n2",
+        "B": "程序运行并输出max(double, int) is invoked\n2",
+        "C": "程序运行并输出max(int, double) is invoked\n2.0",
+        "D": "程序编译错误，因为编译器无法判断该调用哪个max方法。"
+      },
+      "分值": 1,
+      "正确答案": "D",
+      "答案文本": "程序编译错误，因为编译器无法判断该调用哪个max方法。",
+      "是否正确": false
+    },
+    {
+      "序号": 103,
+      "题目ID": 97162,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">分析如下代码：</p>\n<div data-v-md-line=\"2\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-language extra-class\"><pre class=\"v-md-prism-language\"><code>public class Test { \n      public static void main(String[] args) { \n         System.out.println(xMethod(5, 500L));\n   } \n   public static int xMethod(int n, long l) { \n      System.out.println(&quot;int, long&quot;); \n      return n; \n   } \n   public static long xMethod(long n, long l) { \n      System.out.println(&quot;long, long&quot;); \n      return n; \n   } \n}\n</code></pre>\n</div></div>",
+      "选项": {
+        "A": "程序无法编译，因为编译器无法区分应调用哪个xmethod。",
+        "B": "程序运行正确但输出的不是5。",
+        "C": "程序输出int, long\n5",
+        "D": "程序输出long, long\n5"
+      },
+      "分值": 1,
+      "正确答案": "C",
+      "答案文本": "程序输出int, long\n5",
+      "是否正确": false
+    },
+    {
+      "序号": 104,
+      "题目ID": 97163,
+      "题目类型": "单选题",
+      "题目内容": "为了区分方法重载中同名的不同方法，要求（      ）。",
+      "选项": {
+        "A": "形式参数个数不同或者类型不同",
+        "B": "返回值类型不同",
+        "C": "调用时用类名或对象名做前缀",
+        "D": "形式参数名称不同"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "形式参数个数不同或者类型不同",
+      "是否正确": false
+    },
+    {
+      "序号": 105,
+      "题目ID": 97164,
+      "题目类型": "单选题",
+      "题目内容": "在Java中，一个类可同时定义许多同名的方法，这些方法的形式参数的个数、类型或顺序各不相同，传回的值也可以不相同，这种面向对象程序特性称为（ ）。",
+      "选项": {
+        "A": "封装",
+        "B": "继承",
+        "C": "覆盖",
+        "D": "重载"
+      },
+      "分值": 1,
+      "正确答案": "D",
+      "答案文本": "重载",
+      "是否正确": false
+    },
+    {
+      "序号": 106,
+      "题目ID": 97165,
+      "题目类型": "单选题",
+      "题目内容": "下列关于数组的声明哪一个是错误的。",
+      "选项": {
+        "A": "int[ ] a={1,2};",
+        "B": "int a[ ]={1,2};",
+        "C": "int[ ] a=new int[2];",
+        "D": "int a[2]={1,2};"
+      },
+      "分值": 1,
+      "正确答案": "D",
+      "答案文本": "int a[2]={1,2};",
+      "是否正确": false
+    },
+    {
+      "序号": 107,
+      "题目ID": 97166,
+      "题目类型": "单选题",
+      "题目内容": "执行完以下代码int[ ] x = new int[25]；后，以下哪项说明是正确的（ ）。",
+      "选项": {
+        "A": "x[24]为0",
+        "B": "x[25]为0",
+        "C": "x[0]为空",
+        "D": "x[24]未定义"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "x[24]为0",
+      "是否正确": false
+    },
+    {
+      "序号": 108,
+      "题目ID": 97167,
+      "题目类型": "单选题",
+      "题目内容": "下列语句会造成数组new int[10]越界是（ ）。",
+      "选项": {
+        "A": "a[0] += 9;",
+        "B": "a[9]=10;",
+        "C": "a[9]",
+        "D": "for(int i=0;i<=10;i++)  a[i]++;"
+      },
+      "分值": 1,
+      "正确答案": "D",
+      "答案文本": "for(int i=0;i<=10;i++)  a[i]++;",
+      "是否正确": false
+    },
+    {
+      "序号": 109,
+      "题目ID": 97168,
+      "题目类型": "单选题",
+      "题目内容": "当访问无效的数组下标时，会发生（ ）。",
+      "选项": {
+        "A": "中止程序",
+        "B": "抛出异常",
+        "C": "系统崩溃",
+        "D": "直接跳过"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "抛出异常",
+      "是否正确": false
+    },
+    {
+      "序号": 110,
+      "题目ID": 97169,
+      "题目类型": "单选题",
+      "题目内容": "关于char类型的数组，说法正确的是( )。",
+      "选项": {
+        "A": "其数组的默认值是'A'",
+        "B": "可以仅通过数组名来访问数组",
+        "C": "数组不能转换为字符串",
+        "D": "可以存储整型数值"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "可以仅通过数组名来访问数组",
+      "是否正确": false
+    },
+    {
+      "序号": 111,
+      "题目ID": 97170,
+      "题目类型": "单选题",
+      "题目内容": "以下语句不能通过编译的是(  )。",
+      "选项": {
+        "A": "int[] a={1,2,3,4};",
+        "B": "int b[];",
+        "C": "int c[]=new int[3];",
+        "D": "int d=new int[];"
+      },
+      "分值": 1,
+      "正确答案": "D",
+      "答案文本": "int d=new int[];",
+      "是否正确": false
+    },
+    {
+      "序号": 112,
+      "题目ID": 97171,
+      "题目类型": "单选题",
+      "题目内容": "执行完以下代码int[ ] x = new int[25]；后，以下哪项说明是正确的(   )",
+      "选项": {
+        "A": "x[24]为0",
+        "B": "x[24]未定义",
+        "C": "x[25]为0",
+        "D": "x[0]没有数值存在"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "x[24]为0",
+      "是否正确": false
+    },
+    {
+      "序号": 113,
+      "题目ID": 97172,
+      "题目类型": "单选题",
+      "题目内容": "以下二维数组的定义正确的是（   ）",
+      "选项": {
+        "A": "int a[3][2]={{1,2},{1,3},{2,3}}",
+        "B": "int a[][]=new int[3][]",
+        "C": "int[][] a=new int[][3]",
+        "D": "int[][] a=new int[][]"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "int a[][]=new int[3][]",
+      "是否正确": false
+    },
+    {
+      "序号": 114,
+      "题目ID": 97173,
+      "题目类型": "单选题",
+      "题目内容": "若int a[][]={{123,345,334},{1,2},{3,4}};  则 a[2][1]=（    ）。",
+      "选项": {
+        "A": "1",
+        "B": "3",
+        "C": "2",
+        "D": "4"
+      },
+      "分值": 1,
+      "正确答案": "D",
+      "答案文本": "4",
+      "是否正确": false
+    },
+    {
+      "序号": 115,
+      "题目ID": 97174,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">有以下程序片段，下列哪个选项不能插入到行1。（      ）</p>\n<div data-v-md-line=\"2\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-language extra-class\"><pre class=\"v-md-prism-language\"><code>1) \n2) public  class  Interesting{ \n3) //do sth \n4) }\n</code></pre>\n</div></div>",
+      "选项": {
+        "A": "import java.awt.*;",
+        "B": "package mypackage;",
+        "C": "class OtherClass{   }",
+        "D": "public class MyClass{ }"
+      },
+      "分值": 1,
+      "正确答案": "D",
+      "答案文本": "public class MyClass{ }",
+      "是否正确": false
+    },
+    {
+      "序号": 116,
+      "题目ID": 97175,
+      "题目类型": "单选题",
+      "题目内容": "下列方法头中哪一个不与其他方法形成重载(overload)关系?（    ）",
+      "选项": {
+        "A": "void mmm()",
+        "B": "void mmm(int i)",
+        "C": "void mmm(String s)",
+        "D": "int mm()"
+      },
+      "分值": 1,
+      "正确答案": "D",
+      "答案文本": "int mm()",
+      "是否正确": false
+    },
+    {
+      "序号": 117,
+      "题目ID": 97176,
+      "题目类型": "单选题",
+      "题目内容": "在Java中，一个类可同时定义许多同名的方法，这些方法的形式参数个数、类型或顺序各不相同，传回的值也可以不相同。这种面向对象程序的特性称为(  )。",
+      "选项": {
+        "A": "隐藏",
+        "B": "覆盖",
+        "C": "重载",
+        "D": "Java不支持此特性"
+      },
+      "分值": 1,
+      "正确答案": "C",
+      "答案文本": "重载",
+      "是否正确": false
+    },
+    {
+      "序号": 118,
+      "题目ID": 97177,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">类中某方法定义如下：</p>\n<div data-v-md-line=\"2\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-language extra-class\"><pre class=\"v-md-prism-language\"><code>double fun(int a,int b){\n   return a*1.0/b;\n}\n</code></pre>\n</div></div><p data-v-md-line=\"7\">同一类内其它方法调用该方法的正确方式是（　）。</p>\n",
+      "选项": {
+        "A": "double a = fun(1,2)",
+        "B": "double a = fun(1.0,2.0)",
+        "C": "int x = fun(1,2)",
+        "D": "int x = fun(1.0,2.0)"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "double a = fun(1,2)",
+      "是否正确": false
+    },
+    {
+      "序号": 119,
+      "题目ID": 97178,
+      "题目类型": "单选题",
+      "题目内容": "方法体内定义的变量称局部变量，下述关于局部变量的说法中错误的是（ ）。",
+      "选项": {
+        "A": "局部变量仅在所定义的代码块内（花括号对内）有效",
+        "B": "局部变量不能加修饰词修饰",
+        "C": "局部变量不能与类中的成员变量同名",
+        "D": "局部变量未经赋值不能使用"
+      },
+      "分值": 1,
+      "正确答案": "C",
+      "答案文本": "局部变量不能与类中的成员变量同名",
+      "是否正确": false
+    },
+    {
+      "序号": 120,
+      "题目ID": 97179,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">类ABC定义如下：</p>\n<div data-v-md-line=\"2\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-language extra-class\"><pre class=\"v-md-prism-language\"><code>1．public class ABC{ \n2．   public int max( int a, int b) { } \n3． \n4．}\n</code></pre>\n</div></div><p data-v-md-line=\"8\">将以下哪个方法插入行3是不合法的。( )</p>\n",
+      "选项": {
+        "A": "public float max(float a, float b, float c){  }",
+        "B": "public int max(int c, int d){  }",
+        "C": "public float max(float a, float b){  }",
+        "D": "private int max(int a, int b, int c){  }"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "public int max(int c, int d){  }",
+      "是否正确": false
+    },
+    {
+      "序号": 121,
+      "题目ID": 97180,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">将以下哪种方法插入行3是不合法的。</p>\n<div data-v-md-line=\"2\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-language extra-class\"><pre class=\"v-md-prism-language\"><code>1．public  class  Test1{ \n2．         public  float  aMethod（float  a，float  b）{   } \n3． \n4．}\n</code></pre>\n</div></div>",
+      "选项": {
+        "A": "public  float  aMethod（float  a， float  b，float  c）{  }",
+        "B": "public  float  aMethod（float  c，float d）{  }",
+        "C": "public  int  aMethod（int  a， int b）{  }",
+        "D": "private float aMethod（int a，int b，int c）{  }"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "public  float  aMethod（float  c，float d）{  }",
+      "是否正确": false
+    },
+    {
+      "序号": 122,
+      "题目ID": 97181,
+      "题目类型": "单选题",
+      "题目内容": "声明一个类是需要（   ）关键字。",
+      "选项": {
+        "A": "public",
+        "B": "private",
+        "C": "class",
+        "D": "以上都是"
+      },
+      "分值": 1,
+      "正确答案": "C",
+      "答案文本": "class",
+      "是否正确": false
+    },
+    {
+      "序号": 123,
+      "题目ID": 97182,
+      "题目类型": "单选题",
+      "题目内容": "一个对象是（   ）的实例。",
+      "选项": {
+        "A": "程序",
+        "B": "类",
+        "C": "方法",
+        "D": "数据"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "类",
+      "是否正确": false
+    },
+    {
+      "序号": 124,
+      "题目ID": 97183,
+      "题目类型": "单选题",
+      "题目内容": "对于类与对象的关系，以下说法错误的是（ ）。",
+      "选项": {
+        "A": "类是对象的类型",
+        "B": "对象由类来创建",
+        "C": "类是同类对象的抽象",
+        "D": "对象是创建类的模板"
+      },
+      "分值": 1,
+      "正确答案": "D",
+      "答案文本": "对象是创建类的模板",
+      "是否正确": false
+    },
+    {
+      "序号": 125,
+      "题目ID": 97184,
+      "题目类型": "单选题",
+      "题目内容": "以下关于构造函数的描述错误的是（    ）。",
+      "选项": {
+        "A": "构造函数的返回类型只能是void型。",
+        "B": "构造函数是类的一种特殊函数，它的方法名必须与类名相同。",
+        "C": "构造函数的主要作用是完成对类的对象的初始化工作。",
+        "D": "一般在创建新对象时，系统会自动调用构造函数。"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "构造函数的返回类型只能是void型。",
+      "是否正确": false
+    },
+    {
+      "序号": 126,
+      "题目ID": 97185,
+      "题目类型": "单选题",
+      "题目内容": "下面关于缺省构造方法的描述中正确的是（ ）。",
+      "选项": {
+        "A": "当类中没有定义任何构造方法时，Java编译器将为这个类创建缺省构造方法",
+        "B": "缺省构造方法可以初始化其他方法中定义的变量",
+        "C": "Java编译器会为所有的类创建缺省构造方法。",
+        "D": "如果在一个类中定义的构造方法都声明了参数，Java编译器将为这个类创建一个缺省构造方法"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "当类中没有定义任何构造方法时，Java编译器将为这个类创建缺省构造方法",
+      "是否正确": false
+    },
+    {
+      "序号": 127,
+      "题目ID": 97186,
+      "题目类型": "单选题",
+      "题目内容": "下述哪条关于构造方法的说法，不符合Java语法的规定（ ）。",
+      "选项": {
+        "A": "每个类至少有一个构造方法",
+        "B": "构造方法必须与类同名",
+        "C": "构造方法无返回值，其返回值类型必须写为void",
+        "D": "构造方法可以是private的"
+      },
+      "分值": 1,
+      "正确答案": "C",
+      "答案文本": "构造方法无返回值，其返回值类型必须写为void",
+      "是否正确": false
+    },
+    {
+      "序号": 128,
+      "题目ID": 97187,
+      "题目类型": "单选题",
+      "题目内容": "关于构造方法定义与作用，下列说法错误的是：（    ）。",
+      "选项": {
+        "A": "用来创建类的实例时调用的方法",
+        "B": "调用该方法时，对实例变量赋值",
+        "C": "定义时，方法名称与类名相同，返回值类型可以不写，也可以写成void",
+        "D": "一个类的构造方法可以定义多个，多个构造方法的参数有明显区别。"
+      },
+      "分值": 1,
+      "正确答案": "C",
+      "答案文本": "定义时，方法名称与类名相同，返回值类型可以不写，也可以写成void",
+      "是否正确": false
+    },
+    {
+      "序号": 129,
+      "题目ID": 97188,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">以下程序中，横线处正确的语句是?</p>\n<div data-v-md-line=\"2\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-language extra-class\"><pre class=\"v-md-prism-language\"><code>class _____ {\n   int x; \n   int get(){ \n     return x; \n   } \n   ABC(int i){ \n      x = i; \n   } \n   void show(){ \n      System.out.println(x); \n   } \n}\n</code></pre>\n</div></div>",
+      "选项": {
+        "A": "show",
+        "B": "get",
+        "C": "ABC",
+        "D": "以上都可以"
+      },
+      "分值": 1,
+      "正确答案": "C",
+      "答案文本": "ABC",
+      "是否正确": false
+    },
+    {
+      "序号": 130,
+      "题目ID": 97189,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">对于下列Dog类，哪个叙述是错误的？</p>\n<div data-v-md-line=\"2\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-language extra-class\"><pre class=\"v-md-prism-language\"><code>class Dog { \n      Dog(int m) { } \n      Dog(double m) { }\n      int Dog（int m） { return 23; } \n      void Dog(double m) { } \n}\n</code></pre>\n</div></div>",
+      "选项": {
+        "A": "Dog(int m)与 Dog(double m)是互为重载的构造方法。",
+        "B": "int Dog(int m)与void Dog(double m)是互为重载的非构造方法。",
+        "C": "Dog类只有两个构造方法，而且没有无参数的构造方法",
+        "D": "Dog类有3个构造方法"
+      },
+      "分值": 1,
+      "正确答案": "D",
+      "答案文本": "Dog类有3个构造方法",
+      "是否正确": false
+    },
+    {
+      "序号": 131,
+      "题目ID": 97190,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">有如下程序：</p>\n<div data-v-md-line=\"3\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper- extra-class\"><pre><code>public class Test {\n    public static void main(String args[]) {   \n        ABC s = new ABC(&quot;Hello!&quot;,&quot;I love Java.&quot;);\n        System.out.println(s.toString( ));\n    }\n}\nclass ABC {\n    String s1;\n    String s2;\n    public ABC(String str1, String str2) {\n        s1 = str1; \n        s2 = str2;\n    }\n    public String toString() {\n        return s1 + s2;\n    }\n}\n</code></pre>\n</div></div><p data-v-md-line=\"22\">程序的运行结果是（）。</p>\n",
+      "选项": {
+        "A": "Hello!",
+        "B": "I love Java.",
+        "C": "Hello!I love Java.",
+        "D": "I love Java.Hello!"
+      },
+      "分值": 1,
+      "正确答案": "C",
+      "答案文本": "Hello!I love Java.",
+      "是否正确": false
+    },
+    {
+      "序号": 132,
+      "题目ID": 97191,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">以下程序运行结果？</p>\n<div data-v-md-line=\"2\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-language extra-class\"><pre class=\"v-md-prism-language\"><code>public class Ref {\n       public static void main(String[] args){\n             Ref r = new Ref();\n             r.amethod(r);\n       }\n       public void amethod(Ref r){\n             int i = 99;\n             multi(r);\n             System.out.println(i);\n       }\n       public void multi(Ref r){\n             r.i = r.i * 2;\n       }\n}\n</code></pre>\n</div></div>",
+      "选项": {
+        "A": "编译失败",
+        "B": "Prints: 99",
+        "C": "Prints: 198",
+        "D": "运行错误"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "编译失败",
+      "是否正确": false
+    },
+    {
+      "序号": 133,
+      "题目ID": 97192,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">以下代码中，第7行代码可以被那个选项的代码替换？</p>\n<div data-v-md-line=\"2\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-language extra-class\"><pre class=\"v-md-prism-language\"><code>public class Base {\n    int w,x,y,z;\n    public Base(int a, int b) {\n        x=a;y=b;\n    }\n    public Base(int a, int b, int c, int d) {\n        x=a;y=b;        //    line 7\n        w=d;z=c;\n    }\n}\n</code></pre>\n</div></div>",
+      "选项": {
+        "A": "Base(a,b)",
+        "B": "this(a,b,x,y)",
+        "C": "this(a,b)",
+        "D": "Base(x,y)"
+      },
+      "分值": 1,
+      "正确答案": "C",
+      "答案文本": "this(a,b)",
+      "是否正确": false
+    },
+    {
+      "序号": 134,
+      "题目ID": 97193,
+      "题目类型": "单选题",
+      "题目内容": "若需要定义一个类属性或类方法，应使用哪种修饰符？（      ）",
+      "选项": {
+        "A": "static",
+        "B": "package",
+        "C": "private",
+        "D": "public"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "static",
+      "是否正确": false
+    },
+    {
+      "序号": 135,
+      "题目ID": 97194,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">假设类A有如下定义，且a是A类的一个实例，则必定错误的选项是（  ）。</p>\n<div data-v-md-line=\"3\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-language extra-class\"><pre class=\"v-md-prism-language\"><code>class A{ \n   int i;   \n   static String s;    \n   void method1(){\n   }\n   static void method2(){\n   } \n}\n</code></pre>\n</div></div>",
+      "选项": {
+        "A": "System.out.println(a.i)；",
+        "B": "a.method1();",
+        "C": "A.method1();",
+        "D": "A.method2() ;"
+      },
+      "分值": 1,
+      "正确答案": "C",
+      "答案文本": "A.method1();",
+      "是否正确": false
+    },
+    {
+      "序号": 136,
+      "题目ID": 97195,
+      "题目类型": "单选题",
+      "题目内容": "关于被私有访问控制符private修饰的成员变量，以下说法正确的是（  ）",
+      "选项": {
+        "A": "可以被三种类所引用：该类自身、与它在同一个包中的其他类、在其他包中的该类的子类",
+        "B": "可以被两种类访问和引用：该类本身、该类的所有子类",
+        "C": "只能被该类自身所访问和修改",
+        "D": "只能被同一个包中的类访问"
+      },
+      "分值": 1,
+      "正确答案": "C",
+      "答案文本": "只能被该类自身所访问和修改",
+      "是否正确": false
+    },
+    {
+      "序号": 137,
+      "题目ID": 97196,
+      "题目类型": "单选题",
+      "题目内容": "在Java中用什么关键字修饰的方法可以直接通过类名来调用？（     ）",
+      "选项": {
+        "A": "static",
+        "B": "final",
+        "C": "private",
+        "D": "void"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "static",
+      "是否正确": false
+    },
+    {
+      "序号": 138,
+      "题目ID": 97197,
+      "题目类型": "单选题",
+      "题目内容": "声明成员变量时,如果不使用任何访问控制符(public, protected, private)，则以下哪种类型的类不能对该成员进行直接访问 （     ） .",
+      "选项": {
+        "A": "同一类",
+        "B": "同一包中的子类",
+        "C": "同一包中的非子类",
+        "D": "不同包中的子类"
+      },
+      "分值": 1,
+      "正确答案": "D",
+      "答案文本": "不同包中的子类",
+      "是否正确": false
+    },
+    {
+      "序号": 139,
+      "题目ID": 97198,
+      "题目类型": "单选题",
+      "题目内容": "类的实例方法表示的是什么？（ ）",
+      "选项": {
+        "A": "父类对象的行为",
+        "B": "类的属性",
+        "C": "类对象的行为",
+        "D": "类的行为"
+      },
+      "分值": 1,
+      "正确答案": "C",
+      "答案文本": "类对象的行为",
+      "是否正确": false
+    },
+    {
+      "序号": 140,
+      "题目ID": 97199,
+      "题目类型": "单选题",
+      "题目内容": "关于类中成员变量的作用范围，下述说法中正确的是（ ）。",
+      "选项": {
+        "A": "只有用public修饰的变量才能在所有方法中使用",
+        "B": "用private修饰的成员变量可以在main方法中直接使用",
+        "C": "类中所有成员变量在所有成员方法中有效",
+        "D": "用static修饰的成员变量只能在用static修饰的方法中使用"
+      },
+      "分值": 1,
+      "正确答案": "C",
+      "答案文本": "类中所有成员变量在所有成员方法中有效",
+      "是否正确": false
+    },
+    {
+      "序号": 141,
+      "题目ID": 97200,
+      "题目类型": "单选题",
+      "题目内容": "为AB类的一个无形式参数无返回值的方法method书写方法头，使得使用类名AB作为前缀就可以调用它，该方法头的形式为（ ）。",
+      "选项": {
+        "A": "static void method( )",
+        "B": "public void method( )",
+        "C": "final void method( )",
+        "D": "abstract void method( )"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "static void method( )",
+      "是否正确": false
+    },
+    {
+      "序号": 142,
+      "题目ID": 97201,
+      "题目类型": "单选题",
+      "题目内容": "类中的一个成员方法被下面哪个修饰符修饰时，该方法只能在本类被访问 (    )。",
+      "选项": {
+        "A": "public",
+        "B": "protected",
+        "C": "private",
+        "D": "default"
+      },
+      "分值": 1,
+      "正确答案": "C",
+      "答案文本": "private",
+      "是否正确": false
+    },
+    {
+      "序号": 143,
+      "题目ID": 97202,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">分析如下代码：</p>\n<div data-v-md-line=\"2\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-language extra-class\"><pre class=\"v-md-prism-language\"><code>public class Test {\n  private int t;\n  public static void main(String[] args) { \n    int x;\n    System.out.println(t); \n  } \n}\n</code></pre>\n</div></div>",
+      "选项": {
+        "A": "变量t没有初始化，所以会引起错误。",
+        "B": "变量t是私有的，因此不能在main方法中访问。",
+        "C": "t是非静态的，不能在静态的main方法中引用。",
+        "D": "变量x没有初始化，所以会引起错误。"
+      },
+      "分值": 1,
+      "正确答案": "C",
+      "答案文本": "t是非静态的，不能在静态的main方法中引用。",
+      "是否正确": false
+    },
+    {
+      "序号": 144,
+      "题目ID": 97203,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">下面是People和Child类的定义和构造方法，每个构造方法都输出编号。在执行new Child(“mike”)的时候都有哪些构造方法被顺序调用？请选择输出结果 (    )</p>\n<div data-v-md-line=\"2\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-language extra-class\"><pre class=\"v-md-prism-language\"><code>class People {\n   String name;    \n   public People() {\n      System.out.print(1); \n   }     \n   public People(String name) {        \n      System.out.print(2);\n      this.name = name; \n   } \n} \nclass Child extends People {\n   People father;     \n   public Child(String name) {        \n      System.out.print(3);\n      this.name = name;\n      father = new People(name + &quot;:F&quot;);   \n   }   \n   public Child(){\n      System.out.print(4);  \n   } \n}\n</code></pre>\n</div></div>",
+      "选项": {
+        "A": "312",
+        "B": "32",
+        "C": "432",
+        "D": "132"
+      },
+      "分值": 1,
+      "正确答案": "D",
+      "答案文本": "132",
+      "是否正确": false
+    },
+    {
+      "序号": 145,
+      "题目ID": 97204,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">以下程序运行结果是</p>\n<div data-v-md-line=\"2\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-language extra-class\"><pre class=\"v-md-prism-language\"><code>public class Test extends Father{ \n   private String name=&quot;test&quot;; \n   public static void main(String[] args){\n      Test test = new Test(); \n      System.out.println(test.getName()); \n   } \n} \nclass Father{ \n   private String name=&quot;father&quot;; \n   public String getName() { \n      return name; \n   } \n}\n</code></pre>\n</div></div>",
+      "选项": {
+        "A": "father",
+        "B": "编译出错",
+        "C": "test",
+        "D": "运行出错，无输出"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "father",
+      "是否正确": false
+    },
+    {
+      "序号": 146,
+      "题目ID": 97205,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">运行类C的输出是（ ）。</p>\n<div data-v-md-line=\"2\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-language extra-class\"><pre class=\"v-md-prism-language\"><code>class A { \n   public A() { \n      System.out.println(&quot;The default constructor of A is invoked&quot;); \n   } \n} \nclass B extends A { \n   public B() { \n      System.out.println(&quot;The default constructor of B is invoked&quot;); \n   } \n} \npublic class C { \n   public static void main(String[] args) {\n      B b = new B(); \n   } \n}\n</code></pre>\n</div></div>",
+      "选项": {
+        "A": "没有输出。",
+        "B": "输出 \"The default constructor of B is invoked\"",
+        "C": "输出\"The default constructor of B is invoked\"，然后是\"The default constructor of A is invoked\"",
+        "D": "输出\"The default constructor of A is invoked\"，然后是\"The default constructor of B is invoked\""
+      },
+      "分值": 1,
+      "正确答案": "D",
+      "答案文本": "输出\"The default constructor of A is invoked\"，然后是\"The default constructor of B is invoked\"",
+      "是否正确": false
+    },
+    {
+      "序号": 147,
+      "题目ID": 97206,
+      "题目类型": "单选题",
+      "题目内容": "以下关于Java的局部内部类的说法错误的是（ ）",
+      "选项": {
+        "A": "局部内部类只能在当前类中使用",
+        "B": "局部内部类不能包含静态成员",
+        "C": "局部内部类可以访问外部类的所有成员",
+        "D": "在局部内部类中定义的内部类不能被private修饰符修饰"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "局部内部类只能在当前类中使用",
+      "是否正确": false
+    },
+    {
+      "序号": 148,
+      "题目ID": 97207,
+      "题目类型": "单选题",
+      "题目内容": "若A1、A2为已定义的接口 ,以下接口定义中没有语法错误的是（        ） 。",
+      "选项": {
+        "A": "interface  B {  void print()  {  } }",
+        "B": "abstract  interface  B { void print() }",
+        "C": "abstract  interface  B  extends  A1,A2  { abstract  void  print(){  };}",
+        "D": "interface  B  {  void  print();}"
+      },
+      "分值": 1,
+      "正确答案": "D",
+      "答案文本": "interface  B  {  void  print();}",
+      "是否正确": false
+    },
+    {
+      "序号": 149,
+      "题目ID": 97208,
+      "题目类型": "单选题",
+      "题目内容": "以下关于继承的叙述正确的是（     ）。",
+      "选项": {
+        "A": "在Java中类只允许单一继承",
+        "B": "在Java中一个类只能实现一个接口",
+        "C": "在Java中一个类不能同时继承一个类和实现一个接口",
+        "D": "在Java中接口只允许单一继承"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "在Java中类只允许单一继承",
+      "是否正确": false
+    },
+    {
+      "序号": 150,
+      "题目ID": 97209,
+      "题目类型": "单选题",
+      "题目内容": "在使用interface声明一个接口时，只可以使用（    ）修饰符修饰该接口。",
+      "选项": {
+        "A": "private",
+        "B": "protected",
+        "C": "private  protected",
+        "D": "public"
+      },
+      "分值": 1,
+      "正确答案": "D",
+      "答案文本": "public",
+      "是否正确": false
+    },
+    {
+      "序号": 151,
+      "题目ID": 97210,
+      "题目类型": "单选题",
+      "题目内容": "下列哪个叙述是正确的？",
+      "选项": {
+        "A": "一个类最多可以实现两个接口",
+        "B": "允许接口中只有一个抽象方法",
+        "C": "如果一个抽象类实现某个接口，那么它必须要重写接口中的全部方法",
+        "D": "如果一个非抽象类实现某个接口，那么它可以只重写接口中的部分方法"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "允许接口中只有一个抽象方法",
+      "是否正确": false
+    },
+    {
+      "序号": 152,
+      "题目ID": 97211,
+      "题目类型": "单选题",
+      "题目内容": "判断对象是否是一个类的实例，使用运算符（）。",
+      "选项": {
+        "A": "equals",
+        "B": "instanceof",
+        "C": "=",
+        "D": "=="
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "instanceof",
+      "是否正确": false
+    },
+    {
+      "序号": 153,
+      "题目ID": 97212,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">A派生出子类B，B派生出子类C，对于如下Java源代码正确的说法是（）。</p>\n<ol data-v-md-line=\"3\">\n<li>A  a0 =new  A();</li>\n<li>A  a1 =new  B();</li>\n<li>A  a2 =new  C();</li>\n</ol>\n",
+      "选项": {
+        "A": "只有第1行能通过编译",
+        "B": "第1、2行能通过编译，但第3行编译出错",
+        "C": "第1、2、3行能通过编译，但第2、3行运行时出错",
+        "D": "第1行、第2行和第3行的声明都是正确的"
+      },
+      "分值": 1,
+      "正确答案": "D",
+      "答案文本": "第1行、第2行和第3行的声明都是正确的",
+      "是否正确": false
+    },
+    {
+      "序号": 154,
+      "题目ID": 97213,
+      "题目类型": "单选题",
+      "题目内容": "设类B是类C的父类，下列声明对象x1的语句中不正确的是?",
+      "选项": {
+        "A": "B x1 = new B( );",
+        "B": "B x1=new C( );",
+        "C": "C x1 = new C( );",
+        "D": "C x1=new B( );"
+      },
+      "分值": 1,
+      "正确答案": "D",
+      "答案文本": "C x1=new B( );",
+      "是否正确": false
+    },
+    {
+      "序号": 155,
+      "题目ID": 97214,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">已知类的继承关系如下：</p>\n<div data-v-md-line=\"2\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-language extra-class\"><pre class=\"v-md-prism-language\"><code>class Employee;\nclass Manager extends Employee; \nclass Director extends Employee; \n</code></pre>\n</div></div><p data-v-md-line=\"7\">则以下语句哪个能通过编译？ ( )。</p>\n",
+      "选项": {
+        "A": "Employee e = new Manager();",
+        "B": "Director d = new Manager();",
+        "C": "Director d = new Employee();",
+        "D": "Manager m = new Director();"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "Employee e = new Manager();",
+      "是否正确": false
+    },
+    {
+      "序号": 156,
+      "题目ID": 97215,
+      "题目类型": "单选题",
+      "题目内容": "下面哪个对类的声明是错误的？",
+      "选项": {
+        "A": "class MyClass extends MySuperClass1, MySupperClass2 {}",
+        "B": "public class MyClass{}",
+        "C": "abstract class MyClass implements YourInterface1, Youriterface2 {}",
+        "D": "private class MyClass {}"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "class MyClass extends MySuperClass1, MySupperClass2 {}",
+      "是否正确": false
+    },
+    {
+      "序号": 157,
+      "题目ID": 97216,
+      "题目类型": "单选题",
+      "题目内容": "在Java中，能实现多重继承效果的方式是（ ）。",
+      "选项": {
+        "A": "接口",
+        "B": "继承",
+        "C": "内部类",
+        "D": "适配器"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "接口",
+      "是否正确": false
+    },
+    {
+      "序号": 158,
+      "题目ID": 97217,
+      "题目类型": "单选题",
+      "题目内容": "下列选项中，用于实现接口的关键字是 （ ）。",
+      "选项": {
+        "A": "interface",
+        "B": "implements",
+        "C": "abstract",
+        "D": "class"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "implements",
+      "是否正确": false
+    },
+    {
+      "序号": 159,
+      "题目ID": 97218,
+      "题目类型": "单选题",
+      "题目内容": "下列选项中，用于定义接口的关键字是(   )。",
+      "选项": {
+        "A": "import",
+        "B": "implements",
+        "C": "interface",
+        "D": "protected"
+      },
+      "分值": 1,
+      "正确答案": "C",
+      "答案文本": "interface",
+      "是否正确": false
+    },
+    {
+      "序号": 160,
+      "题目ID": 97219,
+      "题目类型": "单选题",
+      "题目内容": "以下对接口描述错误的有",
+      "选项": {
+        "A": "接口没有提供构造方法",
+        "B": "接口中的方法默认使用public、abstract修饰",
+        "C": "接口中的属性默认使用public、static、final修饰",
+        "D": "接口不允许多继承"
+      },
+      "分值": 1,
+      "正确答案": "D",
+      "答案文本": "接口不允许多继承",
+      "是否正确": false
+    },
+    {
+      "序号": 161,
+      "题目ID": 97220,
+      "题目类型": "单选题",
+      "题目内容": "如下哪个是正确的接口？",
+      "选项": {
+        "A": "interface A { void print() { }; }",
+        "B": "abstract interface A { print(); }",
+        "C": "abstract interface A { abstract void print() { };}",
+        "D": "interface A { void print();}"
+      },
+      "分值": 1,
+      "正确答案": "D",
+      "答案文本": "interface A { void print();}",
+      "是否正确": false
+    },
+    {
+      "序号": 162,
+      "题目ID": 97221,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">如下程序的运行结果为：（ ）。</p>\n<div data-v-md-line=\"2\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-language extra-class\"><pre class=\"v-md-prism-language\"><code>interface A {\n}\n\nclass C {\n}\n\nclass B extends D implements A {\n}\n\npublic class Test {\n  public static void main(String[] args) {\n    B b = new B();\n    if (b instanceof A)\n      System.out.println(&quot;b is an instance of A&quot;);\n    if (b instanceof C)\n      System.out.println(&quot;b is an instance of C&quot;);\n  }\n}\n\nclass D extends C {\n}\n\n</code></pre>\n</div></div>",
+      "选项": {
+        "A": "没有输出",
+        "B": "b is an instance of A.",
+        "C": "b is an instance of C.",
+        "D": "输出b is an instance of A，然后是b is an instance of C."
+      },
+      "分值": 1,
+      "正确答案": "D",
+      "答案文本": "输出b is an instance of A，然后是b is an instance of C.",
+      "是否正确": false
+    },
+    {
+      "序号": 163,
+      "题目ID": 97222,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">下面哪个选项中的代码没有定义内部类,或者错误的定义了内部类？ (     )<br>\n代码1：</p>\n<div data-v-md-line=\"3\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-language extra-class\"><pre class=\"v-md-prism-language\"><code>public Class Line {\n      int length;\n      Class Point {\n            //内部类代码\n       }\n}\n</code></pre>\n</div></div><p data-v-md-line=\"11\">代码2：</p>\n<div data-v-md-line=\"12\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-language extra-class\"><pre class=\"v-md-prism-language\"><code>public Class Line {\n        public Point getPoint() {\n             return new Point(){\n                  //内部类代码\n            };\n        }\n}  \n</code></pre>\n</div></div><p data-v-md-line=\"21\">代码3：</p>\n<div data-v-md-line=\"22\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-language extra-class\"><pre class=\"v-md-prism-language\"><code>public Class Line {\n               //外部类代码\n}\nClass Point {\n            //内部类代码\n}\n</code></pre>\n</div></div><p data-v-md-line=\"30\">代码4：</p>\n<div data-v-md-line=\"31\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-language extra-class\"><pre class=\"v-md-prism-language\"><code>\npublic Class Line {\n        public int calcLength() {\n           Class Point {\n             //内部类代码\n           }\n       }\n}\n</code></pre>\n</div></div>",
+      "选项": {
+        "A": "代码1",
+        "B": "代码2",
+        "C": "代码3",
+        "D": "代码4"
+      },
+      "分值": 1,
+      "正确答案": "C",
+      "答案文本": "代码3",
+      "是否正确": false
+    },
+    {
+      "序号": 164,
+      "题目ID": 97223,
+      "题目类型": "单选题",
+      "题目内容": "int型public成员变量MAX_LENGTH，该值保持常数100，则定义这个变量的语句是（ ）。",
+      "选项": {
+        "A": "public int MAX_LENGTH=100",
+        "B": "final int MAX_LENGTH=100",
+        "C": "public const int MAX_LENGTH=100",
+        "D": "public final int MAX_LENGTH=100"
+      },
+      "分值": 1,
+      "正确答案": "D",
+      "答案文本": "public final int MAX_LENGTH=100",
+      "是否正确": false
+    },
+    {
+      "序号": 165,
+      "题目ID": 97224,
+      "题目类型": "单选题",
+      "题目内容": "下面说法不正确的是(     )",
+      "选项": {
+        "A": "一个子类的对象可以接收父类对象能接收的消息；",
+        "B": "当子类对象和父类对象能接收同样的消息时，它们针对消息产生的行为可能不同；",
+        "C": "父类比它的子类的方法更多；",
+        "D": "子类在构造函数中可以使用super( )来调用父类的构造函数；"
+      },
+      "分值": 1,
+      "正确答案": "C",
+      "答案文本": "父类比它的子类的方法更多；",
+      "是否正确": false
+    },
+    {
+      "序号": 166,
+      "题目ID": 97225,
+      "题目类型": "单选题",
+      "题目内容": "在Java程序中，用关键字（）修饰的常量对象创建后就不能再修改了。",
+      "选项": {
+        "A": "final",
+        "B": "static",
+        "C": "abstract",
+        "D": "const"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "final",
+      "是否正确": false
+    },
+    {
+      "序号": 167,
+      "题目ID": 97226,
+      "题目类型": "单选题",
+      "题目内容": "下列哪个类的声明是正确的？（    ）",
+      "选项": {
+        "A": "abstract final class HI{}",
+        "B": "abstract private move(){}",
+        "C": "protected private number;",
+        "D": "public abstract class Car{}"
+      },
+      "分值": 1,
+      "正确答案": "D",
+      "答案文本": "public abstract class Car{}",
+      "是否正确": false
+    },
+    {
+      "序号": 168,
+      "题目ID": 97227,
+      "题目类型": "单选题",
+      "题目内容": "若在某一个类定义中定义有如下的方法：abstract void performDial( );该方法属于（    ）。",
+      "选项": {
+        "A": "接口方法",
+        "B": "最终方法",
+        "C": "抽象方法",
+        "D": "空方法"
+      },
+      "分值": 1,
+      "正确答案": "C",
+      "答案文本": "抽象方法",
+      "是否正确": false
+    },
+    {
+      "序号": 169,
+      "题目ID": 97228,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">选项中哪一行代码可以替换题目中//add code here而不产生编译错误？（    ）</p>\n<div data-v-md-line=\"2\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-language extra-class\"><pre class=\"v-md-prism-language\"><code>public abstract class MyClass {\n            public int constInt = 5;\n          //add code here\n           public void method() {                }\n}\n</code></pre>\n</div></div>",
+      "选项": {
+        "A": "public abstract void method(int a);",
+        "B": "value = value + 5;",
+        "C": "public int method();",
+        "D": "public abstract void anotherMethod() {}"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "public abstract void method(int a);",
+      "是否正确": false
+    },
+    {
+      "序号": 170,
+      "题目ID": 97229,
+      "题目类型": "单选题",
+      "题目内容": "下列哪一种叙述是正确的（） 。",
+      "选项": {
+        "A": "abstract修饰符可修饰属性、方法和类",
+        "B": "抽象方法的body部分必须用一对大括号{ }包住",
+        "C": "声明抽象方法，大括号可有可无",
+        "D": "声明抽象方法不可写出大括号"
+      },
+      "分值": 1,
+      "正确答案": "D",
+      "答案文本": "声明抽象方法不可写出大括号",
+      "是否正确": false
+    },
+    {
+      "序号": 171,
+      "题目ID": 97230,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">下面代码运行结果是</p>\n<div data-v-md-line=\"2\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-language extra-class\"><pre class=\"v-md-prism-language\"><code>public class Demo{\n    public int add(int a,int b){\n        try{\n            return a+b;\n        }catch(Exception e){\n            System.out.println(&quot;catch 语句块&quot;);\n        }finally{\n            System.out.println(&quot;finally 语句块&quot;);\n        }\n        return 0;\n    }\n    public static void main(String[] args){\n        Demo demo = new Demo();\n        System.out.println(&quot;和是：&quot;+demo.add(9,34));\n    }\n}\n</code></pre>\n</div></div>",
+      "选项": {
+        "A": "编译异常",
+        "B": "finally语句块 和是：43",
+        "C": "和是：43 finally语句块",
+        "D": "catch语句块 和是：43"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "finally语句块 和是：43",
+      "是否正确": false
+    },
+    {
+      "序号": 172,
+      "题目ID": 97231,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">如下程序会抛出（ ）类型的异常？</p>\n<div data-v-md-line=\"2\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-language extra-class\"><pre class=\"v-md-prism-language\"><code>public class Test {\n  public static void main(String[] args) {\n    System.out.println(1 / 0);\n  }\n}\n</code></pre>\n</div></div>",
+      "选项": {
+        "A": "ArithmeticException",
+        "B": "ArrayIndexOutOfBoundsException",
+        "C": "StringIndexOutOfBoundsException",
+        "D": "ClassCastException"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "ArithmeticException",
+      "是否正确": false
+    },
+    {
+      "序号": 173,
+      "题目ID": 97232,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">如下程序会抛出（ ）类型的异常？</p>\n<div data-v-md-line=\"2\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-language extra-class\"><pre class=\"v-md-prism-language\"><code>public class Test {\n  public static void main(String[] args) {\n    String s = &quot;abc&quot;;\n    System.out.println(s.charAt(3));\n  }\n}\n</code></pre>\n</div></div>",
+      "选项": {
+        "A": "ArithmeticException",
+        "B": "ArrayIndexOutOfBoundsException",
+        "C": "StringIndexOutOfBoundsException",
+        "D": "ClassCastException"
+      },
+      "分值": 1,
+      "正确答案": "C",
+      "答案文本": "StringIndexOutOfBoundsException",
+      "是否正确": false
+    },
+    {
+      "序号": 174,
+      "题目ID": 97233,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">给定一个未完成的方法 ，代码如下：</p>\n<div data-v-md-line=\"2\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-language extra-class\"><pre class=\"v-md-prism-language\"><code>//此处添加方法的声明\n{\n   int success=connect();\n   if(success==-1)\n      throw new TimedOutException();\n}\n</code></pre>\n</div></div><p data-v-md-line=\"10\">已知TimedOutException不属于RuntimeException，那么在第一行注释位置上填写哪段代码能够正确完成该方法的声明？</p>\n",
+      "选项": {
+        "A": "public void MyMethod()",
+        "B": "public void MyMethod() throws TimedOutException",
+        "C": "public void MyMethod() throw TimeOutException",
+        "D": "public throws TimedOutException void MyMethod()"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "public void MyMethod() throws TimedOutException",
+      "是否正确": false
+    },
+    {
+      "序号": 175,
+      "题目ID": 97234,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">已知方法test()定义如下，在方法unsafe()运行正常的情况下哪条语句将肯定不会被输出？</p>\n<div data-v-md-line=\"2\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-language extra-class\"><pre class=\"v-md-prism-language\"><code>public void test( ){\ntry {\n   unsafe();\n   System.out.println(&quot;Test 4&quot;);\n} catch(SafeException e) {\n   System.out.println(&quot;Test 3&quot;);\n}finally{\n   System.out.println(&quot;Test 2&quot;); \n}\n   System.out.println(&quot;Test 1&quot;); \n}\n\n</code></pre>\n</div></div>",
+      "选项": {
+        "A": "Test 4",
+        "B": "Test 3",
+        "C": "Test 2",
+        "D": "Test 1"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "Test 3",
+      "是否正确": false
+    },
+    {
+      "序号": 176,
+      "题目ID": 97235,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">已知下列代码，如果方法oneMethod()运行异常，则下列哪个语句肯定不会被输出？</p>\n<div data-v-md-line=\"3\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-language extra-class\"><pre class=\"v-md-prism-language\"><code>public void example(){\n    try {\n       oneMethod();\n       System.out.println(&quot;condition1&quot;);\n    }catch(ArrayIndexOutOfBoundsException e) {\n       System.out.println(&quot;condition2&quot;);\n    }catch(Exception e) {\n       System.out.println(&quot;condition3&quot;);\n    }finally{\n       System.out.println(&quot;condition4&quot;); \n    }\n}\n</code></pre>\n</div></div>",
+      "选项": {
+        "A": "condition1",
+        "B": "condition2",
+        "C": "condition3",
+        "D": "condition4"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "condition1",
+      "是否正确": false
+    },
+    {
+      "序号": 177,
+      "题目ID": 97236,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">下面程序在fun（ ）方法当出现数组下标超过界限的情况下，被ArrayIndexOutOfBoundsException类型的异常对象e所捕获。程序输出结果是：（ ）。</p>\n<div data-v-md-line=\"2\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-language extra-class\"><pre class=\"v-md-prism-language\"><code>public void test() {\n    try {\n       fun();\n       System.out.print(&quot;情况1&quot;);\n     } catch (ArrayIndexOutOfBoundsException e) {\n         System.out.print(&quot;情况2&quot;);\n     } catch (Exception e) {\n          System.out.print(&quot;情况3&quot;);\n     } finally {\n         System.out.print(&quot;finally&quot;);\n     }\n }\n</code></pre>\n</div></div>",
+      "选项": {
+        "A": "情况1",
+        "B": "情况2",
+        "C": "情况2finally",
+        "D": "情况3finally"
+      },
+      "分值": 1,
+      "正确答案": "C",
+      "答案文本": "情况2finally",
+      "是否正确": false
+    },
+    {
+      "序号": 178,
+      "题目ID": 97237,
+      "题目类型": "单选题",
+      "题目内容": "关于try语句对应的多个catch子句中，若捕获的异常类型有父子类关系时，它们的排列下列哪种是正确的(        ) 。",
+      "选项": {
+        "A": "异常父类在先，异常子类在后",
+        "B": "异常子类在先，异常父类在后",
+        "C": "有继承关系的异常不能同时出现在同一个try程序段之后",
+        "D": "先后顺序无所谓"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "异常子类在先，异常父类在后",
+      "是否正确": false
+    },
+    {
+      "序号": 179,
+      "题目ID": 97238,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">以下程序的执行结果是什么？</p>\n<div data-v-md-line=\"2\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-language extra-class\"><pre class=\"v-md-prism-language\"><code>int a = 8;\nint b = 0;\ntry ｛\n    System. out .println ( &quot;a/b 的值是：&quot;+a/b) \n｝catch (Arithmetic Exceptime){ \n    System.out.println(&quot;程序出现异常，变量b 不能为0。&quot;)；\n} \n</code></pre>\n</div></div>",
+      "选项": {
+        "A": "程序出错退出",
+        "B": "程序执行，在屏幕上显示“程序出现异常，变量b 不能为0。”",
+        "C": "程序正常，在屏幕上显示“a/b 的值是：0” .",
+        "D": "程序出现异常，在屏幕上提示出现算术异常."
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "程序执行，在屏幕上显示“程序出现异常，变量b 不能为0。”",
+      "是否正确": false
+    },
+    {
+      "序号": 180,
+      "题目ID": 97239,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">下列Java程序的输出结果是？</p>\n<div data-v-md-line=\"2\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-language extra-class\"><pre class=\"v-md-prism-language\"><code>public class Test{\n    public static void main(String args[]){\n        try{\n            int a=10/0; \n            System.out.print(&quot;执行try语句！&quot;);\n        }\n        catch(Exception e){\n            System.out.print(&quot;执行catch语句！&quot;);\n        }\n        finally{\n            System.out.print(&quot;执行finally语句！&quot;);\n        }\n    }\n}\n</code></pre>\n</div></div>",
+      "选项": {
+        "A": "执行try语句!执行catch语句!执行finally语句!",
+        "B": "执行catch语句!执行finally语句!",
+        "C": "执行finally语句!",
+        "D": "执行catch语句!"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "执行catch语句!执行finally语句!",
+      "是否正确": false
+    },
+    {
+      "序号": 181,
+      "题目ID": 97240,
+      "题目类型": "单选题",
+      "题目内容": "在Java中，下列常见的系统给出异常中，哪一个是数组越界异常?",
+      "选项": {
+        "A": "ArrayIndexOutOfBoundsException",
+        "B": "IOException",
+        "C": "NullPointerException",
+        "D": "ArithmeticException"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "ArrayIndexOutOfBoundsException",
+      "是否正确": false
+    },
+    {
+      "序号": 182,
+      "题目ID": 97241,
+      "题目类型": "单选题",
+      "题目内容": "在Java中，哪个关键字可以抛出异常?",
+      "选项": {
+        "A": "transient",
+        "B": "finally",
+        "C": "throw",
+        "D": "static"
+      },
+      "分值": 1,
+      "正确答案": "C",
+      "答案文本": "throw",
+      "是否正确": false
+    },
+    {
+      "序号": 183,
+      "题目ID": 97242,
+      "题目类型": "单选题",
+      "题目内容": "在Java的一个异常处理中，下列的语句块可以有多个的是？",
+      "选项": {
+        "A": "catch",
+        "B": "finally",
+        "C": "try",
+        "D": "throws"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "catch",
+      "是否正确": false
+    },
+    {
+      "序号": 184,
+      "题目ID": 97243,
+      "题目类型": "单选题",
+      "题目内容": "在Java的异常处理中，如释放资源、关闭文件、关闭数据库等一般下面哪个子句中完成？",
+      "选项": {
+        "A": "try子句",
+        "B": "catch子句",
+        "C": "finally子句",
+        "D": "throw子句"
+      },
+      "分值": 1,
+      "正确答案": "C",
+      "答案文本": "finally子句",
+      "是否正确": false
+    },
+    {
+      "序号": 185,
+      "题目ID": 97244,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">在Java中，给定如下所示的代码，则运行时会产生哪个类型的异常？</p>\n<div data-v-md-line=\"2\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-language extra-class\"><pre class=\"v-md-prism-language\"><code>String s = null; \ns.concat(&quot;abc&quot;);\n</code></pre>\n</div></div>",
+      "选项": {
+        "A": "ArithmeticException",
+        "B": "NullPointerException",
+        "C": "IOException",
+        "D": "ClassNotFoundException"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "NullPointerException",
+      "是否正确": false
+    },
+    {
+      "序号": 186,
+      "题目ID": 97245,
+      "题目类型": "单选题",
+      "题目内容": "在Java中，所有的异常类皆继承哪一个类？",
+      "选项": {
+        "A": "java.io.Exception",
+        "B": "java.lang.Throwable",
+        "C": "java.lang.Exception",
+        "D": "java.lang.Error"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "java.lang.Throwable",
+      "是否正确": false
+    },
+    {
+      "序号": 187,
+      "题目ID": 97246,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">getCustomerInfo()方法如下，try中可以捕获三种类型的异常，如果在该方法运行中产生了一个IOException，将会输出什么结果（   ）。</p>\n<div data-v-md-line=\"3\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-language extra-class\"><pre class=\"v-md-prism-language\"><code>public void getCustomerInfo() {\n      try {\n      // do something that may cause an Exception\n      } catch (java.io.FileNotFoundException  ex){\n         System.out.print(&quot;FileNotFoundException!&quot;);\n      } catch (java.io.IOException  ex){\n         System.out.print(&quot;IOException!&quot;);\n      } catch (java.lang.Exception  ex){\n         System.out.print(&quot;Exception!&quot;);\n      }\n }\n</code></pre>\n</div></div>",
+      "选项": {
+        "A": "IOException!",
+        "B": "IOException!Exception!",
+        "C": "FileNotFoundException!IOException!",
+        "D": "FileNotFoundException!IOException!Exception!"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "IOException!",
+      "是否正确": false
+    },
+    {
+      "序号": 188,
+      "题目ID": 97247,
+      "题目类型": "单选题",
+      "题目内容": "下列哪种异常是检查型异常，需要在编写程序时声明 （     ）.",
+      "选项": {
+        "A": "NullPointerException",
+        "B": "ClassCastException",
+        "C": "FileNotFoundException",
+        "D": "IndexOutOfBoundsException"
+      },
+      "分值": 1,
+      "正确答案": "C",
+      "答案文本": "FileNotFoundException",
+      "是否正确": false
+    },
+    {
+      "序号": 189,
+      "题目ID": 97248,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">假设方法unsafe() 将抛出IOException, 可以填入如下代码段第1行的选项是（ ）。</p>\n<div data-v-md-line=\"2\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-language extra-class\"><pre class=\"v-md-prism-language\"><code>1)\n2) { if(unsafe()){//do something…}\n3)   else if(safe()){//do the other…}\n4) }\n</code></pre>\n</div></div>",
+      "选项": {
+        "A": "public IOException methodName()",
+        "B": "public void methodName()",
+        "C": "public void methodName() throw IOException",
+        "D": "public void methodName() throws IOException"
+      },
+      "分值": 1,
+      "正确答案": "D",
+      "答案文本": "public void methodName() throws IOException",
+      "是否正确": false
+    },
+    {
+      "序号": 190,
+      "题目ID": 97249,
+      "题目类型": "单选题",
+      "题目内容": "在异常处理中，如释放资源、关闭文件、关闭数据库等由（     ）来完成。",
+      "选项": {
+        "A": "try子句",
+        "B": "catch子句",
+        "C": "finally子句",
+        "D": "throw子句"
+      },
+      "分值": 1,
+      "正确答案": "C",
+      "答案文本": "finally子句",
+      "是否正确": false
+    },
+    {
+      "序号": 191,
+      "题目ID": 97250,
+      "题目类型": "单选题",
+      "题目内容": "在异常处理时，将可能发生异常的代码放在（     ）语句块中，后面紧跟着一个或多个（     ）语句块，还可以再跟零个或一个（     ）语句块。",
+      "选项": {
+        "A": "catch、try、finally",
+        "B": "try、catch、finally",
+        "C": "try、finally、exception",
+        "D": "exception、try、finally"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "try、catch、finally",
+      "是否正确": false
+    },
+    {
+      "序号": 192,
+      "题目ID": 97251,
+      "题目类型": "单选题",
+      "题目内容": "Java中用来抛出异常的关键字是：（     ）。",
+      "选项": {
+        "A": "try",
+        "B": "catch",
+        "C": "throw和throws",
+        "D": "finally"
+      },
+      "分值": 1,
+      "正确答案": "C",
+      "答案文本": "throw和throws",
+      "是否正确": false
+    },
+    {
+      "序号": 193,
+      "题目ID": 97252,
+      "题目类型": "单选题",
+      "题目内容": "关于异常，下列说法正确的是 (        )。",
+      "选项": {
+        "A": "程序运行过程中，若产生异常，它是某种异常类型的对象",
+        "B": "一旦程序运行，异常对象将被创建",
+        "C": "为了保证程序运行速度，要尽量避免异常控制",
+        "D": "以上说法都不对"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "程序运行过程中，若产生异常，它是某种异常类型的对象",
+      "是否正确": false
+    },
+    {
+      "序号": 194,
+      "题目ID": 97253,
+      "题目类型": "单选题",
+      "题目内容": "关于Java中异常的叙述，正确的是：（     ）。",
+      "选项": {
+        "A": "异常是程序编写过程中代码的语法错误",
+        "B": "异常是程序编写过程中代码的逻辑错误",
+        "C": "异常出现后程序的运行马上中止",
+        "D": "异常是可以捕获和处理的"
+      },
+      "分值": 1,
+      "正确答案": "D",
+      "答案文本": "异常是可以捕获和处理的",
+      "是否正确": false
+    },
+    {
+      "序号": 195,
+      "题目ID": 97254,
+      "题目类型": "单选题",
+      "题目内容": "程序代码中包含产生CheckedException受检异常（非运行时异常）的语句时，（         ）。",
+      "选项": {
+        "A": "如果程序错误，就使用try-catch语句处理异常；否则，不必处理",
+        "B": "必须进行处理，或使用try-catch语句处理异常，或在调用方法上使用throws将其抛出",
+        "C": "只能使用try-catch语句处理",
+        "D": "可以置之不理"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "必须进行处理，或使用try-catch语句处理异常，或在调用方法上使用throws将其抛出",
+      "是否正确": false
+    },
+    {
+      "序号": 196,
+      "题目ID": 97255,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">下列程序的运行结果是（ ）。</p>\n<div data-v-md-line=\"2\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-language extra-class\"><pre class=\"v-md-prism-language\"><code>public class Test {\n  public static void main(String[] args) {\n    try {\n      System.out.println(&quot;Welcome to Java&quot;);\n      int i = 0;\n      int y = 2 / i;\n      System.out.println(&quot;Welcome to HTML&quot;);\n    }\n    finally {\n      System.out.println(&quot;The finally clause is executed&quot;);\n    }\n  }\n}\n</code></pre>\n</div></div>",
+      "选项": {
+        "A": "Welcome to Java, 然后是错误信息",
+        "B": "Welcome to Java，下一行是 The finally clause is executed , 然后是错误信息.",
+        "C": "替换为正确项",
+        "D": "替换为错误项"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "Welcome to Java，下一行是 The finally clause is executed , 然后是错误信息.",
+      "是否正确": false
+    },
+    {
+      "序号": 197,
+      "题目ID": 97256,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">下列程序的错误是（ ）</p>\n<div data-v-md-line=\"2\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-language extra-class\"><pre class=\"v-md-prism-language\"><code>public class Test {\n  public static void main (String[] args) {  \n    try {\n      System.out.println(&quot;Welcome to Java&quot;);\n     }\n  }\n}\n</code></pre>\n</div></div>",
+      "选项": {
+        "A": "有一个try块但没有catch块。",
+        "B": "有一个try块但没有catch块或finally块。",
+        "C": "没有声明异常的方法调用不能放在try块中。",
+        "D": "没有错误。"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "有一个try块但没有catch块或finally块。",
+      "是否正确": false
+    },
+    {
+      "序号": 198,
+      "题目ID": 97257,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">如下程序会抛出（ ）类型的异常？</p>\n<div data-v-md-line=\"2\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-language extra-class\"><pre class=\"v-md-prism-language\"><code>public class Test {\n  public static void main(String[] args) {\n    Object o = new Object();\n    String d = (String)o;\n  }\n}\n</code></pre>\n</div></div>",
+      "选项": {
+        "A": "ArithmeticException",
+        "B": "ArrayIndexOutOfBoundsException",
+        "C": "StringIndexOutOfBoundsException",
+        "D": "ClassCastException"
+      },
+      "分值": 1,
+      "正确答案": "D",
+      "答案文本": "ClassCastException",
+      "是否正确": false
+    },
+    {
+      "序号": 199,
+      "题目ID": 97258,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">如下程序会抛出（ ）类型的异常？</p>\n<div data-v-md-line=\"3\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-language extra-class\"><pre class=\"v-md-prism-language\"><code>public class Test { \n   public static void main(String[] args) { \n      int[] list = new int[5]; \n      System.out.println(list[5]); \n  } \n}\n</code></pre>\n</div></div>",
+      "选项": {
+        "A": "ArithmeticException",
+        "B": "ArrayIndexOutOfBoundsException",
+        "C": "StringIndexOutOfBoundsException",
+        "D": "ClassCastException"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "ArrayIndexOutOfBoundsException",
+      "是否正确": false
+    },
+    {
+      "序号": 200,
+      "题目ID": 97259,
+      "题目类型": "单选题",
+      "题目内容": "Java异常类（Exception）是（      ）的子类。",
+      "选项": {
+        "A": "RuntimeException",
+        "B": "Exception",
+        "C": "Error",
+        "D": "Throwable"
+      },
+      "分值": 1,
+      "正确答案": "D",
+      "答案文本": "Throwable",
+      "是否正确": false
+    },
+    {
+      "序号": 201,
+      "题目ID": 97260,
+      "题目类型": "单选题",
+      "题目内容": "下面关于try块的说法正确的是?",
+      "选项": {
+        "A": "try块后至少应有一个catch 块",
+        "B": "try块后必须有finally块",
+        "C": "可能抛出异常的语句应放在try块中",
+        "D": "对抛出的异常的处理应放在try块中"
+      },
+      "分值": 1,
+      "正确答案": "C",
+      "答案文本": "可能抛出异常的语句应放在try块中",
+      "是否正确": false
+    },
+    {
+      "序号": 202,
+      "题目ID": 97261,
+      "题目类型": "单选题",
+      "题目内容": "在try-catch-finally语句块中，以下可以单独与finally一起使用的是",
+      "选项": {
+        "A": "catch",
+        "B": "try",
+        "C": "throws",
+        "D": "throw"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "try",
+      "是否正确": false
+    },
+    {
+      "序号": 203,
+      "题目ID": 97262,
+      "题目类型": "单选题",
+      "题目内容": "关于异常(Exception)，下列描述错误的是（   ）。",
+      "选项": {
+        "A": "异常的基类为Exception，所有异常都必须直接或者间接继承它",
+        "B": "异常可以用try{  }catch(Exception e){  }来捕获并进行处理",
+        "C": "如果某异常继承RuntimeException，则该异常可以不处理",
+        "D": "异常必须在内部自己处理，不能抛给外层的程序进行处理"
+      },
+      "分值": 1,
+      "正确答案": "D",
+      "答案文本": "异常必须在内部自己处理，不能抛给外层的程序进行处理",
+      "是否正确": false
+    },
+    {
+      "序号": 204,
+      "题目ID": 97263,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">以下代码段将创建几个对象?</p>\n<div data-v-md-line=\"2\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-language extra-class\"><pre class=\"v-md-prism-language\"><code>String s1=&quot;bc&quot;; \nString s2=&quot;bc&quot;;\n</code></pre>\n</div></div>",
+      "选项": {
+        "A": "2",
+        "B": "3",
+        "C": "0",
+        "D": "1"
+      },
+      "分值": 1,
+      "正确答案": "D",
+      "答案文本": "1",
+      "是否正确": false
+    },
+    {
+      "序号": 205,
+      "题目ID": 97264,
+      "题目类型": "单选题",
+      "题目内容": "在Java中，\"456\"属于（    ）类的对象。",
+      "选项": {
+        "A": "int",
+        "B": "String",
+        "C": "Integer",
+        "D": "Number"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "String",
+      "是否正确": false
+    },
+    {
+      "序号": 206,
+      "题目ID": 97265,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">关于字符串的构造方法，如下代码执行结果是（ ）。</p>\n<div data-v-md-line=\"2\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-language extra-class\"><pre class=\"v-md-prism-language\"><code>String str=&quot;ABCDEFG&quot;;\nchar[] chars=str.toCharArray(); \nSystem.out.println(new String(chars,1,3));\n</code></pre>\n</div></div>",
+      "选项": {
+        "A": "ABC",
+        "B": "BCD",
+        "C": "AB",
+        "D": "BC"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "BCD",
+      "是否正确": false
+    },
+    {
+      "序号": 207,
+      "题目ID": 97266,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">以下代码的运行结果是？</p>\n<div data-v-md-line=\"3\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper- extra-class\"><pre><code>public class Test{\n    public static void main(String args[])\n    {\n        String str=new String(&quot;World&quot;);\n        char ch[]={'H','e','l','l','o'};\n        change(str,ch);\n        System.out.println(str + &quot;and&quot; + ch);\n    }\n    public static void change(String str, char ch[])\n    {\n        str=&quot;Changed&quot;;  \n        ch[0]='C';\n    }\n}\n</code></pre>\n</div></div>",
+      "选项": {
+        "A": "World and Hello",
+        "B": "World and Cello",
+        "C": "Changed and Hello",
+        "D": "Changed and Cello"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "World and Cello",
+      "是否正确": false
+    },
+    {
+      "序号": 208,
+      "题目ID": 97267,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">请选择下面程序正确的输出结果？</p>\n<div data-v-md-line=\"2\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-language extra-class\"><pre class=\"v-md-prism-language\"><code> public class J_String {\n      public static void main(String args[ ]) {\n          String a = new String(“A”);\n          String b = new String(“B”);\n          mb_operate(a,b); System.out.println(a+”.”+b);\n      }\n      static void mb_operate(String x,String y) {\n            x.concat(y); y=x;\n        }\n}\n</code></pre>\n</div></div>",
+      "选项": {
+        "A": "A.B",
+        "B": "A.A",
+        "C": "AB.AB",
+        "D": "AB.B"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "A.B",
+      "是否正确": false
+    },
+    {
+      "序号": 209,
+      "题目ID": 97268,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">使用UDP协议通信时，需要使用哪个类把要发送的数据打包，并且，用该类对象接收数据？（     ）</p>\n",
+      "选项": {
+        "A": "Socket    ",
+        "B": "DatagramSocket    ",
+        "C": "DatagramPacket    ",
+        "D": "ServerSocket"
+      },
+      "分值": 1,
+      "正确答案": "C",
+      "答案文本": "DatagramPacket    ",
+      "是否正确": false
+    },
+    {
+      "序号": 210,
+      "题目ID": 97269,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">进行UDP通信时，在接收端若要获得发送端的IP地址，可以使用DatagramPacket的（      ）方法。</p>\n",
+      "选项": {
+        "A": "getAddress()    ",
+        "B": "getPort()    ",
+        "C": "getName()    ",
+        "D": "getData()"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "getAddress()    ",
+      "是否正确": false
+    },
+    {
+      "序号": 211,
+      "题目ID": 97270,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">使用TCP协议开发网络程序时，需要使用2个类，分别是：（     ）和（      ）。</p>\n",
+      "选项": {
+        "A": "DatagramSocket    DatagramPacket",
+        "B": " SocketServer       Socket",
+        "C": "DatagramSocket    SocketServer",
+        "D": "DatagramPacket    SocketServer"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": " SocketServer       Socket",
+      "是否正确": false
+    },
+    {
+      "序号": 212,
+      "题目ID": 97271,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">使用UDP协议开发网络程序时，需要使用2个类，分别是：（     ）和（      ）。</p>\n",
+      "选项": {
+        "A": "DatagramSocket    DatagramPacket",
+        "B": "SocketServer       Socket",
+        "C": "DatagramSocket    SocketServer ",
+        "D": "DatagramPacket    SocketServer"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "DatagramSocket    DatagramPacket",
+      "是否正确": false
+    },
+    {
+      "序号": 213,
+      "题目ID": 97272,
+      "题目类型": "单选题",
+      "题目内容": "关于垃圾收集的哪些叙述是对的。",
+      "选项": {
+        "A": "垃圾收集能够在期望的时间释放被java对象使用的内存。",
+        "B": "垃圾收集将检查并释放不再使用的内存。",
+        "C": "垃圾收集允许程序开发者明确指定并立即释放该内存。",
+        "D": "程序开发者必须自己创建一个线程进行内存释放的工作。"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "垃圾收集将检查并释放不再使用的内存。",
+      "是否正确": false
+    },
+    {
+      "序号": 214,
+      "题目ID": 97273,
+      "题目类型": "单选题",
+      "题目内容": "下列哪些语句关于Java内存回收的说明是正确的? （   ）",
+      "选项": {
+        "A": "程序员必须创建一个线程来释放内存",
+        "B": "内存回收程序负责释放无用内存",
+        "C": "内存回收程序允许程序员直接释放内存",
+        "D": "内存回收程序可以在指定的时间释放内存对象"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "内存回收程序负责释放无用内存",
+      "是否正确": false
+    },
+    {
+      "序号": 215,
+      "题目ID": 97274,
+      "题目类型": "单选题",
+      "题目内容": "在Java中，实现了参数化类型的概念，使代码可以应用于多种类型的是？",
+      "选项": {
+        "A": "封装",
+        "B": "继承",
+        "C": "泛型",
+        "D": "以上都不是"
+      },
+      "分值": 1,
+      "正确答案": "C",
+      "答案文本": "泛型",
+      "是否正确": false
+    },
+    {
+      "序号": 216,
+      "题目ID": 97275,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">下列程序代码运行结果是：（ ）。</p>\n<div data-v-md-line=\"2\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-language extra-class\"><pre class=\"v-md-prism-language\"><code>import java.util.ArrayList;\nimport java.util.List;\npublic class Test {\n     public static void main(String args[]) {\n        List list = new ArrayList();\n        list.add(new Test());\n        list.add(new String(&quot;&quot;ABC&quot;&quot;));\n        list.add(new Test());\n        System.out.println(list.size());\n     }\n}\n</code></pre>\n</div></div>",
+      "选项": {
+        "A": "1",
+        "B": "2",
+        "C": "3",
+        "D": "4"
+      },
+      "分值": 1,
+      "正确答案": "C",
+      "答案文本": "3",
+      "是否正确": false
+    },
+    {
+      "序号": 217,
+      "题目ID": 97276,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">如下代码运行后，list2的输出是（ ）。</p>\n<div data-v-md-line=\"2\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-language extra-class\"><pre class=\"v-md-prism-language\"><code>class Test {\n      public static void main(String[] args) {\n      int[] list1 = {1, 2, 3};\n      int[] list2 = {1, 2, 3};\n      list2 = list1;\n      list1[0] = 0;  list1[1] = 1;  list2[2] = 2;\n      for (int i = 0; i &lt; list2.length; i++)\n            System.out.print(list2[i] + &quot; &quot;);\n      }\n}\n</code></pre>\n</div></div>",
+      "选项": {
+        "A": "1 2 3",
+        "B": "1 1 1",
+        "C": "0 1 2",
+        "D": "0 1 3"
+      },
+      "分值": 1,
+      "正确答案": "C",
+      "答案文本": "0 1 2",
+      "是否正确": false
+    },
+    {
+      "序号": 218,
+      "题目ID": 97277,
+      "题目类型": "单选题",
+      "题目内容": "欲构造ArrayList类的一个实例，此类实现了List接口，下列哪个写法是正确的 ？",
+      "选项": {
+        "A": "ArrayList myList=new Object()；",
+        "B": "List myList=new ArrayList()；",
+        "C": "ArrayList myList=new List()；",
+        "D": "List myList=new List();"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "List myList=new ArrayList()；",
+      "是否正确": false
+    },
+    {
+      "序号": 219,
+      "题目ID": 97278,
+      "题目类型": "单选题",
+      "题目内容": "在Java中，( )类可用于创建链表数据结构的对象",
+      "选项": {
+        "A": "LinkedList",
+        "B": "ArrayList",
+        "C": "Collection",
+        "D": "HashMap"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "LinkedList",
+      "是否正确": false
+    },
+    {
+      "序号": 220,
+      "题目ID": 97279,
+      "题目类型": "单选题",
+      "题目内容": "要想在集合中保存没有重复的元素，并且按照一定的顺序排列，可以使用以下哪个集合？",
+      "选项": {
+        "A": "LinkedList",
+        "B": "ArrayList",
+        "C": "HashSet",
+        "D": "TreeSet"
+      },
+      "分值": 1,
+      "正确答案": "D",
+      "答案文本": "TreeSet",
+      "是否正确": false
+    },
+    {
+      "序号": 221,
+      "题目ID": 97280,
+      "题目类型": "单选题",
+      "题目内容": "返回Collection 中的元素数量的方法是（       ）。",
+      "选项": {
+        "A": "length()",
+        "B": "capacity()",
+        "C": "size()",
+        "D": "count()"
+      },
+      "分值": 1,
+      "正确答案": "C",
+      "答案文本": "size()",
+      "是否正确": false
+    },
+    {
+      "序号": 222,
+      "题目ID": 97281,
+      "题目类型": "单选题",
+      "题目内容": "在Java中，以下（）类的对象是以键-值的方式存储对象。",
+      "选项": {
+        "A": "List",
+        "B": "ArrayList",
+        "C": "HashMap",
+        "D": "LinkedList"
+      },
+      "分值": 1,
+      "正确答案": "C",
+      "答案文本": "HashMap",
+      "是否正确": false
+    },
+    {
+      "序号": 223,
+      "题目ID": 97282,
+      "题目类型": "单选题",
+      "题目内容": "下面哪个Set是根据内容排序的？",
+      "选项": {
+        "A": "LinkedHashSet",
+        "B": "HashSet",
+        "C": "TreeSet",
+        "D": "AbstractSet"
+      },
+      "分值": 1,
+      "正确答案": "C",
+      "答案文本": "TreeSet",
+      "是否正确": false
+    },
+    {
+      "序号": 224,
+      "题目ID": 97283,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">下列程序代码运行结果是：（ ）。</p>\n<div data-v-md-line=\"2\"><div class=\"v-md-pre-wrapper v-md-pre-wrapper-language extra-class\"><pre class=\"v-md-prism-language\"><code>import java.util.*;    \npublic class Test {     \n    public int hashCode() {        \n         return 1;     \n    }     \n    public boolean equals(Object b) {        \n        return true;    \n   }    \n    public static void main(String args[]) {        \n        Set set = new HashSet();        \n        set.add(new Test());        \n        set.add(new String(&quot;ABC&quot;));        \n        set.add(new Test());        \n        System.out.println(set.size());     \n    }\n}\n</code></pre>\n</div></div>",
+      "选项": {
+        "A": "1",
+        "B": "2",
+        "C": "3",
+        "D": "4"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "2",
+      "是否正确": false
+    },
+    {
+      "序号": 225,
+      "题目ID": 97284,
+      "题目类型": "单选题",
+      "题目内容": "下列方法中可以用来创建一个新线程的是(    )。",
+      "选项": {
+        "A": "实现java.lang.Runnable接口并重写start()方法",
+        "B": "实现java.lang.Runnable接口并重写run()方法",
+        "C": "实现java.lang.Thread类并重写run()方法",
+        "D": "实现java.lang.Thread类并重写start()方法"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "实现java.lang.Runnable接口并重写run()方法",
+      "是否正确": false
+    },
+    {
+      "序号": 226,
+      "题目ID": 97285,
+      "题目类型": "单选题",
+      "题目内容": "Runnable接口定义了如下哪个方法？(    )。",
+      "选项": {
+        "A": "start( )",
+        "B": "stop( )",
+        "C": "sleep( )",
+        "D": "run( )"
+      },
+      "分值": 1,
+      "正确答案": "D",
+      "答案文本": "run( )",
+      "是否正确": false
+    },
+    {
+      "序号": 227,
+      "题目ID": 97286,
+      "题目类型": "单选题",
+      "题目内容": "以下哪个选项最准确地描述synchronized关键字？(   )",
+      "选项": {
+        "A": "允许两线程并行运行，而且互相通信",
+        "B": "保证在某时刻只有一个线程可访问方法或对象",
+        "C": "保证允许两个或更多处理同时开始和结束",
+        "D": "有synchronized的地方一定有wait( )和notify( )方法"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "保证在某时刻只有一个线程可访问方法或对象",
+      "是否正确": false
+    },
+    {
+      "序号": 228,
+      "题目ID": 97287,
+      "题目类型": "单选题",
+      "题目内容": "下面关于join()方法描述正确的是（ ）",
+      "选项": {
+        "A": "join()方法是用于线程休眠",
+        "B": "join()方法是用于线程启动",
+        "C": "join()方法是用于线程插队",
+        "D": "join()方法是用于线程同步"
+      },
+      "分值": 1,
+      "正确答案": "C",
+      "答案文本": "join()方法是用于线程插队",
+      "是否正确": false
+    },
+    {
+      "序号": 229,
+      "题目ID": 97288,
+      "题目类型": "单选题",
+      "题目内容": "下列有关线程的创建方式说法错误的是（ ）",
+      "选项": {
+        "A": "通过继承Thread类与实现Runnable接口都可以创建多线程程序",
+        "B": "实现Runnable接口相对于继承Thread类来说，可以避免由于Java的单继承带来的局限性",
+        "C": "通过继承Thread类与实现Runnable接口创建多线程这两种方式没有区别",
+        "D": "大部分的多线程应用都会采用实现Runnable接口方式创建"
+      },
+      "分值": 1,
+      "正确答案": "C",
+      "答案文本": "通过继承Thread类与实现Runnable接口创建多线程这两种方式没有区别",
+      "是否正确": false
+    },
+    {
+      "序号": 230,
+      "题目ID": 97289,
+      "题目类型": "单选题",
+      "题目内容": "线程整个生命周期可以分为五个阶段，以下哪个不属于其生命周期（）",
+      "选项": {
+        "A": "新建状态",
+        "B": "生存状态",
+        "C": "阻塞状态",
+        "D": "运行状态"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "生存状态",
+      "是否正确": false
+    },
+    {
+      "序号": 231,
+      "题目ID": 97290,
+      "题目类型": "单选题",
+      "题目内容": "以下哪个方法用于定义线程的执行体。",
+      "选项": {
+        "A": "start()",
+        "B": "init()",
+        "C": "run()",
+        "D": "main()"
+      },
+      "分值": 1,
+      "正确答案": "C",
+      "答案文本": "run()",
+      "是否正确": false
+    },
+    {
+      "序号": 232,
+      "题目ID": 97291,
+      "题目类型": "单选题",
+      "题目内容": "下列关于Java线程的说法，正确的是（  ）。",
+      "选项": {
+        "A": "每一个Java线程可以看成由代码、一个真实的CPU以及数据三部份组成",
+        "B": "Java创建线程，可以继承Thread类，也可以实现Runnable接口",
+        "C": "Thread类属于java.util程序包",
+        "D": "以上说法无一正确"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "Java创建线程，可以继承Thread类，也可以实现Runnable接口",
+      "是否正确": false
+    },
+    {
+      "序号": 233,
+      "题目ID": 97292,
+      "题目类型": "单选题",
+      "题目内容": "获取ResutlSet对象rst的第一行数据，以下正确的是",
+      "选项": {
+        "A": "rst.hashNext();",
+        "B": "rst.first();",
+        "C": "rst.next();",
+        "D": "rst.nextRow();"
+      },
+      "分值": 1,
+      "正确答案": "C",
+      "答案文本": "rst.next();",
+      "是否正确": false
+    },
+    {
+      "序号": 234,
+      "题目ID": 97293,
+      "题目类型": "单选题",
+      "题目内容": "以下负责建立与数据库连接的是。",
+      "选项": {
+        "A": "Statement",
+        "B": "PreparedStatement",
+        "C": "DriverManager",
+        "D": "ResultSet"
+      },
+      "分值": 1,
+      "正确答案": "C",
+      "答案文本": "DriverManager",
+      "是否正确": false
+    },
+    {
+      "序号": 235,
+      "题目ID": 97294,
+      "题目类型": "单选题",
+      "题目内容": "<p data-v-md-line=\"1\">使用JDBC连接数据库的顺序有下面几个，其中正确的顺序是（ ）<br>\nA) 加载驱动<br>\nB) 导入驱动包<br>\nC) 发送并处理SQL语句<br>\nD) 建立于数据库的连接<br>\nE) 关闭连接</p>\n",
+      "选项": {
+        "A": "ABDCE",
+        "B": "ABCDE",
+        "C": "DABCE",
+        "D": "BADCE"
+      },
+      "分值": 1,
+      "正确答案": "D",
+      "答案文本": "BADCE",
+      "是否正确": false
+    },
+    {
+      "序号": 236,
+      "题目ID": 97295,
+      "题目类型": "单选题",
+      "题目内容": "JDBC是一套用于执行（      ）的Java API。",
+      "选项": {
+        "A": "SQL语句",
+        "B": "数据库连接",
+        "C": "数据库操作",
+        "D": "数据库驱动"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "SQL语句",
+      "是否正确": false
+    },
+    {
+      "序号": 237,
+      "题目ID": 97296,
+      "题目类型": "单选题",
+      "题目内容": "以下关于JDBC API中的说法，（     ）是错的。",
+      "选项": {
+        "A": "可以使用Class.forName或者DriverManager.registerDriver来注册给定的驱动driver。",
+        "B": "PrepareStatement对象继承了Statement接口，但是访问数据库的速度并没有Statement对象快。",
+        "C": "Connection对象代表了和某一个数据源的连接。",
+        "D": "ResultSet对象负责处理数据结果集对象。"
+      },
+      "分值": 1,
+      "正确答案": "B",
+      "答案文本": "PrepareStatement对象继承了Statement接口，但是访问数据库的速度并没有Statement对象快。",
+      "是否正确": false
+    },
+    {
+      "序号": 238,
+      "题目ID": 97297,
+      "题目类型": "单选题",
+      "题目内容": "在ResultSet接口内部有一个指向表格数据行的游标（或指针），ResultSet对象初始化时，游标在表格的第一行之前，调用（    ）方法可将游标移动到下一行。",
+      "选项": {
+        "A": "before()",
+        "B": "after()",
+        "C": "next()",
+        "D": "last()"
+      },
+      "分值": 1,
+      "正确答案": "C",
+      "答案文本": "next()",
+      "是否正确": false
+    },
+    {
+      "序号": 239,
+      "题目ID": 97298,
+      "题目类型": "单选题",
+      "题目内容": "在Java中，下面哪一个import命令可以为我们提供编写数据库程序的类？",
+      "选项": {
+        "A": "import java.sql.*;",
+        "B": "import java.util.*;",
+        "C": "import java.io.*;",
+        "D": "import java.net.*;"
+      },
+      "分值": 1,
+      "正确答案": "A",
+      "答案文本": "import java.sql.*;",
+      "是否正确": false
+    },
+    {
+      "序号": 240,
+      "题目ID": 97299,
+      "题目类型": "单选题",
+      "题目内容": "下列关于File类的叙述中，错误的是（     ）。",
+      "选项": {
+        "A": "File类是java.io包中的一个类",
+        "B": "File类描述的是文件或目录",
+        "C": "File类能直接读写文件内容",
+        "D": "File类能操作文件或目录的属性"
+      },
+      "分值": 1,
+      "正确答案": "C",
+      "答案文本": "File类能直接读写文件内容",
+      "是否正确": false
+    },
+    {
+      "序号": 241,
+      "题目ID": 97300,
+      "题目类型": "单选题",
+      "题目内容": "在Java中，字符流与字节流的区别是？",
+      "选项": {
+        "A": "每次读入的字节数不同",
+        "B": "前者带有缓冲,后者没有",
+        "C": "前者的读写单位是字符,后者的读写单位是字节",
+        "D": "二者没有区别,可以互换使用"
+      },
+      "分值": 1,
+      "正确答案": "C",
+      "答案文本": "前者的读写单位是字符,后者的读写单位是字节",
+      "是否正确": false
+    }
+  ]
+}

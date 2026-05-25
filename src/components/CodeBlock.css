@@ -1,0 +1,67 @@
+.code-block {
+    background: #2B2D3A;
+    color: #E5E7EB;
+    padding: 20px 24px;
+    border-radius: 12px;
+    overflow: auto;
+    max-height: 500px;
+    margin: 16px 0;
+    font-size: 14px;
+    line-height: 1.7;
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    border: 1px solid #1a1c28;
+    white-space: pre;
+}
+
+
+.code-block code {
+    background: transparent;
+    padding: 0;
+    color: inherit;
+    font-family: inherit;
+}
+
+/* Syntax highlighting colors */
+.code-keyword {
+    color: #C792EA;
+    font-weight: 500;
+}
+
+.code-function {
+    color: #FFCB6B;
+    font-weight: 500;
+}
+
+.code-string {
+    color: #C3E88D;
+}
+
+.code-number {
+    color: #F78C6C;
+}
+
+.code-comment {
+    color: #697098;
+    font-style: italic;
+}
+
+/* Custom scrollbar for code blocks */
+.code-block::-webkit-scrollbar {
+    height: 8px;
+    width: 8px;
+}
+
+.code-block::-webkit-scrollbar-track {
+    background: #1a1c28;
+    border-radius: 4px;
+}
+
+.code-block::-webkit-scrollbar-thumb {
+    background: #3a3d4f;
+    border-radius: 4px;
+}
+
+.code-block::-webkit-scrollbar-thumb:hover {
+    background: #4a4d5f;
+}

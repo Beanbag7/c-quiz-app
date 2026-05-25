@@ -1,0 +1,95 @@
+.quiz-card {
+    background: var(--pure-white);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-md);
+    box-shadow: var(--shadow-md);
+    margin-bottom: var(--spacing-md);
+    transition: all var(--transition-normal);
+}
+
+.quiz-card:hover {
+    box-shadow: var(--shadow-lg);
+    /* 移除transform以防止抖动 */
+}
+
+.quiz-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-md);
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.question-number {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--primary-blue);
+    letter-spacing: 0;
+}
+
+.question-type-badge {
+    background: var(--primary-blue);
+    color: var(--pure-white);
+    padding: 6px 16px;
+    border-radius: var(--radius-md);
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.question-content {
+    font-size: 16px;
+    line-height: 1.8;
+    color: var(--text-primary);
+}
+
+.question-text {
+    font-size: 18px;
+    line-height: 1.6;
+    color: var(--midnight-dark);
+    margin-bottom: var(--spacing-sm);
+    font-weight: 500;
+}
+
+/* HTML content styling */
+.question-text p {
+    margin: var(--spacing-sm) 0;
+}
+
+/* Enhanced code block styling matching reference image */
+.question-text pre {
+    background: #1E1E1E;
+    color: #D4D4D4;
+    padding: var(--spacing-sm);
+    border-radius: var(--radius-md);
+    overflow-x: auto;
+    margin: var(--spacing-sm) 0;
+    font-size: 14px;
+    line-height: 1.7;
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    border: 1px solid #1a1c28;
+    white-space: pre;
+}
+
+.question-text img {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--radius-md);
+    margin: var(--spacing-md) 0;
+    display: block;
+}
+
+.question-text code {
+    background: #F3F4F6;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.9em;
+    color: var(--midnight-dark);
+}
+
+.question-text pre code {
+    background: transparent;
+    padding: 0;
+    color: #E5E7EB;
+}
