@@ -268,12 +268,55 @@ function App() {
     // 答错了允许重新选择
   };
 
+  const handleMultiSelectToggle = (optionKey) => {
+    if (multiSubmitted) return;
+
+    setMultiSelectedAnswers(prev => {
+      const next = new Set(prev);
+      if (next.has(optionKey)) {
+        next.delete(optionKey);
+      } else {
+        next.add(optionKey);
+      }
+      return next;
+    });
+  };
+
+  const handleMultiSelectSubmit = () => {
+    if (!currentQuestion || multiSelectedAnswers.size === 0) return;
+
+    const correctAnswers = Array.isArray(currentQuestion.正确答案)
+      ? [...currentQuestion.正确答案].sort()
+      : [currentQuestion.正确答案];
+    const selectedAnswers = Array.from(multiSelectedAnswers).sort();
+    const correct =
+      selectedAnswers.length === correctAnswers.length &&
+      selectedAnswers.every((answer, index) => answer === correctAnswers[index]);
+
+    setMultiSubmitted(true);
+    setMultiCorrect(correct);
+
+    const questionId = currentQuestion.序号 || currentQuestion.题目ID;
+    if (!firstAttempts.has(questionId)) {
+      setFirstAttempts(prev => new Set([...prev, questionId]));
+      setAnsweredQuestions(prev => new Set([...prev, questionId]));
+      if (correct) {
+        setCorrectCount(prev => prev + 1);
+      } else {
+        setWrongAnswers(prev => [...prev, currentQuestion]);
+      }
+    }
+  };
+
   // Go to next question
   const goToNextQuestion = () => {
     if (currentIndex < questions.length - 1) {
       setCurrentIndex(currentIndex + 1);
       setSelectedAnswer(null);
       setIsCorrect(null);
+      setMultiSelectedAnswers(new Set());
+      setMultiSubmitted(false);
+      setMultiCorrect(null);
     } else {
       // Quiz completed - 显示结果弹窗
       setShowResultModal(true);
@@ -291,6 +334,12 @@ function App() {
     setCorrectCount(0);
     setSelectedAnswer(null);
     setIsCorrect(null);
+    setFillBlankAnswer('');
+    setFillBlankSubmitted(false);
+    setFillBlankCorrect(null);
+    setMultiSelectedAnswers(new Set());
+    setMultiSubmitted(false);
+    setMultiCorrect(null);
     setShowResultModal(false);
   };
 
@@ -323,6 +372,12 @@ function App() {
     setCorrectCount(0);
     setWrongAnswers([]);
     setFirstAttempts(new Set());
+    setFillBlankAnswer('');
+    setFillBlankSubmitted(false);
+    setFillBlankCorrect(null);
+    setMultiSelectedAnswers(new Set());
+    setMultiSubmitted(false);
+    setMultiCorrect(null);
     setShowResultModal(false);
     setPracticeMode('normal');
   };
@@ -577,7 +632,7 @@ function App() {
                       const userAns = normalize(fillBlankAnswer);
                       let correct = false;
 
-                      if (Array.isArray(currentQuestion.答案)) {
+                      if (Array.isArray(currentQuestion.正确答案)) {
                         // 多答案题目：支持逗号、空格分隔输入
                         // 用户可以用中文逗号、英文逗号、顿号或空格分隔
                         const userAnswers = fillBlankAnswer
@@ -585,7 +640,7 @@ function App() {
                           .map(ans => normalize(ans))
                           .filter(ans => ans.length > 0);
 
-                        const correctAnswers = currentQuestion.答案.map(ans => normalize(ans));
+                        const correctAnswers = currentQuestion.正确答案.map(ans => normalize(ans));
 
                         // 检查是否所有答案都匹配（顺序可以不同）
                         if (userAnswers.length === correctAnswers.length) {
@@ -597,7 +652,7 @@ function App() {
                         }
                       } else {
                         // 单答案题目
-                        correct = normalize(currentQuestion.答案) === userAns;
+                        correct = normalize(currentQuestion.正确答案) === userAns;
                       }
 
                       setFillBlankSubmitted(true);
@@ -674,6 +729,98 @@ function App() {
                     }
                   }}
                 />
+              );
+            }
+            if (questionType === '多选题') {
+              const correctAnswers = Array.isArray(currentQuestion.正确答案)
+                ? currentQuestion.正确答案
+                : [currentQuestion.正确答案];
+
+              return (
+                <>
+                  <QuizCard
+                    question={currentQuestion}
+                    currentIndex={currentIndex}
+                    totalQuestions={questions.length}
+                  />
+
+                  <div className="options-container">
+                    {currentQuestion.选项 && Object.entries(currentQuestion.选项).map(([key, value]) => {
+                      const isSelected = multiSelectedAnswers.has(key);
+                      const isCorrectOption = correctAnswers.includes(key);
+                      return (
+                        <OptionButton
+                          key={key}
+                          optionKey={key}
+                          optionText={value}
+                          isSelected={isSelected}
+                          isCorrect={multiSubmitted && isCorrectOption}
+                          isWrong={multiSubmitted && isSelected && !isCorrectOption}
+                          disabled={multiSubmitted}
+                          onClick={() => handleMultiSelectToggle(key)}
+                        />
+                      );
+                    })}
+                  </div>
+
+                  {!multiSubmitted && (
+                    <div className="control-buttons">
+                      <button
+                        className="control-button secondary"
+                        onClick={resetQuiz}
+                      >
+                        重新开始
+                      </button>
+                      <button
+                        className="control-button primary"
+                        onClick={handleMultiSelectSubmit}
+                        disabled={multiSelectedAnswers.size === 0}
+                      >
+                        提交答案
+                      </button>
+                    </div>
+                  )}
+
+                  {multiSubmitted && (
+                    <>
+                      <div className={`compact-hint ${multiCorrect ? 'success' : ''}`}>
+                        {multiCorrect
+                          ? '✓ 回答正确！'
+                          : <>正确答案：<strong>{correctAnswers.join('、')}</strong> - {currentQuestion.答案文本}</>}
+                      </div>
+
+                      <Statistics
+                        totalQuestions={questions.length}
+                        answeredQuestions={answeredQuestions.size}
+                        correctAnswers={correctCount}
+                      />
+
+                      <div className="control-buttons">
+                        <button
+                          className="control-button secondary"
+                          onClick={resetQuiz}
+                        >
+                          重新开始
+                        </button>
+                        <button
+                          className="control-button primary"
+                          onClick={() => {
+                            if (currentIndex < questions.length - 1) {
+                              setCurrentIndex(prev => prev + 1);
+                              setMultiSelectedAnswers(new Set());
+                              setMultiSubmitted(false);
+                              setMultiCorrect(null);
+                            } else {
+                              setShowResultModal(true);
+                            }
+                          }}
+                        >
+                          {currentIndex < questions.length - 1 ? '下一题 →' : '查看结果'}
+                        </button>
+                      </div>
+                    </>
+                  )}
+                </>
               );
             }
             // 选择题（默认）

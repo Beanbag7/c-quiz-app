@@ -21,6 +21,8 @@ function FillBlankQuestion({
         }
     };
 
+    const answerContent = question.答案 ?? question.答案文本 ?? question.正确答案;
+
     return (
         <div className="fill-blank-question">
             <div className="question-content">
@@ -63,14 +65,14 @@ function FillBlankQuestion({
                             <span className="icon">✗</span> 回答错误
                             <div className="correct-answer-display">
                                 <strong>正确答案：</strong>
-                                {Array.isArray(question.答案) ? (
+                                {Array.isArray(answerContent) ? (
                                     <ul>
-                                        {question.答案.map((ans, index) => (
+                                        {answerContent.map((ans, index) => (
                                             <li key={index}>{ans}</li>
                                         ))}
                                     </ul>
                                 ) : (
-                                    <span className="answer-text">{question.答案}</span>
+                                    <span className="answer-text">{answerContent}</span>
                                 )}
                             </div>
                         </div>
