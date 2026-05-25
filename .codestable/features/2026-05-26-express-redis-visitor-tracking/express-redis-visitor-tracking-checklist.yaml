@@ -1,0 +1,59 @@
+steps:
+  - id: step-1-backend-skeleton
+    title: 建立 Express 与共享后端基础骨架
+    status: done
+    outcome: server 目录、Redis 接入、cookie/session/helper 基础结构可运行
+
+  - id: step-2-presence-workflow
+    title: 实现在线人数 heartbeat 与 counts 编排闭环
+    status: done
+    outcome: 后端可按 home/quiz 作用域输出真实在线人数
+
+  - id: step-3-admin-auth-workflow
+    title: 实现管理员密码登录与会话编排闭环
+    status: done
+    outcome: 正确密码可建立会话，普通用户无法取得管理员权限
+
+  - id: step-4-visitor-log-workflow
+    title: 实现脱敏访客日志记录与管理员读取接口
+    status: done
+    outcome: 后端可记录并返回脱敏 IP 与来源地日志，且接口受保护
+
+  - id: step-5-frontend-integration
+    title: 接入首页与答题页在线人数，以及管理员日志 UI
+    status: pending
+    outcome: 用户页面能显示在线人数，管理员页面能查看访客日志
+
+  - id: step-6-local-verify
+    title: 补齐本地开发配置、环境变量说明和验证闭环
+    status: done
+    outcome: 本地前后端联合运行路径完整，feature 可进入实现和验收
+
+checks:
+  - id: check-scope-no-public-logs
+    title: 普通用户不可见访客日志
+    status: done
+
+  - id: check-scope-no-raw-ip
+    title: 系统不存储也不展示原始 IP
+    status: done
+
+  - id: check-presence-contract
+    title: 在线人数由 heartbeat + TTL 服务端语义统一计算
+    status: done
+
+  - id: check-admin-auth
+    title: 管理员日志接口受密码会话保护
+    status: done
+
+  - id: check-home-hook
+    title: 首页具备在线人数展示挂载点
+    status: pending
+
+  - id: check-quiz-hook
+    title: 答题页具备在线人数展示挂载点
+    status: pending
+
+  - id: check-local-setup
+    title: Redis、管理员密码和 session secret 的本地配置要求已写明
+    status: done
