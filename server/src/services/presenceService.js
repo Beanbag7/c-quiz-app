@@ -1,23 +1,27 @@
 import { config } from '../config.js'
-import { getRedisClient } from '../redis/client.js'
+import { withStorageOperation } from '../storage/index.js'
 
 const SCOPES = ['home', 'quiz']
 
 const presenceKey = (scope) => `presence:${scope}`
 
 export async function updatePresence({ visitorId, scope, now = new Date() }) {
-  const redis = await getRedisClient()
   const timestamp = now.getTime()
 
-  await cleanupPresence(redis, timestamp)
-  await redis.zAdd(presenceKey(scope), [{ score: timestamp, value: visitorId }])
-  await redis.expire(presenceKey(scope), config.presenceTtlSeconds * 2)
-
-  return getPresenceCounts({ redis, now })
+  return withStorageOperation(async (storage) => {
+    await cleanupPresence(storage, timestamp)
+    await storage.zAdd(presenceKey(scope), [{ score: timestamp, value: visitorId }])
+    await storage.expire(presenceKey(scope), config.presenceTtlSeconds * 2)
+    return getPresenceCounts({ redis: storage, now })
+  })
 }
 
 export async function getPresenceCounts({ redis, now = new Date() } = {}) {
-  const activeRedis = redis || (await getRedisClient())
+  if (!redis) {
+    return withStorageOperation((storage) => getPresenceCounts({ redis: storage, now }))
+  }
+
+  const activeRedis = redis
   const timestamp = now.getTime()
 
   await cleanupPresence(activeRedis, timestamp)

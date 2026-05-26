@@ -1,7 +1,7 @@
 import crypto from 'node:crypto'
 import { SignJWT, jwtVerify } from 'jose'
 import { config } from '../config.js'
-import { getRedisClient } from '../redis/client.js'
+import { withStorageOperation } from '../storage/index.js'
 
 const sessionKey = (sessionId) => `admin-session:${sessionId}`
 const secret = new TextEncoder().encode(config.sessionSecret || '')
@@ -17,17 +17,18 @@ export function verifyAdminPassword(password) {
 }
 
 export async function createAdminSession({ now = new Date() } = {}) {
-  const redis = await getRedisClient()
   const sessionId = crypto.randomUUID()
   const createdAt = now.toISOString()
   const expiresAt = new Date(now.getTime() + config.adminSessionTtlSeconds * 1000)
 
-  await redis.hSet(sessionKey(sessionId), {
-    sessionId,
-    isAdmin: 'true',
-    createdAt,
+  await withStorageOperation(async (storage) => {
+    await storage.hSet(sessionKey(sessionId), {
+      sessionId,
+      isAdmin: 'true',
+      createdAt,
+    })
+    await storage.expire(sessionKey(sessionId), config.adminSessionTtlSeconds)
   })
-  await redis.expire(sessionKey(sessionId), config.adminSessionTtlSeconds)
 
   const token = await new SignJWT({ sid: sessionId, isAdmin: true, createdAt })
     .setProtectedHeader({ alg: 'HS256', typ: 'JWT' })
@@ -51,11 +52,10 @@ export async function getAdminSession(token) {
     const sessionId = payload.sid
     if (!sessionId) return null
 
-    const redis = await getRedisClient()
-    const session = await redis.hGetAll(sessionKey(sessionId))
+    const session = await withStorageOperation((storage) => storage.hGetAll(sessionKey(sessionId)))
     if (session.isAdmin !== 'true') return null
 
-    await redis.expire(sessionKey(sessionId), config.adminSessionTtlSeconds)
+    await withStorageOperation((storage) => storage.expire(sessionKey(sessionId), config.adminSessionTtlSeconds))
 
     return {
       sessionId: session.sessionId,
@@ -73,6 +73,5 @@ export async function deleteAdminSession(token) {
   const session = await getAdminSession(token)
   if (!session) return
 
-  const redis = await getRedisClient()
-  await redis.del(sessionKey(session.sessionId))
+  await withStorageOperation((storage) => storage.del(sessionKey(session.sessionId)))
 }
