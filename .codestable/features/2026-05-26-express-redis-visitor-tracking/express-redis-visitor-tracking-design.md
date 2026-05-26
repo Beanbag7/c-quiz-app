@@ -24,7 +24,7 @@ roadmap_item:
 - 首页显示正在访问人数
 - 答题页显示正在访问人数
 - 提供管理员密码保护的访客日志页
-- 访客日志仅显示脱敏 IP 与粗粒度来源地（国家 / 地区 / 城市）
+- 访客日志仅管理员可见；按后续管理员需求显示真实 IP、中文来源地（国家 / 地区 / 城市）与同 IP 打开次数
 - 不采用 Vercel serverless，不采用 GitHub OAuth
 
 ### 成功标准
@@ -38,7 +38,7 @@ roadmap_item:
 
 - 不做毫秒级 websocket 实时在线，仅做 heartbeat + TTL 语义下的近似在线
 - 不公开展示访客日志给普通用户
-- 不存原始 IP
+- 原始 IP 仅用于受保护管理员日志，不对普通用户暴露
 - 不引入 GitHub / 第三方 OAuth
 - 不在本阶段实现复杂多角色后台
 
@@ -60,7 +60,7 @@ roadmap_item:
 ### 1.2 核心约束
 
 - 在线人数必须来自服务端共享状态，不允许本地伪造
-- 原始 IP 只允许在请求生命周期中读取，不落库
+- 原始 IP 可写入受保护的管理员访客日志；普通用户接口不得返回访客 IP 明细
 - 管理员权限必须在服务端判定，不能依赖前端隐藏按钮
 - 所有管理员密码、session secret、Redis 凭据只能存在服务端环境变量中，不能出现在 `VITE_*`
 - Presence 语义统一为：最近 `TTL` 时间窗口内发送过 heartbeat 的活动会话
@@ -98,15 +98,19 @@ roadmap_item:
    - `observedAt: ISO datetime`
 
 3. **VisitorRecord**
-   - `visitorId`
-   - `maskedIp`
-   - `country`
-   - `region`
-   - `city`
-   - `lastScope`
-   - `firstSeenAt`
-   - `lastSeenAt`
-   - `heartbeatCount`
+    - `visitorId`
+    - `ipAddress`（管理员日志使用）
+    - `maskedIp`
+    - `country`
+    - `region`
+    - `city`
+    - `locationText`
+    - `lastScope`
+    - `firstSeenAt`
+    - `lastSeenAt`
+    - `heartbeatCount`
+    - `ipPageOpenCount`
+    - `ipVisitorCount`
 
 4. **AdminSession**
    - `sessionId`
@@ -167,10 +171,13 @@ roadmap_item:
   "items": [
     {
       "visitorId": "anon_xxx",
-      "maskedIp": "203.0.*.*",
-      "country": "CN",
-      "region": "Beijing",
-      "city": "Beijing",
+      "ipAddress": "203.0.113.8",
+      "country": "中国",
+      "region": "北京",
+      "city": "北京",
+      "locationText": "中国 / 北京 / 北京",
+      "ipPageOpenCount": 3,
+      "ipVisitorCount": 1,
       "lastScope": "quiz",
       "firstSeenAt": "2026-05-26T10:00:00.000Z",
       "lastSeenAt": "2026-05-26T10:02:00.000Z"
@@ -219,7 +226,7 @@ flowchart TD
   L --> M[/api/admin/login]
   M --> N[建立 admin session]
   N --> O[/api/admin/visitors]
-  O --> P[展示脱敏访客日志]
+  O --> P[展示真实 IP 与中文来源地访客日志]
 ```
 
 #### 主流程说明
@@ -326,7 +333,7 @@ flowchart TD
 
 3. **管理员登录成功后查看日志**
    - 输入 / 触发：管理员输入正确密码并访问管理员页面
-   - 期望结果：页面显示最近访客日志，内容包含脱敏 IP 和来源地
+   - 期望结果：页面显示最近访客日志，内容包含真实 IP、中文来源地和同 IP 打开次数
 
 ### 3.2 边界场景
 
@@ -358,9 +365,9 @@ flowchart TD
 
 ### 3.4 反向核对（明确不做）
 
-10. **不暴露原始 IP**
-    - 输入 / 触发：管理员读取访客日志
-    - 期望结果：只能看到脱敏 IP，不能看到原始 IP
+10. **不向普通访客暴露原始 IP**
+    - 输入 / 触发：普通访客访问首页、答题页或在线人数接口
+    - 期望结果：只能看到在线人数，不能看到任何访客 IP 明细；真实 IP 仅限管理员日志
 
 11. **不对普通访客展示访客日志**
     - 输入 / 触发：普通用户使用首页或答题页
@@ -386,4 +393,4 @@ flowchart TD
 
 - 网站能展示在线访客活跃度
 - 管理员可安全查看访客来源概览
-- 访客隐私通过 IP 脱敏和后台隔离得到保护
+- 访客隐私通过后台隔离、管理员鉴权和普通用户不暴露 IP 明细得到保护

@@ -9,12 +9,13 @@ const toNumber = (value, fallback) => {
 
 export const config = {
   port: toNumber(process.env.PORT, 3001),
+  host: process.env.SERVER_HOST || '127.0.0.1',
   nodeEnv: process.env.NODE_ENV || 'development',
   redisUrl: process.env.REDIS_URL,
   adminPassword: process.env.ADMIN_PASSWORD,
   sessionSecret: process.env.SESSION_SECRET,
   presenceTtlSeconds: toNumber(process.env.PRESENCE_TTL_SECONDS, 60),
-  geoIpLookupUrl: process.env.GEO_IP_LOOKUP_URL || 'https://ipwho.is/{ip}?lang=zh-CN',
+  geoIpLookupUrl: process.env.GEO_IP_LOOKUP_URL || 'https://ipapi.co/{ip}/json/',
   geoIpLookupTimeoutMs: toNumber(process.env.GEO_IP_LOOKUP_TIMEOUT_MS, 800),
   geoIpCacheTtlSeconds: toNumber(process.env.GEO_IP_CACHE_TTL_SECONDS, 60 * 60 * 24),
   adminSessionTtlSeconds: toNumber(process.env.ADMIN_SESSION_TTL_SECONDS, 60 * 60 * 8),

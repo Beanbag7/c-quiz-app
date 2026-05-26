@@ -39,21 +39,34 @@ export async function listVisitorRecords({ cursor = 0, limit = 50 } = {}) {
     const safeCursor = Math.max(0, Number(cursor) || 0)
     const safeLimit = Math.min(100, Math.max(1, Number(limit) || 50))
     const end = safeCursor + safeLimit - 1
-    const visitorIds = await storage.zRange(visitorIndexKey, safeCursor, end, { REV: true })
+    const allVisitorIds = await storage.zRange(visitorIndexKey, 0, -1, { REV: true })
+    const visitorIds = allVisitorIds.slice(safeCursor, end + 1)
 
-    const records = await Promise.all(visitorIds.map((visitorId) => storage.hGetAll(visitorKey(visitorId))))
+    const allRecords = await Promise.all(allVisitorIds.map((visitorId) => storage.hGetAll(visitorKey(visitorId))))
+    const recordByVisitorId = new Map()
     const aggregatedByIp = new Map()
 
-    const items = records
-      .filter((record) => record.visitorId)
+    for (const record of allRecords) {
+      if (!record.visitorId) continue
+
+      recordByVisitorId.set(record.visitorId, record)
+
+      const ipAddress = record.ipAddress || record.maskedIp || 'unknown'
+      const pageOpenCount = Number(record.heartbeatCount || 0)
+      const currentIpStats = aggregatedByIp.get(ipAddress) || { totalPageOpenCount: 0, visitorCount: 0 }
+
+      currentIpStats.totalPageOpenCount += pageOpenCount
+      currentIpStats.visitorCount += 1
+      aggregatedByIp.set(ipAddress, currentIpStats)
+    }
+
+    const items = visitorIds
+      .map((visitorId) => recordByVisitorId.get(visitorId))
+      .filter((record) => record?.visitorId)
       .map((record) => {
         const ipAddress = record.ipAddress || record.maskedIp || 'unknown'
         const pageOpenCount = Number(record.heartbeatCount || 0)
-        const currentIpStats = aggregatedByIp.get(ipAddress) || { totalPageOpenCount: 0, visitorCount: 0 }
-
-        currentIpStats.totalPageOpenCount += pageOpenCount
-        currentIpStats.visitorCount += 1
-        aggregatedByIp.set(ipAddress, currentIpStats)
+        const stats = aggregatedByIp.get(ipAddress)
 
         return {
           visitorId: record.visitorId,
@@ -66,20 +79,14 @@ export async function listVisitorRecords({ cursor = 0, limit = 50 } = {}) {
           firstSeenAt: record.firstSeenAt,
           lastSeenAt: record.lastSeenAt,
           heartbeatCount: pageOpenCount,
-          ipPageOpenCount: 0,
-          ipVisitorCount: 0,
+          ipPageOpenCount: stats?.totalPageOpenCount || pageOpenCount,
+          ipVisitorCount: stats?.visitorCount || 1,
         }
       })
 
-    for (const item of items) {
-      const stats = aggregatedByIp.get(item.ipAddress)
-      item.ipPageOpenCount = stats?.totalPageOpenCount || item.heartbeatCount
-      item.ipVisitorCount = stats?.visitorCount || 1
-    }
-
     return {
       items,
-      nextCursor: visitorIds.length === safeLimit ? safeCursor + safeLimit : null,
+      nextCursor: allVisitorIds.length > safeCursor + safeLimit ? safeCursor + safeLimit : null,
     }
   })
 }

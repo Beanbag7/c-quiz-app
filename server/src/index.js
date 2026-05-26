@@ -5,6 +5,6 @@ assertServerConfig()
 
 const app = createApp()
 
-app.listen(config.port, () => {
-  console.log(`[server] listening on http://localhost:${config.port}`)
+app.listen(config.port, config.host, () => {
+  console.log(`[server] listening on http://${config.host}:${config.port}`)
 })

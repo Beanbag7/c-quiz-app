@@ -61,11 +61,11 @@ export async function lookupGeoIpLocation(
   const timeout = setTimeout(() => controller.abort(), timeoutMs)
 
   try {
-    // Default provider assumption: ipwho.is exposes an HTTPS Chinese REST endpoint with
-    // country, region, and city fields. Override GEO_IP_LOOKUP_URL for a paid provider.
+    // Default provider assumption: ipapi.co exposes an HTTPS endpoint with
+    // country_name, region, and city fields. Override GEO_IP_LOOKUP_URL for a paid provider.
     const url = providerUrl.replace('{ip}', encodeURIComponent(ipAddress))
     const response = await fetchImpl(url, {
-      headers: { accept: 'application/json' },
+      headers: { accept: 'application/json', 'user-agent': 'c-quiz-app/1.0' },
       signal: controller.signal,
     })
 
@@ -99,9 +99,9 @@ function normalizeProviderPayload(payload) {
   if (!payload || payload.error || payload.status === 'fail' || payload.success === false) return undefined
 
   const location = normalizeLocation({
-    country: payload.country_name || payload.country || payload.countryCode,
-    region: payload.regionName || payload.region,
-    city: payload.city,
+    country: payload.country_name || payload.countryName || payload.country || payload.countryCode,
+    region: payload.region_name || payload.regionName || payload.region,
+    city: payload.city_name || payload.city,
   })
 
   if (REQUIRED_FIELDS.every((field) => location[field] === UNKNOWN_LOCATION[field])) return undefined
