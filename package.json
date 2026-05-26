@@ -7,6 +7,7 @@
     "dev": "vite",
     "dev:server": "node --watch server/src/index.js",
     "dev:all": "concurrently \"npm run dev\" \"npm run dev:server\"",
+    "test:server": "node --test server/src/storage/memoryStorage.test.js server/src/utils/visitor.test.js server/src/services/geoIpService.test.js",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"
