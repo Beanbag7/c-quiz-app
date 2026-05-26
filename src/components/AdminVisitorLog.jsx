@@ -65,27 +65,33 @@ function AdminVisitorLog() {
         <div className="admin-header">
           <div>
             <h1>访客日志</h1>
-            <p>仅管理员可查看脱敏 IP 与粗粒度来源地。</p>
+            <p>仅管理员可查看真实 IP、中文来源地与同 IP 打开次数。</p>
           </div>
           <a className="admin-home-link" href="#home">返回首页</a>
         </div>
 
         {!authenticated ? (
-          <form className="admin-login" onSubmit={handleSubmit}>
-            <label htmlFor="admin-password">管理员密码</label>
-            <input
-              id="admin-password"
-              type="password"
-              value={password}
-              onChange={(event) => setPassword(event.target.value)}
-              autoComplete="current-password"
-              placeholder="请输入管理员密码"
-            />
-            <button type="submit" disabled={loading || !password.trim()}>
-              {loading ? '验证中...' : '登录查看'}
-            </button>
-            {message && <p className="admin-message error">{message}</p>}
-          </form>
+          <div className="admin-login-shell">
+            <div className="admin-login-copy">
+              <h2>管理员登录</h2>
+              <p>登录后可查看访问来源、真实 IP，以及每个 IP 的页面打开次数。</p>
+            </div>
+            <form className="admin-login" onSubmit={handleSubmit}>
+              <label htmlFor="admin-password">管理员密码</label>
+              <input
+                id="admin-password"
+                type="password"
+                value={password}
+                onChange={(event) => setPassword(event.target.value)}
+                autoComplete="current-password"
+                placeholder="请输入管理员密码"
+              />
+              <button type="submit" disabled={loading || !password.trim()}>
+                {loading ? '验证中...' : '登录查看日志'}
+              </button>
+              {message && <p className="admin-message error">{message}</p>}
+            </form>
+          </div>
         ) : (
           <div className="visitor-log">
             <div className="visitor-log-actions">
@@ -105,8 +111,9 @@ function AdminVisitorLog() {
                   <thead>
                     <tr>
                       <th>访客</th>
-                      <th>脱敏 IP</th>
+                      <th>IP</th>
                       <th>来源地</th>
+                      <th>该 IP 打开次数</th>
                       <th>最后页面</th>
                       <th>首次访问</th>
                       <th>最后活跃</th>
@@ -116,8 +123,9 @@ function AdminVisitorLog() {
                     {items.map((item) => (
                       <tr key={item.visitorId}>
                         <td>{item.visitorId}</td>
-                        <td>{item.maskedIp || '-'}</td>
-                        <td>{[item.country, item.region, item.city].filter(Boolean).join(' / ') || '-'}</td>
+                        <td>{item.ipAddress || '-'}</td>
+                        <td>{item.locationText || '-'}</td>
+                        <td>{item.ipPageOpenCount ?? item.heartbeatCount ?? 0}</td>
                         <td>{item.lastScope || '-'}</td>
                         <td>{formatDate(item.firstSeenAt)}</td>
                         <td>{formatDate(item.lastSeenAt)}</td>

@@ -775,6 +775,31 @@ body {
   gap: 12px;
 }
 
+.admin-login-shell {
+  display: grid;
+  grid-template-columns: minmax(220px, 280px) minmax(280px, 420px);
+  gap: 24px;
+  align-items: start;
+  padding: 8px 0 12px;
+}
+
+.admin-login-copy {
+  background: linear-gradient(180deg, #F8FAFC, #EEF4FF);
+  border: 1px solid #DBEAFE;
+  border-radius: 18px;
+  padding: 20px;
+}
+
+.admin-login-copy h2 {
+  margin-bottom: 10px;
+  color: var(--text-primary);
+}
+
+.admin-login-copy p {
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
 .admin-login label,
 .visitor-log-actions {
   font-weight: 700;
@@ -786,6 +811,7 @@ body {
   border: 1px solid #D1D5DB;
   border-radius: 12px;
   font-size: 16px;
+  background: #F9FAFB;
 }
 
 .admin-login button,
@@ -815,6 +841,10 @@ body {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 16px;
+}
+
+.visitor-log-actions span {
+  font-size: 16px;
 }
 
 .empty-log {
@@ -847,6 +877,12 @@ body {
   color: var(--text-secondary);
   font-size: 13px;
   background: #F9FAFB;
+}
+
+.visitor-table td:nth-child(2),
+.visitor-table td:nth-child(4) {
+  font-weight: 700;
+  color: var(--text-primary);
 }
 
 .back-text-btn {
