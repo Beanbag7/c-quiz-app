@@ -1,15 +1,30 @@
 import { createClient } from 'redis'
-import { config, assertRedisConfig } from '../config.js'
+import { config } from '../config.js'
 
 let client
 let connecting
+let loggedConnectionError = false
+
+export function isRedisConfigured() {
+  return Boolean(config.redisUrl)
+}
 
 export async function getRedisClient() {
-  assertRedisConfig()
+  if (!isRedisConfigured()) {
+    throw new Error('REDIS_URL is unset')
+  }
 
   if (!client) {
-    client = createClient({ url: config.redisUrl })
+    client = createClient({
+      url: config.redisUrl,
+      socket: {
+        reconnectStrategy: false,
+      },
+    })
     client.on('error', (error) => {
+      if (loggedConnectionError) return
+
+      loggedConnectionError = true
       console.error('[redis] connection error', error.message)
     })
   }
@@ -30,4 +45,5 @@ export async function closeRedisClient() {
   }
   client = undefined
   connecting = undefined
+  loggedConnectionError = false
 }
