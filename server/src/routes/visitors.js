@@ -3,7 +3,7 @@ import { config } from '../config.js'
 import { updatePresence, getPresenceCounts } from '../services/presenceService.js'
 import { recordVisitorHeartbeat } from '../services/visitorLogService.js'
 import { buildCookieOptions } from '../utils/cookies.js'
-import { createVisitorId, getRequestIp, getRequestOrigin, isValidScope, maskIp } from '../utils/visitor.js'
+import { getRequestIp, getRequestOrigin, isValidScope, maskIp, normalizeVisitorId } from '../utils/visitor.js'
 
 export const visitorsRouter = Router()
 
@@ -16,13 +16,16 @@ visitorsRouter.post('/heartbeat', async (req, res, next) => {
     }
 
     const now = new Date()
-    const visitorId = req.cookies?.[config.visitorCookieName] || createVisitorId()
+    const visitorId = normalizeVisitorId(req.cookies?.[config.visitorCookieName])
 
     res.cookie(config.visitorCookieName, visitorId, buildCookieOptions(60 * 60 * 24 * 365))
 
+    const ipAddress = getRequestIp(req)
+
     await recordVisitorHeartbeat({
       visitorId,
-      maskedIp: maskIp(getRequestIp(req)),
+      ipAddress,
+      maskedIp: maskIp(ipAddress),
       origin: getRequestOrigin(req),
       scope,
       now,
