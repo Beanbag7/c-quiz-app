@@ -57,3 +57,40 @@ test('listVisitorRecords aggregates page opens by IP across all visitor records'
     await closeStorage()
   }
 })
+
+test('listVisitorRecords preserves historical provider values on read without mapping', async () => {
+  await closeStorage()
+
+  const originalRedisUrl = config.redisUrl
+  config.redisUrl = undefined
+
+  try {
+    const { getStorage } = await import('../storage/index.js')
+    const storage = await getStorage()
+
+    await storage.hSet('visitor:anon_33333333-3333-4333-8333-333333333333', {
+      visitorId: 'anon_33333333-3333-4333-8333-333333333333',
+      ipAddress: '122.225.202.3',
+      maskedIp: '122.225.*.*',
+      country: 'China',
+      region: 'Beijing',
+      city: 'Beijing',
+      lastScope: 'quiz',
+      firstSeenAt: '2026-05-26T00:00:00.000Z',
+      lastSeenAt: '2026-05-26T00:00:00.000Z',
+      heartbeatCount: '2',
+    })
+    await storage.zAdd('visitor:index', [{ score: Date.parse('2026-05-26T00:00:00.000Z'), value: 'anon_33333333-3333-4333-8333-333333333333' }])
+
+    const page = await listVisitorRecords({ cursor: 0, limit: 1 })
+
+    assert.equal(page.items.length, 1)
+    assert.equal(page.items[0].country, 'China')
+    assert.equal(page.items[0].region, 'Beijing')
+    assert.equal(page.items[0].city, 'Beijing')
+    assert.equal(page.items[0].locationText, 'China / Beijing / Beijing')
+  } finally {
+    config.redisUrl = originalRedisUrl
+    await closeStorage()
+  }
+})

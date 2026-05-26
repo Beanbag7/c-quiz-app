@@ -9,6 +9,7 @@ fi
 TARGET=$1
 REMOTE_APP_DIR=${2:-/srv/c-quiz-app}
 ROOT_DIR=$(cd "$(dirname "$0")/../.." && pwd)
+SERVER_NAME=${TARGET#*@}
 
 rsync -az --delete \
   --exclude '.git' \
@@ -20,4 +21,4 @@ rsync -az --delete \
   --exclude 'CLAUDE.md' \
   "${ROOT_DIR}/" "${TARGET}:${REMOTE_APP_DIR}/"
 
-ssh "${TARGET}" "cd '${REMOTE_APP_DIR}' && chmod +x server/deploy/deploy-centos-systemd.sh && APP_DIR='${REMOTE_APP_DIR}' bash server/deploy/deploy-centos-systemd.sh"
+ssh "${TARGET}" "cd '${REMOTE_APP_DIR}' && chmod +x server/deploy/deploy-centos-systemd.sh && APP_DIR='${REMOTE_APP_DIR}' SERVER_NAME='${SERVER_NAME}' bash server/deploy/deploy-centos-systemd.sh"

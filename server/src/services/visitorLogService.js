@@ -1,5 +1,5 @@
 import { withStorageOperation } from '../storage/index.js'
-import { resolveGeoIpLocation } from './geoIpService.js'
+import { normalizeGeoLocation, resolveGeoIpLocation } from './geoIpService.js'
 
 const visitorKey = (visitorId) => `visitor:${visitorId}`
 const visitorIndexKey = 'visitor:index'
@@ -67,14 +67,19 @@ export async function listVisitorRecords({ cursor = 0, limit = 50 } = {}) {
         const ipAddress = record.ipAddress || record.maskedIp || 'unknown'
         const pageOpenCount = Number(record.heartbeatCount || 0)
         const stats = aggregatedByIp.get(ipAddress)
+        const location = normalizeGeoLocation({
+          country: record.country,
+          region: record.region,
+          city: record.city,
+        })
 
         return {
           visitorId: record.visitorId,
           ipAddress,
-          country: record.country || '未知国家',
-          region: record.region || '未知地区',
-          city: record.city || '未知城市',
-          locationText: [record.country || '未知国家', record.region || '未知地区', record.city || '未知城市'].join(' / '),
+          country: location.country,
+          region: location.region,
+          city: location.city,
+          locationText: [location.country, location.region, location.city].join(' / '),
           lastScope: record.lastScope || 'home',
           firstSeenAt: record.firstSeenAt,
           lastSeenAt: record.lastSeenAt,

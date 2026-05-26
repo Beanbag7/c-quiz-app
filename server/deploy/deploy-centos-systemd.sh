@@ -29,6 +29,11 @@ if [[ -z ${SERVER_NAME} ]]; then
 fi
 
 install_packages() {
+  if command -v nginx >/dev/null 2>&1 && command -v redis-server >/dev/null 2>&1 && command -v curl >/dev/null 2>&1 && command -v tar >/dev/null 2>&1 && command -v xz >/dev/null 2>&1; then
+    echo "Required system packages already installed; skipping package installation."
+    return
+  fi
+
   dnf clean all
   dnf install -y --setopt=install_weak_deps=False --disablerepo='epel*' nginx redis curl tar xz
 }
@@ -130,9 +135,11 @@ EOF
 start_services() {
   systemctl enable --now redis
   systemctl daemon-reload
-  systemctl enable --now c-quiz-app
+  systemctl enable c-quiz-app
+  systemctl restart c-quiz-app
   nginx -t
-  systemctl enable --now nginx
+  systemctl enable nginx
+  systemctl restart nginx
   systemctl reload nginx
 }
 

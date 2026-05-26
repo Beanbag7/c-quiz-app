@@ -10,25 +10,6 @@ const UNKNOWN_LOCATION = {
 
 const REQUIRED_FIELDS = ['country', 'region', 'city']
 
-const GEO_NAME_MAP = new Map([
-  ['US', '美国'],
-  ['UNITED STATES', '美国'],
-  ['VIRGINIA', '弗吉尼亚州'],
-  ['VIRGINIA, UNITED STATES', '弗吉尼亚州'],
-  ['VA', '弗吉尼亚州'],
-  ['ASHBURN', '阿什本'],
-  ['CALIFORNIA', '加利福尼亚州'],
-  ['CA', '加利福尼亚州'],
-  ['MOUNTAIN VIEW', '山景城'],
-  ['JAPAN', '日本'],
-  ['TOKYO', '东京'],
-  ['CHIYODA', '千代田'],
-  ['CHINA', '中国'],
-  ['CN', '中国'],
-  ['GUANGDONG', '广东'],
-  ['SHENZHEN', '深圳'],
-])
-
 export async function resolveGeoIpLocation(ipAddress, fallbackOrigin = UNKNOWN_LOCATION) {
   const fallbackLocation = normalizeLocation(fallbackOrigin)
 
@@ -61,8 +42,8 @@ export async function lookupGeoIpLocation(
   const timeout = setTimeout(() => controller.abort(), timeoutMs)
 
   try {
-    // Default provider assumption: ipapi.co exposes an HTTPS endpoint with
-    // country_name, region, and city fields. Override GEO_IP_LOOKUP_URL for a paid provider.
+    // Default provider assumption: ip-api.com returns Chinese fields directly
+    // via lang=zh-CN. Override GEO_IP_LOOKUP_URL for a different provider.
     const url = providerUrl.replace('{ip}', encodeURIComponent(ipAddress))
     const response = await fetchImpl(url, {
       headers: { accept: 'application/json', 'user-agent': 'c-quiz-app/1.0' },
@@ -81,6 +62,10 @@ export async function lookupGeoIpLocation(
   } finally {
     clearTimeout(timeout)
   }
+}
+
+export function normalizeGeoLocation(location) {
+  return normalizeLocation(location)
 }
 
 async function readCachedLocation(storage, ipAddress) {
@@ -118,8 +103,7 @@ function normalizeLocation(location = UNKNOWN_LOCATION) {
 
 function normalizeGeoValue(value, fallback) {
   if (typeof value !== 'string' || !value.trim()) return fallback
-  const trimmed = value.trim()
-  return GEO_NAME_MAP.get(trimmed.toUpperCase()) || trimmed
+  return value.trim()
 }
 
 function cacheKey(ipAddress) {

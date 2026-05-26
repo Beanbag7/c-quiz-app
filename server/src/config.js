@@ -15,7 +15,9 @@ export const config = {
   adminPassword: process.env.ADMIN_PASSWORD,
   sessionSecret: process.env.SESSION_SECRET,
   presenceTtlSeconds: toNumber(process.env.PRESENCE_TTL_SECONDS, 60),
-  geoIpLookupUrl: process.env.GEO_IP_LOOKUP_URL || 'https://ipapi.co/{ip}/json/',
+  geoIpLookupUrl:
+    process.env.GEO_IP_LOOKUP_URL ||
+    'http://ip-api.com/json/{ip}?fields=status,message,country,regionName,city&lang=zh-CN',
   geoIpLookupTimeoutMs: toNumber(process.env.GEO_IP_LOOKUP_TIMEOUT_MS, 800),
   geoIpCacheTtlSeconds: toNumber(process.env.GEO_IP_CACHE_TTL_SECONDS, 60 * 60 * 24),
   adminSessionTtlSeconds: toNumber(process.env.ADMIN_SESSION_TTL_SECONDS, 60 * 60 * 8),

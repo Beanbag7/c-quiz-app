@@ -19,9 +19,9 @@ test('lookupGeoIpLocation maps provider payload to visitor location fields', asy
   })
 
   assert.deepEqual(location, {
-    country: '美国',
-    region: '加利福尼亚州',
-    city: '山景城',
+    country: 'United States',
+    region: 'California',
+    city: 'Mountain View',
   })
 })
 
@@ -46,7 +46,7 @@ test('lookupGeoIpLocation maps ip-api Chinese payload to visitor location fields
   })
 })
 
-test('lookupGeoIpLocation localizes common English provider values', async () => {
+test('lookupGeoIpLocation preserves provider values without local mapping', async () => {
   const location = await lookupGeoIpLocation('8.8.8.8', {
     providerUrl: 'https://example.test/{ip}',
     fetchImpl: async () => ({
@@ -58,9 +58,9 @@ test('lookupGeoIpLocation localizes common English provider values', async () =>
   })
 
   assert.deepEqual(location, {
-    country: '美国',
-    region: '弗吉尼亚州',
-    city: '阿什本',
+    country: 'United States',
+    region: 'VA',
+    city: 'Ashburn',
   })
 })
 
@@ -88,7 +88,7 @@ test('resolveGeoIpLocation caches successful lookups and falls back to headers',
     return {
       ok: true,
       async json() {
-        return { country_name: 'Japan', region: 'Tokyo', city: 'Chiyoda' }
+        return { country: '日本', regionName: '东京', city: '千代田', status: 'success' }
       },
     }
   }

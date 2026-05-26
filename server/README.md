@@ -38,7 +38,7 @@ If Redis is not running or `REDIS_URL` cannot be reached, the backend continues 
 - Treat the in-memory fallback as degraded mode only. It prevents hard startup failure when Redis is unavailable, but loses state on restart and cannot coordinate replicas.
 - Prefer same-origin deployment through a reverse proxy, for example serving the frontend and forwarding `/api/*` to this Express server. The frontend sends cookies with `credentials: 'include'`, and the backend currently does not configure cross-origin CORS. The deployment script binds Express to `127.0.0.1` and has Nginx overwrite `X-Forwarded-For` with `$remote_addr` so visitors cannot spoof logged IP addresses through forwarded headers.
 - If the API must live on a different origin, set `VITE_VISITOR_API_BASE_URL` at frontend build time and add matching CORS/cookie settings before deployment.
-- Visitor log locations are resolved server-side through `GEO_IP_LOOKUP_URL` and cached in Redis/memory by a hashed IP cache key. The default uses ipapi.co's HTTPS `{ip}/json/` REST endpoint plus server-side Chinese normalization for immediate setup; for commercial deployments, replace it with a paid provider URL that returns compatible country/region/city JSON fields.
+- Visitor log locations are resolved server-side through `GEO_IP_LOOKUP_URL` and cached in Redis/memory by a hashed IP cache key. The default uses `ip-api.com` with `lang=zh-CN`, so the provider returns Chinese country/region/city values directly without local translation mapping. The free endpoint is HTTP-only; for production HTTPS, replace it with a paid provider URL that returns compatible country/region/city JSON fields.
 
 ### Automatic Redis setup without Docker
 
