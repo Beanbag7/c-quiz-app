@@ -64,6 +64,7 @@ roadmap_item:
 - 管理员权限必须在服务端判定，不能依赖前端隐藏按钮
 - 所有管理员密码、session secret、Redis 凭据只能存在服务端环境变量中，不能出现在 `VITE_*`
 - Presence 语义统一为：最近 `TTL` 时间窗口内发送过 heartbeat 的活动会话
+- Redis 是推荐主存储；Redis 缺失或不可达时，服务端可降级到单进程内存存储以保证接口可用，但该降级状态不具备持久化或多副本共享能力
 
 ### 1.3 术语约定
 
@@ -208,8 +209,9 @@ flowchart TD
   C --> E[前端定时 heartbeat]
   D --> E
   E --> F[/api/visitors/heartbeat]
-  F --> G[Redis 更新 presence zset]
-  F --> H[Redis 更新 visitor record]
+  F --> G[Redis 主存储更新 presence zset]
+  F --> H[Redis 主存储更新 visitor record]
+  F -.Redis 不可用.-> Q[单进程内存降级存储]
   F --> I[返回在线人数]
   I --> J[前端更新在线人数 UI]
 
@@ -224,7 +226,7 @@ flowchart TD
 
 1. SPA 根据当前 UI 状态推导 `scope`
 2. 前端在页面可见时定时发送 heartbeat
-3. 服务端按 `scope` 更新 Redis presence 和访客记录
+3. 服务端按 `scope` 优先更新 Redis presence 和访客记录；Redis 缺失或不可达时降级写入单进程内存存储
 4. 服务端清理超 TTL presence 后返回实时近似人数
 5. 管理员通过密码登录建立 session
 6. 管理员 API 仅在服务端 session 判定通过时返回访客日志
@@ -350,9 +352,9 @@ flowchart TD
    - 输入 / 触发：管理员登录页提交错误密码
    - 期望结果：不会建立管理员会话，并返回清晰错误
 
-9. **Redis / env 缺失**
-   - 输入 / 触发：缺少必要环境变量时启动或调用 API
-   - 期望结果：接口返回清晰错误，不静默伪造人数
+9. **Redis 缺失 / 不可达**
+- 输入 / 触发：`REDIS_URL` 未设置、Redis 未启动或 Redis 命令失败时调用 visitor/admin API
+- 期望结果：服务端记录清晰降级日志，并使用单进程内存存储继续返回稳定接口；该降级状态不承诺重启后保留数据或跨副本共享
 
 ### 3.4 反向核对（明确不做）
 
@@ -365,8 +367,8 @@ flowchart TD
     - 期望结果：只能看到在线人数，不能看到 IP 记录
 
 12. **不使用前端本地值伪造在线人数**
-    - 输入 / 触发：断开后端接口或未配置后端
-    - 期望结果：显示错误/不可用状态，而不是随机数或本地估算值
+- 输入 / 触发：断开后端接口或未配置后端
+- 期望结果：前端不使用随机数或本地估算值；若后端可达但 Redis 不可用，后端只能使用服务端内存降级结果；若后端不可达，则显示错误/不可用状态
 
 ## 4. 对 architecture / requirements 的后续影响
 
