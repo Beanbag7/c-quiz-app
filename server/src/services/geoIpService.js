@@ -61,8 +61,8 @@ export async function lookupGeoIpLocation(
   const timeout = setTimeout(() => controller.abort(), timeoutMs)
 
   try {
-    // Default provider assumption: ip-api.com exposes a Chinese REST endpoint with
-    // country, regionName, and city fields. Override GEO_IP_LOOKUP_URL for a paid provider.
+    // Default provider assumption: ipwho.is exposes an HTTPS Chinese REST endpoint with
+    // country, region, and city fields. Override GEO_IP_LOOKUP_URL for a paid provider.
     const url = providerUrl.replace('{ip}', encodeURIComponent(ipAddress))
     const response = await fetchImpl(url, {
       headers: { accept: 'application/json' },
@@ -96,7 +96,7 @@ async function writeCachedLocation(storage, ipAddress, location) {
 }
 
 function normalizeProviderPayload(payload) {
-  if (!payload || payload.error || payload.status === 'fail') return undefined
+  if (!payload || payload.error || payload.status === 'fail' || payload.success === false) return undefined
 
   const location = normalizeLocation({
     country: payload.country_name || payload.country || payload.countryCode,

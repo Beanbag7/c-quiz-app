@@ -38,7 +38,7 @@ If Redis is not running or `REDIS_URL` cannot be reached, the backend continues 
 - Treat the in-memory fallback as degraded mode only. It prevents hard startup failure when Redis is unavailable, but loses state on restart and cannot coordinate replicas.
 - Prefer same-origin deployment through a reverse proxy, for example serving the frontend and forwarding `/api/*` to this Express server. The frontend sends cookies with `credentials: 'include'`, and the backend currently does not configure cross-origin CORS.
 - If the API must live on a different origin, set `VITE_VISITOR_API_BASE_URL` at frontend build time and add matching CORS/cookie settings before deployment.
-- Visitor log locations are resolved server-side through `GEO_IP_LOOKUP_URL` and cached in Redis/memory by a hashed IP cache key. The default uses ip-api.com's Chinese `json/{ip}?lang=zh-CN` REST endpoint for immediate setup; for commercial deployments, replace it with a paid provider URL that returns compatible country/region/city JSON fields.
+- Visitor log locations are resolved server-side through `GEO_IP_LOOKUP_URL` and cached in Redis/memory by a hashed IP cache key. The default uses ipwho.is's HTTPS Chinese `{ip}?lang=zh-CN` REST endpoint for immediate setup; for commercial deployments, replace it with a paid provider URL that returns compatible country/region/city JSON fields.
 
 ### Automatic Redis setup without Docker
 
@@ -121,4 +121,4 @@ bash -n server/deploy/push-and-deploy.sh
 - `GET /api/admin/session`
 - `GET /api/admin/visitors?cursor=0&limit=50`
 
-Visitor IDs and admin sessions are stored in HttpOnly cookies. Visitor records store only masked IP addresses plus coarse geo-IP results; raw IP addresses are used only during the heartbeat request and are never written to Redis.
+Visitor IDs and admin sessions are stored in HttpOnly cookies. Visitor records store real IP addresses for the protected admin log, masked IP values for fallback display, and coarse geo-IP results. Treat visitor IP addresses as sensitive admin-only data.
