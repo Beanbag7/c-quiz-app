@@ -48,25 +48,53 @@ function App() {
     return () => window.removeEventListener('hashchange', handleHashChange);
   }, []);
 
+  const getSeededRandomGenerator = (seed) => {
+    let current = seed >>> 0;
+
+    return () => {
+      current = (current + 0x6D2B79F5) >>> 0;
+      let next = current;
+      next = Math.imul(next ^ (next >>> 15), next | 1);
+      next ^= next + Math.imul(next ^ (next >>> 7), next | 61);
+      return ((next ^ (next >>> 14)) >>> 0) / 4294967296;
+    };
+  };
+
+  const createShuffleSeed = () => {
+    const timeSeed = Date.now() >>> 0;
+
+    if (globalThis.crypto?.getRandomValues) {
+      const randomBuffer = new Uint32Array(1);
+      globalThis.crypto.getRandomValues(randomBuffer);
+      return (randomBuffer[0] ^ timeSeed) >>> 0;
+    }
+
+    return ((Math.random() * 0xFFFFFFFF) ^ timeSeed) >>> 0;
+  };
+
   // Fisher-Yates 洗牌算法
-  const shuffleArray = (array) => {
+  const shuffleArray = (array, randomFn = Math.random) => {
     const newArray = [...array];
     for (let i = newArray.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
+      const j = Math.floor(randomFn() * (i + 1));
       [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
     }
     return newArray;
   };
 
   // 打乱选项顺序（判断题保持T/F顺序）
-  const shuffleOptions = (question) => {
+  const shuffleOptions = (question, randomFn = Math.random) => {
     // 判断题不打乱选项
     if (question.题目类型 === '判断题') {
       return question;
     }
 
+    if (!question.选项 || typeof question.选项 !== 'object') {
+      return question;
+    }
+
     const options = Object.entries(question.选项);
-    const shuffled = shuffleArray([...options]);
+    const shuffled = shuffleArray([...options], randomFn);
     const newOptions = {};
     const keyMap = {};
 
@@ -76,8 +104,12 @@ function App() {
       keyMap[oldKey] = newKey;
     });
 
-    const newCorrectAnswer = keyMap[question.正确答案];
-    const newAnswerText = newOptions[newCorrectAnswer];
+    const newCorrectAnswer = Array.isArray(question.正确答案)
+      ? question.正确答案.map(answer => keyMap[answer]).filter(Boolean)
+      : keyMap[question.正确答案];
+    const newAnswerText = Array.isArray(newCorrectAnswer)
+      ? newCorrectAnswer.map(answer => newOptions[answer]).filter(Boolean).join('、')
+      : newOptions[newCorrectAnswer];
 
     return {
       ...question,
@@ -88,17 +120,17 @@ function App() {
   };
 
   // 分类打乱题目：选择题和判断题分开打乱，然后合并并重新编号
-  const shuffleQuestionsByType = (questionsData) => {
+  const shuffleQuestionsByType = (questionsData, randomFn = Math.random) => {
     const singleChoice = questionsData.filter(q => q.题目类型 === "单选题");
     const trueFalse = questionsData.filter(q => q.题目类型 === "判断题");
 
-    const shuffledSingle = shuffleArray(singleChoice);
-    const shuffledTrueFalse = shuffleArray(trueFalse);
+    const shuffledSingle = shuffleArray(singleChoice, randomFn);
+    const shuffledTrueFalse = shuffleArray(trueFalse, randomFn);
 
     const combined = [...shuffledSingle, ...shuffledTrueFalse];
 
     return combined.map((q, index) => {
-      const shuffledQ = shuffleOptions(q);
+      const shuffledQ = shuffleOptions(q, randomFn);
       return {
         ...shuffledQ,
         序号: index + 1
@@ -109,6 +141,16 @@ function App() {
   // 仅打乱选项，保持题目顺序
   const shuffleOptionsOnly = (questions) => {
     return questions.map(q => shuffleOptions(q));
+  };
+
+  const shuffleSxyzQuestions = (questionsData) => {
+    const seededRandom = getSeededRandomGenerator(createShuffleSeed());
+    const shuffledQuestions = shuffleArray(questionsData, seededRandom);
+
+    return shuffledQuestions.map((question, index) => ({
+      ...shuffleOptions(question, seededRandom),
+      序号: index + 1,
+    }));
   };
 
   // 加载题库
@@ -133,7 +175,9 @@ function App() {
 
       // 处理数据库题库（不同的数据格式）
       if (subject === 'database' || subject === 'kline' || subject === 'sxyz') {
-        const dbQuestions = data.questions;
+        const dbQuestions = subject === 'sxyz'
+          ? shuffleSxyzQuestions(data.questions)
+          : data.questions;
         setAllQuestions(dbQuestions);
 
         // 统计各题型数量
