@@ -153,6 +153,31 @@ function App() {
     }));
   };
 
+  const normalizeChaoxingQuestions = (questionsData) => {
+    return questionsData.map((question) => {
+      if (question.题目类型 !== '判断题') {
+        return question;
+      }
+
+      const rawAnswer = String(question.正确答案 || question.答案文本 || '').trim();
+      const answerKey = rawAnswer === 'A' || rawAnswer === '对' || rawAnswer === '正确'
+        ? 'A'
+        : rawAnswer === 'B' || rawAnswer === '错' || rawAnswer === '错误'
+          ? 'B'
+          : '';
+
+      return {
+        ...question,
+        选项: {
+          A: '对',
+          B: '错',
+        },
+        正确答案: answerKey,
+        答案文本: answerKey === 'A' ? '对' : answerKey === 'B' ? '错' : question.答案文本,
+      };
+    });
+  };
+
   // 加载题库
   const loadQuestions = async (subject) => {
     setLoading(true);
@@ -165,6 +190,10 @@ function App() {
         fileName = 'kline_questions.json';
       } else if (subject === 'sxyz') {
         fileName = 'questions_sxyz.json';
+      } else if (subject === 'chaoxing') {
+        fileName = 'chaoxing-quiz-bank.json';
+      } else if (subject === 'exam175') {
+        fileName = 'exam-175-question-bank.json';
       } else if (subject === 'c') {
         fileName = 'questions.json';
       } else {
@@ -174,14 +203,16 @@ function App() {
       const data = await response.json();
 
       // 处理数据库题库（不同的数据格式）
-      if (subject === 'database' || subject === 'kline' || subject === 'sxyz') {
+      if (subject === 'database' || subject === 'kline' || subject === 'sxyz' || subject === 'chaoxing' || subject === 'exam175') {
         const dbQuestions = subject === 'sxyz'
           ? shuffleSxyzQuestions(data.questions)
-          : data.questions;
+          : subject === 'chaoxing'
+            ? normalizeChaoxingQuestions(data.questions)
+            : data.questions;
         setAllQuestions(dbQuestions);
 
         // 统计各题型数量
-        const choiceCount = dbQuestions.filter(q => q.题目类型 === '选择题').length;
+        const choiceCount = dbQuestions.filter(q => q.题目类型 === '选择题' || q.题目类型 === '单选题').length;
         const fillBlankCount = dbQuestions.filter(q => q.题目类型 === '填空题').length;
         const essayCount = dbQuestions.filter(q => q.题目类型 === '解答题').length;
         const trueFalseCount = dbQuestions.filter(q => q.题目类型 === '判断题').length;
@@ -248,7 +279,7 @@ function App() {
   const filterDatabaseQuestionsByType = (type) => {
     let filtered = [];
     if (type === 'choice') {
-      filtered = allQuestions.filter(q => q.题目类型 === '选择题');
+      filtered = allQuestions.filter(q => q.题目类型 === '选择题' || q.题目类型 === '单选题');
     } else if (type === 'fillblank') {
       filtered = allQuestions.filter(q => q.题目类型 === '填空题');
     } else if (type === 'essay') {
@@ -407,7 +438,7 @@ function App() {
   const restartPractice = () => {
     // 重新过滤题目 - 根据科目类型调用对应的过滤函数
     if (selectedQuestionType) {
-      if (selectedSubject === 'database' || selectedSubject === 'sxyz') {
+      if (selectedSubject === 'database' || selectedSubject === 'kline' || selectedSubject === 'sxyz' || selectedSubject === 'chaoxing' || selectedSubject === 'exam175') {
         filterDatabaseQuestionsByType(selectedQuestionType);
       } else {
         filterQuestionsByType(selectedQuestionType);
@@ -510,6 +541,30 @@ function App() {
               </div>
               <div className="new-badge">🆕 NEW</div>
             </div>
+            <div className="subject-card chaoxing-card" onClick={() => setSelectedSubject('chaoxing')}>
+              <div className="card-glow"></div>
+              <div className="subject-icon">📚</div>
+              <h2>超星题库</h2>
+              <p className="question-count">236道题目</p>
+              <div className="subject-stats">
+                <div className="stat-badge"><span className="stat-number">126</span> 单选</div>
+                <div className="stat-badge"><span className="stat-number">13</span> 多选</div>
+                <div className="stat-badge"><span className="stat-number">97</span> 判断</div>
+              </div>
+              <div className="new-badge">📚 NEW</div>
+            </div>
+            <div className="subject-card exam175-card" onClick={() => setSelectedSubject('exam175')}>
+              <div className="card-glow"></div>
+              <div className="subject-icon">📘</div>
+              <h2>党纪考试题库</h2>
+              <p className="question-count">257道题目</p>
+              <div className="subject-stats">
+                <div className="stat-badge"><span className="stat-number">230</span> 选择</div>
+                <div className="stat-badge"><span className="stat-number">12</span> 多选</div>
+                <div className="stat-badge"><span className="stat-number">15</span> 判断</div>
+              </div>
+              <div className="new-badge">📘 NEW</div>
+            </div>
           </div>
         </div>
       </div>
@@ -523,7 +578,7 @@ function App() {
         <div className="subject-selection">
           <h1 className="selection-title">选择练习类型</h1>
           <p className="selection-subtitle">
-            {selectedSubject === 'c' ? 'C语言题库' : selectedSubject === 'java' ? 'Java题库' : selectedSubject === 'kline' ? 'K线技术分析' : selectedSubject === 'sxyz' ? '形势与政策' : '数据库题库'} - 请选择题型
+            {selectedSubject === 'c' ? 'C语言题库' : selectedSubject === 'java' ? 'Java题库' : selectedSubject === 'kline' ? 'K线技术分析' : selectedSubject === 'sxyz' ? '形势与政策' : selectedSubject === 'chaoxing' ? '超星题库' : selectedSubject === 'exam175' ? '党纪考试题库' : '数据库题库'} - 请选择题型
           </p>
           <div className="subject-cards">
             {selectedSubject === 'kline' ? (
@@ -542,6 +597,52 @@ function App() {
                   <div className="subject-icon" style={{ background: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)' }}>多</div>
                   <h2>多选题</h2>
                   <p>{questionStats.multiselect || 0}道题目</p>
+                </div>
+                <div className="subject-card" onClick={() => filterDatabaseQuestionsByType('all')}>
+                  <div className="subject-icon" style={{ background: 'linear-gradient(135deg, #fa709a 0%, #fee140 100%)' }}>全</div>
+                  <h2>全部题目</h2>
+                  <p>{questionStats.total || 0}道题目</p>
+                </div>
+              </>
+            ) : selectedSubject === 'exam175' ? (
+              <>
+                <div className="subject-card" onClick={() => filterDatabaseQuestionsByType('choice')}>
+                  <div className="subject-icon" style={{ background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)' }}>选</div>
+                  <h2>选择题</h2>
+                  <p>{questionStats.choice || 0}道题目</p>
+                </div>
+                <div className="subject-card" onClick={() => filterDatabaseQuestionsByType('multiselect')}>
+                  <div className="subject-icon" style={{ background: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)' }}>多</div>
+                  <h2>多选题</h2>
+                  <p>{questionStats.multiselect || 0}道题目</p>
+                </div>
+                <div className="subject-card" onClick={() => filterDatabaseQuestionsByType('truefalse')}>
+                  <div className="subject-icon" style={{ background: 'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)' }}>判</div>
+                  <h2>判断题</h2>
+                  <p>{questionStats.truefalse || 0}道题目</p>
+                </div>
+                <div className="subject-card" onClick={() => filterDatabaseQuestionsByType('all')}>
+                  <div className="subject-icon" style={{ background: 'linear-gradient(135deg, #fa709a 0%, #fee140 100%)' }}>全</div>
+                  <h2>全部题目</h2>
+                  <p>{questionStats.total || 0}道题目</p>
+                </div>
+              </>
+            ) : selectedSubject === 'chaoxing' ? (
+              <>
+                <div className="subject-card" onClick={() => filterDatabaseQuestionsByType('choice')}>
+                  <div className="subject-icon" style={{ background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)' }}>单</div>
+                  <h2>单选题</h2>
+                  <p>{questionStats.choice || 0}道题目</p>
+                </div>
+                <div className="subject-card" onClick={() => filterDatabaseQuestionsByType('multiselect')}>
+                  <div className="subject-icon" style={{ background: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)' }}>多</div>
+                  <h2>多选题</h2>
+                  <p>{questionStats.multiselect || 0}道题目</p>
+                </div>
+                <div className="subject-card" onClick={() => filterDatabaseQuestionsByType('truefalse')}>
+                  <div className="subject-icon" style={{ background: 'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)' }}>判</div>
+                  <h2>判断题</h2>
+                  <p>{questionStats.truefalse || 0}道题目</p>
                 </div>
                 <div className="subject-card" onClick={() => filterDatabaseQuestionsByType('all')}>
                   <div className="subject-icon" style={{ background: 'linear-gradient(135deg, #fa709a 0%, #fee140 100%)' }}>全</div>
