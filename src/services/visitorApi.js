@@ -44,3 +44,21 @@ export function loginAdmin(password) {
 export function getAdminVisitors() {
   return request('/api/admin/visitors');
 }
+
+export function getAdminBans() {
+  return request('/api/admin/bans');
+}
+
+export function banVisitorTarget({ targetType, targetValue, reason = '', expiresAt = '' }) {
+  return request('/api/admin/bans', {
+    method: 'POST',
+    body: JSON.stringify({ targetType, targetValue, reason, expiresAt })
+  });
+}
+
+export function unbanVisitorTarget({ targetType, targetValue }) {
+  return request('/api/admin/bans', {
+    method: 'DELETE',
+    body: JSON.stringify({ targetType, targetValue })
+  });
+}

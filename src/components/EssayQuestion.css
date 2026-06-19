@@ -270,3 +270,44 @@
         font-size: 28px;
     }
 }
+
+/* 解答题图片渲染 */
+.answer-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin: 10px 0;
+    display: block;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.rich-text-line {
+    display: inline;
+}
+
+.answer-point .answer-image,
+.answer-text .answer-image {
+    max-width: 90%;
+    margin: 8px auto;
+}
+
+.question-images {
+    margin: 12px 0;
+}
+
+.question-images .answer-image {
+    max-width: 80%;
+    margin: 8px 0;
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+    .answer-image {
+        max-width: 100%;
+    }
+    .answer-point .answer-image,
+    .answer-text .answer-image,
+    .question-images .answer-image {
+        max-width: 100%;
+    }
+}

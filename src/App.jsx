@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import QuizCard from './components/QuizCard';
 import OptionButton from './components/OptionButton';
 import ProgressBar from './components/ProgressBar';
@@ -7,6 +7,7 @@ import FillBlankQuestion from './components/FillBlankQuestion';
 import EssayQuestion from './components/EssayQuestion';
 import OnlineCount from './components/OnlineCount';
 import AdminVisitorLog from './components/AdminVisitorLog';
+import AdminQuizManager from './components/AdminQuizManager';
 import './App.css';
 
 function App() {
@@ -32,12 +33,15 @@ function App() {
   const [fillBlankAnswer, setFillBlankAnswer] = useState('');
   const [fillBlankSubmitted, setFillBlankSubmitted] = useState(false);
   const [fillBlankCorrect, setFillBlankCorrect] = useState(null);
+  const [fillBlankRevealed, setFillBlankRevealed] = useState(false);
+  const fillBlankAutoNextTimerRef = useRef(null);
 
   // 多选题相关状态
   const [multiSelectedAnswers, setMultiSelectedAnswers] = useState(new Set());
   const [multiSubmitted, setMultiSubmitted] = useState(false);
   const [multiCorrect, setMultiCorrect] = useState(null);
   const [currentView, setCurrentView] = useState(() => window.location.hash === '#admin' ? 'admin' : 'quiz');
+  const [adminTab, setAdminTab] = useState('visitors');
 
   useEffect(() => {
     const handleHashChange = () => {
@@ -46,6 +50,12 @@ function App() {
 
     window.addEventListener('hashchange', handleHashChange);
     return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
+
+  useEffect(() => () => {
+    if (fillBlankAutoNextTimerRef.current) {
+      clearTimeout(fillBlankAutoNextTimerRef.current);
+    }
   }, []);
 
   const getSeededRandomGenerator = (seed) => {
@@ -178,37 +188,45 @@ function App() {
     });
   };
 
-  // 加载题库
   const loadQuestions = async (subject) => {
     setLoading(true);
     try {
-      // 根据科目选择不同的JSON文件
-      let fileName;
-      if (subject === 'database') {
-        fileName = 'questions_database.json';
-      } else if (subject === 'kline') {
-        fileName = 'kline_questions.json';
-      } else if (subject === 'sxyz') {
-        fileName = 'questions_sxyz.json';
-      } else if (subject === 'chaoxing') {
-        fileName = 'chaoxing-quiz-bank.json';
-      } else if (subject === 'exam175') {
-        fileName = 'exam-175-question-bank.json';
-      } else if (subject === 'c') {
-        fileName = 'questions.json';
-      } else {
-        fileName = 'questions_java.json';
+      let rawQuestions = null;
+
+      try {
+        const apiResponse = await fetch(`/api/quiz/banks/${subject}/questions`);
+        if (apiResponse.ok) {
+          const apiData = await apiResponse.json();
+          rawQuestions = apiData.questions;
+        }
+      } catch (apiErr) {
+        console.warn('题库API不可用，回退到静态JSON:', apiErr.message);
       }
-      const response = await fetch(`/${fileName}`);
-      const data = await response.json();
+
+      if (!rawQuestions) {
+        const fileMap = {
+          database: 'questions_database.json',
+          kline: 'kline_questions.json',
+          sxyz: 'questions_sxyz.json',
+          chaoxing: 'chaoxing-quiz-bank.json',
+          exam175: 'exam-175-question-bank.json',
+          ds: 'questions_data_structure.json',
+          c: 'questions.json',
+          java: 'questions_java.json',
+        };
+        const fileName = fileMap[subject] || 'questions_java.json';
+        const response = await fetch(`/${fileName}`);
+        const data = await response.json();
+        rawQuestions = data.questions;
+      }
 
       // 处理数据库题库（不同的数据格式）
-      if (subject === 'database' || subject === 'kline' || subject === 'sxyz' || subject === 'chaoxing' || subject === 'exam175') {
+      if (subject === 'database' || subject === 'kline' || subject === 'sxyz' || subject === 'chaoxing' || subject === 'exam175' || subject === 'ds') {
         const dbQuestions = subject === 'sxyz'
-          ? shuffleSxyzQuestions(data.questions)
+          ? shuffleSxyzQuestions(rawQuestions)
           : subject === 'chaoxing'
-            ? normalizeChaoxingQuestions(data.questions)
-            : data.questions;
+            ? normalizeChaoxingQuestions(rawQuestions)
+            : rawQuestions;
         setAllQuestions(dbQuestions);
 
         // 统计各题型数量
@@ -232,8 +250,7 @@ function App() {
         return;
       }
 
-      // 现有的C/Java题库处理逻辑
-      const shuffled = shuffleQuestionsByType(data.questions);
+      const shuffled = shuffleQuestionsByType(rawQuestions);
 
       // 存储所有题目
       setAllQuestions(shuffled);
@@ -302,6 +319,7 @@ function App() {
     setFillBlankAnswer('');
     setFillBlankSubmitted(false);
     setFillBlankCorrect(null);
+    setFillBlankRevealed(false);
     setMultiSelectedAnswers(new Set());
     setMultiSubmitted(false);
     setMultiCorrect(null);
@@ -318,10 +336,41 @@ function App() {
   }, [selectedSubject]);
 
   if (currentView === 'admin') {
-    return <AdminVisitorLog />;
+    return (
+      <div className="App">
+        <div className="admin-tabs">
+          <button
+            className={`admin-tab-btn ${adminTab === 'visitors' ? 'active' : ''}`}
+            onClick={() => setAdminTab('visitors')}
+          >访客日志</button>
+          <button
+            className={`admin-tab-btn ${adminTab === 'quiz' ? 'active' : ''}`}
+            onClick={() => setAdminTab('quiz')}
+          >题库管理</button>
+          <a className="admin-tab-back" href="#/">← 返回首页</a>
+        </div>
+        {adminTab === 'visitors' ? <AdminVisitorLog /> : <AdminQuizManager />}
+      </div>
+    );
   }
 
   const currentQuestion = questions[currentIndex];
+
+  const goToNextFillBlankQuestion = () => {
+    if (fillBlankAutoNextTimerRef.current) {
+      clearTimeout(fillBlankAutoNextTimerRef.current);
+      fillBlankAutoNextTimerRef.current = null;
+    }
+    if (currentIndex < questions.length - 1) {
+      setCurrentIndex(prev => prev + 1);
+      setFillBlankAnswer('');
+      setFillBlankSubmitted(false);
+      setFillBlankCorrect(null);
+      setFillBlankRevealed(false);
+    } else {
+      setShowResultModal(true);
+    }
+  };
 
   // Handle option click - 允许答错后重新选择
   const handleOptionClick = (optionKey) => {
@@ -428,6 +477,7 @@ function App() {
     setFillBlankAnswer('');
     setFillBlankSubmitted(false);
     setFillBlankCorrect(null);
+    setFillBlankRevealed(false);
     setMultiSelectedAnswers(new Set());
     setMultiSubmitted(false);
     setMultiCorrect(null);
@@ -438,7 +488,7 @@ function App() {
   const restartPractice = () => {
     // 重新过滤题目 - 根据科目类型调用对应的过滤函数
     if (selectedQuestionType) {
-      if (selectedSubject === 'database' || selectedSubject === 'kline' || selectedSubject === 'sxyz' || selectedSubject === 'chaoxing' || selectedSubject === 'exam175') {
+      if (selectedSubject === 'database' || selectedSubject === 'kline' || selectedSubject === 'sxyz' || selectedSubject === 'chaoxing' || selectedSubject === 'exam175' || selectedSubject === 'ds') {
         filterDatabaseQuestionsByType(selectedQuestionType);
       } else {
         filterQuestionsByType(selectedQuestionType);
@@ -466,6 +516,7 @@ function App() {
     setFillBlankAnswer('');
     setFillBlankSubmitted(false);
     setFillBlankCorrect(null);
+    setFillBlankRevealed(false);
     setMultiSelectedAnswers(new Set());
     setMultiSubmitted(false);
     setMultiCorrect(null);
@@ -544,7 +595,7 @@ function App() {
             <div className="subject-card chaoxing-card" onClick={() => setSelectedSubject('chaoxing')}>
               <div className="card-glow"></div>
               <div className="subject-icon">📚</div>
-              <h2>超星题库</h2>
+              <h2>西方文化著作导读</h2>
               <p className="question-count">236道题目</p>
               <div className="subject-stats">
                 <div className="stat-badge"><span className="stat-number">126</span> 单选</div>
@@ -565,6 +616,18 @@ function App() {
               </div>
               <div className="new-badge">📘 NEW</div>
             </div>
+            <div className="subject-card database-card" onClick={() => setSelectedSubject('ds')}>
+              <div className="card-glow"></div>
+              <div className="subject-icon database-icon">🌳</div>
+              <h2>数据结构（C语言）</h2>
+              <p className="question-count">299道题目</p>
+              <div className="subject-stats">
+                <div className="stat-badge"><span className="stat-number">198</span> 选择</div>
+                <div className="stat-badge"><span className="stat-number">58</span> 填空</div>
+                <div className="stat-badge"><span className="stat-number">43</span> 解答</div>
+              </div>
+              <div className="new-badge">🌳 NEW</div>
+            </div>
           </div>
         </div>
       </div>
@@ -578,7 +641,7 @@ function App() {
         <div className="subject-selection">
           <h1 className="selection-title">选择练习类型</h1>
           <p className="selection-subtitle">
-            {selectedSubject === 'c' ? 'C语言题库' : selectedSubject === 'java' ? 'Java题库' : selectedSubject === 'kline' ? 'K线技术分析' : selectedSubject === 'sxyz' ? '形势与政策' : selectedSubject === 'chaoxing' ? '超星题库' : selectedSubject === 'exam175' ? '党纪考试题库' : '数据库题库'} - 请选择题型
+            {selectedSubject === 'c' ? 'C语言题库' : selectedSubject === 'java' ? 'Java题库' : selectedSubject === 'kline' ? 'K线技术分析' : selectedSubject === 'sxyz' ? '形势与政策' : selectedSubject === 'chaoxing' ? '西方文化著作导读' : selectedSubject === 'exam175' ? '党纪考试题库' : selectedSubject === 'ds' ? '数据结构（C语言）' : '数据库题库'} - 请选择题型
           </p>
           <div className="subject-cards">
             {selectedSubject === 'kline' ? (
@@ -650,7 +713,7 @@ function App() {
                   <p>{questionStats.total || 0}道题目</p>
                 </div>
               </>
-            ) : selectedSubject === 'database' ? (
+            ) : selectedSubject === 'database' || selectedSubject === 'ds' ? (
               <>
                 <div className="subject-card" onClick={() => filterDatabaseQuestionsByType('choice')}>
                   <div className="subject-icon" style={{ background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)' }}>选</div>
@@ -794,11 +857,14 @@ function App() {
                       if (!fillBlankAnswer.trim()) return;
 
                       // 答案验证（忽略大小写和空格）
-                      const normalize = (str) => str.trim().toLowerCase();
+                      const normalize = (str) => String(str ?? '').trim().toLowerCase();
                       const userAns = normalize(fillBlankAnswer);
                       let correct = false;
 
-                      if (Array.isArray(currentQuestion.正确答案)) {
+                      // 兼容三种答案字段：答案（database 题库）/ 正确答案（ds/sxyz）/ 答案文本
+                      const rawCorrect = currentQuestion.答案 ?? currentQuestion.正确答案 ?? currentQuestion.答案文本;
+
+                      if (Array.isArray(rawCorrect)) {
                         // 多答案题目：支持逗号、空格分隔输入
                         // 用户可以用中文逗号、英文逗号、顿号或空格分隔
                         const userAnswers = fillBlankAnswer
@@ -806,7 +872,7 @@ function App() {
                           .map(ans => normalize(ans))
                           .filter(ans => ans.length > 0);
 
-                        const correctAnswers = currentQuestion.正确答案.map(ans => normalize(ans));
+                        const correctAnswers = rawCorrect.map(ans => normalize(ans));
 
                         // 检查是否所有答案都匹配（顺序可以不同）
                         if (userAnswers.length === correctAnswers.length) {
@@ -818,7 +884,7 @@ function App() {
                         }
                       } else {
                         // 单答案题目
-                        correct = normalize(currentQuestion.正确答案) === userAns;
+                        correct = normalize(rawCorrect) === userAns;
                       }
 
                       setFillBlankSubmitted(true);
@@ -835,26 +901,37 @@ function App() {
                           setWrongAnswers(prev => [...prev, currentQuestion]);
                         }
                       }
+
+                      if (correct) {
+                        if (fillBlankAutoNextTimerRef.current) {
+                          clearTimeout(fillBlankAutoNextTimerRef.current);
+                        }
+                        fillBlankAutoNextTimerRef.current = setTimeout(() => {
+                          fillBlankAutoNextTimerRef.current = null;
+                          goToNextFillBlankQuestion();
+                        }, 500);
+                      }
                     }}
                     showAnswer={fillBlankSubmitted}
                     isCorrect={fillBlankCorrect}
+                    answerRevealed={fillBlankRevealed}
+                    onViewAnswer={() => {
+                      setFillBlankRevealed(true);
+                      const questionId = currentQuestion.序号 || currentQuestion.题目ID;
+                      if (!firstAttempts.has(questionId)) {
+                        setFirstAttempts(prev => new Set([...prev, questionId]));
+                        setAnsweredQuestions(prev => new Set([...prev, questionId]));
+                        setWrongAnswers(prev => [...prev, currentQuestion]);
+                      }
+                    }}
                   />
 
                   {/* 填空题提交后的下一题按钮 */}
-                  {fillBlankSubmitted && (
+                  {fillBlankSubmitted && fillBlankCorrect === false && (
                     <div className="navigation-buttons">
                       <button
                         className="next-btn"
-                        onClick={() => {
-                          if (currentIndex < questions.length - 1) {
-                            setCurrentIndex(prev => prev + 1);
-                            setFillBlankAnswer('');
-                            setFillBlankSubmitted(false);
-                            setFillBlankCorrect(null);
-                          } else {
-                            setShowResultModal(true);
-                          }
-                        }}
+                        onClick={goToNextFillBlankQuestion}
                       >
                         {currentIndex < questions.length - 1 ? '下一题 →' : '查看结果'}
                       </button>

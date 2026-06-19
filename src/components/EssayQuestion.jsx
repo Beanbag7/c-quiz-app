@@ -1,6 +1,48 @@
 import React, { useState, useEffect } from 'react';
 import './EssayQuestion.css';
 
+// 归一化参考答案：兼容 答案 / 答案文本 / 正确答案 三种字段来源
+// 优先使用「答案文本」（解答题通常是结构化数组），其次「正确答案」，最后「答案」
+// 返回字符串数组，便于统一渲染为列表
+function normalizeReferenceAnswer(question) {
+    const raw = question?.答案文本 ?? question?.正确答案 ?? question?.答案;
+    if (raw === null || raw === undefined || raw === '') return [];
+    if (Array.isArray(raw)) return raw.map((item) => String(item));
+    return [String(raw)];
+}
+
+// 解析文本中的 Markdown 图片语法 ![alt](src)，渲染为 <img>，其余文本原样输出
+function renderRichText(text) {
+    if (!text) return null;
+    const regex = /!\[([^\]]*)\]\(([^)]+)\)/g;
+    const parts = [];
+    let lastIndex = 0;
+    let match;
+    let key = 0;
+    while ((match = regex.exec(text)) !== null) {
+        // 图片前的文本
+        if (match.index > lastIndex) {
+            const before = text.substring(lastIndex, match.index);
+            if (before.trim()) {
+                parts.push(<span key={`txt-${key++}`} className="rich-text-line">{before}</span>);
+            }
+        }
+        // 图片本身
+        parts.push(
+            <img key={`img-${key++}`} className="answer-image" src={match[2]} alt={match[1]} loading="lazy" />
+        );
+        lastIndex = regex.lastIndex;
+    }
+    // 尾部文本
+    if (lastIndex < text.length) {
+        const after = text.substring(lastIndex);
+        if (after.trim()) {
+            parts.push(<span key={`txt-${key++}`} className="rich-text-line">{after}</span>);
+        }
+    }
+    return <>{parts}</>;
+}
+
 function EssayQuestion({ question, onNext, onScoreChange }) {
     const [userAnswer, setUserAnswer] = useState('');
     const [submitted, setSubmitted] = useState(false);
@@ -28,6 +70,9 @@ function EssayQuestion({ question, onNext, onScoreChange }) {
         } else {
             answerText = correctAnswers;
         }
+
+        // 去除 Markdown 图片语法，避免图片说明文字干扰关键词评分
+        answerText = answerText.replace(/!\[[^\]]*\]\([^)]*\)/g, '');
 
         // 改进的关键词提取（提取所有有意义的词组）
         const stopWords = new Set([
@@ -89,7 +134,15 @@ function EssayQuestion({ question, onNext, onScoreChange }) {
     const handleSubmit = () => {
         if (!userAnswer.trim()) return;
 
-        const calculatedScore = calculateScore(userAnswer, question.答案);
+        const referenceAnswer = question?.答案文本 ?? question?.正确答案 ?? question?.答案;
+        // 评分前去除图片语法
+        let referenceAnswerForScore = referenceAnswer;
+        if (Array.isArray(referenceAnswerForScore)) {
+            referenceAnswerForScore = referenceAnswerForScore.map(s => String(s).replace(/!\[[^\]]*\]\([^)]*\)/g, ''));
+        } else {
+            referenceAnswerForScore = String(referenceAnswerForScore).replace(/!\[[^\]]*\]\([^)]*\)/g, '');
+        }
+        const calculatedScore = calculateScore(userAnswer, referenceAnswerForScore);
         setScore(calculatedScore);
         setSubmitted(true);
 
@@ -104,11 +157,21 @@ function EssayQuestion({ question, onNext, onScoreChange }) {
         // 重置状态留给父组件处理
     };
 
+    const referenceAnswer = normalizeReferenceAnswer(question);
+
     return (
         <div className="essay-question">
             <div className="question-content">
                 <h3 className="question-title">解答题 (满分5分)</h3>
                 <p className="question-text">{question.题目内容}</p>
+                {/* 题干图片（如有） */}
+                {Array.isArray(question.题目图片) && question.题目图片.length > 0 && (
+                    <div className="question-images">
+                        {question.题目图片.map((src, i) => (
+                            <img key={i} className="answer-image" src={src} alt={`题干图${i+1}`} loading="lazy" />
+                        ))}
+                    </div>
+                )}
             </div>
 
             {!submitted && (
@@ -158,22 +221,24 @@ function EssayQuestion({ question, onNext, onScoreChange }) {
                         <p className="user-answer-text">{userAnswer}</p>
                     </div>
 
-                    <div className="answer-section">
-                        <h4 className="answer-title">📖 参考答案</h4>
-                        <div className="answer-content">
-                            {Array.isArray(question.答案) ? (
-                                <ol className="answer-list">
-                                    {question.答案.map((point, index) => (
-                                        <li key={index} className="answer-point">
-                                            {point}
-                                        </li>
-                                    ))}
-                                </ol>
-                            ) : (
-                                <p className="answer-text">{question.答案}</p>
-                            )}
+                    {referenceAnswer.length > 0 && (
+                        <div className="answer-section">
+                            <h4 className="answer-title">📖 参考答案</h4>
+                            <div className="answer-content">
+                                {referenceAnswer.length > 1 ? (
+                                    <ol className="answer-list">
+                                        {referenceAnswer.map((point, index) => (
+                                            <li key={index} className="answer-point">
+                                                {renderRichText(point)}
+                                            </li>
+                                        ))}
+                                    </ol>
+                                ) : (
+                                    <div className="answer-text">{renderRichText(referenceAnswer[0])}</div>
+                                )}
+                            </div>
                         </div>
-                    </div>
+                    )}
 
                     {question.解析 && (
                         <div className="explanation-section">
