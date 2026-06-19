@@ -8,7 +8,21 @@ import EssayQuestion from './components/EssayQuestion';
 import OnlineCount from './components/OnlineCount';
 import AdminVisitorLog from './components/AdminVisitorLog';
 import AdminQuizManager from './components/AdminQuizManager';
+import ChatWidget from './components/ChatWidget';
+import Leaderboard from './components/Leaderboard';
 import './App.css';
+import './dark-theme.css';
+
+const WRONG_ANSWERS_KEY = 'cq_wrong_answers';
+
+// 渲染选择题答案解析文本：答案文本可能内嵌 <img> HTML 标签（数据结构题库），
+// 用 dangerouslySetInnerHTML 渲染，图片限宽避免溢出（与 QuizCard 题干渲染方式一致）
+function renderAnswerExplanation(text) {
+  if (!text) return null;
+  const html = String(text)
+    .replace(/<img /g, '<img style="max-width:100%;height:auto;border-radius:8px;margin:8px 0;display:block" ');
+  return <span dangerouslySetInnerHTML={{ __html: html }} />;
+}
 
 function App() {
   const [selectedSubject, setSelectedSubject] = useState(null); // 'c' or 'java'
@@ -41,7 +55,14 @@ function App() {
   const [multiSubmitted, setMultiSubmitted] = useState(false);
   const [multiCorrect, setMultiCorrect] = useState(null);
   const [currentView, setCurrentView] = useState(() => window.location.hash === '#admin' ? 'admin' : 'quiz');
+  const [darkMode, setDarkMode] = useState(() => localStorage.getItem('cq_dark_mode') === '1');
   const [adminTab, setAdminTab] = useState('visitors');
+
+  // 暗色主题同步到 <html>
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', darkMode ? 'dark' : 'light');
+    localStorage.setItem('cq_dark_mode', darkMode ? '1' : '0');
+  }, [darkMode]);
 
   useEffect(() => {
     const handleHashChange = () => {
@@ -51,6 +72,37 @@ function App() {
     window.addEventListener('hashchange', handleHashChange);
     return () => window.removeEventListener('hashchange', handleHashChange);
   }, []);
+
+  // 错题本：按科目持久化到 localStorage
+  const [subjectWrongCounts, setSubjectWrongCounts] = useState(() => {
+    const counts = {};
+    ['c','java','database','kline','sxyz','chaoxing','exam175','ds'].forEach(s => {
+      try {
+        const raw = localStorage.getItem(`${WRONG_ANSWERS_KEY}_${s}`);
+        if (raw) { const arr = JSON.parse(raw); if (Array.isArray(arr)) counts[s] = arr.length; }
+      } catch {}
+    });
+    return counts;
+  });
+
+  useEffect(() => {
+    if (!selectedSubject || wrongAnswers.length === 0) return;
+    try {
+      localStorage.setItem(`${WRONG_ANSWERS_KEY}_${selectedSubject}`, JSON.stringify(wrongAnswers));
+      setSubjectWrongCounts(prev => ({ ...prev, [selectedSubject]: wrongAnswers.length }));
+    } catch {}
+  }, [wrongAnswers, selectedSubject]);
+
+  // 答题完成后上报分数到排行榜
+  useEffect(() => {
+    if (!showResultModal || !selectedSubject) return;
+    const sender = localStorage.getItem('cq_chat_sender') || '匿名用户';
+    fetch('/api/chat/score', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ userId: sender, score: correctCount, subject: selectedSubject }),
+    }).catch(() => {});
+  }, [showResultModal]); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => () => {
     if (fillBlankAutoNextTimerRef.current) {
@@ -466,9 +518,19 @@ function App() {
   // 开始错题本练习
   const startWrongPractice = () => {
     setPracticeMode('wrong');
-    setQuestions(wrongAnswers);
+    // 从 localStorage 加载持久化的错题（如果当前内存中没有）
+    const stored = wrongAnswers.length > 0 ? wrongAnswers : (() => {
+      try {
+        const raw = localStorage.getItem(`${WRONG_ANSWERS_KEY}_${selectedSubject}`);
+        return raw ? JSON.parse(raw) : [];
+      } catch { return []; }
+    })();
+    setQuestions(stored);
     setCurrentIndex(0);
-    setWrongAnswers([]); // 清空当前错题本，准备新的记录
+    // 清除 localStorage 中该科目的错题
+    try { localStorage.removeItem(`${WRONG_ANSWERS_KEY}_${selectedSubject}`); } catch {}
+    setSubjectWrongCounts(prev => ({ ...prev, [selectedSubject]: 0 }));
+    setWrongAnswers([]);
     setFirstAttempts(new Set());
     setAnsweredQuestions(new Set());
     setCorrectCount(0);
@@ -528,9 +590,13 @@ function App() {
   if (!selectedSubject) {
     return (
       <div className="App">
+        <ChatWidget />
+        <button className="theme-toggle" onClick={() => setDarkMode(d => !d)} title={darkMode ? '切换亮色' : '切换暗色'}>
+          {darkMode ? '☀️' : '🌙'}
+        </button>
         <div className="subject-selection">
           <div className="selection-topbar">
-            <OnlineCount scope="home" />
+            <OnlineCount />
             <a className="admin-entry" href="#admin">管理员日志</a>
           </div>
           <h1 className="selection-title">选择题库</h1>
@@ -545,6 +611,9 @@ function App() {
                 <div className="stat-badge"><span className="stat-number">69</span> 单选</div>
                 <div className="stat-badge"><span className="stat-number">96</span> 判断</div>
               </div>
+              {subjectWrongCounts['c'] > 0 && (
+                <div className="wrong-count-badge">📝 {subjectWrongCounts['c']} 道错题</div>
+              )}
             </div>
             <div className="subject-card java-card" onClick={() => setSelectedSubject('java')}>
               <div className="card-glow"></div>
@@ -553,9 +622,12 @@ function App() {
               <p className="question-count">241道题目</p>
               <div className="subject-stats">
                 <div className="stat-badge"><span className="stat-number">241</span> 单选</div>
-              </div>
             </div>
-            <div className="subject-card database-card" onClick={() => setSelectedSubject('database')}>
+            {subjectWrongCounts['java'] > 0 && (
+              <div className="wrong-count-badge">📝 {subjectWrongCounts['java']} 道错题</div>
+            )}
+          </div>
+          <div className="subject-card database-card" onClick={() => setSelectedSubject('database')}>
               <div className="card-glow"></div>
               <div className="subject-icon database-icon">🗄️</div>
               <h2>数据库题库</h2>
@@ -566,6 +638,9 @@ function App() {
                 <div className="stat-badge"><span className="stat-number">21</span> 解答</div>
               </div>
               <div className="new-badge">✨ NEW</div>
+              {subjectWrongCounts['database'] > 0 && (
+                <div className="wrong-count-badge">📝 {subjectWrongCounts['database']} 道错题</div>
+              )}
             </div>
             <div className="subject-card kline-card" onClick={() => setSelectedSubject('kline')}>
               <div className="card-glow"></div>
@@ -578,6 +653,9 @@ function App() {
                 <div className="stat-badge"><span className="stat-number">5</span> 多选</div>
               </div>
               <div className="new-badge">🔥 HOT</div>
+              {subjectWrongCounts['kline'] > 0 && (
+                <div className="wrong-count-badge">📝 {subjectWrongCounts['kline']} 道错题</div>
+              )}
             </div>
             <div className="subject-card sxyz-card" onClick={() => setSelectedSubject('sxyz')}>
               <div className="card-glow"></div>
@@ -591,6 +669,9 @@ function App() {
                 <div className="stat-badge"><span className="stat-number">104</span> 判断</div>
               </div>
               <div className="new-badge">🆕 NEW</div>
+              {subjectWrongCounts['sxyz'] > 0 && (
+                <div className="wrong-count-badge">📝 {subjectWrongCounts['sxyz']} 道错题</div>
+              )}
             </div>
             <div className="subject-card chaoxing-card" onClick={() => setSelectedSubject('chaoxing')}>
               <div className="card-glow"></div>
@@ -603,6 +684,9 @@ function App() {
                 <div className="stat-badge"><span className="stat-number">97</span> 判断</div>
               </div>
               <div className="new-badge">📚 NEW</div>
+              {subjectWrongCounts['chaoxing'] > 0 && (
+                <div className="wrong-count-badge">📝 {subjectWrongCounts['chaoxing']} 道错题</div>
+              )}
             </div>
             <div className="subject-card exam175-card" onClick={() => setSelectedSubject('exam175')}>
               <div className="card-glow"></div>
@@ -615,6 +699,9 @@ function App() {
                 <div className="stat-badge"><span className="stat-number">15</span> 判断</div>
               </div>
               <div className="new-badge">📘 NEW</div>
+              {subjectWrongCounts['exam175'] > 0 && (
+                <div className="wrong-count-badge">📝 {subjectWrongCounts['exam175']} 道错题</div>
+              )}
             </div>
             <div className="subject-card database-card" onClick={() => setSelectedSubject('ds')}>
               <div className="card-glow"></div>
@@ -627,8 +714,12 @@ function App() {
                 <div className="stat-badge"><span className="stat-number">43</span> 解答</div>
               </div>
               <div className="new-badge">🌳 NEW</div>
+              {subjectWrongCounts['ds'] > 0 && (
+                <div className="wrong-count-badge">📝 {subjectWrongCounts['ds']} 道错题</div>
+              )}
             </div>
           </div>
+          <Leaderboard />
         </div>
       </div>
     );
@@ -638,6 +729,10 @@ function App() {
   if (!selectedQuestionType) {
     return (
       <div className="App">
+        <ChatWidget />
+        <button className="theme-toggle" onClick={() => setDarkMode(d => !d)} title={darkMode ? '切换亮色' : '切换暗色'}>
+          {darkMode ? '☀️' : '🌙'}
+        </button>
         <div className="subject-selection">
           <h1 className="selection-title">选择练习类型</h1>
           <p className="selection-subtitle">
@@ -821,6 +916,10 @@ function App() {
 
   return (
     <div className="app">
+      <ChatWidget />
+      <button className="theme-toggle" onClick={() => setDarkMode(d => !d)} title={darkMode ? '切换亮色' : '切换暗色'}>
+        {darkMode ? '☀️' : '🌙'}
+      </button>
       {/* 开始答题后隐藏顶部标题栏 */}
       <div className="container">
         <div className="main-content">
@@ -833,7 +932,7 @@ function App() {
             }}>
               ← 退出练习
             </button>
-            <OnlineCount scope="quiz" />
+            <OnlineCount />
           </div>
 
           {/* Progress Bar */}
@@ -1029,7 +1128,7 @@ function App() {
                       <div className={`compact-hint ${multiCorrect ? 'success' : ''}`}>
                         {multiCorrect
                           ? '✓ 回答正确！'
-                          : <>正确答案：<strong>{correctAnswers.join('、')}</strong> - {currentQuestion.答案文本}</>}
+                          : <>正确答案：<strong>{correctAnswers.join('、')}</strong> - {renderAnswerExplanation(currentQuestion.答案文本)}</>}
                       </div>
 
                       <Statistics
@@ -1094,7 +1193,7 @@ function App() {
                 {/* Compact Feedback - 紧凑的反馈提示 */}
                 {isCorrect !== null && !isCorrect && (
                   <div className="compact-hint">
-                    正确答案：<strong>{currentQuestion.正确答案}</strong> - {currentQuestion.答案文本}
+                    正确答案：<strong>{currentQuestion.正确答案}</strong> - {renderAnswerExplanation(currentQuestion.答案文本)}
                   </div>
                 )}
 

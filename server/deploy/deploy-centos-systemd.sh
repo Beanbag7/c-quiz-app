@@ -29,13 +29,13 @@ if [[ -z ${SERVER_NAME} ]]; then
 fi
 
 install_packages() {
-  if command -v nginx >/dev/null 2>&1 && command -v redis-server >/dev/null 2>&1 && command -v curl >/dev/null 2>&1 && command -v tar >/dev/null 2>&1 && command -v xz >/dev/null 2>&1; then
+  if command -v nginx >/dev/null 2>&1 && command -v redis-server >/dev/null 2>&1 && command -v curl >/dev/null 2>&1 && command -v tar >/dev/null 2>&1 && command -v xz >/dev/null 2>&1 && command -v mariadb >/dev/null 2>&1; then
     echo "Required system packages already installed; skipping package installation."
     return
   fi
 
   dnf clean all
-  dnf install -y --setopt=install_weak_deps=False --disablerepo='epel*' nginx redis curl tar xz
+  dnf install -y --setopt=install_weak_deps=False --disablerepo='epel*' nginx redis curl tar xz mariadb-server mariadb
 }
 
 install_node() {
@@ -61,11 +61,13 @@ ensure_env() {
 
   local admin_password=${ADMIN_PASSWORD:-$(openssl rand -base64 24 | tr -d '=+/' | cut -c1-24)}
   local session_secret=${SESSION_SECRET:-$(openssl rand -hex 32)}
+  local mysql_password=${MYSQL_PASSWORD:-$(openssl rand -base64 18 | tr -d '=+/' | cut -c1-18)}
 
   umask 077
   cat > /root/c-quiz-app-secrets.txt <<EOF
 ADMIN_PASSWORD=${admin_password}
 SESSION_SECRET=${session_secret}
+MYSQL_PASSWORD=${mysql_password}
 EOF
 
   cat > "${env_file}" <<EOF
@@ -77,7 +79,27 @@ SESSION_SECRET=${session_secret}
 PRESENCE_TTL_SECONDS=60
 ADMIN_SESSION_TTL_SECONDS=28800
 VITE_VISITOR_API_BASE_URL=
+MYSQL_HOST=127.0.0.1
+MYSQL_PORT=3306
+MYSQL_USER=cquiz
+MYSQL_PASSWORD=${mysql_password}
+MYSQL_DATABASE=cquiz
 EOF
+}
+
+setup_mariadb() {
+  systemctl enable --now mariadb
+
+  mysql -e "CREATE DATABASE IF NOT EXISTS cquiz CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
+
+  local mysql_password
+  mysql_password=$(grep MYSQL_PASSWORD /root/c-quiz-app-secrets.txt 2>/dev/null | cut -d= -f2)
+  if [[ -z ${mysql_password} ]]; then
+    mysql_password=${MYSQL_PASSWORD:-cquizpw}
+  fi
+
+  mysql -e "CREATE USER IF NOT EXISTS 'cquiz'@'localhost' IDENTIFIED BY '${mysql_password}';"
+  mysql -e "GRANT ALL PRIVILEGES ON cquiz.* TO 'cquiz'@'localhost'; FLUSH PRIVILEGES;"
 }
 
 build_app() {
@@ -125,6 +147,17 @@ server {
         proxy_set_header X-Forwarded-Proto \$scheme;
     }
 
+    location /ws {
+        proxy_pass http://127.0.0.1:${APP_PORT};
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade \$http_upgrade;
+        proxy_set_header Connection "upgrade";
+        proxy_set_header Host \$host;
+        proxy_set_header X-Real-IP \$remote_addr;
+        proxy_set_header X-Forwarded-For \$remote_addr;
+        proxy_read_timeout 3600s;
+    }
+
     location / {
         try_files \$uri \$uri/ /index.html;
     }
@@ -134,6 +167,7 @@ EOF
 
 start_services() {
   systemctl enable --now redis
+  systemctl enable --now mariadb
   systemctl daemon-reload
   systemctl enable c-quiz-app
   systemctl restart c-quiz-app
@@ -147,8 +181,10 @@ verify() {
   node -v
   npm -v
   redis-cli ping
+  mariadb --version
   curl -fsS http://127.0.0.1/api/visitors/counts >/dev/null
   systemctl is-active redis
+  systemctl is-active mariadb
   systemctl is-active c-quiz-app
   systemctl is-active nginx
 }
@@ -156,6 +192,7 @@ verify() {
 install_packages
 install_node
 ensure_env
+setup_mariadb
 build_app
 write_systemd_unit
 write_nginx_config

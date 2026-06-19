@@ -43,3 +43,9 @@ c-quiz-app：题库问答 Web 应用，基于 React + Vite 构建。
 - 部署仅前端改动时，本地 `npm run build` 后 rsync `dist/` 即可，无需重启 c-quiz-app 服务（nginx 直接服务静态文件）。但涉及服务端代码（routes/services/db）改动时必须 `systemctl restart c-quiz-app`。
 - 涉及 MySQL schema 变更（如新增列）时，必须先 `ALTER TABLE` 再重新迁移数据，且服务端代码（`quizBankService.js` 的读写函数）要同步适配，否则新列写不进或读不出。
 - SSH 密码登录阿里云短时间高频会触发限流（`Permission denied`），失败后 `sleep 3` 重试，或合并到单条 SSH 命令批量执行。
+- **部署多个服务端新文件时，优先用 rsync 目录同步，避免逐文件 scp 遗漏**。上传后必须校验关键导出符（`grep -c`）和服务大小（`wc -c`），确认全部就位后再 `systemctl restart`。
+- `chatService.js` 的 `addUser`/`removeUser`/`broadcast` 操作 `clientMap`（`Map<ws, senderName>`），在线人数以 WebSocket 连接数为准，不再依赖 visitor heartbeat。
+- 聊天消息存内存环形缓冲区（200 条），不持久化。排行榜用 Redis ZSet（有内存回退）。两者都在 `chatService.js` 单一服务内管理。
+- **环境变量覆盖陷阱**：dotenv 默认不覆盖已有环境变量。若 shell 已 export 某变量，`.env` 改它不生效。用 `env -u VAR` 清掉 shell 值后再启动 Dev Server。
+- 在线人数以 WebSocket 连接数为权威数据源（`GET /api/chat/online`），标题栏 `OnlineCount` 组件 15s 轮询一次，与聊天面板人数一致。
+- 弹幕通过 CSS `@keyframes danmakuScroll` 实现，走 `pointer-events: none` 不阻挡交互。消息类型 `join`/`leave` 不触发弹幕，仅 `message` 类型触发。

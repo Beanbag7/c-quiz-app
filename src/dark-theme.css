@@ -1,0 +1,462 @@
+/* ── 暗色主题 ── 通过 html[data-theme="dark"] 触发 ── */
+
+[data-theme="dark"] {
+  --primary-blue: #4da3ff;
+  --primary-blue-hover: #3389e6;
+  --text-primary: #e5e5e5;
+  --text-secondary: #9ca3af;
+  --bg-light: #1a1a2e;
+  --pure-white: #1a1a2e;
+
+  color-scheme: dark;
+}
+
+[data-theme="dark"] body {
+  background: #0f0f1a;
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .app,
+[data-theme="dark"] .App {
+  background: #0f0f1a;
+}
+
+/* ── 科目选择页 ── */
+[data-theme="dark"] .subject-selection {
+  background: linear-gradient(135deg, #1a1a3e 0%, #2d1b4e 100%);
+}
+
+[data-theme="dark"] .subject-card {
+  background: #1a1a2e;
+  border-color: #2a2a3e;
+}
+
+[data-theme="dark"] .subject-card h2 {
+  color: #e5e5e5;
+}
+
+[data-theme="dark"] .subject-card p {
+  color: var(--text-secondary);
+}
+
+[data-theme="dark"] .subject-card:hover {
+  background: #252545;
+}
+
+/* ── 答题区域 ── */
+[data-theme="dark"] .container {
+  background: transparent;
+}
+
+[data-theme="dark"] .quiz-card,
+[data-theme="dark"] .essay-question,
+[data-theme="dark"] .fill-blank-question {
+  background: #1a1a2e;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .question-content {
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .question-title {
+  color: var(--text-primary);
+  border-bottom-color: #2a2a3e;
+}
+
+[data-theme="dark"] .question-text {
+  color: #c5c5d5;
+}
+
+[data-theme="dark"] .essay-textarea,
+[data-theme="dark"] .fill-input {
+  background: #2a2a3e;
+  border-color: #3a3a4e;
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .essay-textarea:focus,
+[data-theme="dark"] .fill-input:focus {
+  border-color: var(--primary-blue);
+}
+
+/* ── 选项按钮 ── */
+[data-theme="dark"] .option-button {
+  background: #2a2a3e;
+  border-color: #3a3a4e;
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .option-button:hover {
+  background: #3a3a4e;
+}
+
+[data-theme="dark"] .option-button.is-correct {
+  background: #065f46;
+  border-color: #10b981;
+}
+
+[data-theme="dark"] .option-button.is-wrong {
+  background: #7f1d1d;
+  border-color: #ef4444;
+}
+
+/* ── 统计区域 ── */
+[data-theme="dark"] .statistics {
+  background: #1a1a2e;
+  border-color: #2a2a3e;
+}
+
+[data-theme="dark"] .stat-item {
+  background: #2a2a3e;
+}
+
+[data-theme="dark"] .stat-value {
+  color: var(--text-primary);
+}
+
+/* ── 答案反馈 ── */
+[data-theme="dark"] .feedback-section {
+  background: #1a1a2e;
+}
+
+[data-theme="dark"] .feedback-section.correct {
+  background: rgba(16, 185, 129, 0.12);
+}
+
+[data-theme="dark"] .feedback-section.wrong {
+  background: rgba(239, 68, 68, 0.12);
+}
+
+[data-theme="dark"] .correct-answer-display {
+  background: #2a2a3e;
+}
+
+/* ── 进度条 ── */
+[data-theme="dark"] .progress-bar-bg {
+  background: #2a2a3e;
+}
+
+/* ── 解答题区域 ── */
+[data-theme="dark"] .score-display {
+  background: linear-gradient(135deg, #1a1a3e, #0f2744);
+}
+
+[data-theme="dark"] .user-answer-display {
+  background: #2a2a3e;
+}
+
+[data-theme="dark"] .answer-section {
+  background: rgba(16, 185, 129, 0.08);
+}
+
+[data-theme="dark"] .answer-title {
+  color: #34d399;
+}
+
+[data-theme="dark"] .answer-content {
+  color: #a7f3d0;
+}
+
+[data-theme="dark"] .explanation-section {
+  background: rgba(245, 158, 11, 0.1);
+}
+
+[data-theme="dark"] .explanation-title {
+  color: #fbbf24;
+}
+
+[data-theme="dark"] .explanation-text {
+  color: #fde68a;
+}
+
+/* ── 结果弹窗 ── */
+[data-theme="dark"] .result-modal {
+  background: #1a1a2e;
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .result-modal h2 {
+  color: var(--text-primary);
+}
+
+/* ── 导航按钮 ── */
+[data-theme="dark"] .back-text-btn {
+  color: var(--text-secondary);
+}
+
+/* ── 管理后台 ── */
+[data-theme="dark"] .admin-page {
+  background: linear-gradient(135deg, #0f0f1a, #1a1a2e);
+}
+
+[data-theme="dark"] .admin-panel {
+  background: #1a1a2e;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+[data-theme="dark"] .visitor-table th {
+  background: #2a2a3e;
+}
+
+[data-theme="dark"] .visitor-table td {
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .visitor-table td:nth-child(2),
+[data-theme="dark"] .visitor-table td:nth-child(3),
+[data-theme="dark"] .visitor-table td:nth-child(5) {
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .ban-reason-card {
+  background: #2a2a3e;
+  border-color: #3a3a4e;
+}
+
+[data-theme="dark"] .ban-reason-card input,
+[data-theme="dark"] .admin-login input {
+  background: #2a2a3e;
+  border-color: #3a3a4e;
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .admin-login-copy {
+  background: linear-gradient(180deg, #1a1a2e, #1a1a3e);
+  border-color: #2a2a3e;
+}
+
+[data-theme="dark"] .admin-login-copy h2 {
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .admin-login-copy p {
+  color: var(--text-secondary);
+}
+
+[data-theme="dark"] .admin-header h1 {
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .empty-log {
+  background: #2a2a3e;
+  color: var(--text-secondary);
+}
+
+[data-theme="dark"] .type-card {
+  background: #2a2a3e;
+  border-color: #3a3a4e;
+}
+
+[data-theme="dark"] .type-card h3 {
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .type-icon {
+  background: #3a3a4e;
+}
+
+[data-theme="dark"] .banned-visitor-row {
+  background: rgba(245, 158, 11, 0.08);
+}
+
+/* ── 题库管理 ── */
+[data-theme="dark"] .admin-login label,
+[data-theme="dark"] .visitor-log-actions {
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .admin-page .admin-header p,
+[data-theme="dark"] .admin-page .visitor-log-actions span {
+  color: var(--text-secondary);
+}
+
+/* ── 聊天面板 ── */
+[data-theme="dark"] .chat-panel {
+  background: #1a1a2e;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5);
+}
+
+[data-theme="dark"] .chat-messages {
+  background: #0f0f1a;
+}
+
+[data-theme="dark"] .chat-bubble-text.other {
+  background: #2a2a3e;
+  border-color: #3a3a4e;
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .chat-input-area {
+  background: #1a1a2e;
+  border-top-color: #2a2a3e;
+}
+
+[data-theme="dark"] .chat-input {
+  background: #2a2a3e;
+  border-color: #3a3a4e;
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .chat-system-text {
+  background: #2a2a3e;
+  color: var(--text-secondary);
+}
+
+[data-theme="dark"] .chat-bubble-text.self {
+  background: linear-gradient(135deg, #4da3ff, #818cf8);
+}
+
+/* ── loading / error ── */
+[data-theme="dark"] .loading-container,
+[data-theme="dark"] .error-container {
+  background: #0f0f1a;
+}
+
+[data-theme="dark"] .loading-container p,
+[data-theme="dark"] .error-container p {
+  color: var(--text-secondary);
+}
+
+/* ── 控制按钮 ── */
+[data-theme="dark"] .control-button.secondary {
+  background: #2a2a3e;
+  border-color: #3a3a4e;
+  color: var(--text-secondary);
+}
+
+[data-theme="dark"] .control-button.secondary:hover {
+  background: #3a3a4e;
+}
+
+/* ── 弹幕在暗色下更亮 ── */
+[data-theme="dark"] .danmaku-item {
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.7), 0 0 12px rgba(255, 255, 255, 0.2);
+}
+
+/* ── Theme toggle button ── */
+.theme-toggle {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 800;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+  backdrop-filter: blur(8px);
+}
+
+.theme-toggle:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+[data-theme="dark"] .theme-toggle {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.15);
+  color: #fcd34d;
+}
+
+[data-theme="dark"] .theme-toggle:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* ── 错题徽标 ── */
+.wrong-count-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  margin-top: 8px;
+  background: rgba(239, 68, 68, 0.12);
+  color: #ef4444;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+[data-theme="dark"] .wrong-count-badge {
+  background: rgba(239, 68, 68, 0.18);
+}
+
+/* ── 排行榜 ── */
+.leaderboard {
+  margin: 48px auto 0;
+  max-width: 420px;
+  width: 100%;
+  padding: 20px 24px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  backdrop-filter: blur(8px);
+}
+
+.leaderboard-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 14px;
+  text-align: center;
+}
+
+.leaderboard-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.leaderboard-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  font-size: 14px;
+}
+
+.leaderboard-item:last-child {
+  border-bottom: none;
+}
+
+.leaderboard-rank {
+  width: 32px;
+  text-align: center;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.6);
+  flex-shrink: 0;
+}
+
+.leaderboard-name {
+  flex: 1;
+  color: rgba(255, 255, 255, 0.85);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.leaderboard-score {
+  font-weight: 700;
+  color: #fcd34d;
+  flex-shrink: 0;
+}
+
+[data-theme="dark"] .leaderboard {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+[data-theme="dark"] .leaderboard-title {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+[data-theme="dark"] .leaderboard-name {
+  color: rgba(255, 255, 255, 0.6);
+}

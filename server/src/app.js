@@ -2,6 +2,8 @@ import express from 'express'
 import cookieParser from 'cookie-parser'
 import { visitorsRouter } from './routes/visitors.js'
 import { adminRouter } from './routes/admin.js'
+import { quizRouter } from './routes/quiz.js'
+import { chatRouter } from './routes/chat.js'
 
 export function createApp() {
   const app = express()
@@ -16,7 +18,9 @@ export function createApp() {
   })
 
   app.use('/api/visitors', visitorsRouter)
+  app.use('/api/quiz', quizRouter)
   app.use('/api/admin', adminRouter)
+  app.use('/api/chat', chatRouter)
 
   app.use((req, res) => {
     res.status(404).json({ error: `Route not found: ${req.method} ${req.path}` })

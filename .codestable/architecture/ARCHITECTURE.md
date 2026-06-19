@@ -137,6 +137,29 @@ scripts/
 - 相对时间由 `formatRelativeTime` 生成（刚刚/X 分钟前/X 天前）
 - 封禁列表（独立表格）保持 7 列原样
 
+### 6. 在线聊天系统
+- 基于 `ws` 库，与 Express 共享同一 HTTP Server（端口 3001）
+- nginx `/ws` 路径负责 WebSocket 升级（`proxy_set_header Upgrade`）
+- 消息存内存环形缓冲区（200 条），服务器重启清空
+- 在线用户通过 `Map<ws, senderName>` 追踪，`join`/`leave` 时广播系统消息 + 用户列表
+- 在线人数统一数据源：`GET /api/chat/online`（WebSocket 连接数），前端 `OnlineCount` 15s 轮询
+- 弹幕：CSS `@keyframes danmakuScroll`，`pointer-events: none`，仅普通消息触发
+
+### 7. 暗色模式
+- 通过 `html[data-theme="dark"]` 切换 CSS 变量和硬编码颜色
+- 集中管理在 `src/dark-theme.css`，覆盖所有页面和组件
+- 主题偏好存入 `localStorage`，固定位置 🌙/☀️ 按钮切换
+
+### 8. 错题本地持久化
+- 错题按科目存入 `localStorage`（key: `cq_wrong_answers_{subject}`）
+- 科目卡片显示错题数徽标（📝 N 道错题）
+- 错题本练习从 localStorage 加载旧错题，练习后清除
+
+### 9. 答题排行榜
+- `POST /api/chat/score` 上报得分（userId + score + subject）
+- Redis ZSet `leaderboard:weekly` 存储，内存 Map 回退
+- `GET /api/chat/leaderboard` 返回 Top N，首页 `Leaderboard` 组件 30s 刷新
+
 ## 运维与部署要点
 
 - 首页 403 且 `/api/*` 正常时，优先检查 `dist/index.html` 是否缺失
