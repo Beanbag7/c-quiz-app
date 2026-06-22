@@ -84,6 +84,9 @@
     max-width: 100%;
     margin: var(--spacing-md) 0;
     overflow-x: auto;
+    display: inline-flex;
+    align-items: center;
+    vertical-align: middle;
 }
 
 .question-inline-image {
@@ -92,8 +95,25 @@
     max-width: min(100%, 760px);
     height: auto !important;
     border-radius: var(--radius-md);
-    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.12);
     object-fit: contain;
+}
+
+.question-inline-image[src*="ds_images"] {
+    border-radius: 0;
+}
+
+.question-image-frame[data-load-error="true"]::after {
+    content: "图片未加载";
+    display: inline-flex;
+    align-items: center;
+    min-height: 36px;
+    padding: 8px 12px;
+    border: 1px dashed var(--border-light);
+    border-radius: var(--radius-sm);
+    color: var(--text-secondary);
+    font-size: 14px;
+    font-weight: 500;
+    background: var(--light-gray);
 }
 
 .question-text code {

@@ -112,6 +112,10 @@ function renderInline(text, keyPrefix) {
           alt={alt || '图片'}
           loading="lazy"
           style={sourceMaxWidth ? { maxWidth: `min(100%, ${sourceMaxWidth})` } : undefined}
+          onError={(event) => {
+            event.currentTarget.dataset.loadError = 'true';
+            event.currentTarget.style.display = 'none';
+          }}
         />
       );
     } else if (token.startsWith('`')) {

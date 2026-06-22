@@ -94,6 +94,11 @@ function renderImageTag(tag, key) {
         alt={getHtmlAttr(tag, HTML_ALT_ATTR_REGEX) || '题目图片'}
         loading="lazy"
         style={imageStyle}
+        onError={(event) => {
+          const figure = event.currentTarget.closest('.question-image-frame');
+          if (figure) figure.dataset.loadError = 'true';
+          event.currentTarget.style.display = 'none';
+        }}
       />
     </figure>
   );
