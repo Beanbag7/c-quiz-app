@@ -52,6 +52,17 @@ export function getRequestOrigin(req) {
   }
 }
 
+export function getRequestDeviceInfo(req) {
+  const userAgent = headerValue(req, ['user-agent']) || 'unknown'
+  const platformHint = headerValue(req, ['sec-ch-ua-platform']) || ''
+  const deviceLabel = buildDeviceLabel(userAgent, platformHint)
+
+  return {
+    userAgent,
+    deviceLabel,
+  }
+}
+
 const GEO_NAME_MAP = new Map([
   ['CN', '中国'],
   ['CHINA', '中国'],
@@ -76,4 +87,35 @@ function headerValue(req, names) {
 function localizeGeoValue(value, fallback) {
   if (!value) return `未知${fallback}`
   return GEO_NAME_MAP.get(value.trim().toUpperCase()) || value.trim()
+}
+
+function buildDeviceLabel(userAgent, platformHint) {
+  const platform = inferPlatform(userAgent, platformHint)
+  const browser = inferBrowser(userAgent)
+
+  if (browser && platform) return `${browser} / ${platform}`
+  if (browser) return browser
+  if (platform) return platform
+  return '未知设备'
+}
+
+function inferPlatform(userAgent, platformHint) {
+  const hint = platformHint.replaceAll('"', '').trim()
+  if (hint) return hint
+
+  if (/Windows/i.test(userAgent)) return 'Windows'
+  if (/Mac OS X|Macintosh/i.test(userAgent)) return 'macOS'
+  if (/Android/i.test(userAgent)) return 'Android'
+  if (/iPhone|iPad|iPod/i.test(userAgent)) return 'iOS'
+  if (/Linux/i.test(userAgent)) return 'Linux'
+
+  return ''
+}
+
+function inferBrowser(userAgent) {
+  if (/Edg\//i.test(userAgent)) return 'Edge'
+  if (/Chrome\//i.test(userAgent)) return 'Chrome'
+  if (/Firefox\//i.test(userAgent)) return 'Firefox'
+  if (/Safari\//i.test(userAgent) && !/Chrome\//i.test(userAgent)) return 'Safari'
+  return ''
 }

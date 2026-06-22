@@ -6,7 +6,7 @@
     padding: 10px var(--spacing-sm);
     margin-bottom: 8px;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: var(--spacing-md);
     cursor: pointer;
     transition: all var(--transition-normal);
@@ -69,8 +69,26 @@
 
 .option-text {
     flex: 1;
+    min-width: 0;
     line-height: 1.6;
     color: var(--text-primary);
+}
+
+.option-text .markdown-content {
+    width: 100%;
+}
+
+.option-text .code-block {
+    width: 100%;
+    max-width: 100%;
+    margin: 6px 0;
+    padding: 12px 14px;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.option-text .markdown-image {
+    max-width: min(100%, 320px);
 }
 
 .option-text p {

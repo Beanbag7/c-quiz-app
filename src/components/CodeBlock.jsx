@@ -21,6 +21,30 @@ const CodeBlock = ({ code }) => {
             .replace(/</g, '&lt;')
             .replace(/>/g, '&gt;');
 
+        const protectedTokens = [];
+        const makeToken = (prefix) => `@@CQ${prefix}${'A'.repeat(protectedTokens.length + 1)}@@`;
+        const protect = (value, renderer, prefix = 'TOKEN') => {
+            const token = makeToken(prefix);
+            protectedTokens.push({ token, value, renderer });
+            return token;
+        };
+
+        highlighted = highlighted.replace(
+            /\/\*[\s\S]*?\*\//g,
+            (comment) => protect(comment, (value) => `<span class="code-comment">${value}</span>`, 'COMMENT')
+        );
+        highlighted = highlighted.replace(
+            /\/\/(.*?)$/gm,
+            (comment) => protect(comment, (value) => `<span class="code-comment">${value}</span>`, 'COMMENT')
+        );
+        highlighted = highlighted.replace(
+            /&quot;(?:[^&]|&(?!quot;))*&quot;/g,
+            (str) => protect(str, (value) => `<span class="code-string">${value}</span>`, 'STRING')
+        );
+        highlighted = highlighted.replace(/\(\s*(\d+)\s*\)/g, (_, blankNumber) => {
+            return protect(blankNumber, (value) => `<span class="code-blank">第 ${value} 空</span>`, 'BLANK');
+        });
+
         // 第3步：高亮关键字
         const keywords = [
             'abstract', 'assert', 'boolean', 'break', 'byte', 'case', 'catch', 'char',
@@ -34,32 +58,21 @@ const CodeBlock = ({ code }) => {
             'register', 'auto', 'String', 'one', 'two', 'three'
         ];
 
-        keywords.forEach(keyword => {
-            const regex = new RegExp(`\\b(${keyword})\\b`, 'g');
-            highlighted = highlighted.replace(regex, '<span class="code-keyword">$1</span>');
-        });
-
-        // 第4步：高亮字符串
+        const keywordRegex = new RegExp(`\\b(${keywords.join('|')})\\b`, 'g');
         highlighted = highlighted.replace(
-            /(&quot;(?:[^&]|&(?!quot;))*&quot;)/g,
-            '<span class="code-string">$1</span>'
+            keywordRegex,
+            '<span class="code-keyword">$1</span>'
         );
 
-        // 第5步：高亮数字
+        // 第4步：高亮数字
         highlighted = highlighted.replace(
             /\b(\d+\.?\d*)\b/g,
             '<span class="code-number">$1</span>'
         );
 
-        // 第6步：高亮注释
-        highlighted = highlighted.replace(
-            /\/\/(.*?)$/gm,
-            '<span class="code-comment">//$1</span>'
-        );
-        highlighted = highlighted.replace(
-            /\/\*([\s\S]*?)\*\//g,
-            '<span class="code-comment">/*$1*/</span>'
-        );
+        protectedTokens.forEach(({ token, value, renderer }) => {
+            highlighted = highlighted.replace(token, renderer(value));
+        });
 
         return highlighted;
     };

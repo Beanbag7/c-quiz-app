@@ -8,10 +8,14 @@ import EssayQuestion from './components/EssayQuestion';
 import OnlineCount from './components/OnlineCount';
 import AdminVisitorLog from './components/AdminVisitorLog';
 import AdminQuizManager from './components/AdminQuizManager';
+import AdminAnnouncementManager from './components/AdminAnnouncementManager';
+import AnnouncementBanner from './components/AnnouncementBanner';
+import MarkdownContent from './components/MarkdownContent';
 import ChatWidget from './components/ChatWidget';
 import Leaderboard from './components/Leaderboard';
 import './App.css';
 import './dark-theme.css';
+import { parseFillBlankAnswerItems } from './utils/fillBlankAnswer';
 
 const WRONG_ANSWERS_KEY = 'cq_wrong_answers';
 
@@ -19,9 +23,7 @@ const WRONG_ANSWERS_KEY = 'cq_wrong_answers';
 // 用 dangerouslySetInnerHTML 渲染，图片限宽避免溢出（与 QuizCard 题干渲染方式一致）
 function renderAnswerExplanation(text) {
   if (!text) return null;
-  const html = String(text)
-    .replace(/<img /g, '<img style="max-width:100%;height:auto;border-radius:8px;margin:8px 0;display:block" ');
-  return <span dangerouslySetInnerHTML={{ __html: html }} />;
+  return <MarkdownContent content={String(text)} />;
 }
 
 function App() {
@@ -54,9 +56,11 @@ function App() {
   const [multiSelectedAnswers, setMultiSelectedAnswers] = useState(new Set());
   const [multiSubmitted, setMultiSubmitted] = useState(false);
   const [multiCorrect, setMultiCorrect] = useState(null);
+  const [multiAnswerRevealed, setMultiAnswerRevealed] = useState(false);
   const [currentView, setCurrentView] = useState(() => window.location.hash === '#admin' ? 'admin' : 'quiz');
   const [darkMode, setDarkMode] = useState(() => localStorage.getItem('cq_dark_mode') === '1');
   const [adminTab, setAdminTab] = useState('visitors');
+  const [choiceAnswerRevealed, setChoiceAnswerRevealed] = useState(false);
 
   // 暗色主题同步到 <html>
   useEffect(() => {
@@ -76,7 +80,7 @@ function App() {
   // 错题本：按科目持久化到 localStorage
   const [subjectWrongCounts, setSubjectWrongCounts] = useState(() => {
     const counts = {};
-    ['c','java','database','kline','sxyz','chaoxing','exam175','ds'].forEach(s => {
+    ['c','java','database','kline','sxyz','chaoxing','exam175','ds','co'].forEach(s => {
       try {
         const raw = localStorage.getItem(`${WRONG_ANSWERS_KEY}_${s}`);
         if (raw) { const arr = JSON.parse(raw); if (Array.isArray(arr)) counts[s] = arr.length; }
@@ -263,6 +267,7 @@ function App() {
           chaoxing: 'chaoxing-quiz-bank.json',
           exam175: 'exam-175-question-bank.json',
           ds: 'questions_data_structure.json',
+          co: 'questions_computer_organization.json',
           c: 'questions.json',
           java: 'questions_java.json',
         };
@@ -273,7 +278,7 @@ function App() {
       }
 
       // 处理数据库题库（不同的数据格式）
-      if (subject === 'database' || subject === 'kline' || subject === 'sxyz' || subject === 'chaoxing' || subject === 'exam175' || subject === 'ds') {
+      if (subject === 'database' || subject === 'kline' || subject === 'sxyz' || subject === 'chaoxing' || subject === 'exam175' || subject === 'ds' || subject === 'co') {
         const dbQuestions = subject === 'sxyz'
           ? shuffleSxyzQuestions(rawQuestions)
           : subject === 'chaoxing'
@@ -335,7 +340,7 @@ function App() {
       filtered = allQuestions.filter(q => q.题目类型 === '判断题');
     }
 
-    setQuestions(filtered);
+    setQuestions(shuffleArray([...filtered]));
     setCurrentIndex(0);
     setSelectedAnswer(null);
     setIsCorrect(null);
@@ -363,7 +368,7 @@ function App() {
       filtered = allQuestions;
     }
 
-    setQuestions(filtered);
+    setQuestions(shuffleArray([...filtered]));
     setSelectedQuestionType(type);
     setCurrentIndex(0);
     setSelectedAnswer(null);
@@ -388,6 +393,12 @@ function App() {
   }, [selectedSubject]);
 
   if (currentView === 'admin') {
+    const adminPanels = {
+      visitors: <AdminVisitorLog />,
+      quiz: <AdminQuizManager />,
+      announcement: <AdminAnnouncementManager />
+    };
+
     return (
       <div className="App">
         <div className="admin-tabs">
@@ -399,9 +410,13 @@ function App() {
             className={`admin-tab-btn ${adminTab === 'quiz' ? 'active' : ''}`}
             onClick={() => setAdminTab('quiz')}
           >题库管理</button>
+          <button
+            className={`admin-tab-btn ${adminTab === 'announcement' ? 'active' : ''}`}
+            onClick={() => setAdminTab('announcement')}
+          >前端公告</button>
           <a className="admin-tab-back" href="#/">← 返回首页</a>
         </div>
-        {adminTab === 'visitors' ? <AdminVisitorLog /> : <AdminQuizManager />}
+        {adminPanels[adminTab] || adminPanels.visitors}
       </div>
     );
   }
@@ -432,6 +447,8 @@ function App() {
     setSelectedAnswer(optionKey);
     const correct = optionKey === currentQuestion.正确答案;
     setIsCorrect(correct);
+
+    if (choiceAnswerRevealed) return;
 
     // 检查是否是首次答题（使用序号追踪）
     if (!firstAttempts.has(currentQuestion.序号)) {
@@ -500,19 +517,60 @@ function App() {
     }
   };
 
+  const markQuestionAsWrong = (question) => {
+    const questionId = question?.序号 || question?.题目ID;
+    if (!questionId || firstAttempts.has(questionId)) return;
+
+    setFirstAttempts(prev => new Set([...prev, questionId]));
+    setAnsweredQuestions(prev => new Set([...prev, questionId]));
+    setWrongAnswers(prev => [...prev, question]);
+  };
+
+  const handleChoiceViewAnswer = () => {
+    if (!currentQuestion) return;
+    setChoiceAnswerRevealed(true);
+    markQuestionAsWrong(currentQuestion);
+  };
+
+  const handleMultiSelectViewAnswer = () => {
+    if (!currentQuestion) return;
+    setMultiAnswerRevealed(true);
+    markQuestionAsWrong(currentQuestion);
+  };
+
+  const resetQuestionInteractionState = () => {
+    if (fillBlankAutoNextTimerRef.current) {
+      clearTimeout(fillBlankAutoNextTimerRef.current);
+      fillBlankAutoNextTimerRef.current = null;
+    }
+    setSelectedAnswer(null);
+    setIsCorrect(null);
+    setChoiceAnswerRevealed(false);
+    setFillBlankAnswer('');
+    setFillBlankSubmitted(false);
+    setFillBlankCorrect(null);
+    setFillBlankRevealed(false);
+    setMultiSelectedAnswers(new Set());
+    setMultiSubmitted(false);
+    setMultiCorrect(null);
+    setMultiAnswerRevealed(false);
+  };
+
   // Go to next question
   const goToNextQuestion = () => {
     if (currentIndex < questions.length - 1) {
       setCurrentIndex(currentIndex + 1);
-      setSelectedAnswer(null);
-      setIsCorrect(null);
-      setMultiSelectedAnswers(new Set());
-      setMultiSubmitted(false);
-      setMultiCorrect(null);
+      resetQuestionInteractionState();
     } else {
       // Quiz completed - 显示结果弹窗
       setShowResultModal(true);
     }
+  };
+
+  const goToPreviousQuestion = () => {
+    if (currentIndex <= 0) return;
+    setCurrentIndex(currentIndex - 1);
+    resetQuestionInteractionState();
   };
 
   // 开始错题本练习
@@ -525,7 +583,7 @@ function App() {
         return raw ? JSON.parse(raw) : [];
       } catch { return []; }
     })();
-    setQuestions(stored);
+    setQuestions(shuffleArray([...stored]));
     setCurrentIndex(0);
     // 清除 localStorage 中该科目的错题
     try { localStorage.removeItem(`${WRONG_ANSWERS_KEY}_${selectedSubject}`); } catch {}
@@ -550,7 +608,7 @@ function App() {
   const restartPractice = () => {
     // 重新过滤题目 - 根据科目类型调用对应的过滤函数
     if (selectedQuestionType) {
-      if (selectedSubject === 'database' || selectedSubject === 'kline' || selectedSubject === 'sxyz' || selectedSubject === 'chaoxing' || selectedSubject === 'exam175' || selectedSubject === 'ds') {
+      if (selectedSubject === 'database' || selectedSubject === 'kline' || selectedSubject === 'sxyz' || selectedSubject === 'chaoxing' || selectedSubject === 'exam175' || selectedSubject === 'ds' || selectedSubject === 'co') {
         filterDatabaseQuestionsByType(selectedQuestionType);
       } else {
         filterQuestionsByType(selectedQuestionType);
@@ -596,9 +654,10 @@ function App() {
         </button>
         <div className="subject-selection">
           <div className="selection-topbar">
-            <OnlineCount />
-            <a className="admin-entry" href="#admin">管理员日志</a>
+            <OnlineCount scope="home" />
+            <a className="admin-entry" href="#admin">管理员后台</a>
           </div>
+          <AnnouncementBanner />
           <h1 className="selection-title">选择题库</h1>
           <p className="selection-subtitle">请选择你要练习的科目</p>
           <div className="subject-cards">
@@ -718,8 +777,32 @@ function App() {
                 <div className="wrong-count-badge">📝 {subjectWrongCounts['ds']} 道错题</div>
               )}
             </div>
+            <div className="subject-card database-card" onClick={() => setSelectedSubject('co')}>
+              <div className="card-glow"></div>
+              <div className="subject-icon database-icon">🧠</div>
+              <h2>计算机组成与系统结构</h2>
+              <p className="question-count">14道题目</p>
+              <div className="subject-stats">
+                <div className="stat-badge"><span className="stat-number">14</span> 解答</div>
+              </div>
+              <div className="new-badge">🧠 NEW</div>
+              {subjectWrongCounts['co'] > 0 && (
+                <div className="wrong-count-badge">📝 {subjectWrongCounts['co']} 道错题</div>
+              )}
+            </div>
           </div>
           <Leaderboard />
+        </div>
+      </div>
+    );
+  }
+
+  if (loading) {
+    return (
+      <div className="app">
+        <div className="loading-container">
+          <div className="loading-spinner"></div>
+          <p>加载题库中...</p>
         </div>
       </div>
     );
@@ -736,7 +819,7 @@ function App() {
         <div className="subject-selection">
           <h1 className="selection-title">选择练习类型</h1>
           <p className="selection-subtitle">
-            {selectedSubject === 'c' ? 'C语言题库' : selectedSubject === 'java' ? 'Java题库' : selectedSubject === 'kline' ? 'K线技术分析' : selectedSubject === 'sxyz' ? '形势与政策' : selectedSubject === 'chaoxing' ? '西方文化著作导读' : selectedSubject === 'exam175' ? '党纪考试题库' : selectedSubject === 'ds' ? '数据结构（C语言）' : '数据库题库'} - 请选择题型
+            {selectedSubject === 'c' ? 'C语言题库' : selectedSubject === 'java' ? 'Java题库' : selectedSubject === 'kline' ? 'K线技术分析' : selectedSubject === 'sxyz' ? '形势与政策' : selectedSubject === 'chaoxing' ? '西方文化著作导读' : selectedSubject === 'exam175' ? '党纪考试题库' : selectedSubject === 'ds' ? '数据结构（C语言）' : selectedSubject === 'co' ? '计算机组成与系统结构' : '数据库题库'} - 请选择题型
           </p>
           <div className="subject-cards">
             {selectedSubject === 'kline' ? (
@@ -801,6 +884,19 @@ function App() {
                   <div className="subject-icon" style={{ background: 'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)' }}>判</div>
                   <h2>判断题</h2>
                   <p>{questionStats.truefalse || 0}道题目</p>
+                </div>
+                <div className="subject-card" onClick={() => filterDatabaseQuestionsByType('all')}>
+                  <div className="subject-icon" style={{ background: 'linear-gradient(135deg, #fa709a 0%, #fee140 100%)' }}>全</div>
+                  <h2>全部题目</h2>
+                  <p>{questionStats.total || 0}道题目</p>
+                </div>
+              </>
+            ) : selectedSubject === 'co' ? (
+              <>
+                <div className="subject-card" onClick={() => filterDatabaseQuestionsByType('essay')}>
+                  <div className="subject-icon" style={{ background: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)' }}>答</div>
+                  <h2>解答题</h2>
+                  <p>{questionStats.essay || 0}道题目</p>
                 </div>
                 <div className="subject-card" onClick={() => filterDatabaseQuestionsByType('all')}>
                   <div className="subject-icon" style={{ background: 'linear-gradient(135deg, #fa709a 0%, #fee140 100%)' }}>全</div>
@@ -893,17 +989,6 @@ function App() {
     );
   }
 
-  if (loading) {
-    return (
-      <div className="app">
-        <div className="loading-container">
-          <div className="loading-spinner"></div>
-          <p>加载题库中...</p>
-        </div>
-      </div>
-    );
-  }
-
   if (!questions.length) {
     return (
       <div className="app">
@@ -932,7 +1017,7 @@ function App() {
             }}>
               ← 退出练习
             </button>
-            <OnlineCount />
+            <OnlineCount scope="quiz" />
           </div>
 
           {/* Progress Bar */}
@@ -953,37 +1038,27 @@ function App() {
                     userAnswer={fillBlankAnswer}
                     onAnswerChange={setFillBlankAnswer}
                     onSubmit={() => {
-                      if (!fillBlankAnswer.trim()) return;
+                      const normalize = (str) => String(str ?? '').trim().toLowerCase().replace(/\s+/g, '');
+                      const userAnswers = Array.isArray(fillBlankAnswer)
+                        ? fillBlankAnswer.map(answer => normalize(answer)).filter(Boolean)
+                        : String(fillBlankAnswer ?? '')
+                          .split(/[，,、\s]+/)
+                          .map(answer => normalize(answer))
+                          .filter(Boolean);
+
+                      if (userAnswers.length === 0) return;
 
                       // 答案验证（忽略大小写和空格）
-                      const normalize = (str) => String(str ?? '').trim().toLowerCase();
-                      const userAns = normalize(fillBlankAnswer);
                       let correct = false;
+                      const correctAnswers = parseFillBlankAnswerItems(currentQuestion).map(answer => normalize(answer));
 
-                      // 兼容三种答案字段：答案（database 题库）/ 正确答案（ds/sxyz）/ 答案文本
-                      const rawCorrect = currentQuestion.答案 ?? currentQuestion.正确答案 ?? currentQuestion.答案文本;
-
-                      if (Array.isArray(rawCorrect)) {
-                        // 多答案题目：支持逗号、空格分隔输入
-                        // 用户可以用中文逗号、英文逗号、顿号或空格分隔
-                        const userAnswers = fillBlankAnswer
-                          .split(/[，,、\s]+/)  // 支持中文逗号、英文逗号、顿号、空格
-                          .map(ans => normalize(ans))
-                          .filter(ans => ans.length > 0);
-
-                        const correctAnswers = rawCorrect.map(ans => normalize(ans));
-
-                        // 检查是否所有答案都匹配（顺序可以不同）
-                        if (userAnswers.length === correctAnswers.length) {
-                          correct = userAnswers.every(userAns =>
-                            correctAnswers.some(correctAns => correctAns === userAns)
-                          ) && correctAnswers.every(correctAns =>
-                            userAnswers.some(userAns => userAns === correctAns)
-                          );
-                        }
+                      if (correctAnswers.length > 1) {
+                        correct =
+                          userAnswers.length === correctAnswers.length &&
+                          correctAnswers.every((answer, index) => userAnswers[index] === answer);
                       } else {
                         // 单答案题目
-                        correct = normalize(rawCorrect) === userAns;
+                        correct = correctAnswers[0] === userAnswers[0];
                       }
 
                       setFillBlankSubmitted(true);
@@ -1025,9 +1100,34 @@ function App() {
                     }}
                   />
 
+                  {!fillBlankSubmitted && (
+                    <div className="navigation-buttons">
+                      <button
+                        className="next-btn secondary"
+                        onClick={goToPreviousQuestion}
+                        disabled={currentIndex === 0}
+                      >
+                        ← 上一题
+                      </button>
+                      <button
+                        className="next-btn secondary"
+                        onClick={goToNextQuestion}
+                      >
+                        {currentIndex < questions.length - 1 ? '跳过此题' : '结束练习'}
+                      </button>
+                    </div>
+                  )}
+
                   {/* 填空题提交后的下一题按钮 */}
                   {fillBlankSubmitted && fillBlankCorrect === false && (
                     <div className="navigation-buttons">
+                      <button
+                        className="next-btn secondary"
+                        onClick={goToPreviousQuestion}
+                        disabled={currentIndex === 0}
+                      >
+                        ← 上一题
+                      </button>
                       <button
                         className="next-btn"
                         onClick={goToNextFillBlankQuestion}
@@ -1043,7 +1143,11 @@ function App() {
             if (questionType === '解答题') {
               return (
                 <EssayQuestion
+                  key={currentQuestion.序号 || currentQuestion.题目ID || currentIndex}
                   question={currentQuestion}
+                  onPrevious={goToPreviousQuestion}
+                  canGoPrevious={currentIndex > 0}
+                  onSkip={goToNextQuestion}
                   onScoreChange={(score) => {
                     const questionId = currentQuestion.序号 || currentQuestion.题目ID;
                     if (!firstAttempts.has(questionId)) {
@@ -1064,11 +1168,7 @@ function App() {
                       setAnsweredQuestions(prev => new Set([...prev, questionId]));
                     }
 
-                    if (currentIndex < questions.length - 1) {
-                      setCurrentIndex(prev => prev + 1);
-                    } else {
-                      setShowResultModal(true);
-                    }
+                    goToNextQuestion();
                   }}
                 />
               );
@@ -1096,7 +1196,7 @@ function App() {
                           optionKey={key}
                           optionText={value}
                           isSelected={isSelected}
-                          isCorrect={multiSubmitted && isCorrectOption}
+                          isCorrect={(multiSubmitted || multiAnswerRevealed) && isCorrectOption}
                           isWrong={multiSubmitted && isSelected && !isCorrectOption}
                           disabled={multiSubmitted}
                           onClick={() => handleMultiSelectToggle(key)}
@@ -1114,6 +1214,27 @@ function App() {
                         重新开始
                       </button>
                       <button
+                        className="control-button secondary"
+                        onClick={goToPreviousQuestion}
+                        disabled={currentIndex === 0}
+                      >
+                        ← 上一题
+                      </button>
+                      <button
+                        className="control-button secondary"
+                        onClick={goToNextQuestion}
+                      >
+                        {currentIndex < questions.length - 1 ? '跳过此题' : '结束练习'}
+                      </button>
+                      {!multiAnswerRevealed && (
+                        <button
+                          className="control-button secondary"
+                          onClick={handleMultiSelectViewAnswer}
+                        >
+                          查看答案
+                        </button>
+                      )}
+                      <button
                         className="control-button primary"
                         onClick={handleMultiSelectSubmit}
                         disabled={multiSelectedAnswers.size === 0}
@@ -1123,43 +1244,45 @@ function App() {
                     </div>
                   )}
 
-                  {multiSubmitted && (
+                  {(multiSubmitted || multiAnswerRevealed) && (
                     <>
                       <div className={`compact-hint ${multiCorrect ? 'success' : ''}`}>
-                        {multiCorrect
+                        {multiSubmitted && multiCorrect
                           ? '✓ 回答正确！'
                           : <>正确答案：<strong>{correctAnswers.join('、')}</strong> - {renderAnswerExplanation(currentQuestion.答案文本)}</>}
                       </div>
 
-                      <Statistics
-                        totalQuestions={questions.length}
-                        answeredQuestions={answeredQuestions.size}
-                        correctAnswers={correctCount}
-                      />
+                      {multiSubmitted && (
+                        <>
+                          <Statistics
+                            totalQuestions={questions.length}
+                            answeredQuestions={answeredQuestions.size}
+                            correctAnswers={correctCount}
+                          />
 
-                      <div className="control-buttons">
-                        <button
-                          className="control-button secondary"
-                          onClick={resetQuiz}
-                        >
-                          重新开始
-                        </button>
-                        <button
-                          className="control-button primary"
-                          onClick={() => {
-                            if (currentIndex < questions.length - 1) {
-                              setCurrentIndex(prev => prev + 1);
-                              setMultiSelectedAnswers(new Set());
-                              setMultiSubmitted(false);
-                              setMultiCorrect(null);
-                            } else {
-                              setShowResultModal(true);
-                            }
-                          }}
-                        >
-                          {currentIndex < questions.length - 1 ? '下一题 →' : '查看结果'}
-                        </button>
-                      </div>
+                          <div className="control-buttons">
+                            <button
+                              className="control-button secondary"
+                              onClick={resetQuiz}
+                            >
+                              重新开始
+                            </button>
+                            <button
+                              className="control-button secondary"
+                              onClick={goToPreviousQuestion}
+                              disabled={currentIndex === 0}
+                            >
+                              ← 上一题
+                            </button>
+                            <button
+                              className="control-button primary"
+                              onClick={goToNextQuestion}
+                            >
+                              {currentIndex < questions.length - 1 ? '下一题 →' : '查看结果'}
+                            </button>
+                          </div>
+                        </>
+                      )}
                     </>
                   )}
                 </>
@@ -1182,7 +1305,7 @@ function App() {
                       optionKey={key}
                       optionText={value}
                       isSelected={selectedAnswer === key}
-                      isCorrect={isCorrect !== null && key === currentQuestion.正确答案}
+                      isCorrect={(isCorrect !== null || choiceAnswerRevealed) && key === currentQuestion.正确答案}
                       isWrong={isCorrect !== null && selectedAnswer === key && !isCorrect}
                       disabled={isCorrect}
                       onClick={() => handleOptionClick(key)}
@@ -1191,7 +1314,7 @@ function App() {
                 </div>
 
                 {/* Compact Feedback - 紧凑的反馈提示 */}
-                {isCorrect !== null && !isCorrect && (
+                {(choiceAnswerRevealed || (isCorrect !== null && !isCorrect)) && (
                   <div className="compact-hint">
                     正确答案：<strong>{currentQuestion.正确答案}</strong> - {renderAnswerExplanation(currentQuestion.答案文本)}
                   </div>
@@ -1218,13 +1341,27 @@ function App() {
                   >
                     重新开始
                   </button>
-                  {currentIndex < questions.length - 1 && (
+                  <button
+                    className="control-button secondary"
+                    onClick={goToPreviousQuestion}
+                    disabled={currentIndex === 0}
+                  >
+                    ← 上一题
+                  </button>
+                  <button
+                    className="control-button primary"
+                    onClick={goToNextQuestion}
+                  >
+                    {isCorrect !== null || choiceAnswerRevealed
+                      ? (currentIndex < questions.length - 1 ? '下一题 →' : '查看结果')
+                      : (currentIndex < questions.length - 1 ? '跳过此题' : '结束练习')}
+                  </button>
+                  {isCorrect === null && !choiceAnswerRevealed && (
                     <button
-                      className="control-button primary"
-                      onClick={goToNextQuestion}
-                      disabled={isCorrect === null}
+                      className="control-button secondary"
+                      onClick={handleChoiceViewAnswer}
                     >
-                      跳过此题
+                      查看答案
                     </button>
                   )}
                 </div>

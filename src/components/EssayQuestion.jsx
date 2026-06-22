@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import QuestionContent from './QuestionContent';
+import MarkdownContent from './MarkdownContent';
 import './EssayQuestion.css';
 
 // 归一化参考答案：兼容 答案 / 答案文本 / 正确答案 三种字段来源
@@ -11,49 +13,26 @@ function normalizeReferenceAnswer(question) {
     return [String(raw)];
 }
 
-// 解析文本中的 Markdown 图片语法 ![alt](src)，渲染为 <img>，其余文本原样输出
-function renderRichText(text) {
-    if (!text) return null;
-    const regex = /!\[([^\]]*)\]\(([^)]+)\)/g;
-    const parts = [];
-    let lastIndex = 0;
-    let match;
-    let key = 0;
-    while ((match = regex.exec(text)) !== null) {
-        // 图片前的文本
-        if (match.index > lastIndex) {
-            const before = text.substring(lastIndex, match.index);
-            if (before.trim()) {
-                parts.push(<span key={`txt-${key++}`} className="rich-text-line">{before}</span>);
-            }
-        }
-        // 图片本身
-        parts.push(
-            <img key={`img-${key++}`} className="answer-image" src={match[2]} alt={match[1]} loading="lazy" />
-        );
-        lastIndex = regex.lastIndex;
-    }
-    // 尾部文本
-    if (lastIndex < text.length) {
-        const after = text.substring(lastIndex);
-        if (after.trim()) {
-            parts.push(<span key={`txt-${key++}`} className="rich-text-line">{after}</span>);
-        }
-    }
-    return <>{parts}</>;
+const MARKDOWN_IMAGE_REGEX = /!\[([^\]]*)\]\(([^)]+)\)/g;
+const HTML_IMAGE_REGEX = /<img\b([^>]*)>/gi;
+
+function removeEmbeddedImages(text) {
+    return String(text ?? '')
+        .replace(MARKDOWN_IMAGE_REGEX, '')
+        .replace(HTML_IMAGE_REGEX, '')
+        .trim();
 }
 
-function EssayQuestion({ question, onNext, onScoreChange }) {
+function renderAnswerContent(text) {
+    if (!text) return null;
+    return <MarkdownContent content={text} />;
+}
+
+function EssayQuestion({ question, onNext, onScoreChange, onSkip, onPrevious, canGoPrevious = false }) {
     const [userAnswer, setUserAnswer] = useState('');
     const [submitted, setSubmitted] = useState(false);
+    const [answerRevealed, setAnswerRevealed] = useState(false);
     const [score, setScore] = useState(0);
-
-    // 当题目变化时重置状态
-    useEffect(() => {
-        setUserAnswer('');
-        setSubmitted(false);
-        setScore(0);
-    }, [question]);
 
     // 改进的智能评分算法
     const calculateScore = (userAns, correctAnswers) => {
@@ -71,8 +50,8 @@ function EssayQuestion({ question, onNext, onScoreChange }) {
             answerText = correctAnswers;
         }
 
-        // 去除 Markdown 图片语法，避免图片说明文字干扰关键词评分
-        answerText = answerText.replace(/!\[[^\]]*\]\([^)]*\)/g, '');
+        // 去除图片语法，避免图片标签干扰关键词评分
+        answerText = removeEmbeddedImages(answerText);
 
         // 改进的关键词提取（提取所有有意义的词组）
         const stopWords = new Set([
@@ -138,16 +117,16 @@ function EssayQuestion({ question, onNext, onScoreChange }) {
         // 评分前去除图片语法
         let referenceAnswerForScore = referenceAnswer;
         if (Array.isArray(referenceAnswerForScore)) {
-            referenceAnswerForScore = referenceAnswerForScore.map(s => String(s).replace(/!\[[^\]]*\]\([^)]*\)/g, ''));
+            referenceAnswerForScore = referenceAnswerForScore.map(s => removeEmbeddedImages(s));
         } else {
-            referenceAnswerForScore = String(referenceAnswerForScore).replace(/!\[[^\]]*\]\([^)]*\)/g, '');
+            referenceAnswerForScore = removeEmbeddedImages(referenceAnswerForScore);
         }
         const calculatedScore = calculateScore(userAnswer, referenceAnswerForScore);
         setScore(calculatedScore);
         setSubmitted(true);
 
-        // 通知父组件分数变化
-        if (onScoreChange) {
+        // 查看答案后的提交仅用于练习展示，不再改写父级统计。
+        if (!answerRevealed && onScoreChange) {
             onScoreChange(calculatedScore);
         }
     };
@@ -157,13 +136,22 @@ function EssayQuestion({ question, onNext, onScoreChange }) {
         // 重置状态留给父组件处理
     };
 
+    const handleViewAnswer = () => {
+        setAnswerRevealed(true);
+        if (onScoreChange) {
+            onScoreChange(0);
+        }
+    };
+
     const referenceAnswer = normalizeReferenceAnswer(question);
+    const questionText = question.题目内容;
+    const shouldShowReference = submitted || answerRevealed;
 
     return (
         <div className="essay-question">
             <div className="question-content">
                 <h3 className="question-title">解答题 (满分5分)</h3>
-                <p className="question-text">{question.题目内容}</p>
+                {questionText && <div className="question-text"><QuestionContent content={questionText} /></div>}
                 {/* 题干图片（如有） */}
                 {Array.isArray(question.题目图片) && question.题目图片.length > 0 && (
                     <div className="question-images">
@@ -192,34 +180,72 @@ function EssayQuestion({ question, onNext, onScoreChange }) {
                         </div>
                     </div>
 
-                    <button
-                        className="submit-button"
-                        onClick={handleSubmit}
-                        disabled={!userAnswer.trim()}
-                    >
-                        提交答案
-                    </button>
+                    <div className="essay-action-buttons">
+                        {!answerRevealed && (
+                            <button
+                                type="button"
+                                className="essay-previous-button"
+                                onClick={onPrevious}
+                                disabled={!canGoPrevious}
+                            >
+                                ← 上一题
+                            </button>
+                        )}
+                        <button
+                            className="submit-button"
+                            onClick={handleSubmit}
+                            disabled={!userAnswer.trim()}
+                        >
+                            提交答案
+                        </button>
+                        {!answerRevealed && (
+                            <button
+                                type="button"
+                                className="essay-view-answer-button"
+                                onClick={handleViewAnswer}
+                            >
+                                查看答案
+                            </button>
+                        )}
+                        {!answerRevealed && (
+                            <button
+                                type="button"
+                                className="essay-skip-button"
+                                onClick={onSkip}
+                            >
+                                跳过此题
+                            </button>
+                        )}
+                    </div>
                 </>
             )}
 
-            {submitted && (
+            {shouldShowReference && (
                 <>
-                    <div className="score-display">
-                        <div className={`score-badge ${score >= 4 ? 'excellent' : score >= 3 ? 'good' : score >= 2 ? 'fair' : 'poor'}`}>
-                            <span className="score-label">得分</span>
-                            <span className="score-value">{score}</span>
-                            <span className="score-max">/ 5</span>
+                    {submitted ? (
+                        <div className="score-display">
+                            <div className={`score-badge ${score >= 4 ? 'excellent' : score >= 3 ? 'good' : score >= 2 ? 'fair' : 'poor'}`}>
+                                <span className="score-label">得分</span>
+                                <span className="score-value">{score}</span>
+                                <span className="score-max">/ 5</span>
+                            </div>
+                            {score >= 4 && <p className="score-message">✨ 优秀！</p>}
+                            {score >= 3 && score < 4 && <p className="score-message">👍 良好</p>}
+                            {score >= 2 && score < 3 && <p className="score-message">📝 合格</p>}
+                            {score < 2 && <p className="score-message">💪 需要加强</p>}
                         </div>
-                        {score >= 4 && <p className="score-message">✨ 优秀！</p>}
-                        {score >= 3 && score < 4 && <p className="score-message">👍 良好</p>}
-                        {score >= 2 && score < 3 && <p className="score-message">📝 合格</p>}
-                        {score < 2 && <p className="score-message">💪 需要加强</p>}
-                    </div>
+                    ) : (
+                        <div className="answer-revealed-notice">
+                            已查看参考答案，本题计为未掌握
+                        </div>
+                    )}
 
-                    <div className="user-answer-display">
-                        <h4>您的答案：</h4>
-                        <p className="user-answer-text">{userAnswer}</p>
-                    </div>
+                    {submitted && (
+                        <div className="user-answer-display">
+                            <h4>您的答案：</h4>
+                            <p className="user-answer-text">{userAnswer}</p>
+                        </div>
+                    )}
 
                     {referenceAnswer.length > 0 && (
                         <div className="answer-section">
@@ -229,12 +255,12 @@ function EssayQuestion({ question, onNext, onScoreChange }) {
                                     <ol className="answer-list">
                                         {referenceAnswer.map((point, index) => (
                                             <li key={index} className="answer-point">
-                                                {renderRichText(point)}
+                                                {renderAnswerContent(point)}
                                             </li>
                                         ))}
                                     </ol>
                                 ) : (
-                                    <div className="answer-text">{renderRichText(referenceAnswer[0])}</div>
+                                    <div className="answer-text">{renderAnswerContent(referenceAnswer[0])}</div>
                                 )}
                             </div>
                         </div>
@@ -243,11 +269,20 @@ function EssayQuestion({ question, onNext, onScoreChange }) {
                     {question.解析 && (
                         <div className="explanation-section">
                             <h4 className="explanation-title">💡 解析</h4>
-                            <p className="explanation-text">{question.解析}</p>
+                            <div className="explanation-text">
+                                <MarkdownContent content={question.解析} />
+                            </div>
                         </div>
                     )}
 
                     <div className="action-buttons">
+                        <button
+                            className="previous-button"
+                            onClick={onPrevious}
+                            disabled={!canGoPrevious}
+                        >
+                            ← 上一题
+                        </button>
                         <button className="next-button" onClick={handleNext}>
                             下一题 →
                         </button>

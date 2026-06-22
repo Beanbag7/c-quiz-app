@@ -23,6 +23,11 @@ export const config = {
   adminSessionTtlSeconds: toNumber(process.env.ADMIN_SESSION_TTL_SECONDS, 60 * 60 * 8),
   visitorCookieName: process.env.VISITOR_COOKIE_NAME || 'cq_visitor_id',
   adminCookieName: process.env.ADMIN_COOKIE_NAME || 'cq_admin_session',
+  mysqlHost: process.env.MYSQL_HOST || '127.0.0.1',
+  mysqlPort: toNumber(process.env.MYSQL_PORT, 3306),
+  mysqlUser: process.env.MYSQL_USER || 'cquiz',
+  mysqlPassword: process.env.MYSQL_PASSWORD || '',
+  mysqlDatabase: process.env.MYSQL_DATABASE || 'cquiz',
 }
 
 export function assertServerConfig() {

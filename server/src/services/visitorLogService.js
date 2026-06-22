@@ -1,10 +1,11 @@
 import { withStorageOperation } from '../storage/index.js'
 import { normalizeGeoLocation, resolveGeoIpLocation } from './geoIpService.js'
+import { getBanStatus } from './visitorBanService.js'
 
 const visitorKey = (visitorId) => `visitor:${visitorId}`
 const visitorIndexKey = 'visitor:index'
 
-export async function recordVisitorHeartbeat({ visitorId, ipAddress, maskedIp, origin, scope, now = new Date() }) {
+export async function recordVisitorHeartbeat({ visitorId, ipAddress, maskedIp, origin, scope, deviceLabel, userAgent, now = new Date() }) {
   const location = await resolveGeoIpLocation(ipAddress, origin)
 
   return withStorageOperation(async (storage) => {
@@ -12,9 +13,13 @@ export async function recordVisitorHeartbeat({ visitorId, ipAddress, maskedIp, o
     const nowIso = now.toISOString()
     const visibleIpAddress = ipAddress || maskedIp || 'unknown'
     const exists = await storage.exists(key)
+    const resolvedDeviceLabel = deviceLabel || '未知设备'
 
     const updates = {
       visitorId,
+      deviceId: visitorId,
+      deviceLabel: resolvedDeviceLabel,
+      userAgent: userAgent || 'unknown',
       maskedIp,
       ipAddress: visibleIpAddress,
       country: location.country,
@@ -63,7 +68,7 @@ export async function listVisitorRecords({ cursor = 0, limit = 50 } = {}) {
     const items = visitorIds
       .map((visitorId) => recordByVisitorId.get(visitorId))
       .filter((record) => record?.visitorId)
-      .map((record) => {
+      .map(async (record) => {
         const ipAddress = record.ipAddress || record.maskedIp || 'unknown'
         const pageOpenCount = Number(record.heartbeatCount || 0)
         const stats = aggregatedByIp.get(ipAddress)
@@ -73,8 +78,17 @@ export async function listVisitorRecords({ cursor = 0, limit = 50 } = {}) {
           city: record.city,
         })
 
+        const banStatus = await getBanStatus(storage, {
+          visitorId: record.visitorId,
+          ipAddress,
+          now: new Date(record.lastSeenAt || Date.now()),
+        })
+
         return {
           visitorId: record.visitorId,
+          deviceId: record.deviceId || record.visitorId,
+          deviceLabel: record.deviceLabel || '未知设备',
+          userAgent: record.userAgent || 'unknown',
           ipAddress,
           country: location.country,
           region: location.region,
@@ -86,11 +100,14 @@ export async function listVisitorRecords({ cursor = 0, limit = 50 } = {}) {
           heartbeatCount: pageOpenCount,
           ipPageOpenCount: stats?.totalPageOpenCount || pageOpenCount,
           ipVisitorCount: stats?.visitorCount || 1,
+          banStatus,
         }
       })
 
+    const resolvedItems = await Promise.all(items)
+
     return {
-      items,
+      items: resolvedItems,
       nextCursor: allVisitorIds.length > safeCursor + safeLimit ? safeCursor + safeLimit : null,
     }
   })

@@ -43,6 +43,58 @@
   background: #252545;
 }
 
+[data-theme="dark"] .online-count {
+  background: rgba(26, 26, 46, 0.92);
+  border-color: #3a3a4e;
+}
+
+[data-theme="dark"] .online-user-list {
+  background: rgba(26, 26, 46, 0.98);
+  border-color: #3a3a4e;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.38);
+}
+
+[data-theme="dark"] .online-user-item {
+  background: #2a2a3e;
+}
+
+[data-theme="dark"] .online-user-ip {
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .online-user-location {
+  color: var(--text-secondary);
+}
+
+[data-theme="dark"] .announcement-banner {
+  background: rgba(26, 26, 46, 0.92);
+  border-color: #3a3a4e;
+  box-shadow: 0 16px 42px rgba(0, 0, 0, 0.35);
+}
+
+[data-theme="dark"] .announcement-banner.success {
+  background: rgba(6, 95, 70, 0.22);
+  border-color: rgba(16, 185, 129, 0.36);
+}
+
+[data-theme="dark"] .announcement-banner.warning {
+  background: rgba(120, 53, 15, 0.28);
+  border-color: rgba(245, 158, 11, 0.36);
+}
+
+[data-theme="dark"] .announcement-banner.danger {
+  background: rgba(127, 29, 29, 0.28);
+  border-color: rgba(239, 68, 68, 0.36);
+}
+
+[data-theme="dark"] .announcement-body h2 {
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .announcement-body p {
+  color: #c5c5d5;
+}
+
 /* ── 答题区域 ── */
 [data-theme="dark"] .container {
   background: transparent;
@@ -158,6 +210,25 @@
   color: #a7f3d0;
 }
 
+[data-theme="dark"] .markdown-content code {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .markdown-table-wrap {
+  background: rgba(26, 26, 46, 0.72);
+  border-color: rgba(16, 185, 129, 0.28);
+}
+
+[data-theme="dark"] .markdown-table th,
+[data-theme="dark"] .markdown-table td {
+  border-color: rgba(16, 185, 129, 0.2);
+}
+
+[data-theme="dark"] .markdown-table th {
+  background: rgba(16, 185, 129, 0.16);
+  color: #a7f3d0;
+}
+
 [data-theme="dark"] .explanation-section {
   background: rgba(245, 158, 11, 0.1);
 }
@@ -215,7 +286,10 @@
 }
 
 [data-theme="dark"] .ban-reason-card input,
-[data-theme="dark"] .admin-login input {
+[data-theme="dark"] .admin-login input,
+[data-theme="dark"] .announcement-admin-form input,
+[data-theme="dark"] .announcement-admin-form select,
+[data-theme="dark"] .announcement-admin-form textarea {
   background: #2a2a3e;
   border-color: #3a3a4e;
   color: var(--text-primary);
@@ -262,13 +336,19 @@
 
 /* ── 题库管理 ── */
 [data-theme="dark"] .admin-login label,
-[data-theme="dark"] .visitor-log-actions {
+[data-theme="dark"] .visitor-log-actions,
+[data-theme="dark"] .announcement-admin-form label {
   color: var(--text-primary);
 }
 
 [data-theme="dark"] .admin-page .admin-header p,
 [data-theme="dark"] .admin-page .visitor-log-actions span {
   color: var(--text-secondary);
+}
+
+[data-theme="dark"] .announcement-preview-block {
+  background: #2a2a3e;
+  border-color: #3a3a4e;
 }
 
 /* ── 聊天面板 ── */

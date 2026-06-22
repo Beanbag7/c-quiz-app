@@ -27,6 +27,7 @@ export async function migrateJsonBanks(banksDir) {
     { file: 'chaoxing-quiz-bank.json', subjectKey: 'chaoxing', name: '西方文化著作导读', icon: '📚', sortOrder: 6 },
     { file: 'exam-175-question-bank.json', subjectKey: 'exam175', name: '党纪考试题库', icon: '📘', sortOrder: 7 },
     { file: 'questions_data_structure.json', subjectKey: 'ds', name: '数据结构（C语言）', icon: '🌳', sortOrder: 8 },
+    { file: 'questions_computer_organization.json', subjectKey: 'co', name: '计算机组成与系统结构', icon: '🧠', sortOrder: 9 },
   ]
 
   await initSchema()

@@ -1,9 +1,11 @@
 import { config } from '../config.js'
 import { withStorageOperation } from '../storage/index.js'
+import { maskIp } from '../utils/visitor.js'
 
 const SCOPES = ['home', 'quiz']
 
 const presenceKey = (scope) => `presence:${scope}`
+const visitorKey = (visitorId) => `visitor:${visitorId}`
 
 export async function updatePresence({ visitorId, scope, now = new Date() }) {
   const timestamp = now.getTime()
@@ -31,19 +33,55 @@ export async function getPresenceCounts({ redis, now = new Date() } = {}) {
   )
 
   const online = {}
-  const totalVisitors = new Set()
+  const totalVisitors = new Map()
 
   for (const [scope, members] of scopeMembers) {
     online[scope] = members.length
-    members.forEach((visitorId) => totalVisitors.add(visitorId))
+    members.forEach((visitorId) => {
+      const current = totalVisitors.get(visitorId) || { visitorId, scopes: [] }
+      current.scopes.push(scope)
+      totalVisitors.set(visitorId, current)
+    })
   }
 
   online.total = totalVisitors.size
 
+  const users = await Promise.all(
+    [...totalVisitors.values()].map(async (presence) => {
+      const record = await activeRedis.hGetAll(visitorKey(presence.visitorId))
+      const ipAddress = record.ipAddress || record.maskedIp || ''
+      const locationText = formatLocationText(record)
+
+      return {
+        visitorId: presence.visitorId,
+        maskedIp: maskIp(ipAddress),
+        locationText,
+        scopes: presence.scopes,
+        lastScope: record.lastScope || presence.scopes.at(-1) || 'home',
+        lastSeenAt: record.lastSeenAt || null,
+      }
+    }),
+  )
+
   return {
     online,
+    users: users.sort(comparePresenceUsers),
     observedAt: now.toISOString(),
   }
+}
+
+function formatLocationText(record) {
+  const parts = [record.country, record.region, record.city]
+    .map((part) => String(part || '').trim())
+    .filter(Boolean)
+
+  return parts.length > 0 ? parts.join(' / ') : '未知地区'
+}
+
+function comparePresenceUsers(left, right) {
+  const leftSeen = Date.parse(left.lastSeenAt || '') || 0
+  const rightSeen = Date.parse(right.lastSeenAt || '') || 0
+  return rightSeen - leftSeen
 }
 
 async function cleanupPresence(redis, timestamp) {

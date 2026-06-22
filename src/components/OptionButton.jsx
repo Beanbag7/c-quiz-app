@@ -1,4 +1,5 @@
 import React from 'react';
+import MarkdownContent from './MarkdownContent';
 import './OptionButton.css';
 
 const OptionButton = ({
@@ -19,11 +20,6 @@ const OptionButton = ({
         return className;
     };
 
-    // Parse HTML content safely
-    const createMarkup = (html) => {
-        return { __html: html };
-    };
-
     return (
         <button
             className={getClassName()}
@@ -31,10 +27,9 @@ const OptionButton = ({
             disabled={disabled}
         >
             <span className="option-key">{optionKey}</span>
-            <span
-                className="option-text"
-                dangerouslySetInnerHTML={createMarkup(optionText)}
-            />
+            <div className="option-text">
+                <MarkdownContent content={optionText} />
+            </div>
             {isCorrect && (
                 <span className="feedback-icon">✓</span>
             )}

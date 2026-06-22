@@ -7,7 +7,7 @@
     "dev": "vite",
     "dev:server": "node --watch server/src/index.js",
     "dev:all": "concurrently \"npm run dev\" \"npm run dev:server\"",
-    "test:server": "node --test server/src/storage/memoryStorage.test.js server/src/utils/visitor.test.js server/src/services/geoIpService.test.js server/src/services/visitorLogService.test.js server/src/services/visitorBanService.test.js",
+    "test:server": "node --test server/src/storage/memoryStorage.test.js server/src/utils/visitor.test.js server/src/services/geoIpService.test.js server/src/services/visitorLogService.test.js server/src/services/visitorBanService.test.js server/src/services/presenceService.test.js",
     "build": "vite build",
     "migrate": "node scripts/migrate-quiz-to-mysql.js",
     "lint": "eslint .",
