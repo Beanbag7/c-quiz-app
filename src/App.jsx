@@ -292,6 +292,7 @@ function App() {
         const essayCount = dbQuestions.filter(q => q.题目类型 === '解答题').length;
         const trueFalseCount = dbQuestions.filter(q => q.题目类型 === '判断题').length;
         const multiSelectCount = dbQuestions.filter(q => q.题目类型 === '多选题').length;
+        const mockExamCount = dbQuestions.filter(q => q.题目类型 === '模拟卷').length;
         const requiredCount = dbQuestions.filter(q => q.必考 === true).length;
         setQuestionStats({
           single: choiceCount,
@@ -301,7 +302,8 @@ function App() {
           fillblank: fillBlankCount,
           essay: essayCount,
           required: requiredCount,
-          multiselect: multiSelectCount
+          multiselect: multiSelectCount,
+          mockexam: mockExamCount
         });
         setLoading(false);
         return;
@@ -358,6 +360,8 @@ function App() {
       filtered = allQuestions.filter(q => q.题目类型 === '填空题');
     } else if (type === 'essay') {
       filtered = allQuestions.filter(q => q.题目类型 === '解答题');
+    } else if (type === 'mockexam') {
+      filtered = allQuestions.filter(q => q.题目类型 === '模拟卷');
     } else if (type === 'truefalse') {
       filtered = allQuestions.filter(q => q.题目类型 === '判断题');
     } else if (type === 'multiselect') {
@@ -781,10 +785,11 @@ function App() {
               <div className="card-glow"></div>
               <div className="subject-icon database-icon">🧠</div>
               <h2>计算机组成与系统结构</h2>
-              <p className="question-count">114道题目</p>
+              <p className="question-count">116道题目</p>
               <div className="subject-stats">
                 <div className="stat-badge"><span className="stat-number">100</span> 选择</div>
                 <div className="stat-badge"><span className="stat-number">14</span> 解答</div>
+                <div className="stat-badge"><span className="stat-number">2</span> 模拟卷</div>
               </div>
               <div className="new-badge">🧠 NEW</div>
               {subjectWrongCounts['co'] > 0 && (
@@ -903,6 +908,11 @@ function App() {
                   <div className="subject-icon" style={{ background: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)' }}>答</div>
                   <h2>解答题</h2>
                   <p>{questionStats.essay || 0}道题目</p>
+                </div>
+                <div className="subject-card" onClick={() => filterDatabaseQuestionsByType('mockexam')}>
+                  <div className="subject-icon" style={{ background: 'linear-gradient(135deg, #f7971e 0%, #ffd200 100%)' }}>卷</div>
+                  <h2>模拟卷</h2>
+                  <p>{questionStats.mockexam || 0}套试卷</p>
                 </div>
                 <div className="subject-card" onClick={() => filterDatabaseQuestionsByType('all')}>
                   <div className="subject-icon" style={{ background: 'linear-gradient(135deg, #fa709a 0%, #fee140 100%)' }}>全</div>
@@ -1145,8 +1155,8 @@ function App() {
                 </div>
               );
             }
-            // 解答题
-            if (questionType === '解答题') {
+            // 解答题 / 模拟卷
+            if (questionType === '解答题' || questionType === '模拟卷') {
               return (
                 <EssayQuestion
                   key={currentQuestion.序号 || currentQuestion.题目ID || currentIndex}
