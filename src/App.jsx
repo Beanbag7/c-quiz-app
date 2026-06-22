@@ -894,6 +894,11 @@ function App() {
               </>
             ) : selectedSubject === 'co' ? (
               <>
+                <div className="subject-card" onClick={() => filterDatabaseQuestionsByType('choice')}>
+                  <div className="subject-icon" style={{ background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)' }}>选</div>
+                  <h2>选择题</h2>
+                  <p>{questionStats.choice || 0}道题目</p>
+                </div>
                 <div className="subject-card" onClick={() => filterDatabaseQuestionsByType('essay')}>
                   <div className="subject-icon" style={{ background: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)' }}>答</div>
                   <h2>解答题</h2>
