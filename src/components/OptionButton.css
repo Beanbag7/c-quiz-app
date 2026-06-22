@@ -3,11 +3,11 @@
     background: var(--pure-white);
     border: 2px solid #E5E7EB;
     border-radius: var(--radius-md);
-    padding: 10px var(--spacing-sm);
-    margin-bottom: 8px;
+    padding: 8px 12px;
+    margin-bottom: 6px;
     display: flex;
-    align-items: flex-start;
-    gap: var(--spacing-md);
+    align-items: center;
+    gap: 12px;
     cursor: pointer;
     transition: all var(--transition-normal);
     text-align: left;
@@ -70,7 +70,7 @@
 .option-text {
     flex: 1;
     min-width: 0;
-    line-height: 1.6;
+    line-height: 1.35;
     color: var(--text-primary);
 }
 
@@ -89,6 +89,8 @@
 
 .option-text .markdown-image {
     max-width: min(100%, 320px);
+    display: block;
+    margin: 0;
 }
 
 .option-text p {

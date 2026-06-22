@@ -781,8 +781,9 @@ function App() {
               <div className="card-glow"></div>
               <div className="subject-icon database-icon">🧠</div>
               <h2>计算机组成与系统结构</h2>
-              <p className="question-count">14道题目</p>
+              <p className="question-count">114道题目</p>
               <div className="subject-stats">
+                <div className="stat-badge"><span className="stat-number">100</span> 选择</div>
                 <div className="stat-badge"><span className="stat-number">14</span> 解答</div>
               </div>
               <div className="new-badge">🧠 NEW</div>

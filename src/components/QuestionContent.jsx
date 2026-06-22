@@ -94,6 +94,13 @@ function renderImageTag(tag, key) {
         alt={getHtmlAttr(tag, HTML_ALT_ATTR_REGEX) || '题目图片'}
         loading="lazy"
         style={imageStyle}
+        onLoad={(event) => {
+          const image = event.currentTarget;
+          const figure = image.closest('.question-image-frame');
+          if (figure && image.naturalHeight > 0 && image.naturalHeight <= 80) {
+            figure.dataset.compact = 'true';
+          }
+        }}
         onError={(event) => {
           const figure = event.currentTarget.closest('.question-image-frame');
           if (figure) figure.dataset.loadError = 'true';
