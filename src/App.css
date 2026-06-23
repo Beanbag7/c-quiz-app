@@ -394,6 +394,19 @@ body {
   margin-bottom: 0.75rem;
 }
 
+.mock-exam-cards .subject-card {
+  min-height: 330px;
+}
+
+.mock-exam-title {
+  max-width: 100%;
+  margin-top: 1rem;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  word-break: break-word;
+}
+
 .question-count {
   font-size: 1.125rem;
   color: var(--text-secondary);

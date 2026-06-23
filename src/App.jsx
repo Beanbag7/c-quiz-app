@@ -19,6 +19,165 @@ import { parseFillBlankAnswerItems } from './utils/fillBlankAnswer';
 
 const WRONG_ANSWERS_KEY = 'cq_wrong_answers';
 
+const MOCK_SECTION_KEYS = [
+  { key: 'choice', pattern: /选择题|单项选择题|单选题/ },
+  { key: 'essay', pattern: /简答题|解答题/ },
+  { key: 'calculation', pattern: /计算题/ },
+  { key: 'application', pattern: /应用题/ },
+];
+
+function getMockSectionKey(title = '') {
+  return MOCK_SECTION_KEYS.find(({ pattern }) => pattern.test(title))?.key || 'essay';
+}
+
+function getMockExamTitle(exam) {
+  const content = String(exam?.题目内容 || exam?.题目 || '');
+  const firstHeading = content.match(/^#\s+(.+)$/m)?.[1]?.trim();
+  if (firstHeading) return firstHeading.replace(/[《》]/g, '');
+  return String(exam?.原题号 || exam?.题目ID || '模拟卷');
+}
+
+function getMockExamDisplayName(exam, index) {
+  const originalNo = String(exam?.原题号 || '').match(/(\d+)/)?.[1];
+  const number = originalNo || String(index + 1);
+  return `第 ${number} 套`;
+}
+
+function getDefaultSectionScore(sectionTitle) {
+  const scoreMatch = String(sectionTitle).match(/每题\s*(\d+(?:\.\d+)?)\s*分/);
+  return scoreMatch ? Number(scoreMatch[1]) : 5;
+}
+
+function stripMarkdownEmphasis(value) {
+  return String(value ?? '').replace(/\*\*/g, '').trim();
+}
+
+function collectMarkdownSections(source, headingRegex) {
+  const matches = Array.from(String(source ?? '').matchAll(headingRegex));
+  return matches.map((match, index) => {
+    const nextMatch = matches[index + 1];
+    return {
+      title: match[1].trim(),
+      body: String(source).slice(match.index + match[0].length, nextMatch?.index ?? String(source).length).trim(),
+    };
+  });
+}
+
+function parseMockExamAnswerSections(answerContent) {
+  const result = {};
+  const sections = collectMarkdownSections(answerContent, /^##\s+([^\n]+)\n?/gm);
+
+  sections.forEach(({ title: sectionTitle, body }) => {
+    const sectionKey = getMockSectionKey(sectionTitle);
+    const sectionBody = body.trim();
+
+    if (sectionKey === 'choice') {
+      const answers = {};
+      const tableRowRegex = /^\|\s*(\d+)\s*\|\s*([^|]+?)\s*\|\s*([^|]*?)\s*\|/gm;
+      let rowMatch;
+      while ((rowMatch = tableRowRegex.exec(sectionBody)) !== null) {
+        const questionNo = rowMatch[1];
+        const answer = stripMarkdownEmphasis(rowMatch[2]);
+        if (!/^[A-Z]+$/.test(answer)) continue;
+        answers[questionNo] = {
+          answer,
+          explanation: stripMarkdownEmphasis(rowMatch[3]),
+        };
+      }
+      result[sectionKey] = answers;
+      return;
+    }
+
+    const answers = {};
+    collectMarkdownSections(sectionBody, /^###\s+(\d+)[^\n]*\n?/gm)
+      .forEach(({ title: questionNo, body: answerBody }) => {
+        answers[questionNo] = answerBody.trim();
+      });
+    result[sectionKey] = answers;
+  });
+
+  return result;
+}
+
+function parseMockExamIntoQuestions(exam) {
+  const content = String(exam?.题目内容 || exam?.题目 || '');
+  const answerStart = content.search(/\n#\s+.*参考答案/);
+  const questionContent = answerStart >= 0 ? content.slice(0, answerStart).trim() : content.trim();
+  const answerContent = answerStart >= 0 ? content.slice(answerStart).trim() : String(exam?.答案文本 || '');
+  const answerSections = parseMockExamAnswerSections(answerContent || String(exam?.答案文本 || ''));
+  const examTitle = getMockExamTitle(exam);
+  const questions = [];
+  const sections = collectMarkdownSections(questionContent, /^##\s+([一二三四五六七八九十]+、[^\n]+)\n?/gm);
+
+  sections.forEach(({ title: sectionTitle, body }) => {
+    const sectionBody = body.replace(/\n---\s*$/g, '').trim();
+    const sectionKey = getMockSectionKey(sectionTitle);
+    const defaultScore = getDefaultSectionScore(sectionTitle);
+
+    if (sectionKey === 'choice') {
+      const choiceRegex = /^\*\*(\d+)\.\s*([\s\S]*?)\*\*\s*\n([\s\S]*?)(?=^\*\*\d+\.|\s*$)/gm;
+      let choiceMatch;
+      while ((choiceMatch = choiceRegex.exec(sectionBody)) !== null) {
+        const questionNo = choiceMatch[1];
+        const stem = choiceMatch[2].trim();
+        const optionsText = choiceMatch[3].trim();
+        const options = {};
+
+        optionsText.split('\n').forEach((line) => {
+          const optionMatch = line.trim().match(/^([A-Z])\.\s*(.+)$/);
+          if (optionMatch) {
+            options[optionMatch[1]] = optionMatch[2].trim();
+          }
+        });
+
+        const answer = answerSections.choice?.[questionNo];
+        const correctAnswer = answer?.answer || '';
+        questions.push({
+          ...exam,
+          题目ID: `${exam?.题目ID || exam?.原题号 || 'mock'}-choice-${questionNo}`,
+          题目类型: '选择题',
+          模拟卷标题: examTitle,
+          模拟卷题型: sectionTitle,
+          原题号: `${exam?.原题号 || '模拟卷'}-${questionNo}`,
+          题目内容: stem,
+          选项: options,
+          正确答案: correctAnswer,
+          答案文本: correctAnswer ? options[correctAnswer] : '',
+          解析: answer?.explanation || '',
+          分值: defaultScore,
+        });
+      }
+      return;
+    }
+
+    const essayRegex = /^\*\*(\d+)\.(?:\((\d+(?:\.\d+)?)分\))?\*\*\s*([\s\S]*?)(?=^\*\*\d+\.|\s*$)/gm;
+    let essayMatch;
+    while ((essayMatch = essayRegex.exec(sectionBody)) !== null) {
+      const questionNo = essayMatch[1];
+      const score = essayMatch[2] ? Number(essayMatch[2]) : defaultScore;
+      const body = essayMatch[3].trim();
+      const answer = answerSections[sectionKey]?.[questionNo] || '';
+      questions.push({
+        ...exam,
+        题目ID: `${exam?.题目ID || exam?.原题号 || 'mock'}-${sectionKey}-${questionNo}`,
+        题目类型: '解答题',
+        模拟卷标题: examTitle,
+        模拟卷题型: sectionTitle,
+        原题号: `${exam?.原题号 || '模拟卷'}-${sectionKey}-${questionNo}`,
+        题目内容: `**${sectionTitle} 第 ${questionNo} 题${score ? `（${score}分）` : ''}**\n\n${body}`,
+        正确答案: answer,
+        答案文本: answer,
+        分值: score,
+      });
+    }
+  });
+
+  return questions.map((question, index) => ({
+    ...question,
+    序号: index + 1,
+  }));
+}
+
 // 渲染选择题答案解析文本：答案文本可能内嵌 <img> HTML 标签（数据结构题库），
 // 用 dangerouslySetInnerHTML 渲染，图片限宽避免溢出（与 QuizCard 题干渲染方式一致）
 function renderAnswerExplanation(text) {
@@ -61,6 +220,7 @@ function App() {
   const [darkMode, setDarkMode] = useState(() => localStorage.getItem('cq_dark_mode') === '1');
   const [adminTab, setAdminTab] = useState('visitors');
   const [choiceAnswerRevealed, setChoiceAnswerRevealed] = useState(false);
+  const [selectedMockExam, setSelectedMockExam] = useState(null);
 
   // 暗色主题同步到 <html>
   useEffect(() => {
@@ -361,7 +521,14 @@ function App() {
     } else if (type === 'essay') {
       filtered = allQuestions.filter(q => q.题目类型 === '解答题');
     } else if (type === 'mockexam') {
-      filtered = allQuestions.filter(q => q.题目类型 === '模拟卷');
+      setQuestions([]);
+      setSelectedMockExam(null);
+      setSelectedQuestionType(type);
+      setCurrentIndex(0);
+      resetQuestionInteractionState();
+      setAnsweredQuestions(new Set());
+      setCorrectCount(0);
+      return;
     } else if (type === 'truefalse') {
       filtered = allQuestions.filter(q => q.题目类型 === '判断题');
     } else if (type === 'multiselect') {
@@ -369,7 +536,7 @@ function App() {
     } else if (type === 'required') {
       filtered = allQuestions.filter(q => q.必考 === true);
     } else {
-      filtered = allQuestions;
+      filtered = allQuestions.filter(q => q.题目类型 !== '模拟卷');
     }
 
     setQuestions(shuffleArray([...filtered]));
@@ -386,6 +553,32 @@ function App() {
     setMultiCorrect(null);
     setAnsweredQuestions(new Set());
     setCorrectCount(0);
+  };
+
+  const startMockExamPractice = (exam) => {
+    const mockQuestions = parseMockExamIntoQuestions(exam);
+    setQuestions(mockQuestions);
+    setSelectedMockExam(exam);
+    setSelectedQuestionType('mockexam');
+    setCurrentIndex(0);
+    resetQuestionInteractionState();
+    setAnsweredQuestions(new Set());
+    setCorrectCount(0);
+    setWrongAnswers([]);
+    setFirstAttempts(new Set());
+    setShowResultModal(false);
+    setPracticeMode('normal');
+  };
+
+  const backToMockExamList = () => {
+    setSelectedMockExam(null);
+    setQuestions([]);
+    setCurrentIndex(0);
+    resetQuestionInteractionState();
+    setAnsweredQuestions(new Set());
+    setCorrectCount(0);
+    setFirstAttempts(new Set());
+    setShowResultModal(false);
   };
 
 
@@ -612,7 +805,9 @@ function App() {
   const restartPractice = () => {
     // 重新过滤题目 - 根据科目类型调用对应的过滤函数
     if (selectedQuestionType) {
-      if (selectedSubject === 'database' || selectedSubject === 'kline' || selectedSubject === 'sxyz' || selectedSubject === 'chaoxing' || selectedSubject === 'exam175' || selectedSubject === 'ds' || selectedSubject === 'co') {
+      if (selectedQuestionType === 'mockexam' && selectedMockExam) {
+        startMockExamPractice(selectedMockExam);
+      } else if (selectedSubject === 'database' || selectedSubject === 'kline' || selectedSubject === 'sxyz' || selectedSubject === 'chaoxing' || selectedSubject === 'exam175' || selectedSubject === 'ds' || selectedSubject === 'co') {
         filterDatabaseQuestionsByType(selectedQuestionType);
       } else {
         filterQuestionsByType(selectedQuestionType);
@@ -628,6 +823,7 @@ function App() {
   const resetQuiz = () => {
     setSelectedSubject(null);
     setSelectedQuestionType(null);
+    setSelectedMockExam(null);
     setQuestions([]);
     setAllQuestions([]);
     setCurrentIndex(0);
@@ -848,7 +1044,7 @@ function App() {
                 <div className="subject-card" onClick={() => filterDatabaseQuestionsByType('all')}>
                   <div className="subject-icon" style={{ background: 'linear-gradient(135deg, #fa709a 0%, #fee140 100%)' }}>全</div>
                   <h2>全部题目</h2>
-                  <p>{questionStats.total || 0}道题目</p>
+                  <p>{(questionStats.total || 0) - (questionStats.mockexam || 0)}道题目</p>
                 </div>
               </>
             ) : selectedSubject === 'exam175' ? (
@@ -871,7 +1067,7 @@ function App() {
                 <div className="subject-card" onClick={() => filterDatabaseQuestionsByType('all')}>
                   <div className="subject-icon" style={{ background: 'linear-gradient(135deg, #fa709a 0%, #fee140 100%)' }}>全</div>
                   <h2>全部题目</h2>
-                  <p>{questionStats.total || 0}道题目</p>
+                  <p>{(questionStats.total || 0) - (questionStats.mockexam || 0)}道题目</p>
                 </div>
               </>
             ) : selectedSubject === 'chaoxing' ? (
@@ -894,7 +1090,7 @@ function App() {
                 <div className="subject-card" onClick={() => filterDatabaseQuestionsByType('all')}>
                   <div className="subject-icon" style={{ background: 'linear-gradient(135deg, #fa709a 0%, #fee140 100%)' }}>全</div>
                   <h2>全部题目</h2>
-                  <p>{questionStats.total || 0}道题目</p>
+                  <p>{(questionStats.total || 0) - (questionStats.mockexam || 0)}道题目</p>
                 </div>
               </>
             ) : selectedSubject === 'co' ? (
@@ -997,8 +1193,45 @@ function App() {
               </>
             )}
           </div>
-          <button className="back-button" onClick={() => { setSelectedSubject(null); setSelectedQuestionType(null); }}>
+          <button className="back-button" onClick={() => { setSelectedSubject(null); setSelectedQuestionType(null); setSelectedMockExam(null); }}>
             ← 返回科目选择
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  if (selectedQuestionType === 'mockexam' && !selectedMockExam) {
+    const mockExams = allQuestions.filter(q => q.题目类型 === '模拟卷');
+
+    return (
+      <div className="App">
+        <ChatWidget />
+        <button className="theme-toggle" onClick={() => setDarkMode(d => !d)} title={darkMode ? '切换亮色' : '切换暗色'}>
+          {darkMode ? '☀️' : '🌙'}
+        </button>
+        <div className="subject-selection">
+          <h1 className="selection-title">选择模拟卷</h1>
+          <p className="selection-subtitle">计算机组成与系统结构 - 请选择第几套试卷</p>
+          <div className="subject-cards mock-exam-cards">
+            {mockExams.map((exam, index) => {
+              const parsedCount = parseMockExamIntoQuestions(exam).length;
+              return (
+                <div
+                  key={exam.题目ID || exam.原题号 || index}
+                  className="subject-card"
+                  onClick={() => startMockExamPractice(exam)}
+                >
+                  <div className="subject-icon" style={{ background: 'linear-gradient(135deg, #f7971e 0%, #ffd200 100%)' }}>卷</div>
+                  <h2>{getMockExamDisplayName(exam, index)}</h2>
+                  <p>{parsedCount}道小题</p>
+                  <p className="mock-exam-title">{getMockExamTitle(exam)}</p>
+                </div>
+              );
+            })}
+          </div>
+          <button className="back-button" onClick={() => { setSelectedQuestionType(null); setSelectedMockExam(null); }}>
+            ← 返回题型选择
           </button>
         </div>
       </div>
@@ -1029,6 +1262,7 @@ function App() {
               if (window.confirm('确定要退出当前练习吗？进度将丢失。')) {
                 setSelectedSubject(null);
                 setSelectedQuestionType(null);
+                setSelectedMockExam(null);
               }
             }}>
               ← 退出练习
